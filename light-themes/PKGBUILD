@@ -1,0 +1,26 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+
+pkgname=light-themes
+pkgver=0.1.8.29
+pkgrel=100
+pkgdesc="Light Themes (Ambiance and Radiance)"
+arch=('any')
+url="https://launchpad.net/light-themes"
+license=('CCPL')
+groups=('unity-extra')
+depends=('ubuntu-mono' 'gtk-engine-unico' 'gtk-engine-murrine' 'humanity-icon-theme' 'gconf-ubuntu')
+install=${pkgname}.install
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.gz")
+sha512sums=('fcc1a3016b923dd372d0b5c9b02cb7aa412ddb3bd876824a5066636cf2dd70f5371c4f88a1c7044344cddebe1c0b25d894bca0b6367bcea0c0f0bef66f313374')
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  find Ambiance -type f -exec install -Dm644 {} "${pkgdir}"/usr/share/themes/{} \;
+  find Radiance -type f -exec install -Dm644 {} "${pkgdir}"/usr/share/themes/{} \;
+
+  # GConf defaults
+  install -Dm644 debian/gconf-defaults "${pkgdir}/usr/share/gconf/defaults/90_${pkgname}"
+}
+
+# vim:set ts=2 sw=2 et:
