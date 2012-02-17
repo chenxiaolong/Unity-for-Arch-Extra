@@ -1,0 +1,54 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+
+pkgname=ubuntu-mono
+pkgver=0.0.39
+pkgrel=100
+pkgdesc="Icons for the panel, designed in a simplified monochrome style"
+arch=('any')
+url="https://launchpad.net/ubuntu-mono"
+license=('CCPL')
+groups=('unity-extra')
+depends=('humanity-icon-theme' 'gnome-icon-theme' 'hicolor-icon-theme')
+makedepends=('python2' 'ubuntu-wallpapers' 'imagemagick')
+install=${pkgname}.install
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.gz")
+sha512sums=('8c4d148e9971d8243c3e8d5cb1938dc1f71e15b124e506dad0c86a46105929002a282de303ac0f29d9556f3060023ee72d419d45496fee2d6ff6b45f71da9484')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  # Python 2 fix
+  sed -i 's|^\(#!.*python$\)|\12|g' scavenge.py
+
+  make ${MAKEFLAGS}
+}
+
+link_files() {
+  while [ "${#}" -gt 0 ]; do
+    install -dm755 "${pkgdir}/${2%/*}"
+    msg "Linking /${1} to /${2}"
+    ln -sf "/${1}" "${pkgdir}/${2}"
+    shift
+    shift
+  done
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # Install icons
+  install -dm755 "${pkgdir}/usr/share/icons/"
+  cp -av ubuntu-mono-dark "${pkgdir}/usr/share/icons/"
+  cp -av ubuntu-mono-light "${pkgdir}/usr/share/icons/"
+  cp -av LoginIcons "${pkgdir}/usr/share/icons/"
+
+  # Pre-cache SVG icons to PNG images
+  msg "Pre-caching SVG icons..."
+  find "${pkgdir}" -type f -name user-desktop.svg | sed -e 'p;s/svg$/png/' | xargs -tn2 convert -background none
+  LINKS=$(find "${pkgdir}" -type l -name desktop.svg | sed -e 'sX^.*/usrXusrX;s/desktop.svg/user-desktop.png/;p;s/user-desktop.png/desktop.png/' | tr '\n' ' ')
+  link_files ${LINKS}
+
+  find "${pkgdir}" -type f -name user-desktop.svg -o -type l -name desktop.svg | xargs -t rm
+}
+
+# vim:set ts=2 sw=2 et:
