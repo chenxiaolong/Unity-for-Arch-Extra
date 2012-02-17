@@ -1,0 +1,39 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+
+pkgname=humanity-icon-theme
+pkgver=0.5.3.11
+pkgrel=100
+pkgdesc="Humanity Icon Theme"
+arch=('any')
+url="https://launchpad.net/humanity"
+license=('GPL')
+groups=('unity-extra')
+depends=('gnome-icon-theme' 'hicolor-icon-theme')
+makedepends=('icon-naming-utils')
+provides=("humanity-icons=${pkgver}")
+conflicts=('humanity-icons')
+install=${pkgname}.install
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.gz")
+sha512sums=('9270a10d4178f829bdfcecdd866206564fd20f0ea53c0c640d57fb46d27d01da799ab9ec51a07dd792cbc49941e27217b2b064a32fe20b09c17579ddb969bb87')
+
+package() {
+  cd "${srcdir}/${pkgname}"
+
+  # Install Humanity icon theme
+  find Humanity -type f -exec install -Dm644 {} "${pkgdir}"/usr/share/icons/{} \;
+
+  # Install Humanity-Dark icon theme
+  find Humanity-Dark -type f -exec install -Dm644 {} "${pkgdir}"/usr/share/icons/{} \;
+
+  # From debian/rules
+  for i in $(find "${pkgdir}/usr/share/icons/" -mindepth 2 -maxdepth 2 -type d); do
+    (
+    cd "${i}"
+    for j in *; do
+      /usr/lib/icon-naming-utils/icon-name-mapping -c "${j}"
+    done
+    )
+  done
+}
+
+# vim:set ts=2 sw=2 et:
