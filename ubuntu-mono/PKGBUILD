@@ -1,7 +1,8 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=ubuntu-mono
-pkgver=0.0.39
+pkgver=0.0.40
+_WTF_ver=0.0.39
 pkgrel=100
 pkgdesc="Icons for the panel, designed in a simplified monochrome style"
 arch=('any')
@@ -12,10 +13,10 @@ depends=('humanity-icon-theme' 'gnome-icon-theme' 'hicolor-icon-theme')
 makedepends=('python2' 'imagemagick')
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.gz")
-sha512sums=('8c4d148e9971d8243c3e8d5cb1938dc1f71e15b124e506dad0c86a46105929002a282de303ac0f29d9556f3060023ee72d419d45496fee2d6ff6b45f71da9484')
+sha512sums=('0961d82599b5796f7a3f90efa466640d85bf82ba989166d5d5f08f87a193f855094cab73dff768a729e3d10a9fdd49a2e49d2bd4894b0a4614262f15e85f1117')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${_WTF_ver}"
 
   # Python 2 fix
   sed -i 's|^\(#!.*python$\)|\12|g' scavenge.py
@@ -34,7 +35,7 @@ link_files() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_WTF_ver}"
 
   # Install icons
   install -dm755 "${pkgdir}/usr/share/icons/"
