@@ -1,7 +1,8 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=light-themes
-pkgver=0.1.8.29
+_ubuntu_rel=0ubuntu3
+pkgver=0.1.8.30.${_ubuntu_rel}
 pkgrel=100
 pkgdesc="Light Themes (Ambiance and Radiance)"
 arch=('any')
@@ -10,11 +11,11 @@ license=('CCPL')
 groups=('unity-extra')
 depends=('ubuntu-mono' 'gtk-engine-unico' 'gtk-engine-murrine' 'humanity-icon-theme' 'gconf-ubuntu')
 install=${pkgname}.install
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.gz")
-sha512sums=('fcc1a3016b923dd372d0b5c9b02cb7aa412ddb3bd876824a5066636cf2dd70f5371c4f88a1c7044344cddebe1c0b25d894bca0b6367bcea0c0f0bef66f313374')
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver%.*}-${_ubuntu_rel}.tar.gz")
+sha512sums=('2a659041eb73670e0f722f08039d5e3997f3bee9bdc43435f4f4504143a35c21093a7a451016a668bd09b30bf68dc8d01746d88c062b2c11855ae5a14c8dbcf2')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver%.*}"
 
   find Ambiance -type f -exec install -Dm644 {} "${pkgdir}"/usr/share/themes/{} \;
   find Radiance -type f -exec install -Dm644 {} "${pkgdir}"/usr/share/themes/{} \;
