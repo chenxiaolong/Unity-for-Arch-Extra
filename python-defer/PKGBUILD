@@ -1,0 +1,33 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+
+pkgbase=python-defer
+pkgname=('python-defer' 'python2-defer')
+_ubuntu_ver="+bzr481"
+_actual_ver=1.0.2
+pkgver=${_actual_ver}.bzr481
+pkgrel=1
+pkgdesc="Small framework for asynchrouns programming in Python. It is a stripped down version of Twisted's defer"
+arch=('any')
+url="https://launchpad.net/python-defer"
+license=('GPL')
+groups=('unity-extra')
+makedepends=('python' 'python2' 'python-distribute' 'python2-distribute')
+options=('!emptydirs')
+source=("http://archive.ubuntu.com/ubuntu/pool/main/p/${pkgbase}/${pkgbase}_${_actual_ver}${_ubuntu_ver}.orig.tar.gz")
+sha512sums=('68b6a343a4099f5e1fd16d3ad1def26d6db7a8a89bfae4cffcae1f48e8eaf5c3cdef77fed428ef8db89edefa1f02c4cf0b97a0abea4615c5436990982a397e71')
+
+package_python-defer() {
+  depends=('python')
+
+  cd "${srcdir}/${pkgbase}-${_actual_ver}${_ubuntu_ver}"
+  python setup.py install --root="${pkgdir}/" --optimize=1
+}
+
+package_python2-defer() {
+  depends=('python2')
+
+  cd "${srcdir}/${pkgbase}-${_actual_ver}${_ubuntu_ver}"
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
+}
+
+# vim:set ts=2 sw=2 et:
