@@ -1,0 +1,39 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+
+pkgname=ubuntu-tweak
+pkgver=0.6.1
+pkgrel=1
+pkgdesc="An easy configuration tool for system and desktop settings"
+arch=('any')
+url="http://ubuntu-tweak.com/"
+license=('GPL')
+groups=('unity-extra')
+depends=('compizconfig-python-ubuntu' 'python2' 'gconf' 'libunique3' 'hicolor-icon-theme')
+# Also depends on polkit-gnome or polkit-qt
+makedepends=('python-distutils-extra')
+options=(!emptydirs)
+install=${pkgname}.install
+source=("https://launchpad.net/${pkgname}/${pkgver%.*}.x/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz"
+        '01_arch_linux.patch')
+sha512sums=('b4902af345932713c878d7c86879eb53e10e995987b8afacb1f16a14bec75db9319e57b6473eb3478c28d1a019c30d2836a330850fe53357c1bf97e4b6ee62a5'
+            'a51af0623e27cc04270d83f58d79a14aaddc85ec9e9483c5e992e3e8d8d70ad09f7d0f349b0480e8e3e60472bdf35a5bfc0ade5c6b84b7df79a78f129d2c7044')
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # A patch created by me that
+  #  - Removes any apt/dpkg/deb related functions
+  #  - Removes any checks and references to other distros and replaces them
+  #    with something appropriate for Arch Linux
+  #  - Remove any features that require root (only Login manager right now)
+  #    since they use a PolicyKit API exposed by aptdaemon.
+  #  - Remove code that handles ut:// URL's
+  patch -Np1 -i "${srcdir}/01_arch_linux.patch"
+
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
+
+  # Python 2 fix
+  sed -i 's|\(#!.*bin.*python$\)|\12|g' $(grep -rl '#!.*python[ ]*$' "${pkgdir}")
+}
+
+# vim:set ts=2 sw=2 et:
