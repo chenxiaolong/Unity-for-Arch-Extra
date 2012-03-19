@@ -1,8 +1,8 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=light-themes
-_ubuntu_rel=0ubuntu3
-pkgver=0.1.8.30.${_ubuntu_rel}
+_ubuntu_rel=0ubuntu1
+pkgver=0.1.8.31.${_ubuntu_rel}
 pkgrel=100
 pkgdesc="Light Themes (Ambiance and Radiance)"
 arch=('any')
@@ -12,7 +12,7 @@ groups=('unity-extra')
 depends=('ubuntu-mono' 'gtk-engine-unico' 'gtk-engine-murrine' 'humanity-icon-theme' 'gconf-ubuntu')
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver%.*}-${_ubuntu_rel}.tar.gz")
-sha512sums=('2a659041eb73670e0f722f08039d5e3997f3bee9bdc43435f4f4504143a35c21093a7a451016a668bd09b30bf68dc8d01746d88c062b2c11855ae5a14c8dbcf2')
+sha512sums=('7a22501118d2d0642f6832330edcd71677f28f1b22f28073fd850f7afbe6557737e08e06e8f2c760982a913489759bd74493fc49d48db471192881fb2e5b6cf7')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver%.*}"
