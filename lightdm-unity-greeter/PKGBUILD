@@ -3,7 +3,7 @@
 
 pkgname=lightdm-unity-greeter
 _ubuntu_rel=0ubuntu1
-pkgver=0.2.5.${_ubuntu_rel}
+pkgver=0.2.6.${_ubuntu_rel}
 pkgrel=100
 pkgdesc="The greeter (login screen) application for Unity. It is implemented as a LightDM greeter."
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ options=(!libtool)
 install=unity-greeter.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname#*-}_${pkgver%.*}-${_ubuntu_rel}.debian.tar.gz"
         "https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname#*-}_${pkgver%.*}.orig.tar.gz")
-sha512sums=('95c4d4d8aa0643ad07f503ad7c3de6471ec09e0052bbcba974024e4dcdbe596ba7237404d66d1417d88fd73aa168541a10dbc6dbd4590afc41a759ded17adf82'
-            '737483a9850330c0843f524927f24b9dd92d03123558e7b8a1b6888655067dc8bb70ef418be7fa7295a8a0cb86627f19cfbcf8f410272eb7fcc512e8f6f49711')
+sha512sums=('5e0f92e80b85ef2bc9bf41d25ace11944b4728425accc83f1dd5bfe91937fa7e567fc9e6e38af6c3513318717ea9ff2f9eea40ff2a061d292c30fd29be906c94'
+            'eed016a45ec7b42e8e5c34389e095cabe470427220ef4198a931276b027f34370bb7f8d0d7d93f5ad6a4511e70b6dec7b122f05e376700b00f2ed63ef7bd5a4d')
 
 build() {
   cd "${srcdir}/${pkgname#*-}-${pkgver%.*}"
