@@ -11,13 +11,13 @@ url="https://launchpad.net/lightdm"
 license=('GPL3' 'LGPL3')
 groups=('unity-extra')
 depends=('gnome-themes-standard' 'gnome-backgrounds' 'gnome-icon-theme' 'libwebkit' 'dbus-glib' 'gtk3' 'libxklavier' 'intltool' 'accountsservice')
-options=(!libtool !emptydirs)
+makedepends=('gnome-doc-utils' 'gobject-introspection' 'pkg-config' 'gtk-doc' 'gnome-common')
 optdepends=('xorg-server-xephyr: run lightdm in test mode' 
 	    'lightdm-webkit-greeter-bzr'
             'unity-greeter: default Ubuntu 11.10 greeter')
-makedepends=('gnome-doc-utils' 'gobject-introspection' 'pkg-config')
 provides=("lightdm=${pkgver}")
 conflicts=('lightdm')
+options=(!libtool !emptydirs)
 backup=('etc/apparmor.d/lightdm-guest-session'
         'etc/dbus-1/system.d/org.freedesktop.DisplayManager.conf'
         'etc/lightdm.conf'
