@@ -2,7 +2,7 @@
 
 pkgname=light-themes
 _ubuntu_rel=0ubuntu1
-pkgver=0.1.8.32.${_ubuntu_rel}
+pkgver=0.1.9.1.${_ubuntu_rel}
 pkgrel=100
 pkgdesc="Light Themes (Ambiance and Radiance)"
 arch=('any')
@@ -12,7 +12,7 @@ groups=('unity-extra')
 depends=('ubuntu-mono' 'gtk-engine-unico' 'gtk-engine-murrine' 'humanity-icon-theme' 'gconf-ubuntu')
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver%.*}-${_ubuntu_rel}.tar.gz")
-sha512sums=('300fd2a96e882206665bc8d402cc66f6aef4b5f5766a94ed9752993ba80a1f7b45fd1a0721971dd7681951d83a1fab05e596758fc3cdf750821002280b665466')
+sha512sums=('a4e20dedf2a7b79a234f83c0cfd158a540a8159d9918bc6a11f87993e55d62f8bad5854cb0f3c85ec1ff614c90ccaeb0755f46300c878c5b8f7e5c6c067b952c')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver%.*}"
