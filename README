@@ -10,5 +10,6 @@ Themes, icons, etc.
 
 Applications
 
-6. lightdm-ubuntu
-7. lightdm-unity-greeter
+6. accountsservice-ubuntu
+7. lightdm-ubuntu
+8. lightdm-unity-greeter
