@@ -1,22 +1,22 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=ubuntu-tweak
-pkgver=0.6.2
-pkgrel=1
+pkgver=0.7.0
+pkgrel=100
 pkgdesc="An easy configuration tool for system and desktop settings"
 arch=('any')
 url="http://ubuntu-tweak.com/"
 license=('GPL')
 groups=('unity-extra')
-depends=('compizconfig-python-ubuntu' 'python2' 'gconf' 'libunique3' 'hicolor-icon-theme')
+depends=('compizconfig-python-ubuntu' 'python2' 'gconf' 'libunique3' 'hicolor-icon-theme' 'python2-defer' 'python2-lxml')
 # Also depends on polkit-gnome or polkit-qt
-makedepends=('python-distutils-extra')
+makedepends=('python-distutils-extra' 'python2-distribute')
 options=(!emptydirs)
 install=${pkgname}.install
 source=("https://launchpad.net/${pkgname}/${pkgver%.*}.x/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz"
         '01_arch_linux.patch')
-sha512sums=('c44f787e441dd72348ae6c60030c51b95068c2daa813e8a429b3d24bf34b043ce1e75d2a1bf8aca05342af9e72d0e1d1be476555a18b6855b3f3348253ab8668'
-            'a51af0623e27cc04270d83f58d79a14aaddc85ec9e9483c5e992e3e8d8d70ad09f7d0f349b0480e8e3e60472bdf35a5bfc0ade5c6b84b7df79a78f129d2c7044')
+sha512sums=('c5ab778c1c94bc1b3217e9ef9a340324d9df14fe00b59c7a13ff1e3472aa76a0832ddebc24d8c8411c85b189eecbaac8d42f4a0be30cf1be579ad009f85a9a70'
+            'd339babe5894fbe1368accbd98de3c21ee237ea4807f3f91c0393ba910f67865dd0355fde95ad0b7f4b7fcd97793f3372d25737b0a274f68c4721bb558323746')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
