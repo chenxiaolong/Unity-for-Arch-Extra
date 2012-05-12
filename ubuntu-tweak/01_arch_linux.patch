@@ -1,6 +1,6 @@
-diff -Nru ubuntu-tweak-0.7.0.orig/data/com.ubuntu-tweak.daemon.policy.in ubuntu-tweak-0.7.0/data/com.ubuntu-tweak.daemon.policy.in
---- ubuntu-tweak-0.7.0.orig/data/com.ubuntu-tweak.daemon.policy.in	2012-05-03 16:12:47.998759250 -0400
-+++ ubuntu-tweak-0.7.0/data/com.ubuntu-tweak.daemon.policy.in	2012-05-09 02:33:13.620714496 -0400
+diff -Nru ubuntu-tweak-0.7.1.orig/data/com.ubuntu-tweak.daemon.policy.in ubuntu-tweak-0.7.1/data/com.ubuntu-tweak.daemon.policy.in
+--- ubuntu-tweak-0.7.1.orig/data/com.ubuntu-tweak.daemon.policy.in	2012-05-12 12:46:42.283871145 -0400
++++ ubuntu-tweak-0.7.1/data/com.ubuntu-tweak.daemon.policy.in	2012-05-12 12:47:03.237090963 -0400
 @@ -36,18 +36,4 @@
      </defaults>
    </action>
@@ -20,9 +20,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/data/com.ubuntu-tweak.daemon.policy.in ubuntu-
 -  </action>
 -
  </policyconfig>
-diff -Nru ubuntu-tweak-0.7.0.orig/data/com.ubuntu-tweak.tweak.gschema.xml ubuntu-tweak-0.7.0/data/com.ubuntu-tweak.tweak.gschema.xml
---- ubuntu-tweak-0.7.0.orig/data/com.ubuntu-tweak.tweak.gschema.xml	2012-05-03 16:12:47.998759250 -0400
-+++ ubuntu-tweak-0.7.0/data/com.ubuntu-tweak.tweak.gschema.xml	2012-05-09 01:32:49.560347717 -0400
+diff -Nru ubuntu-tweak-0.7.1.orig/data/com.ubuntu-tweak.tweak.gschema.xml ubuntu-tweak-0.7.1/data/com.ubuntu-tweak.tweak.gschema.xml
+--- ubuntu-tweak-0.7.1.orig/data/com.ubuntu-tweak.tweak.gschema.xml	2012-05-12 12:46:42.283871145 -0400
++++ ubuntu-tweak-0.7.1/data/com.ubuntu-tweak.tweak.gschema.xml	2012-05-12 12:47:37.220240195 -0400
 @@ -8,7 +8,7 @@
  			</description>
  		</key>
@@ -104,9 +104,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/data/com.ubuntu-tweak.tweak.gschema.xml ubuntu
  	</schema>
  	<schema id="com.ubuntu-tweak.janitor" path="/apps/ubuntu-tweak/janitor/" gettext-domain="ubuntu-tweak">
  		<key name="plugins" type="as">
-diff -Nru ubuntu-tweak-0.7.0.orig/data/ui/appcenter.ui ubuntu-tweak-0.7.0/data/ui/appcenter.ui
---- ubuntu-tweak-0.7.0.orig/data/ui/appcenter.ui	2012-05-03 16:12:48.025425775 -0400
-+++ ubuntu-tweak-0.7.0/data/ui/appcenter.ui	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/data/ui/appcenter.ui ubuntu-tweak-0.7.1/data/ui/appcenter.ui
+--- ubuntu-tweak-0.7.1.orig/data/ui/appcenter.ui	2012-05-12 12:46:42.287204460 -0400
++++ ubuntu-tweak-0.7.1/data/ui/appcenter.ui	1969-12-31 19:00:00.000000000 -0500
 @@ -1,131 +0,0 @@
 -<?xml version="1.0" encoding="UTF-8"?>
 -<interface>
@@ -239,9 +239,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/data/ui/appcenter.ui ubuntu-tweak-0.7.0/data/u
 -    </child>
 -  </object>
 -</interface>
-diff -Nru ubuntu-tweak-0.7.0.orig/data/ui/loginsettings.ui ubuntu-tweak-0.7.0/data/ui/loginsettings.ui
---- ubuntu-tweak-0.7.0.orig/data/ui/loginsettings.ui	2012-05-03 16:12:48.025425775 -0400
-+++ ubuntu-tweak-0.7.0/data/ui/loginsettings.ui	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/data/ui/loginsettings.ui ubuntu-tweak-0.7.1/data/ui/loginsettings.ui
+--- ubuntu-tweak-0.7.1.orig/data/ui/loginsettings.ui	2012-05-12 12:46:42.287204460 -0400
++++ ubuntu-tweak-0.7.1/data/ui/loginsettings.ui	1969-12-31 19:00:00.000000000 -0500
 @@ -1,170 +0,0 @@
 -<?xml version="1.0" encoding="UTF-8"?>
 -<interface>
@@ -413,9 +413,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/data/ui/loginsettings.ui ubuntu-tweak-0.7.0/da
 -    </child>
 -  </object>
 -</interface>
-diff -Nru ubuntu-tweak-0.7.0.orig/data/ui/sourcecenter.ui ubuntu-tweak-0.7.0/data/ui/sourcecenter.ui
---- ubuntu-tweak-0.7.0.orig/data/ui/sourcecenter.ui	2012-05-03 16:12:48.025425775 -0400
-+++ ubuntu-tweak-0.7.0/data/ui/sourcecenter.ui	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/data/ui/sourcecenter.ui ubuntu-tweak-0.7.1/data/ui/sourcecenter.ui
+--- ubuntu-tweak-0.7.1.orig/data/ui/sourcecenter.ui	2012-05-12 12:46:42.287204460 -0400
++++ ubuntu-tweak-0.7.1/data/ui/sourcecenter.ui	1969-12-31 19:00:00.000000000 -0500
 @@ -1,279 +0,0 @@
 -<?xml version="1.0" encoding="UTF-8"?>
 -<interface>
@@ -696,9 +696,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/data/ui/sourcecenter.ui ubuntu-tweak-0.7.0/dat
 -    </child>
 -  </object>
 -</interface>
-diff -Nru ubuntu-tweak-0.7.0.orig/data/ui/sourceeditor.ui ubuntu-tweak-0.7.0/data/ui/sourceeditor.ui
---- ubuntu-tweak-0.7.0.orig/data/ui/sourceeditor.ui	2012-05-03 16:12:48.025425775 -0400
-+++ ubuntu-tweak-0.7.0/data/ui/sourceeditor.ui	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/data/ui/sourceeditor.ui ubuntu-tweak-0.7.1/data/ui/sourceeditor.ui
+--- ubuntu-tweak-0.7.1.orig/data/ui/sourceeditor.ui	2012-05-12 12:46:42.287204460 -0400
++++ ubuntu-tweak-0.7.1/data/ui/sourceeditor.ui	1969-12-31 19:00:00.000000000 -0500
 @@ -1,395 +0,0 @@
 -<?xml version="1.0" encoding="UTF-8"?>
 -<interface>
@@ -1095,9 +1095,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/data/ui/sourceeditor.ui ubuntu-tweak-0.7.0/dat
 -    </columns>
 -  </object>
 -</interface>
-diff -Nru ubuntu-tweak-0.7.0.orig/data/ui/updatemanager.ui ubuntu-tweak-0.7.0/data/ui/updatemanager.ui
---- ubuntu-tweak-0.7.0.orig/data/ui/updatemanager.ui	2012-05-03 16:12:48.025425775 -0400
-+++ ubuntu-tweak-0.7.0/data/ui/updatemanager.ui	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/data/ui/updatemanager.ui ubuntu-tweak-0.7.1/data/ui/updatemanager.ui
+--- ubuntu-tweak-0.7.1.orig/data/ui/updatemanager.ui	2012-05-12 12:46:42.287204460 -0400
++++ ubuntu-tweak-0.7.1/data/ui/updatemanager.ui	1969-12-31 19:00:00.000000000 -0500
 @@ -1,100 +0,0 @@
 -<?xml version="1.0" encoding="UTF-8"?>
 -<interface>
@@ -1199,9 +1199,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/data/ui/updatemanager.ui ubuntu-tweak-0.7.0/da
 -    </child>
 -  </object>
 -</interface>
-diff -Nru ubuntu-tweak-0.7.0.orig/data/ui/uturl.ui ubuntu-tweak-0.7.0/data/ui/uturl.ui
---- ubuntu-tweak-0.7.0.orig/data/ui/uturl.ui	2012-05-03 16:12:48.025425775 -0400
-+++ ubuntu-tweak-0.7.0/data/ui/uturl.ui	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/data/ui/uturl.ui ubuntu-tweak-0.7.1/data/ui/uturl.ui
+--- ubuntu-tweak-0.7.1.orig/data/ui/uturl.ui	2012-05-12 12:46:42.287204460 -0400
++++ ubuntu-tweak-0.7.1/data/ui/uturl.ui	1969-12-31 19:00:00.000000000 -0500
 @@ -1,214 +0,0 @@
 -<?xml version="1.0" encoding="UTF-8"?>
 -<interface>
@@ -1417,9 +1417,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/data/ui/uturl.ui ubuntu-tweak-0.7.0/data/ui/ut
 -    </action-widgets>
 -  </object>
 -</interface>
-diff -Nru ubuntu-tweak-0.7.0.orig/data/uturl ubuntu-tweak-0.7.0/data/uturl
---- ubuntu-tweak-0.7.0.orig/data/uturl	2012-05-03 16:12:47.998759250 -0400
-+++ ubuntu-tweak-0.7.0/data/uturl	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/data/uturl ubuntu-tweak-0.7.1/data/uturl
+--- ubuntu-tweak-0.7.1.orig/data/uturl	2012-05-12 12:46:42.283871145 -0400
++++ ubuntu-tweak-0.7.1/data/uturl	1969-12-31 19:00:00.000000000 -0500
 @@ -1,97 +0,0 @@
 -#!/usr/bin/python
 -
@@ -1518,9 +1518,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/data/uturl ubuntu-tweak-0.7.0/data/uturl
 -            uturl.add_package(package)
 -            response = uturl.run()
 -            uturl.destroy()
-diff -Nru ubuntu-tweak-0.7.0.orig/data/uturl.schemas.in ubuntu-tweak-0.7.0/data/uturl.schemas.in
---- ubuntu-tweak-0.7.0.orig/data/uturl.schemas.in	2012-05-03 16:12:48.025425775 -0400
-+++ ubuntu-tweak-0.7.0/data/uturl.schemas.in	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/data/uturl.schemas.in ubuntu-tweak-0.7.1/data/uturl.schemas.in
+--- ubuntu-tweak-0.7.1.orig/data/uturl.schemas.in	2012-05-12 12:46:42.290537775 -0400
++++ ubuntu-tweak-0.7.1/data/uturl.schemas.in	1969-12-31 19:00:00.000000000 -0500
 @@ -1,38 +0,0 @@
 -<?xml version="1.0"?>
 -<gconfschemafile>
@@ -1560,9 +1560,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/data/uturl.schemas.in ubuntu-tweak-0.7.0/data/
 -    </schema>
 -  </schemalist>
 -</gconfschemafile>
-diff -Nru ubuntu-tweak-0.7.0.orig/MANIFEST.in ubuntu-tweak-0.7.0/MANIFEST.in
---- ubuntu-tweak-0.7.0.orig/MANIFEST.in	2012-05-03 16:12:47.985425992 -0400
-+++ ubuntu-tweak-0.7.0/MANIFEST.in	2012-05-03 16:24:16.828360874 -0400
+diff -Nru ubuntu-tweak-0.7.1.orig/MANIFEST.in ubuntu-tweak-0.7.1/MANIFEST.in
+--- ubuntu-tweak-0.7.1.orig/MANIFEST.in	2012-05-12 12:46:42.277204515 -0400
++++ ubuntu-tweak-0.7.1/MANIFEST.in	2012-05-12 12:50:03.346115231 -0400
 @@ -1,5 +1,5 @@
  include *.in COPYING ChangeLog AUTHORS README NEWS
  include data/scripts/*
@@ -1570,9 +1570,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/MANIFEST.in ubuntu-tweak-0.7.0/MANIFEST.in
 -recursive-include data *.png *.xml *.in *.conf *.desktop *.service *.ui ubuntu-tweak-daemon script-worker uturl merge_sourceslist.py
 +recursive-include data *.png *.xml *.in *.conf *.desktop *.service *.ui ubuntu-tweak-daemon script-worker
  recursive-include po *.po *.in
-diff -Nru ubuntu-tweak-0.7.0.orig/po/POTFILES.in ubuntu-tweak-0.7.0/po/POTFILES.in
---- ubuntu-tweak-0.7.0.orig/po/POTFILES.in	2012-05-03 16:12:48.035425720 -0400
-+++ ubuntu-tweak-0.7.0/po/POTFILES.in	2012-05-09 02:08:50.911972004 -0400
+diff -Nru ubuntu-tweak-0.7.1.orig/po/POTFILES.in ubuntu-tweak-0.7.1/po/POTFILES.in
+--- ubuntu-tweak-0.7.1.orig/po/POTFILES.in	2012-05-12 12:46:42.300537720 -0400
++++ ubuntu-tweak-0.7.1/po/POTFILES.in	2012-05-12 12:51:21.245693210 -0400
 @@ -3,18 +3,12 @@
  data/com.ubuntu-tweak.daemon.policy.in
  [type: gettext/glade]data/ui/window.ui
@@ -1663,9 +1663,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/po/POTFILES.in ubuntu-tweak-0.7.0/po/POTFILES.
  ubuntutweak/utils/tar.py
 -ubuntutweak/utils/package.py
  ubuntutweak/preferences.py
-diff -Nru ubuntu-tweak-0.7.0.orig/setup.cfg ubuntu-tweak-0.7.0/setup.cfg
---- ubuntu-tweak-0.7.0.orig/setup.cfg	2012-05-03 16:12:47.985425992 -0400
-+++ ubuntu-tweak-0.7.0/setup.cfg	2012-05-03 16:24:00.281783848 -0400
+diff -Nru ubuntu-tweak-0.7.1.orig/setup.cfg ubuntu-tweak-0.7.1/setup.cfg
+--- ubuntu-tweak-0.7.1.orig/setup.cfg	2012-05-12 12:46:42.277204515 -0400
++++ ubuntu-tweak-0.7.1/setup.cfg	2012-05-12 12:51:33.058962546 -0400
 @@ -7,7 +7,6 @@
  domain = ubuntu-tweak
  xml_files = [('share/polkit-1/actions/', ('data/com.ubuntu-tweak.daemon.policy.in',))]
@@ -1674,9 +1674,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/setup.cfg ubuntu-tweak-0.7.0/setup.cfg
  
  [egg_info]
  tag_build = 
-diff -Nru ubuntu-tweak-0.7.0.orig/setup.py ubuntu-tweak-0.7.0/setup.py
---- ubuntu-tweak-0.7.0.orig/setup.py	2012-05-03 16:12:48.038759035 -0400
-+++ ubuntu-tweak-0.7.0/setup.py	2012-05-03 16:24:48.491522672 -0400
+diff -Nru ubuntu-tweak-0.7.1.orig/setup.py ubuntu-tweak-0.7.1/setup.py
+--- ubuntu-tweak-0.7.1.orig/setup.py	2012-05-12 12:46:42.300537720 -0400
++++ ubuntu-tweak-0.7.1/setup.py	2012-05-12 12:51:44.758899162 -0400
 @@ -18,7 +18,7 @@
            ('share/ubuntu-tweak/pixmaps/', glob.glob('data/pixmaps/*.png')),
            ('share/ubuntu-tweak/scripts/', glob.glob('data/scripts/*')),
@@ -1686,9 +1686,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/setup.py ubuntu-tweak-0.7.0/setup.py
            ],
        license='GNU GPL',
        platforms='linux',
-diff -Nru ubuntu-tweak-0.7.0.orig/tests/test_janitor.py ubuntu-tweak-0.7.0/tests/test_janitor.py
---- ubuntu-tweak-0.7.0.orig/tests/test_janitor.py	2012-05-03 16:12:47.985425992 -0400
-+++ ubuntu-tweak-0.7.0/tests/test_janitor.py	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/tests/test_janitor.py ubuntu-tweak-0.7.1/tests/test_janitor.py
+--- ubuntu-tweak-0.7.1.orig/tests/test_janitor.py	2012-05-12 12:46:42.277204515 -0400
++++ ubuntu-tweak-0.7.1/tests/test_janitor.py	1969-12-31 19:00:00.000000000 -0500
 @@ -1,19 +0,0 @@
 -import os
 -import shutil
@@ -1709,9 +1709,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/tests/test_janitor.py ubuntu-tweak-0.7.0/tests
 -
 -if __name__ == '__main__':
 -    unittest.main()
-diff -Nru ubuntu-tweak-0.7.0.orig/tests/test_utils.py ubuntu-tweak-0.7.0/tests/test_utils.py
---- ubuntu-tweak-0.7.0.orig/tests/test_utils.py	2012-05-03 16:12:47.985425992 -0400
-+++ ubuntu-tweak-0.7.0/tests/test_utils.py	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/tests/test_utils.py ubuntu-tweak-0.7.1/tests/test_utils.py
+--- ubuntu-tweak-0.7.1.orig/tests/test_utils.py	2012-05-12 12:46:42.277204515 -0400
++++ ubuntu-tweak-0.7.1/tests/test_utils.py	1969-12-31 19:00:00.000000000 -0500
 @@ -1,22 +0,0 @@
 -import unittest
 -
@@ -1735,10 +1735,10 @@ diff -Nru ubuntu-tweak-0.7.0.orig/tests/test_utils.py ubuntu-tweak-0.7.0/tests/t
 -
 -if __name__ == '__main__':
 -    unittest.main()
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/admins/appcenter.py ubuntu-tweak-0.7.0/ubuntutweak/admins/appcenter.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/admins/appcenter.py	2012-05-03 16:12:47.988759307 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/admins/appcenter.py	1969-12-31 19:00:00.000000000 -0500
-@@ -1,687 +0,0 @@
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/admins/appcenter.py ubuntu-tweak-0.7.1/ubuntutweak/admins/appcenter.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/admins/appcenter.py	2012-05-12 12:46:42.277204515 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/admins/appcenter.py	1969-12-31 19:00:00.000000000 -0500
+@@ -1,688 +0,0 @@
 -# Ubuntu Tweak - Ubuntu Configuration Tool
 -#
 -# Copyright (C) 2007-2011 Tualatrix Chou <tualatrix@gmail.com>
@@ -2420,15 +2420,16 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/admins/appcenter.py ubuntu-tweak-0
 -    def update_app_data(self):
 -        self.appview.update_model()
 -        self.cateview.update_cate_model()
+-        self.cateview.expand_all()
 -
 -    def on_app_status_changed(self, widget, i):
 -        if i:
 -            self.apply_button.set_sensitive(True)
 -        else:
 -            self.apply_button.set_sensitive(False)
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/admins/sourcecenter.py ubuntu-tweak-0.7.0/ubuntutweak/admins/sourcecenter.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/admins/sourcecenter.py	2012-05-03 16:12:47.988759307 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/admins/sourcecenter.py	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/admins/sourcecenter.py ubuntu-tweak-0.7.1/ubuntutweak/admins/sourcecenter.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/admins/sourcecenter.py	2012-05-12 12:46:42.277204515 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/admins/sourcecenter.py	1969-12-31 19:00:00.000000000 -0500
 @@ -1,1257 +0,0 @@
 -#!/usr/bin/python
 -# coding: utf-8
@@ -3220,10 +3221,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/admins/sourcecenter.py ubuntu-twea
 -                if depend_list and depend_name_list:
 -                    full_name = ', '.join(depend_name_list)
 -
--                    dialog = QuestionDialog(\
--                                _('To enable this Source, You need to enable <b>"%s"</b> at first.\nDo you wish to continue?') \
--                                % full_name,
--                                title=_('Dependency Notice'))
+-                    dialog = QuestionDialog(title=_('Dependency Notice'),
+-                                            message= _('To enable this Source, You need to enable <b>"%s"</b> at first.\nDo you wish to continue?') \
+-                                % full_name)
 -                    if dialog.run() == Gtk.ResponseType.YES:
 -                        for depend_id in depend_list:
 -                            self.set_source_enabled(depend_id)
@@ -3449,10 +3449,11 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/admins/sourcecenter.py ubuntu-twea
 -
 -    @post_ui
 -    def upgrade_sources(self):
--        dialog = QuestionDialog(_('After a successful distribution upgrade, '
--            'any third-party sources you use will be disabled by default.\n'
--            'Would you like to re-enable any sources disabled by Update Manager?'),
--            title=_('Upgrade Third Party Sources'))
+-        dialog = QuestionDialog(title=_('Upgrade Third Party Sources'),
+-                                message=_('After a successful distribution upgrade, '
+-                                'any third-party sources you use will be disabled by default.\n'
+-                                'Would you like to re-enable any sources disabled by Update Manager?'))
+-
 -        response = dialog.run()
 -        dialog.destroy()
 -        if response == Gtk.ResponseType.YES:
@@ -3645,8 +3646,8 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/admins/sourcecenter.py ubuntu-twea
 -            sw.show_all()
 -            sw.set_size_request(500, 100)
 -
--        dialog = QuestionDialog(message=message,
--                                title=_("You're going to purge \"%s\":") % ', '.join(name_list))
+-        dialog = QuestionDialog(title=_("You're going to purge \"%s\":") % ', '.join(name_list),
+-                                message=message)
 -        dialog.set_resizable(True)
 -        dialog.get_content_area().pack_start(sw, True, True, 0)
 -        dialog.show_all()
@@ -3687,9 +3688,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/admins/sourcecenter.py ubuntu-twea
 -        notify.set_icon_from_pixbuf(self.get_pixbuf(size=48))
 -        notify.set_hint_string ("x-canonical-append", "")
 -        notify.show()
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/admins/sourceeditor.py ubuntu-tweak-0.7.0/ubuntutweak/admins/sourceeditor.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/admins/sourceeditor.py	2012-05-03 16:12:47.988759307 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/admins/sourceeditor.py	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/admins/sourceeditor.py ubuntu-tweak-0.7.1/ubuntutweak/admins/sourceeditor.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/admins/sourceeditor.py	2012-05-12 12:46:42.277204515 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/admins/sourceeditor.py	1969-12-31 19:00:00.000000000 -0500
 @@ -1,487 +0,0 @@
 -# Ubuntu Tweak - Ubuntu Configuration Tool
 -#
@@ -4178,9 +4179,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/admins/sourceeditor.py ubuntu-twea
 -
 -    def get_time_stamp(self):
 -        return time.strftime('%Y-%m-%d-%H-%M', time.localtime(time.time()))
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/backends/daemon.py ubuntu-tweak-0.7.0/ubuntutweak/backends/daemon.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/backends/daemon.py	2012-05-03 16:12:47.988759307 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/backends/daemon.py	2012-05-09 02:28:47.558822544 -0400
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/backends/daemon.py ubuntu-tweak-0.7.1/ubuntutweak/backends/daemon.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/backends/daemon.py	2012-05-12 12:46:42.277204515 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/backends/daemon.py	2012-05-12 12:55:00.287839891 -0400
 @@ -22,391 +22,33 @@
  
  from subprocess import PIPE
@@ -4803,9 +4804,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/backends/daemon.py ubuntu-tweak-0.
                           in_signature='ss', out_signature='b',
                           sender_keyword='sender')
      def set_config_setting(self, key, value, sender=None):
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/clips/cleanerinfo.py ubuntu-tweak-0.7.0/ubuntutweak/clips/cleanerinfo.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/clips/cleanerinfo.py	2012-05-03 16:12:47.988759307 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/clips/cleanerinfo.py	2012-05-09 00:47:14.961828974 -0400
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/clips/cleanerinfo.py ubuntu-tweak-0.7.1/ubuntutweak/clips/cleanerinfo.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/clips/cleanerinfo.py	2012-05-12 12:46:42.280537830 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/clips/cleanerinfo.py	2012-05-12 12:55:13.484435065 -0400
 @@ -13,16 +13,6 @@
      def __init__(self):
          Clip.__init__(self)
@@ -4823,9 +4824,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/clips/cleanerinfo.py ubuntu-tweak-
          try:
              size = int(os.popen('du -bs ~/.thumbnails').read().split()[0])
          except:
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/clips/updateinfo.py ubuntu-tweak-0.7.0/ubuntutweak/clips/updateinfo.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/clips/updateinfo.py	2012-05-03 16:12:47.992092621 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/clips/updateinfo.py	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/clips/updateinfo.py ubuntu-tweak-0.7.1/ubuntutweak/clips/updateinfo.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/clips/updateinfo.py	2012-05-12 12:46:42.280537830 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/clips/updateinfo.py	1969-12-31 19:00:00.000000000 -0500
 @@ -1,68 +0,0 @@
 -import os
 -import time
@@ -4895,9 +4896,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/clips/updateinfo.py ubuntu-tweak-0
 -        else:
 -            return _("The package information was last updated less than one hour ago.")
 -        return None
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/common/config.py ubuntu-tweak-0.7.0/ubuntutweak/common/config.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/common/config.py	2012-05-03 16:12:47.992092621 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/common/config.py	2012-05-09 00:50:50.633993912 -0400
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/common/config.py ubuntu-tweak-0.7.1/ubuntutweak/common/config.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/common/config.py	2012-05-12 12:46:42.280537830 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/common/config.py	2012-05-12 12:55:57.387530556 -0400
 @@ -48,8 +48,6 @@
      default_launch = 'default_launch'
      check_update = 'check_update'
@@ -4929,9 +4930,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/common/config.py ubuntu-tweak-0.7.
      @classmethod
      def set_url(cls, url):
          return cls.config.set_value_from_key(cls.url, url)
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/common/consts.py ubuntu-tweak-0.7.0/ubuntutweak/common/consts.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/common/consts.py	2012-05-03 16:12:47.992092621 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/common/consts.py	2012-05-09 00:51:57.973629102 -0400
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/common/consts.py ubuntu-tweak-0.7.1/ubuntutweak/common/consts.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/common/consts.py	2012-05-12 12:46:42.280537830 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/common/consts.py	2012-05-12 12:56:15.030768307 -0400
 @@ -42,7 +42,7 @@
      IS_INSTALLED = False
  else:
@@ -4941,9 +4942,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/common/consts.py ubuntu-tweak-0.7.
      except Exception, e:
          print(e)
  
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/common/download.py ubuntu-tweak-0.7.0/ubuntutweak/common/download.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/common/download.py	2012-05-03 16:12:47.992092621 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/common/download.py	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/common/download.py ubuntu-tweak-0.7.1/ubuntutweak/common/download.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/common/download.py	2012-05-12 12:46:42.280537830 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/common/download.py	1969-12-31 19:00:00.000000000 -0500
 @@ -1,14 +0,0 @@
 -#!/usr/bin/python
 -
@@ -4959,9 +4960,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/common/download.py ubuntu-tweak-0.
 -
 -if __name__ == '__main__':
 -    Download('http://ubuntu.cn99.com/ubuntu/pool/main/g/gedit/gedit_2.22.3.orig.tar.gz', 'gedit_2.22.3.orig.tar.gz')
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/common/sourcedata.py ubuntu-tweak-0.7.0/ubuntutweak/common/sourcedata.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/common/sourcedata.py	2012-05-03 16:12:47.992092621 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/common/sourcedata.py	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/common/sourcedata.py ubuntu-tweak-0.7.1/ubuntutweak/common/sourcedata.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/common/sourcedata.py	2012-05-12 12:46:42.280537830 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/common/sourcedata.py	1969-12-31 19:00:00.000000000 -0500
 @@ -1,24 +0,0 @@
 -from ubuntutweak import system
 -
@@ -4987,9 +4988,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/common/sourcedata.py ubuntu-tweak-
 -            newsource.append(item)
 -
 -    return newsource
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/aptcache_plugin.py ubuntu-tweak-0.7.0/ubuntutweak/janitor/aptcache_plugin.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/aptcache_plugin.py	2012-05-03 16:12:47.988759307 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/janitor/aptcache_plugin.py	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/janitor/aptcache_plugin.py ubuntu-tweak-0.7.1/ubuntutweak/janitor/aptcache_plugin.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/janitor/aptcache_plugin.py	2012-05-12 12:46:42.277204515 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/janitor/aptcache_plugin.py	1969-12-31 19:00:00.000000000 -0500
 @@ -1,27 +0,0 @@
 -import logging
 -
@@ -5018,9 +5019,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/aptcache_plugin.py ubuntu-
 -                self.emit('object_cleaned', cruft, index + 1)
 -
 -        self.emit('all_cleaned', True)
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/autoremoval_plugin.py ubuntu-tweak-0.7.0/ubuntutweak/janitor/autoremoval_plugin.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/autoremoval_plugin.py	2012-05-03 16:12:47.988759307 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/janitor/autoremoval_plugin.py	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/janitor/autoremoval_plugin.py ubuntu-tweak-0.7.1/ubuntutweak/janitor/autoremoval_plugin.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/janitor/autoremoval_plugin.py	2012-05-12 12:46:42.277204515 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/janitor/autoremoval_plugin.py	1969-12-31 19:00:00.000000000 -0500
 @@ -1,53 +0,0 @@
 -import logging
 -
@@ -5075,9 +5076,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/autoremoval_plugin.py ubun
 -            return '[%d] %s' % (count, self.__title__)
 -        else:
 -            return _('Unneeded Packages (No package to be removed)')
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/__init__.py ubuntu-tweak-0.7.0/ubuntutweak/janitor/__init__.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/__init__.py	2012-05-03 16:12:47.988759307 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/janitor/__init__.py	2012-05-09 02:21:29.507862337 -0400
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/janitor/__init__.py ubuntu-tweak-0.7.1/ubuntutweak/janitor/__init__.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/janitor/__init__.py	2012-05-12 12:46:42.277204515 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/janitor/__init__.py	2012-05-12 12:58:03.216848881 -0400
 @@ -18,8 +18,6 @@
  from ubuntutweak.common.debug import run_traceback, log_func
  from ubuntutweak.common.consts import DATA_DIR
@@ -5110,7 +5111,7 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/__init__.py ubuntu-tweak-0
  class CacheObject(CruftObject):
      def __init__(self, name, path, size):
          self.name = name
-@@ -689,11 +671,6 @@
+@@ -699,11 +681,6 @@
      @inline_callbacks
      def on_clean_button_clicked(self, widget):
          '''plugin_dict: {plugin: {cruft: iter}}'''
@@ -5122,7 +5123,7 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/__init__.py ubuntu-tweak-0
  
          self.plugin_to_run = 0
  
-@@ -827,28 +804,6 @@
+@@ -837,28 +814,6 @@
          loader = ModuleLoader('janitor')
          plugin_to_load = self.plugins_setting.get_value()
  
@@ -5151,10 +5152,10 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/__init__.py ubuntu-tweak-0
          personal_text = _('Personal')
  
          iter = self.janitor_model.append(None, (None,
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/oldkernel_plugin.py ubuntu-tweak-0.7.0/ubuntutweak/janitor/oldkernel_plugin.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/oldkernel_plugin.py	2012-05-03 16:12:47.988759307 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/janitor/oldkernel_plugin.py	1969-12-31 19:00:00.000000000 -0500
-@@ -1,97 +0,0 @@
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/janitor/oldkernel_plugin.py ubuntu-tweak-0.7.1/ubuntutweak/janitor/oldkernel_plugin.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/janitor/oldkernel_plugin.py	2012-05-12 12:46:42.277204515 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/janitor/oldkernel_plugin.py	1969-12-31 19:00:00.000000000 -0500
+@@ -1,101 +0,0 @@
 -import os
 -import re
 -import logging
@@ -5163,7 +5164,7 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/oldkernel_plugin.py ubuntu
 -from ubuntutweak.janitor import JanitorPlugin, PackageObject
 -from ubuntutweak.utils.package import AptWorker
 -from ubuntutweak.utils import filesizeformat
--from ubuntutweak.common.debug import log_func
+-from ubuntutweak.common.debug import log_func, get_traceback
 -
 -
 -log = logging.getLogger('OldKernelPlugin')
@@ -5179,21 +5180,26 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/oldkernel_plugin.py ubuntu
 -        log.debug("the current_kernel_version is %s" % self.current_kernel_version)
 -
 -    def get_cruft(self):
--        cache = AptWorker.get_cache()
--        count = 0
--        size = 0
+-        try:
+-            cache = AptWorker.get_cache()
+-            count = 0
+-            size = 0
 -
--        if cache:
--            for pkg in cache:
--                if pkg.isInstalled and self.is_old_kernel_package(pkg.name):
--                    log.debug("Find old kernerl: %s" % pkg.name)
--                    count += 1
--                    size += pkg.installedSize
--                    self.emit('find_object',
--                              PackageObject(pkg.name, pkg.name, pkg.installedSize),
--                              count)
+-            if cache:
+-                for pkg in cache:
+-                    if pkg.isInstalled and self.is_old_kernel_package(pkg.name):
+-                        log.debug("Find old kernerl: %s" % pkg.name)
+-                        count += 1
+-                        size += pkg.installedSize
+-                        self.emit('find_object',
+-                                  PackageObject(pkg.name, pkg.name, pkg.installedSize),
+-                                  count)
 -
--        self.emit('scan_finished', True, count, size)
+-            self.emit('scan_finished', True, count, size)
+-        except Exception, e:
+-            error = get_traceback()
+-            log.error(error)
+-            self.emit('scan_error', error)
 -
 -    def clean_cruft(self, cruft_list=[], parent=None):
 -        set_busy(parent)
@@ -5222,7 +5228,6 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/oldkernel_plugin.py ubuntu
 -                      'linux-header-lbm', 'linux-restricted-modules']
 -
 -        if pkg.startswith('linux'):
--            print pkg
 -            package = p_kernel_package.findall(pkg)
 -            if package:
 -                package = package[0].rstrip('-')
@@ -5252,9 +5257,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/oldkernel_plugin.py ubuntu
 -            return '[%d] %s' % (count, self.__title__)
 -        else:
 -            return _('Old Kernel Packages (No old kernel package to be removed)')
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/packageconfigs_plugin.py ubuntu-tweak-0.7.0/ubuntutweak/janitor/packageconfigs_plugin.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/packageconfigs_plugin.py	2012-05-03 16:12:47.988759307 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/janitor/packageconfigs_plugin.py	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/janitor/packageconfigs_plugin.py ubuntu-tweak-0.7.1/ubuntutweak/janitor/packageconfigs_plugin.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/janitor/packageconfigs_plugin.py	2012-05-12 12:46:42.280537830 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/janitor/packageconfigs_plugin.py	1969-12-31 19:00:00.000000000 -0500
 @@ -1,73 +0,0 @@
 -import os
 -import time
@@ -5329,9 +5334,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/packageconfigs_plugin.py u
 -            return '[%d] %s' % (count, self.__title__)
 -        else:
 -            return _('Packages Configs (No package config to be removed)')
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/softwarecenter_plugin.py ubuntu-tweak-0.7.0/ubuntutweak/janitor/softwarecenter_plugin.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/softwarecenter_plugin.py	2012-05-03 16:12:47.988759307 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/janitor/softwarecenter_plugin.py	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/janitor/softwarecenter_plugin.py ubuntu-tweak-0.7.1/ubuntutweak/janitor/softwarecenter_plugin.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/janitor/softwarecenter_plugin.py	2012-05-12 12:46:42.277204515 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/janitor/softwarecenter_plugin.py	1969-12-31 19:00:00.000000000 -0500
 @@ -1,7 +0,0 @@
 -from ubuntutweak.janitor import JanitorCachePlugin
 -
@@ -5340,9 +5345,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/janitor/softwarecenter_plugin.py u
 -    __category__ = 'application'
 -
 -    root_path = '~/.cache/software-center'
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/main.py ubuntu-tweak-0.7.0/ubuntutweak/main.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/main.py	2012-05-03 16:12:47.988759307 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/main.py	2012-05-09 02:10:16.801506700 -0400
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/main.py ubuntu-tweak-0.7.1/ubuntutweak/main.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/main.py	2012-05-12 12:46:42.277204515 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/main.py	2012-05-12 12:59:25.233071227 -0400
 @@ -26,7 +26,6 @@
  from ubuntutweak import system
  from ubuntutweak.gui import GuiBuilder
@@ -5380,9 +5385,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/main.py ubuntu-tweak-0.7.0/ubuntut
      def _save_loaded_info(self, name, module, index):
          log.info('_save_loaded_info: %s, %s, %s' % (name, module, index))
          self.loaded_modules[name] = index
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/module/__init__.py ubuntu-tweak-0.7.0/ubuntutweak/module/__init__.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/module/__init__.py	2012-05-03 16:12:47.988759307 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/module/__init__.py	2012-05-09 00:57:30.791826071 -0400
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/module/__init__.py ubuntu-tweak-0.7.1/ubuntutweak/module/__init__.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/module/__init__.py	2012-05-12 12:46:42.280537830 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/module/__init__.py	2012-05-12 12:59:38.956330214 -0400
 @@ -275,18 +275,5 @@
      def __init__(self):
          super(BrokenModule, self).__init__('brokenmodule.ui')
@@ -5402,9 +5407,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/module/__init__.py ubuntu-tweak-0.
 -
      def on_report_button_clicked(self, widget):
          webbrowser.open('https://bugs.launchpad.net/ubuntu-tweak/+filebug')
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/module/taskinstall.py ubuntu-tweak-0.7.0/ubuntutweak/module/taskinstall.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/module/taskinstall.py	2012-05-03 16:12:47.988759307 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/module/taskinstall.py	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/module/taskinstall.py ubuntu-tweak-0.7.1/ubuntutweak/module/taskinstall.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/module/taskinstall.py	2012-05-12 12:46:42.280537830 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/module/taskinstall.py	1969-12-31 19:00:00.000000000 -0500
 @@ -1,255 +0,0 @@
 -#!/usr/bin/python
 -
@@ -5661,9 +5666,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/module/taskinstall.py ubuntu-tweak
 -        taskview = TaskView()
 -
 -        self.add_start(taskview)
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/module/updatemanager.py ubuntu-tweak-0.7.0/ubuntutweak/module/updatemanager.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/module/updatemanager.py	2012-05-03 16:12:47.988759307 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/module/updatemanager.py	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/module/updatemanager.py ubuntu-tweak-0.7.1/ubuntutweak/module/updatemanager.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/module/updatemanager.py	2012-05-12 12:46:42.280537830 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/module/updatemanager.py	1969-12-31 19:00:00.000000000 -0500
 @@ -1,109 +0,0 @@
 -#!/usr/bin/python
 -
@@ -5774,9 +5779,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/module/updatemanager.py ubuntu-twe
 -        self.updateview.get_model().clear()
 -        self.updateview.update_updates(list(PACKAGE_WORKER.get_update_package()))
 -        self.updateview.select_all_action(False)
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/modules/__init__.py ubuntu-tweak-0.7.0/ubuntutweak/modules/__init__.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/modules/__init__.py	2012-05-03 16:12:47.992092621 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/modules/__init__.py	2012-05-09 00:59:25.087873543 -0400
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/modules/__init__.py ubuntu-tweak-0.7.1/ubuntutweak/modules/__init__.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/modules/__init__.py	2012-05-12 12:46:42.280537830 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/modules/__init__.py	2012-05-12 13:00:27.382734534 -0400
 @@ -409,29 +409,6 @@
      def __init__(self):
          TweakModule.__init__(self, 'brokenmodule.ui')
@@ -5807,9 +5812,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/modules/__init__.py ubuntu-tweak-0
          self.add_start(self.alignment1)
  
      def on_report_button_clicked(self, widget):
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/network/downloadmanager.py ubuntu-tweak-0.7.0/ubuntutweak/network/downloadmanager.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/network/downloadmanager.py	2012-05-03 16:12:47.988759307 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/network/downloadmanager.py	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/network/downloadmanager.py ubuntu-tweak-0.7.1/ubuntutweak/network/downloadmanager.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/network/downloadmanager.py	2012-05-12 12:46:42.277204515 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/network/downloadmanager.py	1969-12-31 19:00:00.000000000 -0500
 @@ -1,165 +0,0 @@
 -#!/usr/bin/python
 -# coding: utf-8
@@ -5976,9 +5981,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/network/downloadmanager.py ubuntu-
 -
 -    def get_downloaded_file(self):
 -        return self.downloader.get_downloaded_file()
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/network/utdata.py ubuntu-tweak-0.7.0/ubuntutweak/network/utdata.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/network/utdata.py	2012-05-03 16:12:47.988759307 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/network/utdata.py	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/network/utdata.py ubuntu-tweak-0.7.1/ubuntutweak/network/utdata.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/network/utdata.py	2012-05-12 12:46:42.277204515 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/network/utdata.py	1969-12-31 19:00:00.000000000 -0500
 @@ -1,101 +0,0 @@
 -import os
 -import random
@@ -6081,9 +6086,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/network/utdata.py ubuntu-tweak-0.7
 -
 -def create_tarfile(path):
 -    return TarFile(path)
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/network/xmlrpc.py ubuntu-tweak-0.7.0/ubuntutweak/network/xmlrpc.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/network/xmlrpc.py	2012-05-03 16:12:47.988759307 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/network/xmlrpc.py	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/network/xmlrpc.py ubuntu-tweak-0.7.1/ubuntutweak/network/xmlrpc.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/network/xmlrpc.py	2012-05-12 12:46:42.277204515 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/network/xmlrpc.py	1969-12-31 19:00:00.000000000 -0500
 @@ -1,7 +0,0 @@
 -from xmlrpclib import ServerProxy, Error
 -
@@ -6092,16 +6097,16 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/network/xmlrpc.py ubuntu-tweak-0.7
 -if __name__ == '__main__':
 -    print proxy.user.authenticate('tualatrix','123456')
 -    print proxy.func.test('tualatrix','123456', 'Hello World')
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/policykit/__init__.py ubuntu-tweak-0.7.0/ubuntutweak/policykit/__init__.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/policykit/__init__.py	2012-05-03 16:12:47.988759307 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/policykit/__init__.py	2012-05-09 01:58:21.218716677 -0400
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/policykit/__init__.py ubuntu-tweak-0.7.1/ubuntutweak/policykit/__init__.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/policykit/__init__.py	2012-05-12 12:46:42.277204515 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/policykit/__init__.py	2012-05-12 13:01:21.419108461 -0400
 @@ -1,3 +1 @@
  PK_ACTION_TWEAK = 'com.ubuntu-tweak.daemon.tweak'
 -PK_ACTION_CLEAN = 'com.ubuntu-tweak.daemon.clean'
 -PK_ACTION_SOURCE = 'com.ubuntu-tweak.daemon.edit-sources'
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/policykit/widgets.py ubuntu-tweak-0.7.0/ubuntutweak/policykit/widgets.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/policykit/widgets.py	2012-05-03 16:12:47.988759307 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/policykit/widgets.py	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/policykit/widgets.py ubuntu-tweak-0.7.1/ubuntutweak/policykit/widgets.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/policykit/widgets.py	2012-05-12 12:46:42.277204515 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/policykit/widgets.py	1969-12-31 19:00:00.000000000 -0500
 @@ -1,91 +0,0 @@
 -# Ubuntu Tweak - Ubuntu Configuration Tool
 -#
@@ -6194,9 +6199,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/policykit/widgets.py ubuntu-tweak-
 -        self.image.set_from_gicon(Gio.ThemedIcon.new_from_names(self.icon_unlock), Gtk.IconSize.BUTTON)
 -
 -        self.set_sensitive(False)
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/system/distro.py ubuntu-tweak-0.7.0/ubuntutweak/system/distro.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/system/distro.py	2012-05-03 16:12:47.992092621 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/system/distro.py	2012-05-09 01:03:26.489899089 -0400
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/system/distro.py ubuntu-tweak-0.7.1/ubuntutweak/system/distro.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/system/distro.py	2012-05-12 12:46:42.280537830 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/system/distro.py	2012-05-12 13:02:03.415547611 -0400
 @@ -51,13 +51,9 @@
  
          # Because built-in funciton may not recognize all distrobution.
@@ -6290,9 +6295,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/system/distro.py ubuntu-tweak-0.7.
          else:
              self.is_supported = False
  
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/system/__init__.py ubuntu-tweak-0.7.0/ubuntutweak/system/__init__.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/system/__init__.py	2012-05-03 16:12:47.992092621 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/system/__init__.py	2012-05-09 01:06:33.408886461 -0400
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/system/__init__.py ubuntu-tweak-0.7.1/ubuntutweak/system/__init__.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/system/__init__.py	2012-05-12 12:46:42.280537830 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/system/__init__.py	2012-05-12 13:03:00.518571592 -0400
 @@ -4,23 +4,13 @@
  from ubuntutweak.common.consts import APP, PKG_VERSION
  
@@ -6337,10 +6342,10 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/system/__init__.py ubuntu-tweak-0.
  
  
  if __name__ == '__main__':
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/tweaks/loginsettings.py ubuntu-tweak-0.7.0/ubuntutweak/tweaks/loginsettings.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/tweaks/loginsettings.py	2012-05-03 16:12:47.992092621 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/tweaks/loginsettings.py	1969-12-31 19:00:00.000000000 -0500
-@@ -1,216 +0,0 @@
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/tweaks/loginsettings.py ubuntu-tweak-0.7.1/ubuntutweak/tweaks/loginsettings.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/tweaks/loginsettings.py	2012-05-12 12:46:42.283871145 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/tweaks/loginsettings.py	1969-12-31 19:00:00.000000000 -0500
+@@ -1,219 +0,0 @@
 -# Ubuntu Tweak - Ubuntu Configuration Tool
 -#
 -# Copyright (C) 2007-2011 Tualatrix Chou <tualatrix@gmail.com>
@@ -6382,6 +6387,7 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/tweaks/loginsettings.py ubuntu-twe
 -    __icon__ = 'gdm-setup'
 -    __policykit__ = PK_ACTION_TWEAK
 -    __category__ = 'startup'
+-    __desktop__ = ['ubuntu', 'ubuntu-2d', 'gnome-classic', 'gnome-shell', 'gnome-fallback']
 -
 -    utext_draw_grid = _('Draw grid:')
 -    utext_login_sound = _('Play login sound:')
@@ -6435,7 +6441,8 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/tweaks/loginsettings.py ubuntu-twe
 -            self._greeter_logo = SystemConfigSetting('50_unity-greeter.gschema.override::com.canonical.unity-greeter#logo', type=str)
 -        logo_path = self._greeter_logo.get_value()
 -
--        self.logo_image.set_from_file(logo_path)
+-        if logo_path:
+-            self.logo_image.set_from_file(logo_path)
 -
 -    def _setup_background_image(self):
 -        if system.CODENAME == 'oneiric':
@@ -6446,12 +6453,13 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/tweaks/loginsettings.py ubuntu-twe
 -
 -        log.debug("Setup the background file: %s" % background_path)
 -
--        try:
--            pixbuf = GdkPixbuf.Pixbuf.new_from_file(background_path)
--            pixbuf = pixbuf.scale_simple(160, 120, GdkPixbuf.InterpType.NEAREST)
--            self.background_image.set_from_pixbuf(pixbuf)
--        except Exception, e:
--            log.error("Loading background failed, message is %s" % e)
+-        if background_path:
+-            try:
+-                pixbuf = GdkPixbuf.Pixbuf.new_from_file(background_path)
+-                pixbuf = pixbuf.scale_simple(160, 120, GdkPixbuf.InterpType.NEAREST)
+-                self.background_image.set_from_pixbuf(pixbuf)
+-            except Exception, e:
+-                log.error("Loading background failed, message is %s" % e)
 -
 -    def _get_desktop_background_path(self):
 -        return get_local_path(GSetting('org.gnome.desktop.background.picture-uri').get_value())
@@ -6557,9 +6565,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/tweaks/loginsettings.py ubuntu-twe
 -                background_path != self._greeter_background.get_value():
 -            self._greeter_background.set_value(background_path)
 -            self._setup_background_image()
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/utils/package.py ubuntu-tweak-0.7.0/ubuntutweak/utils/package.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/utils/package.py	2012-05-03 16:12:47.992092621 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/utils/package.py	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/utils/package.py ubuntu-tweak-0.7.1/ubuntutweak/utils/package.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/utils/package.py	2012-05-12 12:46:42.280537830 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/utils/package.py	1969-12-31 19:00:00.000000000 -0500
 @@ -1,162 +0,0 @@
 -import logging
 -
@@ -6723,9 +6731,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/utils/package.py ubuntu-tweak-0.7.
 -        if init or not getattr(self, 'cache'):
 -            apt_pkg.init()
 -            self.cache = apt.Cache()
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/utils/ppa.py ubuntu-tweak-0.7.0/ubuntutweak/utils/ppa.py
---- ubuntu-tweak-0.7.0.orig/ubuntutweak/utils/ppa.py	2012-05-03 16:12:47.992092621 -0400
-+++ ubuntu-tweak-0.7.0/ubuntutweak/utils/ppa.py	1969-12-31 19:00:00.000000000 -0500
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntutweak/utils/ppa.py ubuntu-tweak-0.7.1/ubuntutweak/utils/ppa.py
+--- ubuntu-tweak-0.7.1.orig/ubuntutweak/utils/ppa.py	2012-05-12 12:46:42.280537830 -0400
++++ ubuntu-tweak-0.7.1/ubuntutweak/utils/ppa.py	1969-12-31 19:00:00.000000000 -0500
 @@ -1,54 +0,0 @@
 -import os
 -import glob
@@ -6781,9 +6789,9 @@ diff -Nru ubuntu-tweak-0.7.0.orig/ubuntutweak/utils/ppa.py ubuntu-tweak-0.7.0/ub
 -        return 'LP-PPA-%s' % section[3]
 -    else:
 -        return 'LP-PPA-%s-%s' % (section[3], section[4])
-diff -Nru ubuntu-tweak-0.7.0.orig/ubuntu_tweak.egg-info/SOURCES.txt ubuntu-tweak-0.7.0/ubuntu_tweak.egg-info/SOURCES.txt
---- ubuntu-tweak-0.7.0.orig/ubuntu_tweak.egg-info/SOURCES.txt	2012-05-03 16:12:47.985425992 -0400
-+++ ubuntu-tweak-0.7.0/ubuntu_tweak.egg-info/SOURCES.txt	2012-05-09 02:08:57.488603041 -0400
+diff -Nru ubuntu-tweak-0.7.1.orig/ubuntu_tweak.egg-info/SOURCES.txt ubuntu-tweak-0.7.1/ubuntu_tweak.egg-info/SOURCES.txt
+--- ubuntu-tweak-0.7.1.orig/ubuntu_tweak.egg-info/SOURCES.txt	2012-05-12 12:46:42.277204515 -0400
++++ ubuntu-tweak-0.7.1/ubuntu_tweak.egg-info/SOURCES.txt	2012-05-12 13:06:07.390892550 -0400
 @@ -19,8 +19,6 @@
  data/ubuntu-tweak.png
  data/unity-lens-tweak
