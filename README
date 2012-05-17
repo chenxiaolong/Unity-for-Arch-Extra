@@ -1,16 +1,39 @@
-blah blah blah not written yet :)
+Unity-for-Arch-Extra: Themes, icons, and other additions that complete the Unity experience!
 
 Themes, icons, etc.
 
-1. humanity-icon-theme
-2. ubuntu-mono
-3. ubuntu-wallpapers
-4. gtk-engine-unico
-5. light-themes
-6. ubuntu-sounds
+01. humanity-icon-theme          -> Icons used in Ubuntu < 10.04
+02. ubuntu-mono                  -> Icons used in Ubuntu >= 10.04
+03. ubuntu-wallpapers            -> Wallpapers used in Ubuntu from 9.10 - 12.04
+04. light-themes                 -> Ubuntu's Ambiance and Radiance GTK themes
+05. ubuntu-sounds                -> The sound theme used in Ubuntu <= 12.04
 
 Applications
 
-7. accountsservice-ubuntu
-8. lightdm-ubuntu
-9. lightdm-unity-greeter
+06. lightdm-ubuntu               -> A cross-desktop lightweight display manager
+07. accountsservice-ubuntu       -> Daemon to query user account information
+08. lightdm-unity-greeter        -> The LightDM greeter for Unity
+09. python-defer                 -> A small framework for async. programming
+10. ubuntu-tweak                 -> Tweaking tool for Ubuntu (and Arch Linux :D)
+
+All of the PKGBUILD's have been checked with the namcap tool for consistency.
+
+Troubleshooting:
+
+The LightDM Unity Greeter does not show the user's wallpaper.
+
+  This is because the regular accountsservice package does not care about
+  the wallpaper being changed. This action is only logged by accountsservice-
+  ubuntu, so just change the wallpaper to something else and then back.
+
+Blah feature from Ubuntu Tweak is not working.
+
+  Please file a bug at either (not both):
+
+    github: https://github.com/chenxiaolong/Unity-for-Arch-Extra/issues
+    Launchpad: https://launchpad.net/unity-for-arch-extra
+
+  I've had to remove many features in Ubuntu Tweak due them being Ubuntu-
+  specific (apt, dpkg, PPAs, etc.). However, Ubuntu Tweak relies on the
+  PolicyKit API exposed by the aptdaemon library, rather than the regular
+  PolicyKit API. So, no features that require root permissions will work.
