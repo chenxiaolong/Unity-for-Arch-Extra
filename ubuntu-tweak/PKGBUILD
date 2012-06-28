@@ -10,7 +10,7 @@ license=('GPL')
 groups=('unity-extra')
 depends=('compizconfig-python-ubuntu' 'python2' 'gconf' 'libunique3' 'hicolor-icon-theme' 'python2-defer' 'python2-lxml')
 # Also depends on polkit-gnome or polkit-qt
-makedepends=('python-distutils-extra' 'python2-distribute')
+makedepends=('python2-distutils-extra' 'python2-distribute')
 options=(!emptydirs)
 install=${pkgname}.install
 source=("https://launchpad.net/${pkgname}/${pkgver%.*}.x/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz"
