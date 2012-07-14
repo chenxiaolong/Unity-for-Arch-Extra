@@ -2,7 +2,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=accountsservice-ubuntu
-_ubuntu_rel=2ubuntu9
+_ubuntu_rel=2ubuntu9.1
 pkgver=0.6.15.${_ubuntu_rel}
 pkgrel=100
 pkgdesc="D-Bus interface for user account query and manipulation"
@@ -11,16 +11,16 @@ url="http://cgit.freedesktop.org/accountsservice/"
 license=('GPL3')
 depends=('glib2' 'polkit' 'libsystemd' 'lightdm-ubuntu')
 makedepends=('intltool' 'gobject-introspection' 'vala')
-provides=("accountsservice=${pkgver%.*}")
+provides=("accountsservice=${pkgver%.*.*}")
 conflicts=('accountsservice')
 options=('!libtool')
-source=("http://cgit.freedesktop.org/accountsservice/snapshot/${pkgname%-*}-${pkgver%.*}.tar.xz"
-        "http://archive.ubuntu.com/ubuntu/pool/main/a/accountsservice/accountsservice_${pkgver%.*}-${_ubuntu_rel}.debian.tar.gz")
+source=("http://cgit.freedesktop.org/accountsservice/snapshot/${pkgname%-*}-${pkgver%.*.*}.tar.xz"
+        "http://archive.ubuntu.com/ubuntu/pool/main/a/accountsservice/accountsservice_${pkgver%.*.*}-${_ubuntu_rel}.debian.tar.gz")
 sha512sums=('90e11e71cc2ecb250e23449c11a2c8ceee3a9797cf6cf241eb64a73c12d460a281380099d34b0f9e8cdf82ef25f9c584a73362c90f51680d0f4412d7572cb5ce'
-            '3b9c34a6647b51f4ae9f2ceaa120defc76ec619bc42cb6ac904ccb65cd385fa18914be5f22458c1ceca7667df421f8adbb6824dea12c557a4128e510d8151ce9')
+            'cf04215d37a625020952449de639987058210b5b1120e13573026628a52975568c2be0349c78bf9dc8905a1b62c4829d53032fb7c77cf2a7d883e17a03f0a51e')
 
 build() {
-  cd "${srcdir}/${pkgname%-*}-${pkgver%.*}"
+  cd "${srcdir}/${pkgname%-*}-${pkgver%.*.*}"
 
   # Apply Ubuntu patches
     # Disable patches
@@ -67,7 +67,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname%-*}-${pkgver%.*}"
+  cd "${srcdir}/${pkgname%-*}-${pkgver%.*.*}"
 
   make DESTDIR="${pkgdir}" install
 }
