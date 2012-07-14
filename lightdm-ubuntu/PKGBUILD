@@ -81,7 +81,7 @@ package() {
   make DESTDIR="${pkgdir}/" install
 
   install -dm755 "${pkgdir}/etc/rc.d/"
-  install -dm755 "${pkgdir}/lib/systemd/system/"
+  install -dm755 "${pkgdir}/usr/lib/systemd/system/"
 
   # Move files (from debian/rules)
   mv "${pkgdir}/usr/lib/lightdm/lightdm/lightdm-set-defaults" "${pkgdir}/usr/lib/lightdm/"
@@ -107,8 +107,8 @@ package() {
   chmod +x "${pkgdir}/usr/lib/lightdm/lightdm-greeter-session"
 
   # Install init script and SystemD service
-  install -m755 ../lightdm $pkgdir/etc/rc.d
-  install -m644 ../lightdm.service $pkgdir/lib/systemd/system/
+  install -m755 "${srcdir}/lightdm" "${pkgdir}/etc/rc.d"
+  install -m644 "${srcdir}/lightdm.service" "${pkgdir}/usr/lib/systemd/system/"
 
   # Configuration settings that differ from Ubuntu
   sed -i \
