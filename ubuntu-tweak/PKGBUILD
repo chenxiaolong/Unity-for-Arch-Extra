@@ -1,7 +1,7 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=ubuntu-tweak
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=100
 pkgdesc="An easy configuration tool for system and desktop settings"
 arch=('any')
@@ -15,8 +15,8 @@ options=(!emptydirs)
 install=${pkgname}.install
 source=("https://launchpad.net/${pkgname}/${pkgver%.*}.x/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz"
         '01_arch_linux.patch')
-sha512sums=('1c226b776d257c66232c92d3bac6f1dc372b61ab1385957959fa408fdca71cc21171dd5b1798bd6222782001cc370331d0b35e4ae091a950b694d441f75180b2'
-            '2cc52bc7a601436378e0f5ff7ce2fd4f7ce799e48732c9f46ffdc7ddd2dc90b46306111b4459cf94dbde3f564366211ff055ceafc85fc845c52d7a5a9d342534')
+sha512sums=('91931364569166fd422d4be714ac574efc6ca7e047958dc41397239a32c96fcc67483933883c21f8475c117137fcd05288d5af919cc0d8edf248caa59bbce230'
+            'baea2a9bec9de580f1697b0af947453a2b4f3f2131bd2e2f1235afe3b97f7480db295b818007207e89da210f65b88731041a0f75beb4932b9fe2ff4c2ee36375')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
