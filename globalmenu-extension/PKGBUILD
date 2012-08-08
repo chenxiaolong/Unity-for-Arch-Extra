@@ -1,0 +1,76 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+
+# Based on Tom Kuther's PKGBUILD
+
+_bzr_rev=348
+
+pkgbase=globalmenu-extension
+pkgname=('firefox-globalmenu' 'thunderbird-globalmenu')
+pkgver=3.2.6
+pkgrel=1
+pkgdesc="Global Menu Extensions for Firefox and Thunderbird"
+arch=('i686' 'x86_64')
+url="https://launchpad.net/globalmenu-extension"
+license=('GPL' 'LGPL' 'MPL')
+makedepends=('bzr' 'autoconf2.13' 'libidl2' 'unzip' 'xulrunner' 'yasm' 'zip')
+
+_bzrtrunk=lp:globalmenu-extension/3.2
+
+build() {
+  cd "${srcdir}"
+  msg "Connecting to Bazaar server...."
+
+  if [[ -d "${pkgbase}" ]]; then
+    cd "${pkgbase}" && bzr pull "${_bzrtrunk}" -r "${_bzr_rev}"
+    msg "The local files are updated."
+  else
+    bzr branch "${_bzrtrunk}" "${pkgbase}" -q -r "${_bzr_rev}"
+  fi
+
+  msg "Bazaar checkout done or server timeout"
+  msg "Starting build..."
+
+  rm -rvf "${srcdir}/${pkgbase}-build"
+  cp -rv "${srcdir}/${pkgbase}" "${srcdir}/${pkgbase}-build"
+  cd "${srcdir}/${pkgbase}-build"
+
+  autoconf-2.13
+  sed -i 's/^ \t/\t/g' config/rules.mk
+  sed -i '/^XPIDL_COMPILE[[:space:]]*=/s@\$(LIBXUL_DIST)/@&sdk/@' config/config.mk
+
+  ./configure --with-libxul-sdk=`pkg-config --variable=sdkdir libxul` \
+    --with-system-libxul \
+    --with-system-nspr \
+    --with-system-nss \
+    --enable-application=extensions \
+    --enable-extensions=globalmenu \
+    --disable-tests \
+    --disable-necko-wifi
+  make
+}
+
+package_firefox-globalmenu() {
+  cd "${srcdir}/${pkgbase}-build"
+  pkgdesc="Global Menu Extension for Firefox"
+  depends=('firefox' 'libdbusmenu-gtk2')
+
+  emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' \
+         extensions/globalmenu/install.rdf)
+  install -dm755 "${pkgdir}/usr/lib/firefox/extensions/${emid}/"
+  unzip -d "${pkgdir}/usr/lib/firefox/extensions/${emid}/" \
+           dist/xpi-stage/globalmenu.xpi
+}
+
+package_thunderbird-globalmenu() {
+  cd "${srcdir}/${pkgbase}-build"
+  pkgdesc="Global Menu Extension for Thunderbird"
+  depends=('libdbusmenu-gtk2' 'thunderbird')
+
+  emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' \
+         extensions/globalmenu/install.rdf)
+  install -dm755 "${pkgdir}/usr/lib/thunderbird/extensions/${emid}/"
+  unzip -d "${pkgdir}/usr/lib/thunderbird/extensions/${emid}/" \
+           dist/xpi-stage/globalmenu.xpi
+}
+
+# vim:set ts=2 sw=2 et:

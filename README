@@ -15,6 +15,7 @@ Applications
 08: lightdm-unity-greeter        -> The LightDM greeter for Unity
 09: python-defer                 -> A small framework for async. programming
 10: ubuntu-tweak                 -> Tweaking tool for Ubuntu (and Arch Linux :D)
+11: globalmenu-extension         -> Global menu extensions for FF and TB
 
 All of the PKGBUILD's have been checked with the namcap tool for consistency.
 
