@@ -1,0 +1,58 @@
+# Maintainer: brainpower <brainpower@gulli.com>
+# Arch-Maintainer: Daenyth <Daenyth+Arch [at] gmail [dot] com>
+# Contributor: Hugo Doria <hugodoria@gmail.com>
+# Contributor pidgin-libnotify: 3ED <kas1987@o2.pl>
+
+pkgname=pidgin-libnotify-ubuntu
+_ubuntu_rel=4ubuntu10
+pkgver=0.14.${_ubuntu_rel}
+pkgrel=1
+arch=('i686' 'x86_64')
+pkgdesc="pidgin plugin that enables popups when someone logs in or messages you."
+url="http://gaim-libnotify.sourceforge.net/"
+license=('GPL')
+depends=('pidgin' 'libnotify' 'perlxml' 'gettext' 'notification-daemon' 'libindicate-gtk2')
+makedepends=('libtool' 'intltool')
+replaces=('gaim-libnotify' 'pidgin-libnotify')
+provides=("pidgin-libnotify=${pkgver%.*}")
+conflicts=("pidgin-libnotify")
+options=(!libtool)
+
+source=("http://downloads.sourceforge.net/sourceforge/gaim-libnotify/${pkgname%-*}-${pkgver%.*}.tar.gz"
+        "http://archive.ubuntu.com/ubuntu/pool/main/p/${pkgname%-*}/${pkgname%-*}_${pkgver%.*}-${_ubuntu_rel}.debian.tar.gz"
+        'language_fixes.patch'
+        'pidgin-libnotify-0.14-libnotify-0.7.patch')
+sha512sums=('2ff6b2bad74cb2fd9a3de94c06a2261fa07938bc1971baa578b9a9ae120175943592bf773ec5f00857c5ea35771a7fd1943299521626ce49f410cfd70ea2b399'
+            '839d9e630f3183d45e5f4d2abcb2a365fa5c2d267192ac6c42dd4814194fea1c2bf982be8387a976a87f5c7f6818185d0d52a3b4b9c924256b859c97a431a773'
+            'ac333a7e88031325d5a3e11e0470f426f8af579b932d70d294a21f76b24913fcbd87ebcbe649d731ede8164125139d564896bd840c0315db70f3d37e87f29233'
+            '242fb898521466dd5455e3488487bcbbceac2e3fc53979b14857ca527fbd43d480209c45217ae513eae0d7327819c24b3a64a0fa03b52ce54c390277d8c28d76')
+
+build() {
+  cd "$srcdir/${pkgname%-*}-${pkgver%.*}"
+
+  msg "Applying language_fixes.patch..."
+  patch -p1 -i "$srcdir/language_fixes.patch"
+  #~ patch -p0 -i "$srcdir/pidgin-libnotify-0.14-libnotify-0.7.patch"
+
+  # Apply ubuntu patches
+  ## dont use those ubuntu-patches, since there are similar arch patches
+  #~ sed -i '/libnotify_0_7.patch/d' "${srcdir}/debian/patches/series"
+  sed -i '/it_po.diff/d' "${srcdir}/debian/patches/series"
+  sed -i '/de_po.diff/d' "${srcdir}/debian/patches/series"
+  for i in $(cat "${srcdir}/debian/patches/series" | grep -v '#'); do
+    msg "Applying ${i}..."
+    patch -Np1 -i "${srcdir}/debian/patches/${i}"
+  done
+
+  autoreconf -vfi
+
+  ./configure --prefix=/usr --disable-deprecated  --disable-static
+  make ${MAKEFLAGS}
+}
+
+package() {
+  cd "${srcdir}/${pkgname%-*}-${pkgver%.*}"
+  make DESTDIR="${pkgdir}" install
+}
+
+# vim:set ts=2 sw=2 et:
