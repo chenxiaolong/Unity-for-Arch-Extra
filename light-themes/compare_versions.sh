@@ -7,6 +7,6 @@ UBUNTU_VER=($(wget -q 'http://packages.ubuntu.com/quantal/source/light-themes' -
 
 echo ""
 
-echo -e "PKGBUILD version: ${pkgver} ${_ubuntu_rel}"
+echo -e "PKGBUILD version: ${pkgver%.*} ${_ubuntu_rel}"
 echo -e "Upstream version: (none)"
 echo -e "Ubuntu version:   ${UBUNTU_VER[@]}"
