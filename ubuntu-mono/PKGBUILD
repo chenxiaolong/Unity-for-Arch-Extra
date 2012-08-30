@@ -1,7 +1,7 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=ubuntu-mono
-pkgver=0.0.41
+pkgver=0.0.42
 pkgrel=100
 pkgdesc="Icons for the panel, designed in a simplified monochrome style"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('humanity-icon-theme' 'gnome-icon-theme' 'hicolor-icon-theme')
 makedepends=('python2' 'imagemagick')
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.gz")
-sha512sums=('efafa7088db45f5526dd2bfee073b2f88c832cfed5db7ab548bb99010e654b8ac11bcefcdea89790b31cbd7bdfd2f4519211443cda4806b1a9b28f32c9063c0d')
+sha512sums=('520eb4b8d6a2134e9a7fc39258929f0a07b090599c1165292451b5a2512be88dc8c3dbb4e2873bbe9c6804b807cd163593bfd007827d2a7999d7e0d641de98d8')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -21,16 +21,6 @@ build() {
   sed -i 's|^\(#!.*python$\)|\12|g' scavenge.py
 
   make ${MAKEFLAGS}
-}
-
-link_files() {
-  while [ "${#}" -gt 0 ]; do
-    install -dm755 "${pkgdir}/${2%/*}"
-    msg "Linking /${1} to /${2}"
-    ln -sf "/${1}" "${pkgdir}/${2}"
-    shift
-    shift
-  done
 }
 
 package() {
@@ -42,13 +32,9 @@ package() {
   cp -av ubuntu-mono-light "${pkgdir}/usr/share/icons/"
   cp -av LoginIcons "${pkgdir}/usr/share/icons/"
 
-  # Pre-cache SVG icons to PNG images
-  msg "Pre-caching SVG icons..."
-  find "${pkgdir}" -type f -name user-desktop.svg | sed -e 'p;s/svg$/png/' | xargs -tn2 convert -background none
-  LINKS=$(find "${pkgdir}" -type l -name desktop.svg | sed -e 'sX^.*/usrXusrX;s/desktop.svg/user-desktop.png/;p;s/user-desktop.png/desktop.png/' | tr '\n' ' ')
-  link_files ${LINKS}
-
-  find "${pkgdir}" -type f -name user-desktop.svg -o -type l -name desktop.svg | xargs -t rm
+  for i in "${pkgdir}"/usr/share/icons/ubuntu-mono-*; do
+    cp -avt ${i} debian/places/
+  done
 }
 
 # vim:set ts=2 sw=2 et:
