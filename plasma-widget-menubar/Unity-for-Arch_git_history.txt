@@ -1,0 +1,39 @@
+The following is the git history of plasma-widget-menubar before it was moved
+from Unity-for-Arch to Unity-for-Arch-Extra. The commits can be checked out in
+the Unity-for-Arch git repository.
+
+commit 105069d109c09762b054ac3f5b133e580b28c169
+Author: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date:   Sun Jul 29 14:53:06 2012 -0400
+
+    [plasma-widget-menubar] Update to version 0.1.18
+
+commit 07231c8a318c7f1fc67b35776263c566098a7176
+Author: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date:   Tue Apr 3 20:36:30 2012 -0400
+
+    [plasma-widget-menubar] Update to version 0.1.17
+
+commit d76369bbfdc7f3d65d985d33c07cf63c8576c2c5
+Author: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date:   Fri Mar 2 18:06:21 2012 -0500
+
+    Add version comparison script for plasma-widget-menubar
+
+commit e8c69a4336256b06a7be92f23a1184160550723d
+Author: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date:   Fri Jan 20 02:26:56 2012 -0500
+
+    Massive upgrade
+
+commit 75072ea58d19f3724ea015ba9a17c35dcf530f17
+Author: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date:   Mon Oct 17 09:32:20 2011 -0400
+
+    Set revision numbers to 100+ to prevent upgrade to AUR packages
+
+commit 0a3c250896a2e1f221979808ad363f2de7fdbcd3
+Author: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date:   Tue Oct 11 22:53:41 2011 -0400
+
+    Added plasma-widget-menubar
