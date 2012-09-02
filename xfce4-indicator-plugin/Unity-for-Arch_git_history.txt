@@ -1,0 +1,57 @@
+The following is the git history of xfce4-indicator-plugin before it was moved
+from Unity-for-Arch to Unity-for-Arch-Extra. The commits can be checked out in
+the Unity-for-Arch git repository.
+
+commit 7d6988c683653e9103d3c79c1066d704f78ed7af
+Author: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date:   Sat Aug 11 19:11:35 2012 -0400
+
+    [xfce4-indicator-plugin] Update version comparison script
+
+commit 0845517228018759eb3ddac1ccd4d05be9b7a601
+Author: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date:   Mon May 7 17:27:16 2012 -0400
+
+    [xfce4-indicator-plugin] Updated to version 0.5.0
+
+commit 6a06de9e41247efdb7e84d6de6457b2669721bbe
+Author: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date:   Sat Mar 24 20:36:35 2012 -0400
+
+    [xfce4-indicator-plugin] Fix namcap issues
+
+commit c31ebf38a133cddc285f785a8e5448bc6098b5cd
+Author: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date:   Fri Mar 2 18:09:05 2012 -0500
+
+    Add version comparison script for xfce4-indicator-plugin
+
+commit a1f477188fbfcc51eaa6a40236fece2d6f058343
+Author: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date:   Fri Feb 3 21:04:12 2012 -0500
+
+    Update xfce4-indicator-plugin to version 0.4.0 with Ubuntu revision 0ubuntu2
+
+commit e8c69a4336256b06a7be92f23a1184160550723d
+Author: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date:   Fri Jan 20 02:26:56 2012 -0500
+
+    Massive upgrade
+
+commit 370824d5d6ba0348ca7e188bfc6fe5f434db687e
+Author: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date:   Sun Nov 13 01:01:41 2011 -0500
+
+    Updated xfce4-indicator-plugin to version 0.4.0
+
+commit 75072ea58d19f3724ea015ba9a17c35dcf530f17
+Author: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date:   Mon Oct 17 09:32:20 2011 -0400
+
+    Set revision numbers to 100+ to prevent upgrade to AUR packages
+
+commit 1894c11580b57244facbc60917759227adc53535
+Author: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date:   Tue Oct 11 23:22:25 2011 -0400
+
+    Added xfce4-indicator-plugin
