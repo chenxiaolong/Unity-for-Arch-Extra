@@ -21,6 +21,7 @@ Applications
 14: pidgin-libnotify-ubuntu      -> Pidgin notification plugin
 15: plasma-widget-menubar        -> KDE Plasma widget to display menubar
 16: xfce4-indicator-plugin       -> XFCE panel plugin to display indicators
+17: lo-menubar                   -> LibreOffice global menubar extension
 
 All of the PKGBUILD's have been checked with the namcap tool for consistency.
 
