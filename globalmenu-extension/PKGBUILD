@@ -2,11 +2,11 @@
 
 # Based on Tom Kuther's PKGBUILD
 
-_bzr_rev=348
+_bzr_rev=352
 
 pkgbase=globalmenu-extension
 pkgname=('firefox-globalmenu' 'thunderbird-globalmenu')
-pkgver=3.2.6
+pkgver=3.2.7
 pkgrel=1
 pkgdesc="Global Menu Extensions for Firefox and Thunderbird"
 arch=('i686' 'x86_64')
