@@ -33,6 +33,7 @@ Unity Webapps
 Everpad
 23: python-shiboken              -> CPython bindings generator for C++ libs
 24: python-pyside                -> Python bindings for Qt
+25: unity-singlet                -> Python library for building lenses & scopes
 
 All of the PKGBUILD's have been checked with the namcap tool for consistency.
 
