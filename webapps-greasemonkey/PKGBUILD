@@ -1,0 +1,33 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+
+# Upstream package name is webapps-greasemonkey
+# Ubuntu's package name is xul-ext-websites-integration
+
+pkgname=firefox-extension-websites-integration
+pkgver=2.3.1
+pkgrel=100
+pkgdesc="Firefox extension to support user scripts"
+arch=('any')
+url="https://launchpad.net/webapps-greasemonkey"
+license=('GPL')
+groups=('unity-extra')
+depends=('libunity-webapps')
+makedepends=('zip')
+source=("https://launchpad.net/webapps-greasemonkey/trunk/${pkgver}/+download/webapps-greasemonkey-${pkgver}.tar.gz")
+sha512sums=('74ff6e82307eedc35ce73e49754d53764a11122018a35fe0786407f87a9ceb100c952761ffa7b374b2d9407a84c22ab808ea82e058ad1811e59632db75ce5591')
+
+build() {
+  cd "${srcdir}/webapps-greasemonkey-${pkgver}"
+  ./build.sh
+}
+
+package() {
+  cd "${srcdir}/webapps-greasemonkey-${pkgver}"
+
+  local emid=$(sed -n 's/.*<em:id>\(.*\)<\/em:id>.*/\1/p' install.rdf | head -1)
+  install -dm755 "${pkgdir}/usr/lib/firefox/extensions/${emid}/"
+  unzip webapps-2012.09.18.beta.xpi -d \
+    "${pkgdir}/usr/lib/firefox/extensions/${emid}/"
+}
+
+# vim:set ts=2 sw=2 et:
