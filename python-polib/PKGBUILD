@@ -16,6 +16,7 @@ sha512sums=('e2b815ef12c148a83582f7f17320b556c710aa8a986c1b73ee3065228ef455e4175
 
 package() {
   cd "${srcdir}/polib-${pkgver}"
+  export LANG=en_US.UTF-8
   python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
