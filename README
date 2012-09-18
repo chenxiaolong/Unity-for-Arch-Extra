@@ -30,6 +30,9 @@ Unity Webapps
 21: unity-firefox-extension      -> Firefox extension for Unity integration
 22: webaccounts-browser-extension -> Web Accounts extension for FF and Chromium
 
+Everpad
+23: python-shiboken              -> CPython bindings generator for C++ libs
+
 All of the PKGBUILD's have been checked with the namcap tool for consistency.
 
 Troubleshooting:

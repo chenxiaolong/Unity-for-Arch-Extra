@@ -1,0 +1,62 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+
+pkgbase=python-shiboken
+pkgname=('python-shiboken' 'python2-shiboken')
+pkgver=1.1.2
+pkgrel=100
+pkgdesc="CPython bindings generator for C++ libraries"
+arch=('i686' 'x86_64')
+url="http://www.pyside.org/"
+license=('LGPL')
+groups=('unity-extra')
+makedepends=('cmake' 'openssl' 'python' 'python2' 'qt')
+source=("http://www.pyside.org/files/shiboken-${pkgver}.tar.bz2")
+sha512sums=('520818743497d82ca2e111a617176068d9daf47b96e8a545949ca644f000d2281dac4d0bd1c12af7822a4895b4019a6e1a76eca47121e792669be0f5ba6f6bd6')
+
+build() {
+  cd "${srcdir}/shiboken-${pkgver}"
+
+  mkdir build-python2 build-python3
+
+  pushd build-python2/
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release
+
+  make ${MAKEFLAGS}
+  popd
+
+  pushd build-python3/
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DUSE_PYTHON3:BOOL=TRUE
+
+  make ${MAKEFLAGS}
+  popd
+}
+
+package_python-shiboken() {
+  depends=('openssl' 'python' 'qt')
+
+  cd "${srcdir}/shiboken-${pkgver}/build-python3"
+
+  make DESTDIR="${pkgdir}/" install
+}
+
+package_python2-shiboken() {
+  depends=('openssl' 'python2' 'qt')
+
+  cd "${srcdir}/shiboken-${pkgver}/build-python2"
+
+  make DESTDIR="${pkgdir}/" install
+
+  mv "${pkgdir}"/usr/bin/shiboken{,-py2}
+  mv "${pkgdir}"/usr/include/shiboken{,-py2}
+  mv "${pkgdir}"/usr/lib/cmake/Shiboken-${pkgver}/ShibokenConfig{,-py2}.cmake
+  mv "${pkgdir}"/usr/lib/cmake/Shiboken-${pkgver}/ShibokenConfigVersion{,-py2}.cmake
+  mv "${pkgdir}"/usr/lib/pkgconfig/shiboken{,-py2}.pc
+  mv "${pkgdir}"/usr/share/man/man1/shiboken{,-py2}.1
+}
+
+# vim:set ts=2 sw=2 et:
