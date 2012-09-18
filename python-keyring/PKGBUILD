@@ -1,0 +1,30 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+
+pkgbase=python-keyring
+pkgname=('python-keyring' 'python2-keyring')
+pkgver=0.9.2
+pkgrel=100
+pkgdesc="Python library for accessing keyring services"
+arch=('any')
+url="http://pypi.python.org/pypi/keyring"
+license=('python')
+groups=('unity-extra')
+makedepends=('python' 'python2' 'python-distribute' 'python2-distribute' 'zip')
+source=("http://pypi.python.org/packages/source/k/keyring/keyring-${pkgver}.zip")
+sha512sums=('36c7c08d19f9ec4f019e3119144d7a7e7af12d7113018b5fcba2bfd844025d5e54d3ea193a81c76517b62886ef5b41912b567ba4c7dcc38a5f526a5e5bdd370a')
+
+package_python-keyring() {
+  depends=('python-crypto')
+
+  cd "${srcdir}/keyring-${pkgver}"
+  python setup.py install --root="${pkgdir}/" --optimize=1
+}
+
+package_python2-keyring() {
+  depends=('python2-crypto')
+
+  cd "${srcdir}/keyring-${pkgver}"
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
+}
+
+# vim:set ts=2 sw=2 et:

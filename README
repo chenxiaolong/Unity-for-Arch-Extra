@@ -34,6 +34,7 @@ Everpad
 23: python-shiboken              -> CPython bindings generator for C++ libs
 24: python-pyside                -> Python bindings for Qt
 25: unity-singlet                -> Python library for building lenses & scopes
+26: python-keyring               -> Python library for accessing keyrings
 
 All of the PKGBUILD's have been checked with the namcap tool for consistency.
 
