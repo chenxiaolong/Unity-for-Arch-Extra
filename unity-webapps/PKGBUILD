@@ -1,0 +1,27 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+
+pkgname=unity-webapps
+pkgver=2.3
+pkgrel=100
+pkgdesc="Unity WebApps"
+arch=('i686' 'x86_64')
+url="https://launchpad.net/webapps-applications"
+license=('GPL')
+groups=('unity-extra')
+depends=('gjs' 'gtk3' 'libunity-webapps' 'libwebkit3')
+makedepends=('python-polib')
+source=("https://launchpad.net/webapps-applications/trunk/${pkgver}/+download/webapps-${pkgver}.tar.gz")
+sha512sums=('7637066602224a19867559995eed021414aff16e9622ec50681f52ea4c1d0043c37c7ca4a60bbf410761c0b7fa8d307004942e5da9535ba59455de3f2a07133c')
+
+build() {
+  cd "${srcdir}/webapps-${pkgver}"
+  ./configure --prefix=/usr --enable-applications --enable-default-applications
+  make ${MAKEFLAGS}
+}
+
+package() {
+  cd "${srcdir}/webapps-${pkgver}"
+  make DESTDIR="${pkgdir}/" install
+}
+
+# vim:set ts=2 sw=2 et:
