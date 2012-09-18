@@ -1,0 +1,58 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+
+pkgbase=python-pyside
+pkgname=('python-pyside' 'python2-pyside')
+pkgver=1.1.2
+pkgrel=100
+pkgdesc="Python bindings for Qt"
+arch=('i686' 'x86_64')
+url="http://www.pyside.org/"
+license=('LGPL')
+groups=('unity-extra')
+makedepends=('automoc4' 'cmake' 'mesa' 'python' 'python2' 'python-shiboken' 'python2-shiboken' 'phonon' 'qt')
+source=("http://www.pyside.org/files/pyside-qt4.8+${pkgver}.tar.bz2")
+sha512sums=('16651b13f5ab096313fe4fc1ff9580f241c61ff98167018459720eca6faeed7af3dc6918c85913ee07c4cd27f0070c7c1c204d81a5538754ce7b9dc2b79c41b1')
+
+build() {
+  cd "${srcdir}/pyside-qt4.8+${pkgver}"
+
+  mkdir build-python2 build-python3
+
+  pushd build-python2/
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DPYTHON_SUFFIX=-python2.7 \
+    -DDEFAULT_PYTHON_BASENAME=-python2.7
+
+  make ${MAKEFLAGS}
+  popd
+
+  pushd build-python3/
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release
+
+  make ${MAKEFLAGS}
+  popd
+}
+
+package_python-pyside() {
+  cd "${srcdir}/pyside-qt4.8+${pkgver}/build-python3/"
+
+  make DESTDIR="${pkgdir}/" install
+}
+
+package_python2-pyside() {
+  cd "${srcdir}/pyside-qt4.8+${pkgver}/build-python2/"
+
+  make DESTDIR="${pkgdir}/" install
+
+  mv "${pkgdir}"/usr/include/PySide{,-py2}
+  mv "${pkgdir}"/usr/lib/cmake/PySide-1.1.2/PySideConfig{,-py2}.cmake
+  mv "${pkgdir}"/usr/lib/cmake/PySide-1.1.2/PySideConfigVersion{,-py2}.cmake
+  mv "${pkgdir}"/usr/lib/pkgconfig/pyside{,-py2}.pc
+  mv "${pkgdir}"/usr/share/PySide{,-py2}
+}
+
+# vim:set ts=2 sw=2 et:
