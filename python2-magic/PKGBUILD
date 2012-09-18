@@ -1,0 +1,21 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+
+pkgname=python2-magic
+pkgver=5.11
+pkgrel=100
+pkgdesc="Python 2 bindings for file"
+arch=('any')
+url="http://www.darwinsys.com/file/"
+license=('custom')
+groups=('unity-extra')
+depends=('python2' 'file')
+options=(!emptydirs)
+source=("ftp://ftp.astron.com/pub/file/file-${pkgver}.tar.gz")
+sha512sums=('a3f740e1a950f84ae53ef477ff255370050b52dd39fa309c8b8c4b0dc061e96fce585eb4a587037003509c01cd067d49e5193f1d0905e5c28347223a15aa271b')
+
+package() {
+  cd "${srcdir}/file-${pkgver}/python/"
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
+}
+
+# vim:set ts=2 sw=2 et:
