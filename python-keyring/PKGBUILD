@@ -11,19 +11,22 @@ license=('python')
 groups=('unity-extra')
 makedepends=('python' 'python2' 'python-distribute' 'python2-distribute' 'zip')
 source=("http://pypi.python.org/packages/source/k/keyring/keyring-${pkgver}.zip")
+noextract=("keyring-${pkgver}.zip")
 sha512sums=('36c7c08d19f9ec4f019e3119144d7a7e7af12d7113018b5fcba2bfd844025d5e54d3ea193a81c76517b62886ef5b41912b567ba4c7dcc38a5f526a5e5bdd370a')
 
 package_python-keyring() {
   depends=('python-crypto')
 
-  cd "${srcdir}/keyring-${pkgver}"
+  unzip "${srcdir}/keyring-${pkgver}.zip" -d "${srcdir}/build-python3/"
+  cd "${srcdir}/build-python3/keyring-${pkgver}/"
   python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
 package_python2-keyring() {
   depends=('python2-crypto')
 
-  cd "${srcdir}/keyring-${pkgver}"
+  unzip "${srcdir}/keyring-${pkgver}.zip" -d "${srcdir}/build-python2/"
+  cd "${srcdir}/build-python2/keyring-${pkgver}/"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
 }
 
