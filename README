@@ -35,6 +35,7 @@ Everpad
 24: python-pyside                -> Python bindings for Qt
 25: unity-singlet                -> Python library for building lenses & scopes
 26: python-keyring               -> Python library for accessing keyrings
+27: python2-oauth2               -> Python library for OAuth 1.0
 
 All of the PKGBUILD's have been checked with the namcap tool for consistency.
 

@@ -1,0 +1,23 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+
+pkgname=python2-oauth2
+pkgver=1.5.211
+pkgrel=100
+pkgdesc="Python library for OAuth 1.0"
+arch=('any')
+# Downloads at http://pypi.python.org/pypi/oauth2
+url="http://github.com/simplegeo/python-oauth2"
+license=('MIT')
+groups=('unity-extra')
+depends=('python2' 'python2-httplib2')
+makedepends=('python2-distribute')
+options=(!emptydirs)
+source=("http://pypi.python.org/packages/source/o/oauth2/oauth2-${pkgver}.tar.gz")
+sha512sums=('3f5606702d4e305c191c924cab01ee3fc7e170a26460c1d49031e3d9a296b3502d5e18edb1ec0e291abd61797cb47b7b2b8929eff33eb8bc9fd73434b3ab028a')
+
+package() {
+  cd "${srcdir}/oauth2-${pkgver}"
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
+}
+
+# vim:set ts=2 sw=2 et:
