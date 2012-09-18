@@ -28,6 +28,7 @@ Unity Webapps
 19: unity-webapps                -> Unity WebApps
 20: webapps-greasemonkey         -> Firefox extension for user scripts
 21: unity-firefox-extension      -> Firefox extension for Unity integration
+22: webaccounts-browser-extension -> Web Accounts extension for FF and Chromium
 
 All of the PKGBUILD's have been checked with the namcap tool for consistency.
 

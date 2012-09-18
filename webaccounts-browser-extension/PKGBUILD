@@ -1,0 +1,65 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+
+pkgbase=webaccounts-browser-extension
+pkgname=('webaccounts-browser-extension' 'chromium-extension-webaccounts' 'firefox-extension-webaccounts')
+_ubuntu_rel=0ubuntu1
+pkgver=0.4.4.${_ubuntu_rel}
+pkgrel=100
+pkgdesc="Ubuntu Online Accounts extensions for Firefox and Chromium"
+arch=('i686' 'x86_64')
+# No upstream homepage
+url="https://launchpad.net/ubuntu/+source/webaccounts-browser-extension"
+license=('GPL')
+groups=('unity-extra')
+depends=('json-glib' 'libaccounts-glib' 'openssl')
+makedepends=('vim' 'zip')
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/webaccounts-browser-extension_${pkgver%.*}.orig.tar.gz"
+        "https://launchpad.net/ubuntu/+archive/primary/+files/webaccounts-browser-extension_${pkgver%.*}-${_ubuntu_rel}.debian.tar.gz")
+sha512sums=('d2f935758ee1d7d978b2bb23e281e44e61d4847d5dc94073dffe354277a1bbafab60d2ecb55aa5f514d92afe449df98a7252e9489012c8c45c9282907c8a6ee9'
+            'e15b2e6e1f25e96cd160c070ce66a274c2788cd78eea7d62afe9537ae516a110a1f9323f1fb84ab17a4d3fe092bdb1e549ad59b3d6def47d31f2675b400afb93')
+
+build() {
+  cd "${srcdir}/webaccounts-browser-extension-${pkgver%.*}"
+
+  cp "${srcdir}/debian/webaccounts.pem" .
+
+  ./configure --prefix=/usr
+  make
+}
+
+package_webaccounts-browser-extension() {
+  pkgdesc="Common files for the Firefox and Chromium webaccounts extensions"
+  options=('!libtool')
+  install=webaccounts-browser-extension.install
+
+  cd "${srcdir}/webaccounts-browser-extension-${pkgver%.*}"
+  make DESTDIR="${pkgdir}/" install
+
+  rm -rv "${pkgdir}/usr/lib/webaccounts-chromium/"
+  rm -rv "${pkgdir}/usr/lib/webaccounts-firefox/"
+  rm -rv "${pkgdir}/usr/share/chromium/"
+}
+
+package_chromium-extension-webaccounts() {
+  pkgdesc="Ubuntu Online Accounts extension for Chromium"
+  depends=("webaccounts-browser-extension=${pkgver}" 'chromium' 'gnome-control-center-signon')
+
+  cd "${srcdir}/webaccounts-browser-extension-${pkgver%.*}"
+
+  make -C chromium-extension DESTDIR="${pkgdir}/" install
+}
+
+package_firefox-extension-webaccounts() {
+  pkgdesc="Ubuntu Online Accounts extension for Firefox"
+  depends=("webaccounts-browser-extension=${pkgver}" 'firefox' 'gnome-control-center-signon')
+
+  cd "${srcdir}/webaccounts-browser-extension-${pkgver%.*}"
+
+  local emid=$(sed -n 's/.*<em:id>\(.*\)<\/em:id>.*/\1/p' \
+    firefox-extension/install.rdf | head -1)
+  install -dm755 "${pkgdir}/usr/lib/firefox/extensions/${emid}/"
+  unzip firefox-extension/webaccounts-firefox-extension.xpi -d \
+    "${pkgdir}/usr/lib/firefox/extensions/${emid}/"
+}
+
+# vim:set ts=2 sw=2 et:
