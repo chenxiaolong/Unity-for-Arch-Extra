@@ -23,6 +23,9 @@ Applications
 16: xfce4-indicator-plugin       -> XFCE panel plugin to display indicators
 17: lo-menubar                   -> LibreOffice global menubar extension
 
+Unity Webapps
+18: python-polib                 -> Python library for messing with po files
+
 All of the PKGBUILD's have been checked with the namcap tool for consistency.
 
 Troubleshooting:

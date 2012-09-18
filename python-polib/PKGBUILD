@@ -1,0 +1,22 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+
+pkgname=python-polib
+pkgver=1.0.1
+pkgrel=100
+pkgdesc="Python library to manipulate, create, and modify gettext files"
+arch=('any')
+url="https://bitbucket.org/izi/polib/src/"
+license=('GPL')
+groups=('unity-extra')
+depends=('python')
+makedepends=('python-sphinx')
+options=(!emptydirs)
+source=("https://bitbucket.org/izi/polib/downloads/polib-${pkgver}.tar.gz")
+sha512sums=('e2b815ef12c148a83582f7f17320b556c710aa8a986c1b73ee3065228ef455e4175a98188d3ba1ca25c05c653ffdd2582ae6d20e8a3ba242f72bdf60dee68ff1')
+
+package() {
+  cd "${srcdir}/polib-${pkgver}"
+  python setup.py install --root="${pkgdir}/" --optimize=1
+}
+
+# vim:set ts=2 sw=2 et:
