@@ -1,7 +1,7 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=unity-webapps
-pkgver=2.3
+pkgver=2.4.6
 pkgrel=100
 pkgdesc="Unity WebApps"
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ license=('GPL')
 groups=('unity-extra')
 depends=('gjs' 'gtk3' 'libunity-webapps' 'libwebkit3')
 makedepends=('python-polib')
-source=("https://launchpad.net/webapps-applications/trunk/${pkgver}/+download/webapps-${pkgver}.tar.gz")
-sha512sums=('7637066602224a19867559995eed021414aff16e9622ec50681f52ea4c1d0043c37c7ca4a60bbf410761c0b7fa8d307004942e5da9535ba59455de3f2a07133c')
+source=("https://launchpad.net/webapps-applications/trunk/2.6/+download/webapps-${pkgver}.tar.gz")
+sha512sums=('27cef2349536a61542d711eb93eb35029b4e266db625100a0e4084547088fdbf49c29a2089af8b8837bc8743aef83f1bf337f238d506666ed64a758ef4d87c29')
 
 build() {
   cd "${srcdir}/webapps-${pkgver}"
