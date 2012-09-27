@@ -1,5 +1,7 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
+OLDDATE=$(date +%Y.%m.%d)
+
 # Upstream package name is webapps-greasemonkey
 # Ubuntu's package name is xul-ext-websites-integration
 
@@ -26,7 +28,12 @@ package() {
 
   local emid=$(sed -n 's/.*<em:id>\(.*\)<\/em:id>.*/\1/p' install.rdf | head -1)
   install -dm755 "${pkgdir}/usr/lib/firefox/extensions/${emid}/"
-  unzip webapps-2012.09.18.beta.xpi -d \
+  NEWDATE=$(date +%Y.%m.%d)
+  if [[ "${OLDDATE}" != "${NEWDATE}" ]]; then
+    error "Do not build at midnight :) Please rebuild."
+    exit 1
+  fi
+  unzip webapps-${NEWDATE}.beta.xpi -d \
     "${pkgdir}/usr/lib/firefox/extensions/${emid}/"
 }
 
