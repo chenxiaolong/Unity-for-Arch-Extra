@@ -30,14 +30,17 @@ Unity Webapps
 21: unity-firefox-extension      -> Firefox extension for Unity integration
 22: webaccounts-browser-extension -> Web Accounts extension for FF and Chromium
 
+LightDM remote session
+23: remote-login-service         -> Service to track the remote servers to use
+
 Everpad
-23: python-shiboken              -> CPython bindings generator for C++ libs
-24: python-pyside                -> Python bindings for Qt
-25: unity-singlet                -> Python library for building lenses & scopes
-26: python-keyring               -> Python library for accessing keyrings
-27: python2-oauth2               -> Python 2 library for OAuth 1.0
-28: python2-magic                -> Python 2 bindings for file
-29: everpad                      -> Evernote client with Unity integration
+24: python-shiboken              -> CPython bindings generator for C++ libs
+25: python-pyside                -> Python bindings for Qt
+26: unity-singlet                -> Python library for building lenses & scopes
+27: python-keyring               -> Python library for accessing keyrings
+28: python2-oauth2               -> Python 2 library for OAuth 1.0
+29: python2-magic                -> Python 2 bindings for file
+30: everpad                      -> Evernote client with Unity integration
 
 All of the PKGBUILD's have been checked with the namcap tool for consistency.
 

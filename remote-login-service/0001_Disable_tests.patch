@@ -1,0 +1,28 @@
+diff -Nru remote-login-service-1.0.0.orig/configure.ac remote-login-service-1.0.0/configure.ac
+--- remote-login-service-1.0.0.orig/configure.ac	2012-09-27 15:30:13.286530017 -0400
++++ remote-login-service-1.0.0/configure.ac	2012-09-27 15:31:13.606203237 -0400
+@@ -21,11 +21,9 @@
+ 	src/Makefile
+ 	data/Makefile
+     po/Makefile.in
+-	tests/Makefile
+ ])
+ 
+ PKG_CHECK_MODULES(SERVICE, glib-2.0 gio-2.0 gio-unix-2.0 json-glib-1.0 libnm-glib libsoup-2.4)
+-PKG_CHECK_MODULES(TEST, dbustest-1)
+ 
+ AC_CHECK_LIB(gcrypt, gcry_cipher_get_algo_keylen, GCRYPT_LIBS="-lgcrypt")
+ 
+diff -Nru remote-login-service-1.0.0.orig/Makefile.am remote-login-service-1.0.0/Makefile.am
+--- remote-login-service-1.0.0.orig/Makefile.am	2012-09-27 15:30:13.283196702 -0400
++++ remote-login-service-1.0.0/Makefile.am	2012-09-27 15:31:26.669465800 -0400
+@@ -2,8 +2,7 @@
+ SUBDIRS = \
+ 	src \
+ 	data \
+-	po \
+-	tests
++	po
+ 
+ DISTCHECK_CONFIGURE_FLAGS = --enable-localinstall
+ 
