@@ -2,9 +2,7 @@
 
 pkgbase=python-defer
 pkgname=('python-defer' 'python2-defer')
-_ubuntu_ver="+bzr481"
-_actual_ver=1.0.2
-pkgver=${_actual_ver}.bzr481
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Small framework for asynchrouns programming in Python. It is a stripped down version of Twisted's defer"
 arch=('any')
@@ -13,20 +11,20 @@ license=('GPL')
 groups=('unity-extra')
 makedepends=('python' 'python2' 'python-distribute' 'python2-distribute')
 options=('!emptydirs')
-source=("http://archive.ubuntu.com/ubuntu/pool/main/p/${pkgbase}/${pkgbase}_${_actual_ver}${_ubuntu_ver}.orig.tar.gz")
-sha512sums=('68b6a343a4099f5e1fd16d3ad1def26d6db7a8a89bfae4cffcae1f48e8eaf5c3cdef77fed428ef8db89edefa1f02c4cf0b97a0abea4615c5436990982a397e71')
+source=("http://archive.ubuntu.com/ubuntu/pool/main/p/${pkgbase}/${pkgbase}_${pkgver}.orig.tar.gz")
+sha512sums=('2ed6a1c2beea4db14122602d52443946d777ce17a5ca49eeaabbf8b1740c372b38dd8e6f5810d91d78e1f5a013aab95d6012abc5101bca9cea25866881ba9403')
 
 package_python-defer() {
   depends=('python')
 
-  cd "${srcdir}/${pkgbase}-${_actual_ver}${_ubuntu_ver}"
+  cd "${srcdir}/defer-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
 package_python2-defer() {
   depends=('python2')
 
-  cd "${srcdir}/${pkgbase}-${_actual_ver}${_ubuntu_ver}"
+  cd "${srcdir}/defer-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
 }
 
