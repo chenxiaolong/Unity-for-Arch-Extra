@@ -1,7 +1,7 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=ubuntu-wallpapers
-pkgver=0.35.0
+pkgver=0.35.2
 pkgrel=100
 pkgdesc="The default wallpapers for Ubuntu (from 9.10 Karmic Koala to 12.04 Precise Pangolin)"
 arch=('any')
@@ -11,7 +11,7 @@ groups=('unity-extra')
 makedepends=('libxslt' 'python2-distutils-extra')
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.gz")
-sha512sums=('94a9c45e6a332d3705e242f82695b7d70267050b25ba3ca1c2bb24400ec1fb8276b975a23566f62a68933cc7ede7d751e6fb847e3916d12997448f8d4b9a8c3d')
+sha512sums=('a622c6009059d416953bcc9796e2f15a12097a615179404d61dbddc48599e495f941dc320728044c1da13ce4ff25dec5d313b7c2bfa5e3a495d02862575d9a9a')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
