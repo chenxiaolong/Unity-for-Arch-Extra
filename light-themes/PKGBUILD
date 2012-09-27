@@ -3,14 +3,13 @@
 pkgname=light-themes
 _ubuntu_rel=0ubuntu1
 pkgver=0.1.11.${_ubuntu_rel}
-pkgrel=100
+pkgrel=101
 pkgdesc="Light Themes (Ambiance and Radiance)"
 arch=('any')
 url="https://launchpad.net/light-themes"
 license=('CCPL')
 groups=('unity-extra')
-depends=('ubuntu-mono' 'gtk-engine-unico' 'gtk-engine-murrine' 'humanity-icon-theme' 'gconf-ubuntu')
-install=${pkgname}.install
+depends=('ubuntu-mono' 'gtk-engine-unico' 'gtk-engine-murrine' 'humanity-icon-theme')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver%.*}-${_ubuntu_rel}.tar.gz")
 sha512sums=('a19751d09113497657044c3c46f2d611addfe48a6c7040c36946530f36e5f4e56029fa4cbf046542dbe136ce6ae2ffc8462f92642442cb825d2a004eb6854503')
 
@@ -19,9 +18,6 @@ package() {
 
   find Ambiance -type f -exec install -Dm644 {} "${pkgdir}"/usr/share/themes/{} \;
   find Radiance -type f -exec install -Dm644 {} "${pkgdir}"/usr/share/themes/{} \;
-
-  # GConf defaults
-  install -Dm644 debian/gconf-defaults "${pkgdir}/usr/share/gconf/defaults/90_${pkgname}"
 }
 
 # vim:set ts=2 sw=2 et:
