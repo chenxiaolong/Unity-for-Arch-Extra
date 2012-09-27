@@ -14,7 +14,7 @@ depends=('gnome-themes-standard' 'gnome-backgrounds' 'gnome-icon-theme' 'libwebk
 makedepends=('gnome-doc-utils' 'gobject-introspection' 'pkg-config' 'gtk-doc' 'gnome-common' 'yelp-tools')
 optdepends=('xorg-server-xephyr: run lightdm in test mode' 
             'lightdm-webkit-greeter-bzr'
-            'lightdm-unity-greeter: default Ubuntu 12.04 greeter')
+            'lightdm-unity-greeter: default Ubuntu 12.10 greeter')
 provides=("lightdm=${pkgver}")
 conflicts=('lightdm')
 options=('!libtool' '!emptydirs')
