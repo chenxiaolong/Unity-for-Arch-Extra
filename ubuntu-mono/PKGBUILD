@@ -1,7 +1,7 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=ubuntu-mono
-pkgver=0.0.42
+pkgver=0.0.45
 pkgrel=100
 pkgdesc="Icons for the panel, designed in a simplified monochrome style"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('humanity-icon-theme' 'gnome-icon-theme' 'hicolor-icon-theme')
 makedepends=('python2' 'imagemagick')
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.gz")
-sha512sums=('520eb4b8d6a2134e9a7fc39258929f0a07b090599c1165292451b5a2512be88dc8c3dbb4e2873bbe9c6804b807cd163593bfd007827d2a7999d7e0d641de98d8')
+sha512sums=('270ec99fed22ec5090210d1bf74b598d8199368fec2a8f5ac4cf26843503e476d7164224c0cb46ddcdfc38da28deab863ccd01b70ffe339414da23b0868a403e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
