@@ -32,15 +32,16 @@ Unity Webapps
 
 LightDM remote session
 23: remote-login-service         -> Service to track the remote servers to use
+24: lightdm-remote-session-uccsconfigure -> Session to configure UCCS
 
 Everpad
-24: python-shiboken              -> CPython bindings generator for C++ libs
-25: python-pyside                -> Python bindings for Qt
-26: unity-singlet                -> Python library for building lenses & scopes
-27: python-keyring               -> Python library for accessing keyrings
-28: python2-oauth2               -> Python 2 library for OAuth 1.0
-29: python2-magic                -> Python 2 bindings for file
-30: everpad                      -> Evernote client with Unity integration
+25: python-shiboken              -> CPython bindings generator for C++ libs
+26: python-pyside                -> Python bindings for Qt
+27: unity-singlet                -> Python library for building lenses & scopes
+28: python-keyring               -> Python library for accessing keyrings
+29: python2-oauth2               -> Python 2 library for OAuth 1.0
+30: python2-magic                -> Python 2 bindings for file
+31: everpad                      -> Evernote client with Unity integration
 
 All of the PKGBUILD's have been checked with the namcap tool for consistency.
 

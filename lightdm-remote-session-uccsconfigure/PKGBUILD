@@ -1,0 +1,26 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+
+pkgname=lightdm-remote-session-uccsconfigure
+pkgver=1.1
+pkgrel=100
+pkgdesc="Session and configuration to login to configure UCCS"
+arch=('i686' 'x86_64')
+url="https://launchpad.net/lightdm-remote-session-uccsconfigure"
+license=('GPL')
+groups=('unity-extra')
+depends=('firefox' 'lightdm-ubuntu' 'unity')
+source=("https://launchpad.net/lightdm-remote-session-uccsconfigure/1.0/${pkgver}/+download/lightdm-remote-session-uccsconfigure-${pkgver}.tar.gz")
+sha512sums=('ed5d8fb76314f1bae784cdf05be7cb24a255b446a54461ca94664a67606317e2318f760bffdd943fa098a7ed9c68f9d12caeb48bafd7e6760244d872797a0412')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib
+  make ${MAKEFLAGS}
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}/" install
+}
+
+# vim:set ts=2 sw=2 et:
