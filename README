@@ -34,15 +34,16 @@ LightDM remote session
 23: remote-login-service         -> Service to track the remote servers to use
 24: lightdm-remote-session-uccsconfigure -> Session to configure UCCS
 25: libpam-rdp                   -> PAM module to auth. against an RDP server
+26: lightdm-remote-session-freerdp -> Session to login in with FreeRDP
 
 Everpad
-26: python-shiboken              -> CPython bindings generator for C++ libs
-27: python-pyside                -> Python bindings for Qt
-28: unity-singlet                -> Python library for building lenses & scopes
-29: python-keyring               -> Python library for accessing keyrings
-30: python2-oauth2               -> Python 2 library for OAuth 1.0
-31: python2-magic                -> Python 2 bindings for file
-32: everpad                      -> Evernote client with Unity integration
+27: python-shiboken              -> CPython bindings generator for C++ libs
+28: python-pyside                -> Python bindings for Qt
+29: unity-singlet                -> Python library for building lenses & scopes
+30: python-keyring               -> Python library for accessing keyrings
+31: python2-oauth2               -> Python 2 library for OAuth 1.0
+32: python2-magic                -> Python 2 bindings for file
+33: everpad                      -> Evernote client with Unity integration
 
 All of the PKGBUILD's have been checked with the namcap tool for consistency.
 
