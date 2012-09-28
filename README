@@ -31,12 +31,12 @@ Unity Webapps
 22: webaccounts-browser-extension -> Web Accounts extension for FF and Chromium
 
 LightDM remote session
-23: thin-client-config-agent     -> Retrieve list of remote servers for a user
-24: remote-login-service         -> Service to track the remote servers to use
-25: lightdm-remote-session-uccsconfigure -> Session to configure UCCS
-26: libpam-rdp                   -> PAM module to auth. against an RDP server
-27: lightdm-remote-session-freerdp -> Session to login in with FreeRDP
-28: python3-pycurl               -> A Python 3 interface to libcurl
+23: python3-pycurl               -> A Python 3 interface to libcurl
+24: thin-client-config-agent     -> Retrieve list of remote servers for a user
+25: remote-login-service         -> Service to track the remote servers to use
+26: lightdm-remote-session-uccsconfigure -> Session to configure UCCS
+27: libpam-rdp                   -> PAM module to auth. against an RDP server
+28: lightdm-remote-session-freerdp -> Session to login in with FreeRDP
 
 Everpad
 29: python-shiboken              -> CPython bindings generator for C++ libs
