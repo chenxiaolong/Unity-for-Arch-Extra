@@ -66,3 +66,16 @@ Blah feature from Ubuntu Tweak is not working.
   specific (apt, dpkg, PPAs, etc.). However, Ubuntu Tweak relies on the
   PolicyKit API exposed by the aptdaemon library, rather than the regular
   PolicyKit API. So, no features that require root permissions will work.
+
+The NetworkManager applet does not show up in LightDM when systemd is used
+
+  This is due to Arch Linux not including pam_systemd.so in the PAM confguration
+  files. I'm not exactly sure which PAM configuration file to add it to. It can
+  be worked around temporarily by patching the NetworkManager dbus policy. This
+  will need to be done every time NetworkManager is updated.
+
+    # patch -Np0 -i ./lightdm-unity-greeter/NetworkManager-dbus.patch
+
+  OR
+
+    $ sudo patch -Np0 -i ./lightdm-unity-greeter/NetworkManager-dbus.patch
