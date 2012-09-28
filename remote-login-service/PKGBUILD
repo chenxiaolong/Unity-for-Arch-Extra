@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://launchpad.net/remote-login-service/"
 license=('GPL')
 groups=('unity-extra')
-depends=('dbus' 'json-glib' 'libsoup' 'networkmanager' 'python')
+depends=('dbus' 'json-glib' 'libsoup' 'networkmanager' 'python' 'thin-client-config-agent')
 makedepends=('intltool')
 source=("https://launchpad.net/remote-login-service/1.0/${pkgver}/+download/remote-login-service-${pkgver}.tar.gz"
         '0001_Disable_tests.patch'
