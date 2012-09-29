@@ -35,7 +35,7 @@ LightDM remote session
 24: thin-client-config-agent     -> Retrieve list of remote servers for a user
 25: remote-login-service         -> Service to track the remote servers to use
 26: lightdm-remote-session-uccsconfigure -> Session to configure UCCS
-27: libpam-rdp                   -> PAM module to auth. against an RDP server
+27: libpam-freerdp               -> PAM module to auth. against an RDP server
 28: lightdm-remote-session-freerdp -> Session to login in with FreeRDP
 
 Everpad
