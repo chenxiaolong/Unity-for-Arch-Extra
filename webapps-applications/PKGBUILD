@@ -30,7 +30,7 @@ package() {
 
   # What is heck is zn_CN? zh stands for the first two letter of the pinyin of
   # 中文 (zhongwen)
-  mv $RPM_BUILD_ROOT%{_datadir}/locale/{zn,zh}_CN/
+  mv $RPM_BUILD_ROOT/usr/share/locale/{zn,zh}_CN/
 }
 
 # vim:set ts=2 sw=2 et:
