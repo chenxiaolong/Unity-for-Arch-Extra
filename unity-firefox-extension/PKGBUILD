@@ -4,7 +4,7 @@
 
 pkgname=firefox-extension-unity
 pkgver=2.3.2
-pkgrel=100
+pkgrel=101
 pkgdesc="Firefox extension for Unity integration"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/unity-firefox-extension"
@@ -13,8 +13,10 @@ groups=('unity-extra')
 depends=('firefox-extension-websites-integration' 'libunity-webapps')
 makedepends=('gtk2' 'libxslt' 'zip')
 options=('!libtool')
-source=("https://launchpad.net/unity-firefox-extension/trunk/${pkgver}/+download/unity-firefox-extension-${pkgver}.tar.gz")
-sha512sums=('abc5fcee0d96dcfee88d3d7a3cb1808bc379b5d646b3b0e1d892bdad50d942bcd39b42b090cb89ca9832fc3d07b8d142fc92e12e73515d3e271b1288d3a93095')
+source=("https://launchpad.net/unity-firefox-extension/trunk/${pkgver}/+download/unity-firefox-extension-${pkgver}.tar.gz"
+        'launcher_bfb.png')
+sha512sums=('abc5fcee0d96dcfee88d3d7a3cb1808bc379b5d646b3b0e1d892bdad50d942bcd39b42b090cb89ca9832fc3d07b8d142fc92e12e73515d3e271b1288d3a93095'
+            '9f5469c0300d0c33e26db670771803efd3d821e82689fbb1391a31b8fd0e280a12ea010fe6f32a702a5d1797918d416c8adabfccf6049e43b496ebb6dbe2c054')
 
 build() {
   cd "${srcdir}/unity-firefox-extension-${pkgver}"
@@ -42,6 +44,11 @@ package() {
   install -dm755 "${pkgdir}/usr/lib/firefox/extensions/${emid}/"
   unzip unity.xpi -d "${pkgdir}/usr/lib/firefox/extensions/${emid}/"
   popd
+
+  # Arch Linux logo
+  rm "${pkgdir}/usr/lib/firefox/extensions/${emid}/skin/cof.png"
+  install -m644 "${srcdir}/launcher_bfb.png" \
+    "${pkgdir}/usr/lib/firefox/extensions/${emid}/skin/cof.png"
 }
 
 # vim:set ts=2 sw=2 et:

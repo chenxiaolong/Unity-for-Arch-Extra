@@ -1,0 +1,36 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+
+pkgname=webapps-applications
+pkgver=2.4.7
+pkgrel=100
+pkgdesc="Unity WebApps integration scripts"
+arch=('any')
+url="https://launchpad.net/webapps-applications"
+license=('GPL')
+groups=('unity-extra')
+depends=('libunity-webapps' 'xdg-utils')
+makedepends=('python-polib')
+install=webapps-applications.install
+source=("https://launchpad.net/webapps-applications/trunk/${pkgver}/+download/webapps-${pkgver}.tar.gz")
+sha512sums=('cdf7d142d97d6679fcfb813c408c404b1c39173fe4ed006e23063870e1eb0648a61f44699e59f9720c2aa93e58d427ea3a94c1134fa70db677a29d4512840222')
+
+build() {
+  cd "${srcdir}/webapps-${pkgver}"
+  ./configure --prefix=/usr --enable-default-applications
+  make ${MAKEFLAGS}
+}
+
+package() {
+  cd "${srcdir}/webapps-${pkgver}"
+  make DESTDIR="${pkgdir}/" install
+
+  install -dm755 "${pkgdir}/usr/bin/"
+  install -m755 scripts/install-default-webapps-in-launcher.py \
+    "${pkgdir}/usr/bin/webapps-add-defaults-to-launcher"
+
+  # What is heck is zn_CN? zh stands for the first two letter of the pinyin of
+  # 中文 (zhongwen)
+  mv $RPM_BUILD_ROOT/usr/share/locale/{zn,zh}_CN/
+}
+
+# vim:set ts=2 sw=2 et:
