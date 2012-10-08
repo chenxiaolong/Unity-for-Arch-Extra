@@ -1,7 +1,7 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=humanity-icon-theme
-pkgver=0.6
+pkgver=0.6.1
 pkgrel=100
 pkgdesc="Humanity Icon Theme"
 arch=('any')
@@ -14,7 +14,7 @@ provides=("humanity-icons=${pkgver}")
 conflicts=('humanity-icons')
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.gz")
-sha512sums=('9270a10d4178f829bdfcecdd866206564fd20f0ea53c0c640d57fb46d27d01da799ab9ec51a07dd792cbc49941e27217b2b064a32fe20b09c17579ddb969bb87')
+sha512sums=('3fd0d87bbca4d7d4b5790cdec530a8c265af56e0a2a506d04e4c528c40a0edd2e870e8d21ad9e60d65a7ff0ac3098813d3b7cb238a9d44086bda21219ff3e20e')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -37,4 +37,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha512sums=('ebf00674eb597c40aff42b5b1579c5f1ed4cb9ed51be5427336a977024c70ae08ed9f78e4024cb0cb05612f9846bfadfa4a65fa431c409e7f189ae15e1fa2d89')
