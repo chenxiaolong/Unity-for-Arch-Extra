@@ -47,7 +47,7 @@ package() {
 
   # Arch Linux logo
   rm "${pkgdir}/usr/lib/firefox/extensions/${emid}/skin/cof.png"
-  install -m644 "${srcdir}/launcher_bfb.png"
+  install -m644 "${srcdir}/launcher_bfb.png" \
     "${pkgdir}/usr/lib/firefox/extensions/${emid}/skin/cof.png"
 }
 
