@@ -1,9 +1,9 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
-_bzr_rev=92
+_bzr_rev=145
 
 pkgname=thunderbird-messagingmenu
-pkgver=0.8.3
+pkgver=1.0
 pkgrel=100
 pkgdesc="Messaging Menu Thunderbird Extension"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('bzr')
 provides=("messagingmenu-extension=${pkgver}")
 conflicts=('messagingmenu-extension')
 
-_bzrtrunk=lp:messagingmenu-extension/0.8
+_bzrtrunk=lp:messagingmenu-extension/1.0
 
 build() {
   cd "${srcdir}"
