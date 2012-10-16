@@ -1,9 +1,9 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
-_bzr_rev=145
+_bzr_rev=147
 
 pkgname=thunderbird-messagingmenu
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=100
 pkgdesc="Messaging Menu Thunderbird Extension"
 arch=('i686' 'x86_64')
