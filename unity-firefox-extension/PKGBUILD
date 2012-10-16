@@ -3,7 +3,7 @@
 # Upstream package name is unity-firefox-extension
 
 pkgname=firefox-extension-unity
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=100
 pkgdesc="Firefox extension for Unity integration"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('gtk2' 'libxslt' 'zip')
 options=('!libtool')
 source=("https://launchpad.net/unity-firefox-extension/trunk/${pkgver}/+download/unity-firefox-extension-${pkgver}.tar.gz"
         'launcher_bfb.png')
-sha512sums=('cae2e320124ebe7da28b8934b2d535b98843d23eac45913ed308a4ccdf39fdff8c6e749399093045f6b063d85190063101121f0d11251a6dfef89f48279c22e6'
+sha512sums=('996a9f20c0ad036b51ff895190356f6fb21580dc6f9137cefd3794027adb328323f555e1311274e042146b75fac41e82a3ec237e5b2d2e11be9c7f9725ffa256'
             '9f5469c0300d0c33e26db670771803efd3d821e82689fbb1391a31b8fd0e280a12ea010fe6f32a702a5d1797918d416c8adabfccf6049e43b496ebb6dbe2c054')
 
 build() {
