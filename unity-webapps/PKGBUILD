@@ -12,7 +12,7 @@ setver _ver_gmail		2.4.7
 setver _ver_googlecalendar	2.2
 setver _ver_googledocs		2.2
 setver _ver_googleplus		2.2
-setver _ver_googleplusgames	2.2
+setver _ver_googleplusgames	2.3
 setver _ver_grooveshark		2.2
 setver _ver_hulu_player		2.2
 setver _ver_lastfm_radio	2.2
@@ -73,7 +73,7 @@ pkgname=(
 
 pkgbase=unity-webapps
 pkgver=1.0
-pkgrel=100
+pkgrel=101
 pkgdesc="Metapackage for all the Unity WebApps"
 arch=('any')
 url="http://packages.ubuntu.com/search?keywords=webapps&searchon=names&suite=quantal&section=all"
@@ -130,7 +130,7 @@ sha512sums=('8e3e961fb1a75da7fd01c6c60d87bcbe7780c2591878321f18e88cd80213e423b99
             '9db54f39bd85a5798dddc5e521bd0e42248d56e3621166768ddc448f89e4fd78cc6e54a6bc535feb33ad6f42e2d73f3c426616c76caf5dd122581a07757ebc81'
             '20681325d7795a7fd5072ec6e35ebbed5493fda4b4cbfc3f1a74824c2ace34897962f68c16cb9f230700e70397b0bbabef96dd90c865bcb1fa0869ee586484d0'
             'c31f614b5c99f73ad805aad70325b2b08be5ebff7ae58b75224205a556d3d9ced52db2147be50e628dc3b25377636500621cdaa6f3d36a286c2c5543fea7b5b9'
-            '6bcf3205c38af38dcd519eff022a6480b21124a39f4d99b31c03a838f397804a320a7ad501a04ac432914d611caeec489adbca3906adaf7196c008d5bd23e124'
+            '46a934de3670ed909f3000fdd366f51156b58962c641c1b96d950d33bc57a715b178540d0d39cc6b8b7cd48616ffa1f9fdcd9347c84007ae8eccc6201b07f2ff'
             'fe51aa8683b3b1d7e9f75a7ad856cccb812497fb1f64a234f7d8d7eaafe71a2cc897bc49c5e93acc977289167964e877e519c049db73bf37684a477387e6987d'
             '777d62aa227f76cf6cefbb3ba778523f647edc15401addc1bbe7b626d421a7fd6dc4fff1d285995ce7d2ae7c57f60e2980b3932cb3988ccac35025ab58b539b2'
             'efe9bbae841442a72fbba036a02d31392cb26b899d600c2a211daf8de4975c04349d7f7d23f6c83347b9c764fd07f45e49271259603a4189296ce27848ceaca5'
