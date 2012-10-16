@@ -6,7 +6,7 @@ OLDDATE=$(date +%Y.%m.%d)
 # Ubuntu's package name is xul-ext-websites-integration
 
 pkgname=firefox-extension-websites-integration
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=100
 pkgdesc="Firefox extension to support user scripts"
 arch=('any')
@@ -16,7 +16,7 @@ groups=('unity-extra')
 depends=('libunity-webapps')
 makedepends=('zip')
 source=("https://launchpad.net/webapps-greasemonkey/trunk/${pkgver}/+download/webapps-greasemonkey-${pkgver}.tar.gz")
-sha512sums=('7ddabb451ce6fff02141684f79ec290eb181df0872ef6e093472043c2fffaaf450ee221d20c8b98f350e550587581a49f1ecc91902b3720f67412b33c3acbb86')
+sha512sums=('7c14d95cfc5098b85622469c3b9df7351b0da1bc9dca606ce506d39ed7b28f6c5879c4ed85a6ffb55799480e2c840531a927618352c781f8cd22e907021ff027')
 
 build() {
   cd "${srcdir}/webapps-greasemonkey-${pkgver}"
