@@ -3,18 +3,24 @@
 pkgbase=python-shiboken
 pkgname=('python-shiboken' 'python2-shiboken')
 pkgver=1.1.2
-pkgrel=100
+pkgrel=101
 pkgdesc="CPython bindings generator for C++ libraries"
 arch=('i686' 'x86_64')
 url="http://www.pyside.org/"
 license=('LGPL')
 groups=('unity-extra')
 makedepends=('cmake' 'openssl' 'python' 'python2' 'qt')
-source=("http://www.pyside.org/files/shiboken-${pkgver}.tar.bz2")
-sha512sums=('520818743497d82ca2e111a617176068d9daf47b96e8a545949ca644f000d2281dac4d0bd1c12af7822a4895b4019a6e1a76eca47121e792669be0f5ba6f6bd6')
+# Official mirror temporarily broken
+#source=("http://www.pyside.org/files/shiboken-${pkgver}.tar.bz2")
+source=("https://distfiles.macports.org/py-shiboken/shiboken-${pkgver}.tar.bz2"
+        '0001_Python_3.3.patch')
+sha512sums=('520818743497d82ca2e111a617176068d9daf47b96e8a545949ca644f000d2281dac4d0bd1c12af7822a4895b4019a6e1a76eca47121e792669be0f5ba6f6bd6'
+            'ff42e293dec926fde7f3da4991345a00743090604395e517000d77d46d5c619f95a5f6d5d3a0cd878e2f68b725ffda9fa38d4aba1288324d3d3f16727a4153f6')
 
 build() {
   cd "${srcdir}/shiboken-${pkgver}"
+
+  patch -Np1 -i "${srcdir}/0001_Python_3.3.patch"
 
   mkdir build-python2 build-python3
 
