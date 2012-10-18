@@ -10,13 +10,13 @@ url="http://www.pyside.org/"
 license=('LGPL')
 groups=('unity-extra')
 makedepends=('cmake' 'openssl' 'python' 'python2' 'qt')
-source=("http://www.pyside.org/files/shiboken-${pkgver}.tar.bz2")
+source=("https://distfiles.macports.org/py-shiboken/shiboken-${pkgver}.tar.bz2")
 sha512sums=('520818743497d82ca2e111a617176068d9daf47b96e8a545949ca644f000d2281dac4d0bd1c12af7822a4895b4019a6e1a76eca47121e792669be0f5ba6f6bd6')
 
 build() {
   cd "${srcdir}/shiboken-${pkgver}"
 
-  mkdir build-python2 build-python3
+  mkdir build-python2 build-python3 -p
 
   pushd build-python2/
   cmake .. \
@@ -30,7 +30,9 @@ build() {
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DUSE_PYTHON3:BOOL=TRUE
+    -DUSE_PYTHON3:BOOL=TRUE \
+    -DPYTHON3_LIBRARY=/usr/lib/python3.3 \
+    -DPYTHON3_INCLUDE_DIR=/usr/include/python3.3m
 
   make ${MAKEFLAGS}
   popd
