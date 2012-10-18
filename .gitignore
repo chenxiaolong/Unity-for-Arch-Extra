@@ -1,0 +1,15 @@
+pkg/
+src/
+*.diff.gz
+*.tar.bz2
+*.tar.gz
+*.tar.xz
+*.zip
+.*.swp
+
+*~
+TEMP/
+
+*.log
+
+mono.snk
