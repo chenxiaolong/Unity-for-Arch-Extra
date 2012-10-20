@@ -1,7 +1,7 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=everpad
-pkgver=1.11.1
+pkgver=2.0.1
 pkgrel=100
 pkgdesc="Evernote client with Unity integration"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('unity-extra')
 depends=('python2' 'python2-beautifulsoup3' 'python2-dbus' 'python2-distribute' 'python2-keyring' 'python2-magic' 'python2-oauth2' 'python2-pyside' 'python2-sqlalchemy' 'python2-unity-singlet' 'python2-gnomekeyring' 'python2-pysqlite' 'python2-shiboken' 'python2-webpy' 'sni-qt')
 source=("https://launchpad.net/~nvbn-rm/+archive/ppa/+files/everpad_${pkgver}.orig.tar.xz")
-sha512sums=('f637ca1bd292e0daa62625aeab1706541672576efe0e82afdbd0fa88d6f185234737faa87a570fc826d21beb2f52534f98e5be8eb7e591259118606f63549171')
+sha512sums=('f5425d04f02ded37ea49eb5f721fa0e4a2ccaf8b831a71b91f00708a3d3735a9ca5d120ab2ab1e6be6cd115cb7a9c4a885430417353c5e41f3000f06277bf7ca')
 
 package() {
   cd "${srcdir}/everpad"
