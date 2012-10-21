@@ -14,39 +14,38 @@ Applications
 07: accountsservice-ubuntu       -> Daemon to query user account information
 08: lightdm-unity-greeter        -> The LightDM greeter for Unity
 09: python-defer                 -> A small framework for async. programming
-10: ubuntu-tweak                 -> Tweaking tool for Ubuntu (and Arch Linux :D)
-11: globalmenu-extension         -> Global menu extensions for FF and TB
-12: messagingmenu-extension      -> Messaging indicator extension for TB
-13: liferea-indicator            -> Liferea with indicator support
-14: pidgin-libnotify-ubuntu      -> Pidgin notification plugin
-15: plasma-widget-menubar        -> KDE Plasma widget to display menubar
-16: xfce4-indicator-plugin       -> XFCE panel plugin to display indicators
-17: lo-menubar                   -> LibreOffice global menubar extension
+10: globalmenu-extension         -> Global menu extensions for FF and TB
+11: messagingmenu-extension      -> Messaging indicator extension for TB
+12: liferea-indicator            -> Liferea with indicator support
+13: pidgin-libnotify-ubuntu      -> Pidgin notification plugin
+14: plasma-widget-menubar        -> KDE Plasma widget to display menubar
+15: xfce4-indicator-plugin       -> XFCE panel plugin to display indicators
+16: lo-menubar                   -> LibreOffice global menubar extension
 
 Unity Webapps
-18: python-polib                 -> Python library for messing with po files
-19: webapps-applications         -> Unity WebApps integration scripts
-20: webapps-greasemonkey         -> Firefox extension for user scripts
-21: unity-firefox-extension      -> Firefox extension for Unity integration
-22: webaccounts-browser-extension -> Web Accounts extension for FF and Chromium
-23: unity-webapps                -> See PKGBUILD for list of WebApps
+17: python-polib                 -> Python library for messing with po files
+18: webapps-applications         -> Unity WebApps integration scripts
+19: webapps-greasemonkey         -> Firefox extension for user scripts
+20: unity-firefox-extension      -> Firefox extension for Unity integration
+21: webaccounts-browser-extension -> Web Accounts extension for FF and Chromium
+22: unity-webapps                -> See PKGBUILD for list of WebApps
 
 LightDM remote session
-24: python3-pycurl               -> A Python 3 interface to libcurl
-25: thin-client-config-agent     -> Retrieve list of remote servers for a user
-26: remote-login-service         -> Service to track the remote servers to use
-27: lightdm-remote-session-uccsconfigure -> Session to configure UCCS
-28: libpam-freerdp               -> PAM module to auth. against an RDP server
-29: lightdm-remote-session-freerdp -> Session to login in with FreeRDP
+23: python3-pycurl               -> A Python 3 interface to libcurl
+24: thin-client-config-agent     -> Retrieve list of remote servers for a user
+25: remote-login-service         -> Service to track the remote servers to use
+26: lightdm-remote-session-uccsconfigure -> Session to configure UCCS
+27: libpam-freerdp               -> PAM module to auth. against an RDP server
+28: lightdm-remote-session-freerdp -> Session to login in with FreeRDP
 
 Everpad
-30: python-shiboken              -> CPython bindings generator for C++ libs
-31: python-pyside                -> Python bindings for Qt
-32: unity-singlet                -> Python library for building lenses & scopes
-33: python-keyring               -> Python library for accessing keyrings
-34: python2-oauth2               -> Python 2 library for OAuth 1.0
-35: python2-magic                -> Python 2 bindings for file
-36: everpad                      -> Evernote client with Unity integration
+29: python-shiboken              -> CPython bindings generator for C++ libs
+30: python-pyside                -> Python bindings for Qt
+31: unity-singlet                -> Python library for building lenses & scopes
+32: python-keyring               -> Python library for accessing keyrings
+33: python2-oauth2               -> Python 2 library for OAuth 1.0
+34: python2-magic                -> Python 2 bindings for file
+35: everpad                      -> Evernote client with Unity integration
 
 All of the PKGBUILD's have been checked with the namcap tool for consistency.
 
