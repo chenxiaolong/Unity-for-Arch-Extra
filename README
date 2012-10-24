@@ -22,31 +22,32 @@ Applications
 15: lo-menubar                   -> LibreOffice global menubar extension
 16: indicator-sync               -> Indicator for synchronization status
 17: indicator-cpufreq            -> CPU Frequency Indicator
+18: empathy-ubuntu               -> Empathy IM client with UOA support
 
 Unity Webapps
-18: python-polib                 -> Python library for messing with po files
-19: webapps-applications         -> Unity WebApps integration scripts
-20: webapps-greasemonkey         -> Firefox extension for user scripts
-21: unity-firefox-extension      -> Firefox extension for Unity integration
-22: webaccounts-browser-extension -> Web Accounts extension for FF and Chromium
-23: unity-webapps                -> See PKGBUILD for list of WebApps
+19: python-polib                 -> Python library for messing with po files
+20: webapps-applications         -> Unity WebApps integration scripts
+21: webapps-greasemonkey         -> Firefox extension for user scripts
+22: unity-firefox-extension      -> Firefox extension for Unity integration
+23: webaccounts-browser-extension -> Web Accounts extension for FF and Chromium
+24: unity-webapps                -> See PKGBUILD for list of WebApps
 
 LightDM remote session
-24: python3-pycurl               -> A Python 3 interface to libcurl
-25: thin-client-config-agent     -> Retrieve list of remote servers for a user
-26: remote-login-service         -> Service to track the remote servers to use
-27: lightdm-remote-session-uccsconfigure -> Session to configure UCCS
-28: libpam-freerdp               -> PAM module to auth. against an RDP server
-29: lightdm-remote-session-freerdp -> Session to login in with FreeRDP
+25: python3-pycurl               -> A Python 3 interface to libcurl
+26: thin-client-config-agent     -> Retrieve list of remote servers for a user
+27: remote-login-service         -> Service to track the remote servers to use
+28: lightdm-remote-session-uccsconfigure -> Session to configure UCCS
+29: libpam-freerdp               -> PAM module to auth. against an RDP server
+30: lightdm-remote-session-freerdp -> Session to login in with FreeRDP
 
 Everpad
-30: python-shiboken              -> CPython bindings generator for C++ libs
-31: python-pyside                -> Python bindings for Qt
-32: unity-singlet                -> Python library for building lenses & scopes
-33: python-keyring               -> Python library for accessing keyrings
-34: python2-oauth2               -> Python 2 library for OAuth 1.0
-35: python2-magic                -> Python 2 bindings for file
-36: everpad                      -> Evernote client with Unity integration
+31: python-shiboken              -> CPython bindings generator for C++ libs
+32: python-pyside                -> Python bindings for Qt
+33: unity-singlet                -> Python library for building lenses & scopes
+34: python-keyring               -> Python library for accessing keyrings
+35: python2-oauth2               -> Python 2 library for OAuth 1.0
+36: python2-magic                -> Python 2 bindings for file
+37: everpad                      -> Evernote client with Unity integration
 
 All of the PKGBUILD's have been checked with the namcap tool for consistency.
 
