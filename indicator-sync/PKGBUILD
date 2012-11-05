@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 url="https://launchpad.net/indicator-sync"
 license=('GPL')
 depends=('libdbusmenu-gtk3' 'libido3' 'libindicator3')
+makedepends=('intltool')
 groups=('unity')
 options=('!libtool')
 source=("http://launchpad.net/${pkgname}/12.10/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz")
