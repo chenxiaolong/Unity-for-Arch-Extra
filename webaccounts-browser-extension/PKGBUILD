@@ -4,7 +4,7 @@ pkgbase=webaccounts-browser-extension
 pkgname=('webaccounts-browser-extension' 'chromium-extension-webaccounts' 'firefox-extension-webaccounts')
 _ubuntu_rel=0ubuntu1
 pkgver=0.4.4.${_ubuntu_rel}
-pkgrel=100
+pkgrel=101
 pkgdesc="Ubuntu Online Accounts extensions for Firefox and Chromium"
 arch=('i686' 'x86_64')
 # No upstream homepage
@@ -42,7 +42,7 @@ package_webaccounts-browser-extension() {
 
 package_chromium-extension-webaccounts() {
   pkgdesc="Ubuntu Online Accounts extension for Chromium"
-  depends=("webaccounts-browser-extension=${pkgver}" 'chromium' 'gnome-control-center-signon')
+  depends=("webaccounts-browser-extension=${pkgver}" 'chromium' 'credentials-preferences')
 
   cd "${srcdir}/webaccounts-browser-extension-${pkgver%.*}"
 
@@ -51,7 +51,7 @@ package_chromium-extension-webaccounts() {
 
 package_firefox-extension-webaccounts() {
   pkgdesc="Ubuntu Online Accounts extension for Firefox"
-  depends=("webaccounts-browser-extension=${pkgver}" 'firefox' 'gnome-control-center-signon')
+  depends=("webaccounts-browser-extension=${pkgver}" 'firefox' 'credentials-preferences')
 
   cd "${srcdir}/webaccounts-browser-extension-${pkgver%.*}"
 
