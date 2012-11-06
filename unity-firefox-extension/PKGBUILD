@@ -11,7 +11,7 @@ url="https://launchpad.net/unity-firefox-extension"
 license=('GPL')
 groups=('unity-extra')
 depends=('firefox-extension-websites-integration' 'libunity-webapps')
-makedepends=('gtk2' 'libxslt' 'zip')
+makedepends=('gtk2' 'libxslt' 'zip' 'unzip')
 options=('!libtool')
 source=("https://launchpad.net/unity-firefox-extension/trunk/${pkgver}/+download/unity-firefox-extension-${pkgver}.tar.gz"
         'launcher_bfb.png')

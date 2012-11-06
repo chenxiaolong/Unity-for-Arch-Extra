@@ -12,7 +12,7 @@ pkgdesc="Global Menu Extensions for Firefox and Thunderbird"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/globalmenu-extension"
 license=('GPL' 'LGPL' 'MPL')
-makedepends=('bzr' 'autoconf2.13' 'libidl2' 'unzip' 'xulrunner' 'yasm' 'zip')
+makedepends=('bzr' 'autoconf2.13' 'libidl2' 'unzip' 'xulrunner' 'yasm' 'zip' 'libdbusmenu-gtk2' 'mesa')
 
 _bzrtrunk=lp:globalmenu-extension/3.5
 

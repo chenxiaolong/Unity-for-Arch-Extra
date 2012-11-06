@@ -8,8 +8,8 @@ arch=('i686' 'x86_64')
 url="https://launchpad.net/lo-menubar"
 license=('LGPL')
 groups=('unity-extra')
-depends=('libdbusmenu-gtk2' 'libreoffice-common')
-makedepends=('libreoffice-sdk' 'python2')
+depends=('libdbusmenu-gtk2' 'libreoffice-common' 'boost-libs')
+makedepends=('libreoffice-sdk' 'python2' 'boost')
 source=("https://launchpad.net/lo-menubar/trunk/${pkgver}/+download/lo-menubar-${pkgver}.tar.bz2")
 sha512sums=('f8f01dc4932186ff07c06ac952b4a028064d3ff0962fd1dbc1a11311478829ad67e5ad9313674bb241152eb7c882d0c96dbab0dd589fe17c6ca325fd6b047709')
 
