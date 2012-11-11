@@ -24,13 +24,13 @@ optdepends=('telepathy-gabble: XMPP/Jabber support'
 options=('!libtool')
 groups=('gnome-extra')
 install=empathy.install
-source=("http://ftp.gnome.org/pub/GNOME/sources/${pkgname}/${_actual_ver:0:3}/${pkgname}-${_actual_ver}.tar.xz"
+source=("http://ftp.gnome.org/pub/GNOME/sources/${pkgname%-*}/${_actual_ver:0:3}/${pkgname%-*}-${_actual_ver}.tar.xz"
         "https://launchpad.net/ubuntu/+archive/primary/+files/empathy_${_ubuntu_ver}-${_ubuntu_rel}.debian.tar.bz2")
 sha512sums=('f0708617f2e903704ae8cad858317c3aca1c0dae4ccbd1be24faea4e32f7f7c8f75e3557ba208112936f65faa6a7a31a089b500f750cba85aa5a4414c804e43f'
             '23421fa0ed39990269b74d5704fa41b2042c2868685a1413a12d70108abef21300bd44ac769ae6e6ff8b9f935b85c914647fc780ea47a07b7272352650570e06')
 
 build() {
-  cd "${pkgname}-${_actual_ver}"
+  cd "${pkgname%-*}-${_actual_ver}"
 
   # Apply Ubuntu's patches
   for i in $(grep -v '#' "${srcdir}/debian/patches/series"); do
@@ -53,7 +53,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${_actual_ver}"
+  cd "${pkgname%-*}-${_actual_ver}"
   make -j1 DESTDIR="${pkgdir}" install
 
   install -dm755 "${pkgdir}/usr/share/indicators/messages/applications/"
