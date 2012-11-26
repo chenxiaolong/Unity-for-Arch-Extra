@@ -1,0 +1,37 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+
+pkgname=telepathy-indicator
+_ubuntu_rel=0ubuntu3
+_actual_ver=0.3.0
+pkgver=${_actual_ver}.${_ubuntu_rel}
+pkgrel=100
+pkgdesc="Telepathy integration with the messaging menu"
+arch=('i686' 'x86_64')
+url="https://launchpad.net/telepathy-indicator"
+license=('GPL3')
+groups=('unity-extra')
+depends=('indicator-messages' 'libunity' 'telepathy-glib')
+source=("https://launchpad.net/telepathy-indicator/trunk/${_actual_ver}/+download/telepathy-indicator-${_actual_ver}.tar.gz"
+        "https://launchpad.net/ubuntu/+archive/primary/+files/telepathy-indicator_${_actual_ver}-${_ubuntu_rel}.debian.tar.gz")
+sha512sums=('ada7cf5744fc6c16aed1b4836349f8c1aee5a215444b75c1a0a3d8e7b2d3c0e7ca91d0953dbb3bf66321cfdee63414f5c6217d3adeeb585793c27271cae2d06a'
+            'd011318935bcfb15f34cc8bfa5d54d54435ac3e543683a07f659fa9eaee023330f1b0fcbf5ea568afed3fcd67c5e11ea99eae776e6ea59385fbe6fe6b4675ea0')
+
+build() {
+  cd "${srcdir}/${pkgname}-${_actual_ver}"
+
+  # Apply Ubuntu patches
+  for i in $(grep -v '#' "${srcdir}/debian/patches/series"); do
+    patch -Np1 -i "${srcdir}/debian/patches/${i}"
+  done
+
+  ./configure --prefix=/usr --sysconfdir=/etc
+
+  make ${MAKEFLAGS}
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${_actual_ver}"
+  make DESTDIR="${pkgdir}/" install
+}
+
+# vim:set ts=2 sw=2 et:
