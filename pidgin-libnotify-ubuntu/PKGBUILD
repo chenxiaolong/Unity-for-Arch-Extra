@@ -4,7 +4,7 @@
 # Contributor pidgin-libnotify: 3ED <kas1987@o2.pl>
 
 pkgname=pidgin-libnotify-ubuntu
-_ubuntu_rel=4ubuntu10
+_ubuntu_rel=9ubuntu1
 pkgver=0.14.${_ubuntu_rel}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ source=("http://downloads.sourceforge.net/sourceforge/gaim-libnotify/${pkgname%-
         'language_fixes.patch'
         'pidgin-libnotify-0.14-libnotify-0.7.patch')
 sha512sums=('2ff6b2bad74cb2fd9a3de94c06a2261fa07938bc1971baa578b9a9ae120175943592bf773ec5f00857c5ea35771a7fd1943299521626ce49f410cfd70ea2b399'
-            '839d9e630f3183d45e5f4d2abcb2a365fa5c2d267192ac6c42dd4814194fea1c2bf982be8387a976a87f5c7f6818185d0d52a3b4b9c924256b859c97a431a773'
+            'cce2edaf6f77fea956984805706c04be6a04ddb878573b13d8f6a4271c4716e33a048923f989fb2736de472745aaa6ccd1384134b23a1491774de1fdd04a086b'
             'ac333a7e88031325d5a3e11e0470f426f8af579b932d70d294a21f76b24913fcbd87ebcbe649d731ede8164125139d564896bd840c0315db70f3d37e87f29233'
             '242fb898521466dd5455e3488487bcbbceac2e3fc53979b14857ca527fbd43d480209c45217ae513eae0d7327819c24b3a64a0fa03b52ce54c390277d8c28d76')
 
