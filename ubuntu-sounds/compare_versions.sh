@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
 
 source "$(dirname ${0})/PKGBUILD"
-
-echo "Getting latest Ubuntu version..."
-UBUNTU_VER=($(wget -q 'http://packages.ubuntu.com/quantal/source/ubuntu-sounds' -O - | sed -n 's/.*>ubuntu-sounds_\(.*\)\.tar\.gz<.*/\1/p'))
-
-echo ""
+source "$(dirname ${0})/../version_checker.sh"
 
 echo -e "PKGBUILD version: ${pkgver}"
 echo -e "Upstream version: (none)"
-echo -e "Ubuntu version:   ${UBUNTU_VER[@]}"
+echo -e "Ubuntu version:   $(get_ubuntu_version ${pkgname} ${1:-raring} native)"
