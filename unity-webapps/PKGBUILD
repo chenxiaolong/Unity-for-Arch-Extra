@@ -2,11 +2,11 @@
 
 setver() { eval "${1}=${2}"; }
 
-setver _ver_amazoncloudreader	2.2
+setver _ver_amazoncloudreader	2.2ubuntu1
 setver _ver_angrybirds		2.2
 setver _ver_bbcnews		2.2
 setver _ver_cuttherope		2.2
-setver _ver_facebookapps	2.2
+setver _ver_facebookapps	2.2ubuntu1
 setver _ver_facebookmessenger	2.2
 setver _ver_gmail		2.4.7
 setver _ver_googlecalendar	2.2
@@ -17,23 +17,23 @@ setver _ver_grooveshark		2.2
 setver _ver_hulu_player		2.2
 setver _ver_lastfm_radio	2.2
 setver _ver_launchpad		2.2
-setver _ver_librefm		2.2
+setver _ver_librefm		2.2ubuntu1
 setver _ver_linkedin		2.4.7
 setver _ver_livemail		2.2
 setver _ver_mail_ru		2.2
 setver _ver_newsblur		2.2
-setver _ver_pandora_com		2.2
+setver _ver_pandora_com		2.2ubuntu1
 setver _ver_qq_mail		2.2
 setver _ver_reddit		2.2
 setver _ver_tumblr		2.2
-setver _ver_twitter		2.4.7
+setver _ver_twitter		2.4.10.1
 setver _ver_vkcom		2.2
 setver _ver_wordpress_com	2.2
 setver _ver_yahoomail		2.2
 setver _ver_yahoonews		2.2
 setver _ver_yandex_music	2.2
 setver _ver_yandexnews		2.2
-setver _ver_youtube		2.4.7
+setver _ver_youtube		2.4.10.1
 
 pkgname=(
   unity-webapps
@@ -73,7 +73,7 @@ pkgname=(
 
 pkgbase=unity-webapps
 pkgver=1.0
-pkgrel=101
+pkgrel=102
 pkgdesc="Metapackage for all the Unity WebApps"
 arch=('any')
 url="http://packages.ubuntu.com/search?keywords=webapps&searchon=names&suite=quantal&section=all"
@@ -120,11 +120,11 @@ addurl yandex-music
 addurl yandexnews
 addurl youtube
 
-sha512sums=('8e3e961fb1a75da7fd01c6c60d87bcbe7780c2591878321f18e88cd80213e423b994a66f7c4acbcd676968f5abd3308fbe8bd58a77c85956c3c9604a134a9d76'
+sha512sums=('25c6147c2b1aed0fe7750cea47ebc6657f0b1fc834bb1ae378c93147e66694002e0cfd65a2fb60c21dee2fbbbdebb04e8dc8a63a77e546554162e45b7d84c818'
             '1f0f805e152ff2855c16fa7596c3f05860d77b427ab3fed247ff0f1afd121adbb323d1982faa6eefb283f4be5edef5dd0ba344be3a39cd3cdcf6c16aa4ecd671'
             '671a11060d02ca7ecf6fff51274e55d996bca8f33808c4d3c3d8ff94d234fd5104c120547662020b5219d559be5fc01826f20c6ead3e8784de55d5e636b53cdd'
             'd2376168b36af06252456bfcfb7bd00cf21e05aed2476f0c52b4911f3baf6964a6c9077840cde8c90385f00c63befceeba7e822d4456ce8bb30b189f66c56f49'
-            '9e1ab3dd7f795453a124dcc06c49a9469b7608c08b90e947475a855d72b262fa66eec1918ce130e219d1901527fe7fa36c9f17057383221bfe83fc63251aa327'
+            '403bf636429133c1fe27ecddf727b55cb4b5a8034325cf372541de8996d70b8b4a217209c2b1e3784cfa28c442693ce30f07554315d3d84c61414f2fcbf71f61'
             'e320d6a25bee2268b28870928ab18e7d18c36d4d5b609d1c832eabb877b62857fe9ebcdb0d02577002c1cba49e1c4f8a01161df34d440607f19782fb6dcf9cd9'
             '66ac8d9c8710e19640e52786b53d7cf7feab494f68a5a395e879a51332a54e0f8027833b7e72d2a884404f9529e925e70067ed1e06210230ee85212f5ec08592'
             '9db54f39bd85a5798dddc5e521bd0e42248d56e3621166768ddc448f89e4fd78cc6e54a6bc535feb33ad6f42e2d73f3c426616c76caf5dd122581a07757ebc81'
@@ -135,23 +135,23 @@ sha512sums=('8e3e961fb1a75da7fd01c6c60d87bcbe7780c2591878321f18e88cd80213e423b99
             '777d62aa227f76cf6cefbb3ba778523f647edc15401addc1bbe7b626d421a7fd6dc4fff1d285995ce7d2ae7c57f60e2980b3932cb3988ccac35025ab58b539b2'
             'efe9bbae841442a72fbba036a02d31392cb26b899d600c2a211daf8de4975c04349d7f7d23f6c83347b9c764fd07f45e49271259603a4189296ce27848ceaca5'
             '880750566a1b3977eac02e8905de9e41506fd287cd75813ce77e7b4a22ccf9fc3313b564e10c7925352560972fe08f8d218efe09651b238fa37f00bb09a3011b'
-            'b9414d68dc0833b7d275fe2fb6117478ae08af13c35aee80e2240beb3b2869cffd13d29d3fd5a60fcd03a036e30428b452a6e7de3ad134a74854a8f2f7d0de76'
+            'b41621ba569d2774aabebe7f8b6c2248cbe6f5792f05e58a1b0f015f174eed78089262b29d4b8939a387ff5f1ae80f5d698053225e234edbe972b2e489fd9b37'
             '52729fe6992b1cb9a0016ef611560a7de56389eb6a76a8a0b295db74dfddefcfaaacf09d3addc4be67ce9ef4387aa95dce43e783f49208820b0f7bc10fe3b8aa'
             '10bbd259a652e66f576d6e12c626f82ce425c930ad791c5d1c6cc72362751211a74b803727e35c34ab6a41cc9ba3cd7023316af3dec290e5170950bc86300eac'
             '00bcedb265377bf209ef00a7e673bdb694bcea44a0677bf81b61386c28d8da77314dbc7818259b0cfcae75944d7394e58a13b3c283b8a7a92f4eebc93db0f2bc'
             '57490f1153bc17ca6c9c046b0e18fdcaaf900c5079fcc14798276d8ae9794fd999f0fee8bd8a41179657ef91db86faf24b987eb3455afca685364897203ac994'
-            '6f0800cc1928cbbbe74182825cfb52f5160af4fedffcc7009cf0b6b7d3377c6e18c1bdf354459c089cb054c959d5b831adf2235f443608b6b6d7d96cdc001ae1'
+            'bd59cd2f1c2c21f7314cae2024b0eda9f27374a57c830ee998767417e63c317f09823bbdcadda792d22fed0a338565010d4aede395d8ecffabace6eac97c7201'
             '16475a7d43b3199f461250dc96c21dfdb25bb4a9108e2d9cef0aa57c4eace7627f713c7af51130d802d765df894e0b07b6532b380d1f1f38e92e8e5bbd0962db'
             'fa6a6f6dbd9013f7ddc7583db92ea93774115981a76d6a4f722b2258eeb5e21654285bfed58704d6a952f04aced75998b526b9a8cd87e905ed5b3c80158472e7'
             '41946c4d4a4a156e02e6c5240090d1d6767d89363b24082c94ec964a72bbf5aad93f6d7c6c2f44c17777fc5d3e985927e0217a2ad84f013e371023953b8ab492'
-            '0c4af3ff15d1529727ccfa06c13df180528e00cfce3dc10790673c1fcdb229889460bf111c41644e8f0ba2e0836c48fd1a4f93abcf5b25fe0bb35a390b2a0383'
+            '536f7e3b02c51955dd6c9a655261373a75b5b29551cffef7bbccd7fe21f35563c59019f829f691a3ec8b27fd0180d5c95820b1a8f8814ae101ecbb969bb30d91'
             'ac6d89c969d364f48db0585b8c82dc1da728e6dbf2599b5e84a23cd479d598572aa6bd66a94c4425c00f63d8033e5a8a516a04f2b15742ee0253d1ea6e9fe972'
             'fb2d12d281fd2001e79f4c9021a007b6bbb6bdf86613889305098daa1242ef088fed655843300e578e4a36322af5798d7df1b8d4d5008da66efed7f68de6e6b1'
             '1885edd39b71dc5660571bef937ff257894a5fb2533df3ac50ac9304c8cffde1c127906777c7ebdeb7edb8c7426708d15852b21775ce1b475d31c945d0e683b6'
             '4ad059e22ca558495d76ff311846a2b012cf487d6e06ea4e486366cac0d48971c422ed09eb4c5641605a4747dbd3a26570e317b9c4ddf0e05ae1ba5451cadea5'
             'ebb7982ab3df082a4acddab70f1df39ba2395b7c4a1b321eb0191323d8bb20e4a120702661e00f982ed54149c7be41cd70474e61c0c5babeffa3322844baeb4a'
             '5833c151ee4c719595c96393154344a7cef692005cd376bb153459f958a5e5080f482278dfb852814f07a0de9fe9fd60b4636ba4560e68ff76ac78f556493648'
-            'a17bdb9b0fdf0000064f4d9f8eb133445da952b252e7377b3d4345b0f16439e6c679ca805c3432c47b293e4ad68c889b4257a0270233c2a3c7977fa4444bf0fd')
+            'e6c9555e8b162268761c3a874f3c96644dda6a88d9b6b099344b96f65b568c7db11b60e2285e4c6d9460d0c89501b70aeefbf9ed50fbe374725045b3739b40cc')
 
 package_unity-webapps() {
   depends=(
@@ -361,5 +361,3 @@ generate_package -n yandexnews		-N "Яндекс.Новости"		\
 generate_package -n youtube		-N "YouTube"			\
                  -v ${_ver_youtube}			--hasicons	\
                  -u http://www.youtube.com/
-
-# vim:set ts=2 sw=2 et:
