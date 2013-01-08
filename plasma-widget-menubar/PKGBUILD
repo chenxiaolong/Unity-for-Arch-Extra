@@ -3,7 +3,7 @@
 # Contributor: thn81 <root@scrat>
 
 pkgname=plasma-widget-menubar
-pkgver=0.1.18
+pkgver=0.2.0
 pkgrel=100
 pkgdesc="A Plasma widget to display menubar of application windows"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ optdepends=('appmenu-gtk: support for GTK+ apps'
             'appmenu-qt: support for Qt apps')
 groups=('unity')
 source=("http://launchpad.net/${pkgname}/trunk/${pkgver}/+download/${pkgname}-${pkgver}.tar.bz2")
-sha512sums=('af54df818ae670bbcd3a16a6458c5b03dc0630610420563f2bc61c4b3fcf801709397e851bfd377054f3d41c6bb8d0dfc5fb710e7d1541e2fe782fde1afbf371')
+sha512sums=('73a675a170e53dfc5a8471f879f8b25ead59e3dc2ef30e87777c80994594d3849bca8e139679d33df77ec317fa0467590fb3a4c5b5d0c395ab89a0cc9158df8f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
