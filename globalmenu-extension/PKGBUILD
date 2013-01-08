@@ -2,11 +2,11 @@
 
 # Based on Tom Kuther's PKGBUILD
 
-_bzr_rev=465
+_bzr_rev=496
 
 pkgbase=globalmenu-extension
 pkgname=('firefox-globalmenu' 'thunderbird-globalmenu')
-pkgver=3.5.3
+pkgver=3.6.4
 pkgrel=1
 pkgdesc="Global Menu Extensions for Firefox and Thunderbird"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url="https://launchpad.net/globalmenu-extension"
 license=('GPL' 'LGPL' 'MPL')
 makedepends=('bzr' 'autoconf2.13' 'libidl2' 'unzip' 'xulrunner' 'yasm' 'zip' 'libdbusmenu-gtk2' 'mesa')
 
-_bzrtrunk=lp:globalmenu-extension/3.5
+_bzrtrunk=lp:~extension-hackers/globalmenu-extension/3.6
 
 build() {
   cd "${srcdir}"
@@ -55,7 +55,7 @@ package_firefox-globalmenu() {
   depends=('firefox' 'libdbusmenu-gtk2')
 
   emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' \
-         extensions/globalmenu/install.rdf)
+         extensions/globalmenu/package/install.rdf)
   install -dm755 "${pkgdir}/usr/lib/firefox/extensions/${emid}/"
   unzip -d "${pkgdir}/usr/lib/firefox/extensions/${emid}/" \
            dist/xpi-stage/globalmenu.xpi
@@ -67,7 +67,7 @@ package_thunderbird-globalmenu() {
   depends=('libdbusmenu-gtk2' 'thunderbird')
 
   emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' \
-         extensions/globalmenu/install.rdf)
+         extensions/globalmenu/package/install.rdf)
   install -dm755 "${pkgdir}/usr/lib/thunderbird/extensions/${emid}/"
   unzip -d "${pkgdir}/usr/lib/thunderbird/extensions/${emid}/" \
            dist/xpi-stage/globalmenu.xpi
