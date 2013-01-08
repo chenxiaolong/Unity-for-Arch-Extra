@@ -1,15 +1,8 @@
 #!/usr/bin/env bash
 
 source "$(dirname ${0})/PKGBUILD"
-
-echo "Getting latest Ubuntu version..."
-UBUNTU_VER=($(wget -q 'http://packages.ubuntu.com/quantal/source/humanity-icon-theme' -O - | sed -n 's/.*>humanity-icon-theme_\(.*\)\.tar\.gz<.*/\1/p'))
-
-echo "Getting latest upstream version..."
-UPSTREAM_VER=$(wget -q 'https://launchpad.net/humanity/+download' -O - | sed -n 's/.*[Hh]umanity-\(.*\)\.tar\.gz.*/\1/p' | head -n 1)
-
-echo ""
+source "$(dirname ${0})/../version_checker.sh"
 
 echo -e "PKGBUILD version: ${pkgver}"
-echo -e "Upstream version: ${UPSTREAM_VER}"
-echo -e "Ubuntu version:   ${UBUNTU_VER[@]}"
+echo -e "Upstream version: $(get_launchpad_version humanity '[Hh]umanity')"
+echo -e "Ubuntu version:   $(get_ubuntu_version humanity-icon-theme ${1:-raring} native)"
