@@ -1,0 +1,31 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+# Written by: roi.dm <https://bbs.archlinux.org/viewtopic.php?pid=1177835#p1177835>
+
+pkgname=indicator-sync
+pkgver=12.10.4
+pkgrel=100
+pkgdesc="Sync menu to aggregate services performing background synchronization"
+arch=('i686' 'x86_64')
+url="https://launchpad.net/indicator-sync"
+license=('GPL')
+depends=('libdbusmenu-gtk3' 'libido3' 'libindicator3')
+makedepends=('intltool')
+groups=('unity')
+options=('!libtool')
+source=("http://launchpad.net/${pkgname}/12.10/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('30b5bddedf44a2bf57e012eebd389f4f80177ee6583df3d047d3391ef6a59d9a3aeb4a9540e57dda641f298dc5db899b91524ef57abb5b2905c2fba57141eb23')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  ./configure --prefix=/usr --libexecdir=/usr/share/${pkgname} --disable-static
+  make ${MAKEFLAGS}
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  make DESTDIR="${pkgdir}/" install
+}
+
+# vim:set ts=2 sw=2 et:
