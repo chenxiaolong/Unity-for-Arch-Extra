@@ -4,7 +4,7 @@
 pkgname=lightdm-ubuntu
 _ubuntu_rel=0ubuntu2
 pkgver=1.4.0.${_ubuntu_rel}
-pkgrel=100
+pkgrel=101
 pkgdesc="A lightweight display manager"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/lightdm"
@@ -65,9 +65,7 @@ build() {
   # Do not depend on Debian/Ubuntu specific adduser package
   patch -Np1 -i "${srcdir}/guest-session-cross-distro.patch"
 
-  # Cannot find gmodule-2.0 with newer glib
-  CFLAGS="${CFLAGS} $(pkg-config --cflags --libs gmodule-2.0)"
-
+  aclocal --install --force
   autoreconf -vfi
 
   ./configure \
@@ -77,9 +75,7 @@ build() {
     --libexecdir=/usr/lib/lightdm \
     --localstatedir=/var \
     --with-user-session=ubuntu \
-    --with-greeter-user=lightdm \
-    --disable-tests # Tests fail with GCC 4.7 \
-    #--with-greeter-session=lightdm-gtk-greeter
+    --with-greeter-user=lightdm
 
   make ${MAKEFLAGS}
 }

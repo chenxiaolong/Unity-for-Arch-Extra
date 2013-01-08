@@ -1,15 +1,8 @@
 #!/usr/bin/env bash
 
 source "$(dirname ${0})/PKGBUILD"
-
-echo "Getting latest Ubuntu version..."
-UBUNTU_VER=($(wget -q 'http://packages.ubuntu.com/quantal/source/lightdm' -O - | sed -n 's/.*>lightdm_\(.*\)-\(.*\)\.diff\.gz<.*/\1 \2/p'))
-
-echo "Getting latest upstream version..."
-UPSTREAM_VER=$(wget -q 'https://launchpad.net/lightdm/+download' -O - | sed -n 's/.*lightdm-\(.*\)\.tar\.gz.*/\1/p' | head -n 1)
-
-echo ""
+source "$(dirname ${0})/../version_checker.sh"
 
 echo -e "PKGBUILD version: ${pkgver%.*} ${_ubuntu_rel}"
-echo -e "Upstream version: ${UPSTREAM_VER}"
-echo -e "Ubuntu version:   ${UBUNTU_VER[@]}"
+echo -e "Upstream version: $(get_launchpad_version ${pkgname%-*})"
+echo -e "Ubuntu version:   $(get_ubuntu_version ${pkgname%-*} ${1:-raring})"
