@@ -1,15 +1,8 @@
 #!/usr/bin/env bash
 
 source "$(dirname ${0})/PKGBUILD"
+source "$(dirname ${0})/../version_checker.sh"
 
-echo "Getting latest Ubuntu version..."
-UBUNTU_VER=($(wget -q -O - 'https://launchpad.net/ubuntu/quantal/+source/empathy' | sed -n 's/^.*current\ release\ (\(.*\)-\(.*\)).*$/\1 \2/p'))
-
-echo "Getting latest upstream version..."
-UPSTREAM_VER=$(wget -q "http://ftp.gnome.org/pub/GNOME/sources/empathy/${_actual_ver%.*}/" -O - | sed -n 's/.*>LATEST-IS-\(.*\)<.*/\1/p')
-
-echo ""
-
-echo -e "PKGBUILD version: ${_actual_ver} Ubuntu ${_ubuntu_ver} ${_ubuntu_rel}"
-echo -e "Upstream version: ${UPSTREAM_VER}"
-echo -e "Ubuntu version:   ${UBUNTU_VER[@]}"
+echo -e "PKGBUILD version: ${_actual_ver} ${_ubuntu_rel}"
+echo -e "Upstream version: $(get_gnome_version ${pkgname%-*} 3.6)"
+echo -e "Ubuntu version:   $(get_ubuntu_version ${pkgname%-*} ${1:-raring})"
