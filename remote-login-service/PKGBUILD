@@ -1,7 +1,8 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=remote-login-service
-pkgver=1.0.0
+_ubuntu_rel=0ubuntu2
+pkgver=1.0.0.${_ubuntu_rel}
 pkgrel=100
 pkgdesc="Service to track the remote servers to use"
 arch=('i686' 'x86_64')
@@ -10,18 +11,22 @@ license=('GPL')
 groups=('unity-extra')
 depends=('dbus' 'json-glib' 'libsoup' 'networkmanager' 'python' 'thin-client-config-agent')
 makedepends=('intltool')
-source=("https://launchpad.net/remote-login-service/1.0/${pkgver}/+download/remote-login-service-${pkgver}.tar.gz"
-        '0001_Disable_tests.patch'
-        '0002_No_g_clear_pointer.patch')
+source=("https://launchpad.net/remote-login-service/1.0/${pkgver%.*}/+download/remote-login-service-${pkgver%.*}.tar.gz"
+        "https://launchpad.net/ubuntu/+archive/primary/+files/remote-login-service_${pkgver%.*}-${_ubuntu_rel}.debian.tar.gz"
+        '0001_Disable_tests.patch')
 sha512sums=('a0e93d9c599c00abf382b63f282f59fb27f40ac6699035b07f87cd1bf81ffc51b3daced1dd32e506e4bcb1bf2d455a940ec1550ffb72e1c3fff1a494fbdec6af'
-            '7a4ce2e734f96a0189bdb8068b5447cce87bf03a8edc2359d1ca25bcd3323e207d60212639c62eeb4aa8ca0259cfd4e88ba90c51fa13d75b42aba10e7dba3f03'
-            'e27a5b5b608bb42b723624789ab46017037a8cc14bd661eb82b8eccbe5af5cecac118221614066b4c2d23af8628468b0a78e207f8ad34a594d9d4ce9cc79402d')
+            '4e35cf1d48d668035284c1b37dbc1c42e11effafe3f1d21d4664ee99d0300d9b9f4b8831c699cb7339a0c623f12f18508140bb9fcf10a10b7288149bba2bb558'
+            '7a4ce2e734f96a0189bdb8068b5447cce87bf03a8edc2359d1ca25bcd3323e207d60212639c62eeb4aa8ca0259cfd4e88ba90c51fa13d75b42aba10e7dba3f03')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver%.*}"
 
-  patch -Np1 -i "${srcdir}/0001_Disable_tests.patch"
-  patch -Np1 -i "${srcdir}/0002_No_g_clear_pointer.patch"
+  patch -p1 -i "${srcdir}/0001_Disable_tests.patch"
+
+  # Apply Ubuntu's patches
+  for i in $(grep -v '#' "${srcdir}/debian/patches/series"); do
+    patch -p1 -i "${srcdir}/debian/patches/${i}"
+  done
 
   autoreconf -vfi
 
@@ -30,7 +35,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver%.*}"
   make DESTDIR="${pkgdir}/" install
 }
 
