@@ -1,0 +1,51 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+
+_bzr_rev=147
+
+pkgname=thunderbird-messagingmenu
+pkgver=1.0.1
+pkgrel=100
+pkgdesc="Messaging Menu Thunderbird Extension"
+arch=('i686' 'x86_64')
+url="https://launchpad.net/messagingmenu-extension"
+license=('MPL')
+groups=('unity-extra')
+depends=('thunderbird' 'indicator-messages')
+makedepends=('bzr')
+provides=("messagingmenu-extension=${pkgver}")
+conflicts=('messagingmenu-extension')
+
+_bzrtrunk=lp:messagingmenu-extension/1.0
+
+build() {
+  cd "${srcdir}"
+  msg "Connecting to Bazaar server...."
+
+  if [[ -d messagingmenu-extension ]]; then
+    cd messagingmenu-extension && bzr pull "${_bzrtrunk}" -r "${_bzr_rev}"
+    msg "The local files are updated."
+  else
+    bzr branch "${_bzrtrunk}" messagingmenu-extension -q -r "${_bzr_rev}"
+  fi
+
+  msg "Bazaar checkout done or server timeout"
+  msg "Starting build..."
+
+  rm -rf "${srcdir}/messagingmenu-extension-build"
+  cp -r "${srcdir}/messagingmenu-extension" "${srcdir}/messagingmenu-extension-build"
+  cd "${srcdir}/messagingmenu-extension-build"
+
+  sh build.sh
+}
+
+package() {
+  cd "${srcdir}/messagingmenu-extension-build"
+
+  EMID=$(sed -n 's/^.*<em:id>\(.*\)<\/em:id>.*$/\1/p' install.rdf | head -n 1)
+
+  install -dm755 "${pkgdir}/usr/lib/thunderbird/extensions/${EMID}/"
+  unzip -d "${pkgdir}/usr/lib/thunderbird/extensions/${EMID}/" \
+    messagingmenu.xpi
+}
+
+# vim:set ts=2 sw=2 et:
