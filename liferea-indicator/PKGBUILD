@@ -5,7 +5,8 @@
 
 _pkgname=liferea
 pkgname=liferea-indicator
-pkgver=1.8.7
+_ubuntu_rel=0ubuntu1
+pkgver=1.8.10.${_ubuntu_rel}
 pkgrel=100
 pkgdesc="A desktop news aggregator for online news feeds and weblogs with Messages Indicator support"
 arch=('i686' 'x86_64')
@@ -13,37 +14,56 @@ url="http://liferea.sourceforge.net/"
 license=('GPL')
 depends=('gconf' 'libwebkit' 'libnotify' 'libunique' 'json-glib' 'libindicate-gtk2' 'hicolor-icon-theme')
 makedepends=('intltool')
-provides=("liferea=$pkgver")
+provides=("liferea=${pkgver%.*}")
 conflicts=('liferea')
 options=('!libtool' '!emptydirs')
 install=liferea.install
-source=("http://downloads.sourceforge.net/sourceforge/liferea/liferea-${pkgver}.tar.gz"
-        'libindicate-fix.patch')
-sha1sums=('3cdadae3b3bcec2da048257b72a5d7c11a9621f1'
-          '217d72ecdcc0cf15b9799311064c642058d6a7c1')
-
+source=("http://downloads.sourceforge.net/sourceforge/liferea/liferea-${pkgver%.*}.tar.bz2"
+        "https://launchpad.net/ubuntu/+archive/primary/+files/liferea_${pkgver%.*}-${_ubuntu_rel}.debian.tar.gz")
+sha512sums=('6ef82f363463c058518f94cb7af293eb7f57d453bea0e99b3000c8bb0663d429ba0995f86eeb35c0ee480941267eb77463aa82ce5444fda8d5e711f9835ed027'
+            '3927b804895b6ace6622e773c265b2dfe2aaa16846fa4faa26109ff5fa9cf774af400df58e73784c226cc2f7d4592ddac33c75746e1c5533891e301901a036d9')
 
 build() {
-  cd "${srcdir}/liferea-${pkgver}"
+  cd "${srcdir}/liferea-${pkgver%.*}"
 
-  patch -Np1 -i "${srcdir}/libindicate-fix.patch"
-  sed -i -e 's/indicate-0.5/indicate-0.7/' \
-         -e 's/indicate-gtk-0.5/indicate-gtk-0.7/' configure
+  # Apply Ubuntu's patches
+    # Disable patches
+      sed -i '/www-browser/d' "${srcdir}/debian/patches/series"
+  for i in $(grep -v '#' "${srcdir}/debian/patches/series"); do
+    patch -p1 -i "${srcdir}/debian/patches/${i}"
+  done
 
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-schemas-install --enable-libindicate
+  autoreconf -vfi
+
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --disable-schemas-install \
+    --enable-nm \
+    --enable-gnutls \
+    --enable-lua \
+    --enable-libnotify \
+    --enable-libindicate
+
   make ${MAKEFLAGS}
 }
 
 package() {
-  cd "${srcdir}/liferea-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/liferea-${pkgver%.*}"
+  GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 make DESTDIR="${pkgdir}" install
 
   install -dm755 "${pkgdir}/usr/share/gconf/schemas"
   gconf-merge-schema "${pkgdir}/usr/share/gconf/schemas/${pkgname}.schemas" "${pkgdir}"/etc/gconf/schemas/*.schemas
   rm -v "${pkgdir}"/etc/gconf/schemas/*.schemas
 
   install -dm755 "${pkgdir}/usr/share/indicators/messages/applications/"
-  echo '/usr/share/applications/liferea.desktop' > "${pkgdir}/usr/share/indicators/messages/applications/liferea"
+  install -m644 "${srcdir}/debian/liferea.indicate" \
+    "${pkgdir}/usr/share/indicators/messages/applications/"
+
+  install -dm755 "${pkgdir}/usr/share/liferea/pixmaps/"
+  install -m644 "${srcdir}/debian/liferea.xpm" \
+    "${pkgdir}/usr/share/liferea/pixmaps/"
 }
 
 # vim:set ts=2 sw=2 et:
