@@ -7,7 +7,7 @@ OLDDATE=$(date +%Y.%m.%d)
 
 pkgname=firefox-extension-websites-integration
 pkgver=2.3.5
-pkgrel=100
+pkgrel=101
 pkgdesc="Firefox extension to support user scripts"
 arch=('any')
 url="https://launchpad.net/webapps-greasemonkey"
@@ -15,11 +15,14 @@ license=('GPL')
 groups=('unity-extra')
 depends=('libunity-webapps')
 makedepends=('zip' 'unzip')
-source=("https://launchpad.net/webapps-greasemonkey/trunk/${pkgver}/+download/webapps-greasemonkey-${pkgver}.tar.gz")
-sha512sums=('7c14d95cfc5098b85622469c3b9df7351b0da1bc9dca606ce506d39ed7b28f6c5879c4ed85a6ffb55799480e2c840531a927618352c781f8cd22e907021ff027')
+source=("https://launchpad.net/webapps-greasemonkey/trunk/${pkgver}/+download/webapps-greasemonkey-${pkgver}.tar.gz"
+        '0001_Fix_library_loading.patch')
+sha512sums=('7c14d95cfc5098b85622469c3b9df7351b0da1bc9dca606ce506d39ed7b28f6c5879c4ed85a6ffb55799480e2c840531a927618352c781f8cd22e907021ff027'
+            '382147a8ff67d3a54adce0bbe27032ea0caa9e13feefedeb13372b5d6a5b80df9b5dc17b5f662cd5bbaa522ec65d9fcea585c28bae7ed8445e971548acc2a08a')
 
 build() {
   cd "${srcdir}/webapps-greasemonkey-${pkgver}"
+  patch -p1 -i "${srcdir}/0001_Fix_library_loading.patch"
   ./build.sh
 }
 
