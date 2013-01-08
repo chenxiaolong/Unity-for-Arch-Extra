@@ -3,7 +3,7 @@ Unity-for-Arch-Extra: Themes, icons, and other additions that complete the Unity
 Themes, icons, etc.
 
 01: humanity-icon-theme          -> Icons used in Ubuntu < 10.04
-02: ubuntu-mono                  -> Icons used in Ubuntu >= 10.04
+02: ubuntu-themes                -> Ubuntu icons and Ambiance and Radiance
 03: ubuntu-wallpapers            -> Wallpapers used in Ubuntu from 9.10 - 12.04
 04: light-themes                 -> Ubuntu's Ambiance and Radiance GTK themes
 05: ubuntu-sounds                -> The sound theme used in Ubuntu <= 12.04
