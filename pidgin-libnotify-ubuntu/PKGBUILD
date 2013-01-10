@@ -21,11 +21,13 @@ options=(!libtool)
 source=("http://downloads.sourceforge.net/sourceforge/gaim-libnotify/${pkgname%-*}-${pkgver%.*}.tar.gz"
         "http://archive.ubuntu.com/ubuntu/pool/main/p/${pkgname%-*}/${pkgname%-*}_${pkgver%.*}-${_ubuntu_rel}.debian.tar.gz"
         'language_fixes.patch'
-        'pidgin-libnotify-0.14-libnotify-0.7.patch')
+        'pidgin-libnotify-0.14-libnotify-0.7.patch'
+        '0001_autoconf.patch')
 sha512sums=('2ff6b2bad74cb2fd9a3de94c06a2261fa07938bc1971baa578b9a9ae120175943592bf773ec5f00857c5ea35771a7fd1943299521626ce49f410cfd70ea2b399'
             'cce2edaf6f77fea956984805706c04be6a04ddb878573b13d8f6a4271c4716e33a048923f989fb2736de472745aaa6ccd1384134b23a1491774de1fdd04a086b'
             'ac333a7e88031325d5a3e11e0470f426f8af579b932d70d294a21f76b24913fcbd87ebcbe649d731ede8164125139d564896bd840c0315db70f3d37e87f29233'
-            '242fb898521466dd5455e3488487bcbbceac2e3fc53979b14857ca527fbd43d480209c45217ae513eae0d7327819c24b3a64a0fa03b52ce54c390277d8c28d76')
+            '242fb898521466dd5455e3488487bcbbceac2e3fc53979b14857ca527fbd43d480209c45217ae513eae0d7327819c24b3a64a0fa03b52ce54c390277d8c28d76'
+            '5e758f6ca82f177498ba5e1040a8fed19ca2cedfa44bd6a854b67a84a0703b106b7c2e966e817a10ff6a7b0c8f4fe7b7ea97f2a3468f42877fc651009f140f67')
 
 build() {
   cd "$srcdir/${pkgname%-*}-${pkgver%.*}"
@@ -33,6 +35,7 @@ build() {
   msg "Applying language_fixes.patch..."
   patch -p1 -i "$srcdir/language_fixes.patch"
   #~ patch -p0 -i "$srcdir/pidgin-libnotify-0.14-libnotify-0.7.patch"
+  patch -p1 -i "${srcdir}/0001_autoconf.patch"
 
   # Apply ubuntu patches
   ## dont use those ubuntu-patches, since there are similar arch patches

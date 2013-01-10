@@ -1,0 +1,12 @@
+diff -Nru pidgin-libnotify-0.14.orig/configure.ac pidgin-libnotify-0.14/configure.ac
+--- pidgin-libnotify-0.14.orig/configure.ac	2013-01-10 05:31:47.714912494 -0500
++++ pidgin-libnotify-0.14/configure.ac	2013-01-10 05:31:58.531521391 -0500
+@@ -5,7 +5,7 @@
+ 
+ AC_INIT([pidgin-libnotify], [0.14], [nothing])
+ AC_CANONICAL_SYSTEM
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ 
+ AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
+ 
