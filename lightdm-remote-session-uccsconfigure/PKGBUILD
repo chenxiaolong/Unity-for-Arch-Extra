@@ -8,13 +8,15 @@ arch=('i686' 'x86_64')
 url="https://launchpad.net/lightdm-remote-session-uccsconfigure"
 license=('GPL')
 groups=('unity-extra')
-depends=('lightdm-ubuntu' 'unity' 'chromium')
+depends=('lightdm-ubuntu' 'unity' 'zenity')
+optdepends=('chromium: To configure the remote sessions'
+            'google-chrome: To configure the remote sessions')
 source=("https://launchpad.net/lightdm-remote-session-uccsconfigure/1.0/${pkgver}/+download/lightdm-remote-session-uccsconfigure-${pkgver}.tar.gz"
         '0001_PAM_include.patch'
         '0002_Use_chromium.patch')
 sha512sums=('ed5d8fb76314f1bae784cdf05be7cb24a255b446a54461ca94664a67606317e2318f760bffdd943fa098a7ed9c68f9d12caeb48bafd7e6760244d872797a0412'
             'e091ffd310a868bcb919dd5e2aef5cdf65b569c4536690eb962a2c1d5ea167173a1a3c69b7da9551092a5faef6fc8e3c9c39e36cd5942c7e560096f76e3e252b'
-            '09518141ddc7d00cd1c0839070c58bc94ebb7846ccc081daa42731958ee3ffb869fd3b8c9fcd246f1ab456bffa97c2fd0c399d5fd986a34a0fb6bd4552b04b96')
+            'e2455b7134b62a8ae61618c39fa4cbe82c040c405f766b26455c503f13cfb33b7d323e85dd9304ca76bd6137a64b8cd2cad0d78f9d76247d03de9c47e7ad9d8f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
