@@ -1,0 +1,12 @@
+diff -Nru xfce4-indicator-plugin-0.5.0.orig/configure.in xfce4-indicator-plugin-0.5.0/configure.in
+--- xfce4-indicator-plugin-0.5.0.orig/configure.in	2013-01-11 16:02:40.605934000 -0500
++++ xfce4-indicator-plugin-0.5.0/configure.in	2013-01-11 16:02:53.125828000 -0500
+@@ -33,7 +33,7 @@
+ dnl *** Initialize automake ***
+ dnl ***************************
+ AM_INIT_AUTOMAKE([1.8 dist-bzip2 tar-ustar])
+-AM_CONFIG_HEADER([config.h])
++AC_CONFIG_HEADERS([config.h])
+ AM_MAINTAINER_MODE()
+ 
+ dnl ********************************
