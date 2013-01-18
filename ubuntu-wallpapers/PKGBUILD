@@ -4,7 +4,9 @@ pkgname=ubuntu-wallpapers
 _actual_ver=13.04
 _extra_ver=daily12.12.13.1
 _ubuntu_rel=0ubuntu1
-pkgver=${_actual_ver}${_extra_ver}.${_ubuntu_rel}
+# AUR fix
+pkgver=13.04e.aurfix1
+true && pkgver=${_actual_ver}${_extra_ver}.${_ubuntu_rel}
 pkgrel=100
 pkgdesc="The default wallpapers for Ubuntu (from 9.10 Karmic Koala to 13.04 Raring Ringtail)"
 arch=('any')
