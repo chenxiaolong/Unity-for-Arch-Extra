@@ -2,7 +2,7 @@
 
 pkgname=ubuntu-themes
 _actual_ver=13.04
-_extra_ver=daily12.12.11
+_extra_ver=daily13.01.10
 pkgver=${_actual_ver}${_extra_ver}
 pkgrel=100
 pkgdesc="Ubuntu monochrome icon theme, Abmiance and Radiance themes, and Ubuntu artwork"
@@ -16,7 +16,7 @@ provides=('light-themes' 'ubuntu-mono')
 conflicts=('light-themes' 'ubuntu-mono')
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${_actual_ver}${_extra_ver}.orig.tar.gz")
-sha512sums=('8788b9d80f9ad2eb67025f5272a390e66f2b9fb3c3b9d2e9241a1922adc210f1cee8f96bcbf1d5a26c83f13216ebb90c2a1469b84d1197c114f2243c32693719')
+sha512sums=('28597fef92ceec81868bc317fb31842c55f41d6467bcee9500ebf3688d2d4fca67b15c0b444460618485b86c0ec0e23be16eea6eb3766cdf616329cacae7ceda')
 
 build() {
   cd "${srcdir}/${pkgname}-${_actual_ver}${_extra_ver}"
@@ -40,11 +40,6 @@ package() {
   cp -av ubuntu-mono-dark/  "${pkgdir}/usr/share/icons/"
   cp -av ubuntu-mono-light/ "${pkgdir}/usr/share/icons/"
   cp -av LoginIcons/        "${pkgdir}/usr/share/icons/"
-
-  # From debian/rules: What's the purpose of this?
-  for i in "${pkgdir}"/usr/share/icons/ubuntu-mono-*; do
-    cp -avt ${i} places/
-  done
 
   install -Dm644 distributor-logo.png \
     "${pkgdir}/usr/share/icons/hicolor/48x48/apps/distributor-logo.png"
