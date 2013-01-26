@@ -1,7 +1,7 @@
 # Maintainer: Xiao-Long Chen <chenxiaolongcxl.epac.to>
 
 pkgname=indicator-cpufreq
-pkgver=0.1.4
+pkgver=0.2
 pkgrel=100
 pkgdesc="CPU frequency indicator"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('python2-distutils-extra')
 source=("https://launchpad.net/indicator-cpufreq/trunk/${pkgver}/+download/indicator-cpufreq-${pkgver}.tar.gz"
         'indicator-cpufreq.pkla'
         '0001_Use_cpupower.patch')
-sha512sums=('67aa92be01d933097a04851919b28b312c5fdf0dbeaa72acf3ef13e6762f1b9bc0f250307d5077639e0b4c108080fceeca37106ba49f3517cfb7df7095b8212c'
+sha512sums=('28ce3060c5a72f15c944d65a602234a772abe5a46649a09c72108b2685c23729056e36fafe6c9648f638d8487eab2107f2ee12e3cdab0dfaa5b8da3af1abb9c3'
             '5a140fbc43df04de4addb1fc1dee2ae3dc76463cf9bf428b90c9c669072142bd11adfba5113b8d9bd868fdccc0606a595d0025e1e1d64178fb9f75b395e79406'
             '8aad00c00a95d71f221647263422eef89a0207bdb55d883520f3871f28551c316860560207c96144e22dda2ab5f5fc9b8c7bfa0fc642283de160bfd61458b8c0')
 
