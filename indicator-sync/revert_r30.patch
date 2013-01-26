@@ -1,0 +1,73 @@
+Reverts:
+------------------------------------------------------------
+revno: 30 [merge]
+author: Charles Kerr <charles.kerr@canonical.com>
+committer: Tarmac
+branch nick: trunk.13.04
+timestamp: Wed 2013-01-23 14:50:54 +0000
+message:
+  Removes g_type_init() calls and bumps the glib prerequisite to 2.35.4. Fixes: https://bugs.launchpad.net/bugs/1103087.
+  
+  Approved by Mathieu Trudel-Lapierre, PS Jenkins bot.
+------------------------------------------------------------
+=== modified file 'configure.ac'
+--- configure.ac	2013-01-22 20:14:33 +0000
++++ configure.ac	2012-11-08 17:29:38 +0000
+@@ -50,7 +50,7 @@
+ INDICATOR_REQUIRED_VERSION=0.3.19
+ DBUSMENUGLIB_REQUIRED_VERSION=.0.6.2
+ DBUSMENUGTK_REQUIRED_VERSION=0.5.90
+-GLIB_REQUIRED_VERSION=2.35.4
++GLIB_REQUIRED_VERSION=2.32.0
+ 
+ PKG_CHECK_MODULES(SYNC_LIB_DEPS, [dbusmenu-glib-0.4 >= $DBUSMENUGLIB_REQUIRED_VERSION
+                                    gio-unix-2.0      >= $GIO_UNIX_REQUIRED_VERSION
+
+=== modified file 'examples/sync-app-example.c'
+--- examples/sync-app-example.c	2013-01-22 20:14:33 +0000
++++ examples/sync-app-example.c	2012-08-25 20:27:47 +0000
+@@ -211,6 +211,7 @@
+ int
+ main (void)
+ {
++  g_type_init ();
+   create_u1_sync_menu_app ();
+   g_main_loop_run (g_main_loop_new(NULL, FALSE));
+   return 0;
+
+=== modified file 'src/service/sync-service.c'
+--- src/service/sync-service.c	2013-01-22 20:14:33 +0000
++++ src/service/sync-service.c	2012-09-17 05:18:18 +0000
+@@ -643,6 +643,8 @@
+   bindtextdomain (GETTEXT_PACKAGE, GNOMELOCALEDIR);
+   textdomain (GETTEXT_PACKAGE);
+ 
++  g_type_init ();
++
+   sync_service.skeleton = dbus_sync_service_skeleton_new ();
+ 
+   g_bus_get (G_BUS_TYPE_SESSION, NULL, on_got_bus, &sync_service);
+
+=== modified file 'test/test-client.cpp'
+--- test/test-client.cpp	2013-01-22 20:14:33 +0000
++++ test/test-client.cpp	2012-09-21 23:17:22 +0000
+@@ -31,6 +31,7 @@
+       static bool ran_once_init = false;
+       if (!ran_once_init)
+         {
++          g_type_init();
+           g_setenv ("INDICATOR_SERVICE_SHUTDOWN_TIMEOUT", "5000", TRUE);
+           g_unsetenv ("INDICATOR_ALLOW_NO_WATCHERS");
+           g_unsetenv ("INDICATOR_SERVICE_REPLACE_MODE");
+
+=== modified file 'test/test-gtest.cpp'
+--- test/test-gtest.cpp	2013-01-22 20:14:33 +0000
++++ test/test-gtest.cpp	2012-08-19 07:00:07 +0000
+@@ -7,5 +7,6 @@
+ }
+ 
+ TEST(LauncherMenuItem, NameInitialized) {
++  g_type_init();
+   EXPECT_TRUE(true);
+ }
+

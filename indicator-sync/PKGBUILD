@@ -2,7 +2,9 @@
 # Written by: roi.dm <https://bbs.archlinux.org/viewtopic.php?pid=1177835#p1177835>
 
 pkgname=indicator-sync
-pkgver=12.10.4
+_actual_ver=12.10.5
+_extra_ver=daily13.01.25
+pkgver=${_actual_ver}${_extra_ver}
 pkgrel=100
 pkgdesc="Sync menu to aggregate services performing background synchronization"
 arch=('i686' 'x86_64')
@@ -12,18 +14,24 @@ depends=('libdbusmenu-gtk3' 'ido' 'libindicator3')
 makedepends=('intltool')
 groups=('unity')
 options=('!libtool')
-source=("http://launchpad.net/${pkgname}/12.10/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('30b5bddedf44a2bf57e012eebd389f4f80177ee6583df3d047d3391ef6a59d9a3aeb4a9540e57dda641f298dc5db899b91524ef57abb5b2905c2fba57141eb23')
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/indicator-sync_${_actual_ver}${_extra_ver}.orig.tar.gz"
+        'revert_r30.patch')
+sha512sums=('45aa33c95424fdbd87aaf77365a69b1b963d1b57051500e8f061f909b75a5ee1c25b08a12bb6ece181373c8acb9d158190027738660c687df3b146c3093d255b'
+            'caa8751368f0d027c5326d89443d113538861ce41d4d5823bfc036ef2dcfaf9e705d13a18d46fec8b8f03e5f389ac6403ecb82005fb106c797ab426ccf79912c')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_actual_ver}${_extra_ver}"
+
+  patch -p0 -i "${srcdir}/revert_r30.patch"
+
+  autoreconf -vfi
 
   ./configure --prefix=/usr --libexecdir=/usr/share/${pkgname} --disable-static
   make ${MAKEFLAGS}
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_actual_ver}${_extra_ver}"
 
   make DESTDIR="${pkgdir}/" install
 }
