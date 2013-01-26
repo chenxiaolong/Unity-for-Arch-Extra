@@ -3,11 +3,11 @@
 # Based on Arch Linux's PKGBUILD
 
 # The Python 3 patch is from Ubuntu packaging version 7.19.0 with release
-# 5ubuntu1.
+# 5ubuntu5.
 
 pkgname=python3-pycurl
 pkgver=7.19.0
-pkgrel=100
+pkgrel=101
 pkgdesc="A Python interface to libcurl"
 arch=('i686' 'x86_64')
 url="http://pycurl.sourceforge.net"
@@ -17,7 +17,7 @@ depends=('python' 'curl')
 source=("http://pycurl.sourceforge.net/download/pycurl-${pkgver}.tar.gz"
         'python3.patch')
 sha512sums=('18db8d923d1193f72b964817ceef5acaf3b1acab36a7d14aed9301dcace301d72e19cda5c79c8cb7335f1327f5900d1c03b34311ba086dd2bf2fd3d5710336e0'
-            'a2bd0122725c46cc393fe473f0c12d7e5ca895225c99d59d2e8138dcc13136106d4e5c42fdc56ea4066c61f20af382319ae50a8d76efe40f3dd0b89019f1a446')
+            'bbaaadec699474daa1a89ca4dae0105983724495f664a5b4593b4d017afb0b99d76247c7dc4a1d3266f99678b105bb04f0722f3510bd29c36c36ed00c2f3daa9')
 
 build() {
   cd "${srcdir}/pycurl-${pkgver}"

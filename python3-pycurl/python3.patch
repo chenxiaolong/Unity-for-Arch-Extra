@@ -3,10 +3,10 @@ Origin: http://sourceforge.net/tracker/?func=detail&aid=3188495&group_id=28236&a
 Author: Markus Koetter
 Author: Michael Terry <michael.terry@canonical.com>
 
-Index: pycurl-7.19.0-5ubuntu1/setup.py
+Index: pycurl-7.19.0/setup.py
 ===================================================================
---- pycurl-7.19.0-5ubuntu1.orig/setup.py	2012-08-16 13:58:43.000000000 -0400
-+++ pycurl-7.19.0-5ubuntu1/setup.py	2012-08-16 14:20:13.769936809 -0400
+--- pycurl-7.19.0.orig/setup.py	2013-01-23 15:19:35.000000000 -0500
++++ pycurl-7.19.0/setup.py	2013-01-23 15:19:35.000000000 -0500
 @@ -31,7 +31,7 @@
      i = 1
      while i < len(sys.argv):
@@ -72,10 +72,10 @@ Index: pycurl-7.19.0-5ubuntu1/setup.py
      # We can live with the deprecationwarning for a while
 -    apply(setup, (), setup_args)
 +    setup(*(), **setup_args)
-Index: pycurl-7.19.0-5ubuntu1/examples/basicfirst.py
+Index: pycurl-7.19.0/examples/basicfirst.py
 ===================================================================
---- pycurl-7.19.0-5ubuntu1.orig/examples/basicfirst.py	2012-02-22 00:16:58.000000000 -0500
-+++ pycurl-7.19.0-5ubuntu1/examples/basicfirst.py	2012-08-16 14:20:13.773936809 -0400
+--- pycurl-7.19.0.orig/examples/basicfirst.py	2005-02-11 06:09:11.000000000 -0500
++++ pycurl-7.19.0/examples/basicfirst.py	2013-01-23 15:19:35.000000000 -0500
 @@ -13,13 +13,17 @@
      def body_callback(self, buf):
          self.contents = self.contents + buf
@@ -102,10 +102,10 @@ Index: pycurl-7.19.0-5ubuntu1/examples/basicfirst.py
 +    print(e)
  
 -print t.contents
-Index: pycurl-7.19.0-5ubuntu1/examples/retriever-multi.py
+Index: pycurl-7.19.0/examples/retriever-multi.py
 ===================================================================
---- pycurl-7.19.0-5ubuntu1.orig/examples/retriever-multi.py	2012-02-22 00:16:58.000000000 -0500
-+++ pycurl-7.19.0-5ubuntu1/examples/retriever-multi.py	2012-08-16 14:20:13.773936809 -0400
+--- pycurl-7.19.0.orig/examples/retriever-multi.py	2005-07-28 07:04:13.000000000 -0400
++++ pycurl-7.19.0/examples/retriever-multi.py	2013-01-23 15:19:35.000000000 -0500
 @@ -10,6 +10,7 @@
  
  import sys
@@ -169,10 +169,10 @@ Index: pycurl-7.19.0-5ubuntu1/examples/retriever-multi.py
  m.close()
  
 +#time.sleep(30)
-Index: pycurl-7.19.0-5ubuntu1/src/pycurl.c
+Index: pycurl-7.19.0/src/pycurl.c
 ===================================================================
---- pycurl-7.19.0-5ubuntu1.orig/src/pycurl.c	2012-02-22 00:16:58.000000000 -0500
-+++ pycurl-7.19.0-5ubuntu1/src/pycurl.c	2012-08-16 15:24:03.505977342 -0400
+--- pycurl-7.19.0.orig/src/pycurl.c	2008-09-09 13:40:34.000000000 -0400
++++ pycurl-7.19.0/src/pycurl.c	2013-01-25 09:22:52.605701493 -0500
 @@ -94,6 +94,15 @@
  static void pycurl_ssl_cleanup(void);
  #endif
@@ -370,6 +370,15 @@ Index: pycurl-7.19.0-5ubuntu1/src/pycurl.c
  }
  
  
+@@ -1072,7 +1138,7 @@
+     }
+ 
+     /* run callback */
+-    arglist = Py_BuildValue("(s#)", ptr, total_size);
++    arglist = Py_BuildValue("(y#)", ptr, total_size);
+     if (arglist == NULL)
+         goto verbose_error;
+     result = PyEval_CallObject(cb, arglist);
 @@ -1122,6 +1188,52 @@
      return util_write_callback(0, ptr, size, nmemb, stream);
  }
@@ -624,7 +633,7 @@ Index: pycurl-7.19.0-5ubuntu1/src/pycurl.c
      return PyInt_FromLong(n);
  }
  
-@@ -2992,6 +3162,116 @@
+@@ -2992,6 +3162,119 @@
  static PyObject *curlmultiobject_constants = NULL;
  static PyObject *curlshareobject_constants = NULL;
  
@@ -663,9 +672,10 @@ Index: pycurl-7.19.0-5ubuntu1/src/pycurl.c
 +	PyObject *v = PyObject_GenericGetAttr(o, n);
 +	if( !v && PyErr_ExceptionMatches(PyExc_AttributeError) )
 +	{
-+		PyErr_Clear();
 +		v = my_getattro(o, n, ((CurlObject *)o)->dict,
 +						curlobject_constants, curlobject_methods);
++		if( v )
++			PyErr_Clear();
 +	}
 +	return v;
 +}
@@ -690,9 +700,10 @@ Index: pycurl-7.19.0-5ubuntu1/src/pycurl.c
 +	PyObject *v = PyObject_GenericGetAttr(o, n);
 +	if( !v && PyErr_ExceptionMatches(PyExc_AttributeError) )
 +	{
-+		PyErr_Clear();
 +		v = my_getattro(o, n, ((CurlMultiObject *)o)->dict,
 +						curlmultiobject_constants, curlmultiobject_methods);
++		if( v )
++			PyErr_Clear();
 +	}
 +	return v;
 +}
@@ -717,9 +728,10 @@ Index: pycurl-7.19.0-5ubuntu1/src/pycurl.c
 +	PyObject *v = PyObject_GenericGetAttr(o, n);
 +	if( !v && PyErr_ExceptionMatches(PyExc_AttributeError) )
 +	{
-+		PyErr_Clear();
 +		v = my_getattro(o, n, ((CurlShareObject *)o)->dict,
 +						curlshareobject_constants, curlshareobject_methods);
++		if( v )
++			PyErr_Clear();
 +	}
 +	return v;
 +}
@@ -741,7 +753,7 @@ Index: pycurl-7.19.0-5ubuntu1/src/pycurl.c
  static int
  my_setattr(PyObject **dict, char *name, PyObject *v)
  {
-@@ -3026,6 +3306,7 @@
+@@ -3026,6 +3309,7 @@
      return Py_FindMethod(m, co, name);
  }
  
@@ -749,7 +761,7 @@ Index: pycurl-7.19.0-5ubuntu1/src/pycurl.c
  static int
  do_share_setattr(CurlShareObject *so, char *name, PyObject *v)
  {
-@@ -3070,10 +3351,53 @@
+@@ -3070,10 +3354,53 @@
      return my_getattr((PyObject *)co, name, co->dict,
                        curlmultiobject_constants, curlmultiobject_methods);
  }
@@ -804,7 +816,7 @@ Index: pycurl-7.19.0-5ubuntu1/src/pycurl.c
  static PyTypeObject CurlShare_Type = {
      PyObject_HEAD_INIT(NULL)
      0,                          /* ob_size */
-@@ -3104,7 +3428,50 @@
+@@ -3104,7 +3431,50 @@
       * safely ignore any compiler warnings about missing initializers.
       */
  };
@@ -855,7 +867,7 @@ Index: pycurl-7.19.0-5ubuntu1/src/pycurl.c
  static PyTypeObject Curl_Type = {
      PyObject_HEAD_INIT(NULL)
      0,                          /* ob_size */
-@@ -3135,7 +3502,50 @@
+@@ -3135,7 +3505,50 @@
       * safely ignore any compiler warnings about missing initializers.
       */
  };
@@ -906,7 +918,7 @@ Index: pycurl-7.19.0-5ubuntu1/src/pycurl.c
  static PyTypeObject CurlMulti_Type = {
      PyObject_HEAD_INIT(NULL)
      0,                          /* ob_size */
-@@ -3166,7 +3576,7 @@
+@@ -3166,7 +3579,7 @@
       * safely ignore any compiler warnings about missing initializers.
       */
  };
@@ -915,7 +927,7 @@ Index: pycurl-7.19.0-5ubuntu1/src/pycurl.c
  
  /*************************************************************************
  // module level
-@@ -3224,7 +3634,11 @@
+@@ -3224,7 +3637,11 @@
      }
      while (*s == ' ' || *s == '\t')
          s++;
@@ -927,7 +939,7 @@ Index: pycurl-7.19.0-5ubuntu1/src/pycurl.c
  }
  
  static PyObject *
-@@ -3351,7 +3765,13 @@
+@@ -3351,7 +3768,13 @@
          goto error;
      if (value == NULL)
          goto error;
@@ -941,7 +953,7 @@ Index: pycurl-7.19.0-5ubuntu1/src/pycurl.c
      if (key == NULL)
          goto error;
  #if 0
-@@ -3378,7 +3798,11 @@
+@@ -3378,7 +3801,11 @@
  static void
  insstr(PyObject *d, char *name, char *value)
  {
@@ -953,7 +965,7 @@ Index: pycurl-7.19.0-5ubuntu1/src/pycurl.c
      insobj2(d, NULL, name, v);
  }
  
-@@ -3411,6 +3835,20 @@
+@@ -3411,6 +3838,20 @@
  }
  
  
@@ -974,7 +986,7 @@ Index: pycurl-7.19.0-5ubuntu1/src/pycurl.c
  /* Initialization function for the module */
  #if defined(PyMODINIT_FUNC)
  PyMODINIT_FUNC
-@@ -3421,6 +3859,7 @@
+@@ -3421,6 +3862,7 @@
  DL_EXPORT(void)
  #endif
  initpycurl(void)
@@ -982,7 +994,7 @@ Index: pycurl-7.19.0-5ubuntu1/src/pycurl.c
  {
      PyObject *m, *d;
      const curl_version_info_data *vi;
-@@ -3430,13 +3869,29 @@
+@@ -3430,13 +3872,29 @@
      p_Curl_Type = &Curl_Type;
      p_CurlMulti_Type = &CurlMulti_Type;
      p_CurlShare_Type = &CurlShare_Type;
@@ -1015,7 +1027,7 @@ Index: pycurl-7.19.0-5ubuntu1/src/pycurl.c
  
      /* Add error object to the module */
      d = PyModule_GetDict(m);
-@@ -3903,6 +4358,9 @@
+@@ -3903,6 +4361,9 @@
      /* Finally initialize global interpreter lock */
      PyEval_InitThreads();
  
@@ -1025,10 +1037,10 @@ Index: pycurl-7.19.0-5ubuntu1/src/pycurl.c
  }
  
  /* vi:ts=4:et:nowrap
-Index: pycurl-7.19.0-5ubuntu1/tests/test_internals.py
+Index: pycurl-7.19.0/tests/test_internals.py
 ===================================================================
---- pycurl-7.19.0-5ubuntu1.orig/tests/test_internals.py	2012-02-22 00:16:59.000000000 -0500
-+++ pycurl-7.19.0-5ubuntu1/tests/test_internals.py	2012-08-16 15:02:54.617963913 -0400
+--- pycurl-7.19.0.orig/tests/test_internals.py	2003-05-01 12:48:54.000000000 -0400
++++ pycurl-7.19.0/tests/test_internals.py	2013-01-23 15:19:35.000000000 -0500
 @@ -16,7 +16,7 @@
  except ImportError:
      gc = None
@@ -1117,10 +1129,10 @@ Index: pycurl-7.19.0-5ubuntu1/tests/test_internals.py
  
 -print "All tests passed."
 +print("All tests passed.")
-Index: pycurl-7.19.0-5ubuntu1/tests/test_memleak.py
+Index: pycurl-7.19.0/tests/test_memleak.py
 ===================================================================
---- pycurl-7.19.0-5ubuntu1.orig/tests/test_memleak.py	2012-02-22 00:16:59.000000000 -0500
-+++ pycurl-7.19.0-5ubuntu1/tests/test_memleak.py	2012-08-16 15:03:56.345964566 -0400
+--- pycurl-7.19.0.orig/tests/test_memleak.py	2003-05-01 12:48:54.000000000 -0400
++++ pycurl-7.19.0/tests/test_memleak.py	2013-01-23 15:19:35.000000000 -0500
 @@ -12,20 +12,22 @@
  gc.enable()
  
@@ -1174,10 +1186,10 @@ Index: pycurl-7.19.0-5ubuntu1/tests/test_memleak.py
 +print("Tracked objects:", len(gc.get_objects()))
  
  
-Index: pycurl-7.19.0-5ubuntu1/python/curl/__init__.py
+Index: pycurl-7.19.0/python/curl/__init__.py
 ===================================================================
---- pycurl-7.19.0-5ubuntu1.orig/python/curl/__init__.py	2012-08-16 15:05:02.745965268 -0400
-+++ pycurl-7.19.0-5ubuntu1/python/curl/__init__.py	2012-08-16 15:37:45.497986042 -0400
+--- pycurl-7.19.0.orig/python/curl/__init__.py	2006-06-18 15:16:17.000000000 -0400
++++ pycurl-7.19.0/python/curl/__init__.py	2013-01-23 15:19:35.000000000 -0500
 @@ -6,11 +6,11 @@
  #
  # By Eric S. Raymond, April 2003.
