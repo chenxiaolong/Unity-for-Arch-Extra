@@ -3,14 +3,13 @@
 
 pkgname=empathy-ubuntu
 _ubuntu_rel=0ubuntu2
-_actual_ver=3.6.2
-pkgver=${_actual_ver}.${_ubuntu_rel}
-pkgrel=100
+pkgver=3.6.3
+pkgrel=100.${_ubuntu_rel}
 pkgdesc="A GNOME instant messaging client using the Telepathy framework."
 arch=('i686' 'x86_64')
 url="http://live.gnome.org/Empathy"
 license=('GPL2')
-provides=("empathy=${_actual_ver}")
+provides=("empathy=${pkgver}")
 conflicts=('empathy')
 depends=('clutter-gst' 'clutter-gtk' 'folks' 'gcr' 'iso-codes' 'libcanberra' 'libpulse' 'webkitgtk3' 'telepathy-farstream' 'telepathy-glib' 'telepathy-logger' 'telepathy-mission-control' 'signon' 'libsignon-glib' 'credentials-preferences' 'libunity' 'ido')
 makedepends=('intltool' 'itstool' 'docbook-xsl' 'nautilus-sendto')
@@ -23,13 +22,13 @@ optdepends=('telepathy-gabble: XMPP/Jabber support'
 options=('!libtool')
 groups=('gnome-extra')
 install=empathy.install
-source=("http://ftp.gnome.org/pub/GNOME/sources/${pkgname%-*}/${_actual_ver:0:3}/${pkgname%-*}-${_actual_ver}.tar.xz"
-        "https://launchpad.net/ubuntu/+archive/primary/+files/empathy_${_actual_ver}-${_ubuntu_rel}.debian.tar.bz2")
-sha512sums=('8cd1eaaa9b42f415a175ce2eb57f85f716523e4bcdfe32661af0bc557ed7b7f22ceee884e2474e8b68448b8ae4b3c12225b77501b876cce530d76e14bb7da112'
-            'ae02b4e5b77c74e056a5f1f75662208a45c2064905b511d5a305fc1ab92d318744889b6656a906fdff5b35a2ffeb34ee3d2338be21d98000ca16894034f5327b')
+source=("http://ftp.gnome.org/pub/GNOME/sources/${pkgname%-*}/${pkgver:0:3}/${pkgname%-*}-${pkgver}.tar.xz"
+        "https://launchpad.net/ubuntu/+archive/primary/+files/empathy_${pkgver}-${_ubuntu_rel}.debian.tar.bz2")
+sha512sums=('888389b76ac84651ffcc31230a2d77069741acccd231bf1f86bce5c4e9e7be42e4794d65b0bb44e8dff519c52aceaea7e37bc71fa4f4b67b6a2df24818be2e26'
+            'f802cfe64cfbdec4a6ddfb2c271eee7b6499f6f271556637cf90e8254575e7120c0880e6b4e8dfdd1c49ba35acf7bab24d8f880381fa4d5bd01d7bd9de19f6f8')
 
 build() {
-  cd "${pkgname%-*}-${_actual_ver}"
+  cd "${pkgname%-*}-${pkgver}"
 
   # Apply Ubuntu's patches
   for i in $(grep -v '#' "${srcdir}/debian/patches/series"); do
@@ -65,7 +64,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname%-*}-${_actual_ver}"
+  cd "${pkgname%-*}-${pkgver}"
   make -j1 DESTDIR="${pkgdir}" install
 
   install -dm755 "${pkgdir}/usr/share/indicators/messages/applications/"
