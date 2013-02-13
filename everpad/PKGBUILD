@@ -1,16 +1,16 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=everpad
-pkgver=2.0.1
+pkgver=2.4
 pkgrel=100
 pkgdesc="Evernote client with Unity integration"
 arch=('any')
 url="https://github.com/nvbn/everpad/"
 license=('GPL')
 groups=('unity-extra')
-depends=('python2' 'python2-beautifulsoup3' 'python2-dbus' 'python2-distribute' 'python2-keyring' 'python2-magic' 'python2-oauth2' 'python2-pyside' 'python2-sqlalchemy' 'python2-unity-singlet' 'python2-gnomekeyring' 'python2-pysqlite' 'python2-shiboken' 'python2-webpy' 'sni-qt')
+depends=('python2' 'python2-beautifulsoup3' 'python2-dbus' 'python2-distribute' 'python2-keyring' 'python2-magic' 'python2-oauth2' 'python2-pyside' 'python2-sqlalchemy' 'python2-unity-singlet' 'python2-gnomekeyring' 'python2-pysqlite' 'python2-shiboken' 'python2-webpy' 'python2-regex' 'sni-qt')
 source=("https://launchpad.net/~nvbn-rm/+archive/ppa/+files/everpad_${pkgver}.orig.tar.xz")
-sha512sums=('f5425d04f02ded37ea49eb5f721fa0e4a2ccaf8b831a71b91f00708a3d3735a9ca5d120ab2ab1e6be6cd115cb7a9c4a885430417353c5e41f3000f06277bf7ca')
+sha512sums=('a0f583e77c4e06f9653550479dfe56fca0fbbce0562458ab725e047c5f7ed56bb8cbb3224b5c8858c46ef58704d740ce0d4f8db73015326963cbb1d377fd4adb')
 
 package() {
   cd "${srcdir}/everpad"
