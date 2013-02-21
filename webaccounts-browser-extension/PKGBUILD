@@ -11,7 +11,7 @@ url="https://launchpad.net/webaccounts-browser-extension"
 license=('GPL')
 groups=('unity-extra')
 depends=('json-glib' 'libaccounts-glib' 'openssl')
-makedepends=('intltool' 'vim' 'zip')
+makedepends=('intltool' 'unzip' 'vim' 'zip')
 extrafiles=('webaccounts-browser-extension.install')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/webaccounts-browser-extension_${pkgver%.*}.orig.tar.gz"
         "https://launchpad.net/ubuntu/+archive/primary/+files/webaccounts-browser-extension_${pkgver%.*}-${_ubuntu_rel}.debian.tar.gz")
