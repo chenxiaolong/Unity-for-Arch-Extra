@@ -12,6 +12,7 @@ license=('GPL')
 groups=('unity-extra')
 depends=('json-glib' 'libaccounts-glib' 'openssl')
 makedepends=('vim' 'zip')
+extrafiles=('webaccounts-browser-extension.install')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/webaccounts-browser-extension_${pkgver%.*}.orig.tar.gz"
         "https://launchpad.net/ubuntu/+archive/primary/+files/webaccounts-browser-extension_${pkgver%.*}-${_ubuntu_rel}.debian.tar.gz")
 sha512sums=('45d9e933d5da0d7d077dbb5c3dea409ea289e51ef01f3143f5052be957ad36576c890b8aab8d4ff8221d4e2e4f973519fba24bc18f24c66ae016b7e4e2a30dfa'
