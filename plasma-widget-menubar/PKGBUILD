@@ -23,8 +23,14 @@ build() {
 
   mkdir build
   cd build
-  cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+  cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
+           -DAutomoc4_DIR=/usr/lib/automoc4
   make ${MAKEFLAGS}
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}/build"
+  make -C tests check
 }
 
 package() {
