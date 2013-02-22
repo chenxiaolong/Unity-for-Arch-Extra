@@ -11,7 +11,7 @@ url="https://launchpad.net/messagingmenu-extension"
 license=('MPL')
 groups=('unity-extra')
 depends=('thunderbird' 'indicator-messages')
-makedepends=('bzr')
+makedepends=('bzr' 'unzip')
 provides=("messagingmenu-extension=${pkgver}")
 conflicts=('messagingmenu-extension')
 
