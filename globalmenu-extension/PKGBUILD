@@ -12,7 +12,7 @@ pkgdesc="Global Menu Extensions for Firefox and Thunderbird"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/globalmenu-extension"
 license=('GPL' 'LGPL' 'MPL')
-makedepends=('bzr' 'autoconf2.13' 'libidl2' 'unzip' 'xulrunner' 'yasm' 'zip' 'libdbusmenu-gtk2' 'mesa')
+makedepends=('bzr' 'autoconf2.13' 'libidl2' 'unzip' 'xulrunner' 'yasm' 'zip' 'libdbusmenu-gtk2' 'mesa' 'libnotify')
 
 _bzrtrunk=lp:~extension-hackers/globalmenu-extension/3.6
 
@@ -52,7 +52,7 @@ build() {
 package_firefox-globalmenu() {
   cd "${srcdir}/${pkgbase}-build"
   pkgdesc="Global Menu Extension for Firefox"
-  depends=('firefox' 'libdbusmenu-gtk2')
+  depends=('firefox' 'libdbusmenu-gtk2' 'libnotify')
 
   emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' \
          extensions/globalmenu/package/install.rdf)
@@ -64,7 +64,7 @@ package_firefox-globalmenu() {
 package_thunderbird-globalmenu() {
   cd "${srcdir}/${pkgbase}-build"
   pkgdesc="Global Menu Extension for Thunderbird"
-  depends=('libdbusmenu-gtk2' 'thunderbird')
+  depends=('libdbusmenu-gtk2' 'thunderbird' 'libnotify')
 
   emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' \
          extensions/globalmenu/package/install.rdf)
