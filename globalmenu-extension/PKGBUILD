@@ -2,11 +2,11 @@
 
 # Based on Tom Kuther's PKGBUILD
 
-_bzr_rev=496
+_bzr_rev=514
 
 pkgbase=globalmenu-extension
 pkgname=('firefox-globalmenu' 'thunderbird-globalmenu')
-pkgver=3.6.4
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="Global Menu Extensions for Firefox and Thunderbird"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url="https://launchpad.net/globalmenu-extension"
 license=('GPL' 'LGPL' 'MPL')
 makedepends=('bzr' 'autoconf2.13' 'libidl2' 'unzip' 'xulrunner' 'yasm' 'zip' 'libdbusmenu-gtk2' 'mesa' 'libnotify')
 
-_bzrtrunk=lp:~extension-hackers/globalmenu-extension/3.6
+_bzrtrunk=lp:globalmenu-extension/3.7
 
 build() {
   cd "${srcdir}"
