@@ -45,7 +45,14 @@ build() {
     --enable-application=extensions \
     --enable-extensions=globalmenu \
     --disable-tests \
-    --disable-necko-wifi
+    --disable-necko-wifi \
+    --disable-crashreporter \
+    --disable-ogg \
+    --disable-alsa \
+    --disable-webgl \
+    --disable-webm \
+    --disable-webrtc \
+    --disable-dash
   make
 }
 
