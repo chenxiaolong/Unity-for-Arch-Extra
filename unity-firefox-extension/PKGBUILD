@@ -3,9 +3,7 @@
 # Upstream package name is unity-firefox-extension
 
 pkgname=firefox-extension-unity
-_actual_ver=2.4.2
-_ubuntu_rel=0ubuntu1
-pkgver=${_actual_ver}.${_ubuntu_rel}
+pkgver=2.4.4bzr13.01.29
 pkgrel=100
 pkgdesc="Firefox extension for Unity integration"
 arch=('i686' 'x86_64')
@@ -15,20 +13,13 @@ groups=('unity-extra')
 depends=('firefox-extension-websites-integration' 'libunity-webapps')
 makedepends=('gtk2' 'libxslt' 'zip' 'unzip')
 options=('!libtool')
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/unity-firefox-extension_${_actual_ver}.orig.tar.gz"
-        "https://launchpad.net/ubuntu/+archive/primary/+files/unity-firefox-extension_${_actual_ver}-${_ubuntu_rel}.debian.tar.gz"
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/unity-firefox-extension_${pkgver}.orig.tar.gz"
         'launcher_bfb.png')
-sha512sums=('c7879355ffdb5f2c139772483bac25bac08aa9b31565be9a5d27e6f03e37c61dafad205d70d0bbc1a25f707852143bb999a9af63c62ece7e14889d2ba841c1b6'
-            'd449b53b590ad0d503d78c6e1b8be806cb1acb77fd2fdb41f464942f96837778e8ccc9b3d9cd24a4294895ab56a4940bf12f90401532790b7fe1dfa1d0909836'
+sha512sums=('9fce553904452ae14fdd27e915a470810817512726eb9b4d502a581ba5b7fe73fafeb34cf7312c9dc64a06d6c6e452c9facbf856777e799448e4529f9e61be53'
             '9f5469c0300d0c33e26db670771803efd3d821e82689fbb1391a31b8fd0e280a12ea010fe6f32a702a5d1797918d416c8adabfccf6049e43b496ebb6dbe2c054')
 
 build() {
-  cd "${srcdir}/unity-firefox-extension-${_actual_ver}"
-
-  # Apply Ubuntu's patches
-  for i in $(grep -v '#' "${srcdir}/debian/patches/series"); do
-    patch -p1 -i "${srcdir}/debian/patches/${i}"
-  done
+  cd "${srcdir}/unity-firefox-extension-${pkgver}"
 
   pushd libufe-xidgetter/
   autoreconf -vfi
@@ -42,7 +33,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/unity-firefox-extension-${_actual_ver}"
+  cd "${srcdir}/unity-firefox-extension-${pkgver}"
 
   pushd libufe-xidgetter/
   make DESTDIR="${pkgdir}/" install
