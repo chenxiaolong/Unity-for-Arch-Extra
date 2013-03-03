@@ -3,7 +3,7 @@
 pkgbase=python-keyring
 pkgname=('python-keyring' 'python2-keyring')
 pkgver=1.2.2
-pkgrel=100
+pkgrel=101
 pkgdesc="Python library for accessing keyring services"
 arch=('any')
 url="http://pypi.python.org/pypi/keyring"
@@ -19,7 +19,7 @@ package_python-keyring() {
 
   unzip "${srcdir}/keyring-${pkgver}.zip" -d "${srcdir}/build-python3/"
   cd "${srcdir}/build-python3/keyring-${pkgver}/"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  LANG="en_US.UTF-8" python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
 package_python2-keyring() {
