@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.pyside.org/"
 license=('LGPL')
 groups=('unity-extra')
-makedepends=('cmake' 'openssl' 'python' 'python2' 'qt')
+makedepends=('cmake' 'openssl' 'python' 'python2' 'qt4')
 # Official mirror temporarily broken
 #source=("http://www.pyside.org/files/shiboken-${pkgver}.tar.bz2")
 source=("https://distfiles.macports.org/py-shiboken/shiboken-${pkgver}.tar.bz2"
@@ -43,7 +43,7 @@ build() {
 }
 
 package_python-shiboken() {
-  depends=('openssl' 'python' 'qt')
+  depends=('openssl' 'python' 'qt4')
 
   cd "${srcdir}/shiboken-${pkgver}/build-python3"
 
@@ -51,7 +51,7 @@ package_python-shiboken() {
 }
 
 package_python2-shiboken() {
-  depends=('openssl' 'python2' 'qt')
+  depends=('openssl' 'python2' 'qt4')
 
   cd "${srcdir}/shiboken-${pkgver}/build-python2"
 
