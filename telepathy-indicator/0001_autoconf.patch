@@ -1,0 +1,11 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -3,7 +3,7 @@
+ AC_INIT([telepathy-indicator], [0.3.0], [ken.vandine@canonical.com])
+ AC_COPYRIGHT([Copyright 2011 Canonical])
+ 
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AM_INIT_AUTOMAKE([1.9])
+ 
+ AM_MAINTAINER_MODE
