@@ -2,8 +2,8 @@
 # Original Maintainer: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=empathy-ubuntu
-_ubuntu_rel=0ubuntu2
-pkgver=3.6.3
+_ubuntu_rel=0ubuntu1
+pkgver=3.6.4
 pkgrel=100.${_ubuntu_rel}
 pkgdesc="A GNOME instant messaging client using the Telepathy framework."
 arch=('i686' 'x86_64')
@@ -24,8 +24,8 @@ groups=('gnome-extra')
 install=empathy.install
 source=("http://ftp.gnome.org/pub/GNOME/sources/${pkgname%-*}/${pkgver:0:3}/${pkgname%-*}-${pkgver}.tar.xz"
         "https://launchpad.net/ubuntu/+archive/primary/+files/empathy_${pkgver}-${_ubuntu_rel}.debian.tar.bz2")
-sha512sums=('888389b76ac84651ffcc31230a2d77069741acccd231bf1f86bce5c4e9e7be42e4794d65b0bb44e8dff519c52aceaea7e37bc71fa4f4b67b6a2df24818be2e26'
-            'f802cfe64cfbdec4a6ddfb2c271eee7b6499f6f271556637cf90e8254575e7120c0880e6b4e8dfdd1c49ba35acf7bab24d8f880381fa4d5bd01d7bd9de19f6f8')
+sha512sums=('2d0b821da9ac172a212657f62ae70702a0a56b8b5acdec13b78cb27ed374b12f6c8f5851fb5b26c6e968b67f65c0d34fcea14dd0d174f90e83f38531fdeb9e8f'
+            '5f2accbfefaf2258f47fc46374d9f6452b50c56a7cf467fc59c6ef4daf98fc7cf841ade6dc4478623ff9d90a624a4e87fc0f0c62ed38a5cc167f8bb6a86a5b41')
 
 build() {
   cd "${pkgname%-*}-${pkgver}"
