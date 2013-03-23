@@ -1,0 +1,23 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+
+pkgname=unity-tweak-tool
+pkgver=0.0.3
+pkgrel=1
+pkgdesc="Configuration tool for the Unity desktop"
+arch=('any')
+url="https://github.com/freyja-dev/unity-tweak-tool"
+license=('GPL')
+groups=('unity-extra')
+depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'python' 'python-xdg' 'unity')
+makedepends=('python-distutils-extra')
+options=('!emptydirs')
+install=${pkgname}.install
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/unity-tweak-tool_${pkgver}.tar.gz")
+sha512sums=('119708e14be741f1ed5b8d9e2da39ce52e872eb9ff8f7226a20362a17f08deee7ac2f30afa5a9d325d6a4e0122f4d546fb77a0661942a8591382ab55d075d9dc')
+
+package() {
+  cd "${srcdir}/${pkgname}"
+  python setup.py install --root="${pkgdir}/" --optimize=1
+}
+
+# vim:set ts=2 sw=2 et:
