@@ -3,7 +3,7 @@
 # Upstream package name is unity-firefox-extension
 
 pkgname=firefox-extension-unity
-pkgver=2.4.4bzr13.01.29
+pkgver=2.4.5bzr13.03.25
 pkgrel=100
 pkgdesc="Firefox extension for Unity integration"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('gtk2' 'libxslt' 'zip' 'unzip')
 options=('!libtool')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/unity-firefox-extension_${pkgver}.orig.tar.gz"
         'launcher_bfb.png')
-sha512sums=('9fce553904452ae14fdd27e915a470810817512726eb9b4d502a581ba5b7fe73fafeb34cf7312c9dc64a06d6c6e452c9facbf856777e799448e4529f9e61be53'
+sha512sums=('53c3a6da32223e89142e8a0c4cdd74eff98ef3786100680523baad845942e5be5ff67d5974a0d125949b25ab317fe921697016446d7a8159fe80fe5c455dd496'
             '9f5469c0300d0c33e26db670771803efd3d821e82689fbb1391a31b8fd0e280a12ea010fe6f32a702a5d1797918d416c8adabfccf6049e43b496ebb6dbe2c054')
 
 build() {
@@ -24,7 +24,7 @@ build() {
   pushd libufe-xidgetter/
   autoreconf -vfi
   ./configure --prefix=/usr --disable-static
-  make ${MAKEFLAGS}
+  make
   popd
 
   pushd unity-firefox-extension/
