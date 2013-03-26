@@ -3,28 +3,27 @@
 # Original Original Maintainer: György Balló <ballogy@freestart.hu>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
-_pkgname=liferea
 pkgname=liferea-indicator
-_ubuntu_rel=0ubuntu1
-pkgver=1.8.10.${_ubuntu_rel}
-pkgrel=100
+_ubuntu_rel=0ubuntu2
+pkgver=1.8.10
+pkgrel=100.${_ubuntu_rel}
 pkgdesc="A desktop news aggregator for online news feeds and weblogs with Messages Indicator support"
 arch=('i686' 'x86_64')
 url="http://liferea.sourceforge.net/"
 license=('GPL')
-depends=('gconf' 'libwebkit' 'libnotify' 'libunique' 'json-glib' 'libindicate-gtk2' 'hicolor-icon-theme')
+depends=('gconf' 'libwebkit' 'libnotify' 'libunique' 'json-glib' 'hicolor-icon-theme' 'indicator-messages')
 makedepends=('intltool')
-provides=("liferea=${pkgver%.*}")
+provides=("liferea=${pkgver}")
 conflicts=('liferea')
 options=('!libtool' '!emptydirs')
 install=liferea.install
-source=("http://downloads.sourceforge.net/sourceforge/liferea/liferea-${pkgver%.*}.tar.bz2"
-        "https://launchpad.net/ubuntu/+archive/primary/+files/liferea_${pkgver%.*}-${_ubuntu_rel}.debian.tar.gz")
+source=("http://downloads.sourceforge.net/sourceforge/liferea/liferea-${pkgver}.tar.bz2"
+        "https://launchpad.net/ubuntu/+archive/primary/+files/liferea_${pkgver}-${_ubuntu_rel}.debian.tar.gz")
 sha512sums=('6ef82f363463c058518f94cb7af293eb7f57d453bea0e99b3000c8bb0663d429ba0995f86eeb35c0ee480941267eb77463aa82ce5444fda8d5e711f9835ed027'
-            '3927b804895b6ace6622e773c265b2dfe2aaa16846fa4faa26109ff5fa9cf774af400df58e73784c226cc2f7d4592ddac33c75746e1c5533891e301901a036d9')
+            '1829bafc52625a5f86a1ceef7b56949c9c660c86614133e25d13abc84f68ce030a9bf412b75e2f017b0a002bdc2f0cbb0df0fa9cadedc147f3638cad4a3fc529')
 
 build() {
-  cd "${srcdir}/liferea-${pkgver%.*}"
+  cd "${srcdir}/liferea-${pkgver}"
 
   # Apply Ubuntu's patches
     # Disable patches
@@ -44,13 +43,13 @@ build() {
     --enable-gnutls \
     --enable-lua \
     --enable-libnotify \
-    --enable-libindicate
+    --enable-messaging-menu
 
-  make ${MAKEFLAGS}
+  make
 }
 
 package() {
-  cd "${srcdir}/liferea-${pkgver%.*}"
+  cd "${srcdir}/liferea-${pkgver}"
   GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 make DESTDIR="${pkgdir}" install
 
   install -dm755 "${pkgdir}/usr/share/gconf/schemas"
