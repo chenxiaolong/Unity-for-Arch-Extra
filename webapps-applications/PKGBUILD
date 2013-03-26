@@ -1,7 +1,7 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=webapps-applications
-pkgver=2.4.13
+pkgver=2.4.14
 pkgrel=100
 pkgdesc="Unity WebApps integration scripts"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('libunity-webapps' 'xdg-utils')
 makedepends=('python-polib' 'intltool')
 install=webapps-applications.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/webapps-applications_${pkgver}.orig.tar.gz")
-sha512sums=('2f2eacaa37a1ebc2f97c1d05d885b2ab5d3eccf59bd124533d8617f67159b15a917578eb83ce340baf7f6ad92e65a6e1dbebb7473c832275a1996f2cf67876ac')
+sha512sums=('fc04d141477cc8f58dcd6e9e0c4265fce892fdfb8b03eaf9fc885651fb8c5c4540d761014f338e8175c432773d1c6623bd8b174f8c04ebab327af7426b014656')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -21,7 +21,7 @@ build() {
   intltoolize -f
 
   ./configure --prefix=/usr --enable-default-applications
-  make ${MAKEFLAGS}
+  make
 }
 
 package() {
