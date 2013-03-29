@@ -2,13 +2,13 @@
 
 pkgname=unity-tweak-tool
 pkgver=0.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Configuration tool for the Unity desktop"
 arch=('any')
 url="https://github.com/freyja-dev/unity-tweak-tool"
 license=('GPL')
 groups=('unity-extra')
-depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'python' 'python-xdg' 'unity')
+depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'notify-osd' 'python' 'python-xdg' 'unity')
 makedepends=('python-distutils-extra')
 options=('!emptydirs')
 install=${pkgname}.install
