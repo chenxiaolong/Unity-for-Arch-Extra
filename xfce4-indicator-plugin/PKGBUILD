@@ -4,7 +4,7 @@
 
 pkgname=xfce4-indicator-plugin
 pkgver=0.5.0
-pkgrel=100
+pkgrel=101
 pkgdesc="Display indicators in the xfce4 panel"
 arch=('i686' 'x86_64')
 license=('LGPL2.1')
@@ -20,10 +20,14 @@ source=("http://archive.xfce.org/src/panel-plugins/${pkgname}/${pkgver%.*}/${pkg
 sha512sums=('807aa9f86d41753c01f96831bdd4c42823275314c15f8e0472330edd62a47a416619a98d7624687586d42d8ea290811c58d7f826edc51c884c2a60dbbd1b72c4'
             '94460ff07b48f0512e4180e80ff6ac1eee07dec40494a2dff99abe73e7de18f23f222dfdcc9520ee8f6f0c8007b3727edff7848eb6baca5bd562c107f7900558')
 
-build() {
+prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   patch -p1 -i "${srcdir}/0001_autoconf.patch"
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   /usr/bin/xdt-autogen
   ./configure \
@@ -34,7 +38,7 @@ build() {
     --disable-static \
     --disable-debug
 
-  make ${MAKEFLAGS}
+  make
 }
 
 package() {
