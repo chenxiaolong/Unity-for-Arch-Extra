@@ -4,7 +4,7 @@
 pkgname=accountsservice-ubuntu
 _ubuntu_rel=1ubuntu4
 pkgver=0.6.29.${_ubuntu_rel}
-pkgrel=100
+pkgrel=101
 pkgdesc="D-Bus interface for user account query and manipulation"
 arch=('i686' 'x86_64')
 url="http://cgit.freedesktop.org/accountsservice/"
@@ -19,7 +19,7 @@ source=("http://cgit.freedesktop.org/accountsservice/snapshot/${pkgname%-*}-${pk
 sha512sums=('5348aae4fa791e4cbf5ab4a763d5a8aa1dec5d4fb86fed6f6769aca987970d07bd88930c9c6d8cb25d01620e0344a7a025b71603ff0e2d115c8f2e401ac9814e'
             '5beeb371f945b069b76799c3317c7ff589d13641fd982311c90a560a076d9b9bb56281a2be781d3588da8547938b91704b89b61dae655294d584081384d948d4')
 
-build() {
+prepare() {
   cd "${srcdir}/${pkgname%-*}-${pkgver%.*}"
 
   # Apply Ubuntu patches
@@ -64,6 +64,10 @@ build() {
     echo ${i}
     patch -p1 -i "${srcdir}/debian/patches/${i}"
   done
+}
+
+build() {
+  cd "${srcdir}/${pkgname%-*}-${pkgver%.*}"
 
   ./autogen.sh \
     --prefix=/usr \
@@ -74,7 +78,7 @@ build() {
     --disable-static \
     --enable-systemd
 
-  make ${MAKEFLAGS}
+  make
 }
 
 package() {
