@@ -2,7 +2,7 @@
 
 pkgname=libpam-freerdp
 pkgver=1.0.1
-pkgrel=101
+pkgrel=102
 pkgdesc="A PAM module that uses FreeRDP to authenticate the account"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/libpam-freerdp"
@@ -28,7 +28,7 @@ build() {
   autoreconf -vfi
 
   ./configure --prefix=/usr --libexecdir=/usr/lib --disable-static
-  make ${MAKEFLAGS}
+  make
 }
 
 package() {
