@@ -4,7 +4,7 @@
 
 pkgname=plasma-widget-menubar
 pkgver=0.2.0
-pkgrel=100
+pkgrel=101
 pkgdesc="A Plasma widget to display menubar of application windows"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/plasma-widget-menubar"
@@ -25,7 +25,7 @@ build() {
   cd build
   cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr \
            -DAutomoc4_DIR=/usr/lib/automoc4
-  make ${MAKEFLAGS}
+  make
 }
 
 package() {
