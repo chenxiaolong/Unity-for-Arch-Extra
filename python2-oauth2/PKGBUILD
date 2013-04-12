@@ -2,7 +2,7 @@
 
 pkgname=python2-oauth2
 pkgver=1.5.211
-pkgrel=100
+pkgrel=101
 pkgdesc="Python library for OAuth 1.0"
 arch=('any')
 # Downloads at http://pypi.python.org/pypi/oauth2

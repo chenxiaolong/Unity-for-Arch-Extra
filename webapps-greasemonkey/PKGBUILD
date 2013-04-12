@@ -7,7 +7,7 @@ OLDDATE=$(date +%Y.%m.%d)
 
 pkgname=firefox-extension-websites-integration
 pkgver=2.3.5.2
-pkgrel=100
+pkgrel=101
 pkgdesc="Firefox extension to support user scripts"
 arch=('any')
 url="https://launchpad.net/webapps-greasemonkey"

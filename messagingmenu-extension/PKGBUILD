@@ -4,7 +4,7 @@ _bzr_rev=147
 
 pkgname=thunderbird-messagingmenu
 pkgver=1.0.1
-pkgrel=101
+pkgrel=102
 pkgdesc="Messaging Menu Thunderbird Extension"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/messagingmenu-extension"

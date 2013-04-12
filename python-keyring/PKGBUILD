@@ -3,7 +3,7 @@
 pkgbase=python-keyring
 pkgname=('python-keyring' 'python2-keyring')
 pkgver=1.2.2
-pkgrel=102
+pkgrel=103
 pkgdesc="Python library for accessing keyring services"
 arch=('any')
 url="http://pypi.python.org/pypi/keyring"

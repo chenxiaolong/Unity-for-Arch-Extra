@@ -4,7 +4,7 @@
 pkgname=empathy-ubuntu
 _ubuntu_rel=0ubuntu3
 pkgver=3.6.4
-pkgrel=101
+pkgrel=102
 pkgdesc="A GNOME instant messaging client using the Telepathy framework."
 arch=('i686' 'x86_64')
 url="http://live.gnome.org/Empathy"

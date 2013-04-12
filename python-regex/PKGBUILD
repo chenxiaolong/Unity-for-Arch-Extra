@@ -3,7 +3,7 @@
 pkgbase=python-regex
 pkgname=('python-regex' 'python2-regex')
 pkgver=0.1.20120904
-pkgrel=100
+pkgrel=101
 pkgdesc="Alternative regular expression module"
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/mrab-regex-hg/"

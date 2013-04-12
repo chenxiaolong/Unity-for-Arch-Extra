@@ -2,7 +2,7 @@
 
 pkgname=thin-client-config-agent
 pkgver=0.7
-pkgrel=100
+pkgrel=101
 pkgdesc="Retrieve the list of remote desktop servers for a user"
 arch=('any')
 url="https://launchpad.net/thin-client-config-agent"

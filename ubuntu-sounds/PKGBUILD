@@ -2,7 +2,7 @@
 
 pkgname=ubuntu-sounds
 pkgver=0.13
-pkgrel=100
+pkgrel=101
 pkgdesc="Ubuntu's GNOME audio theme"
 arch=('any')
 url="https://launchpad.net/ubuntu-sounds"

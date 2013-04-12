@@ -2,7 +2,7 @@
 
 pkgname=lightdm-remote-session-freerdp
 pkgver=1.0
-pkgrel=101
+pkgrel=102
 pkgdesc="Session and configuration to login with FreeRDP"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/lightdm-remote-session-freerdp/1.0"

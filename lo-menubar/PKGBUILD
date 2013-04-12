@@ -2,7 +2,7 @@
 
 pkgname=libreoffice-extension-menubar
 pkgver=0.1.1
-pkgrel=100
+pkgrel=101
 pkgdesc="Global menubar plugin for LibreOffice"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/lo-menubar"

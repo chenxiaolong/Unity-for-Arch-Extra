@@ -3,7 +3,7 @@
 pkgbase=python-shiboken
 pkgname=('python-shiboken' 'python2-shiboken')
 pkgver=1.1.2
-pkgrel=102
+pkgrel=103
 pkgdesc="CPython bindings generator for C++ libraries"
 arch=('i686' 'x86_64')
 url="http://www.pyside.org/"

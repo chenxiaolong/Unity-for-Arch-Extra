@@ -4,7 +4,7 @@
 
 pkgname=firefox-extension-unity
 pkgver=2.4.7bzr13.04.04
-pkgrel=100
+pkgrel=101
 pkgdesc="Firefox extension for Unity integration"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/unity-firefox-extension"

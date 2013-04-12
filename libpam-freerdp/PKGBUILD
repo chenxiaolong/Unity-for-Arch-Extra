@@ -2,7 +2,7 @@
 
 pkgname=libpam-freerdp
 pkgver=1.0.1
-pkgrel=102
+pkgrel=103
 pkgdesc="A PAM module that uses FreeRDP to authenticate the account"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/libpam-freerdp"

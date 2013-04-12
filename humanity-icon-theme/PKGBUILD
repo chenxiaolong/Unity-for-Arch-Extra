@@ -2,7 +2,7 @@
 
 pkgname=humanity-icon-theme
 pkgver=0.6.2
-pkgrel=100
+pkgrel=101
 pkgdesc="Humanity Icon Theme"
 arch=('any')
 url="https://launchpad.net/humanity"

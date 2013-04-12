@@ -2,7 +2,7 @@
 
 pkgname=python-polib
 pkgver=1.0.3
-pkgrel=100
+pkgrel=101
 pkgdesc="Python library to manipulate, create, and modify gettext files"
 arch=('any')
 url="https://bitbucket.org/izi/polib/src/"

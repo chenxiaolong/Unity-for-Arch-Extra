@@ -2,7 +2,7 @@
 
 pkgname=indicator-cpufreq
 pkgver=0.2.2
-pkgrel=101
+pkgrel=102
 pkgdesc="CPU frequency indicator"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/indicator-cpufreq"

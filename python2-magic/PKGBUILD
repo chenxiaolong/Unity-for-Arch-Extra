@@ -2,7 +2,7 @@
 
 pkgname=python2-magic
 pkgver=5.11
-pkgrel=100
+pkgrel=101
 pkgdesc="Python 2 bindings for file"
 arch=('any')
 url="http://www.darwinsys.com/file/"

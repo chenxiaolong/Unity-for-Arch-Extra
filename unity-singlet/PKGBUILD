@@ -2,7 +2,7 @@
 
 pkgname=python2-unity-singlet
 pkgver=0.3
-pkgrel=100
+pkgrel=101
 pkgdesc="Python library for building simple Unity lenses and scopes"
 arch=('any')
 url="https://launchpad.net/ubuntu/+source/unity-singlet"

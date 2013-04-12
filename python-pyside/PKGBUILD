@@ -3,7 +3,7 @@
 pkgbase=python-pyside
 pkgname=('python-pyside' 'python2-pyside')
 pkgver=1.1.2
-pkgrel=104
+pkgrel=105
 pkgdesc="Python bindings for Qt"
 arch=('i686' 'x86_64')
 url="http://www.pyside.org/"

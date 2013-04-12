@@ -2,7 +2,7 @@
 
 pkgname=lightdm-remote-session-uccsconfigure
 pkgver=1.1
-pkgrel=103
+pkgrel=104
 pkgdesc="Session and configuration to login to configure UCCS"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/lightdm-remote-session-uccsconfigure"

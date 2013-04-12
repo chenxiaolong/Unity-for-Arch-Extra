@@ -6,7 +6,7 @@
 pkgname=pidgin-libnotify-ubuntu
 _ubuntu_rel=9ubuntu1
 pkgver=0.14.${_ubuntu_rel}
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc="pidgin plugin that enables popups when someone logs in or messages you."
 url="http://gaim-libnotify.sourceforge.net/"
