@@ -6,7 +6,7 @@
 pkgname=liferea-indicator
 _ubuntu_rel=0ubuntu2
 pkgver=1.8.10
-pkgrel=100.${_ubuntu_rel}
+pkgrel=101
 pkgdesc="A desktop news aggregator for online news feeds and weblogs with Messages Indicator support"
 arch=('i686' 'x86_64')
 url="http://liferea.sourceforge.net/"
@@ -22,7 +22,7 @@ source=("http://downloads.sourceforge.net/sourceforge/liferea/liferea-${pkgver}.
 sha512sums=('6ef82f363463c058518f94cb7af293eb7f57d453bea0e99b3000c8bb0663d429ba0995f86eeb35c0ee480941267eb77463aa82ce5444fda8d5e711f9835ed027'
             '1829bafc52625a5f86a1ceef7b56949c9c660c86614133e25d13abc84f68ce030a9bf412b75e2f017b0a002bdc2f0cbb0df0fa9cadedc147f3638cad4a3fc529')
 
-build() {
+prepare() {
   cd "${srcdir}/liferea-${pkgver}"
 
   # Apply Ubuntu's patches
@@ -31,6 +31,10 @@ build() {
   for i in $(grep -v '#' "${srcdir}/debian/patches/series"); do
     patch -p1 -i "${srcdir}/debian/patches/${i}"
   done
+}
+
+build() {
+  cd "${srcdir}/liferea-${pkgver}"
 
   autoreconf -vfi
 
