@@ -1,7 +1,7 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=thin-client-config-agent
-pkgver=0.6
+pkgver=0.7
 pkgrel=100
 pkgdesc="Retrieve the list of remote desktop servers for a user"
 arch=('any')
@@ -11,16 +11,16 @@ groups=('unity-extra')
 depends=('python3-pycurl')
 makedepends=('python-distribute')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/thin-client-config-agent_${pkgver}.tar.gz")
-sha512sums=('5e36655a2db5d390e9de9f89665493700f63b1cccd3057f1ed3b994efc2f263079b29e35a7f2ef263f1dcb41a49a608196349f5eafb4fd7fe1aec21e4d119b31')
+sha512sums=('aa05218f95ad948c30d9f2a311c5f51d0301ab5e79204435d69e6307c45ac68a066a54e1391ca8586546ce676c326abc569ba0061900b9ac62dd1594f4e92c2a')
 
 check() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   python -m unittest tccalib.tests
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   python setup.py install --root="${pkgdir}/" --optimize=1
 
