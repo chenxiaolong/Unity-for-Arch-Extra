@@ -7,36 +7,23 @@ _bzr_rev=523
 pkgbase=globalmenu-extension
 pkgname=('firefox-globalmenu' 'thunderbird-globalmenu')
 pkgver=3.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Global Menu Extensions for Firefox and Thunderbird"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/globalmenu-extension"
 license=('GPL' 'LGPL' 'MPL')
 makedepends=('bzr' 'autoconf2.13' 'libidl2' 'unzip' 'xulrunner' 'yasm' 'zip' 'libdbusmenu-gtk2' 'mesa' 'libnotify')
-
-_bzrtrunk=lp:globalmenu-extension
+source=("${pkgbase}::bzr+http://bazaar.launchpad.net/~extension-hackers/globalmenu-extension/trunk/#${_bzr_rev}")
+sha512sums=('SKIP')
 
 build() {
-  cd "${srcdir}"
-  msg "Connecting to Bazaar server...."
-
-  if [[ -d "${pkgbase}" ]]; then
-    cd "${pkgbase}" && bzr pull "${_bzrtrunk}" -r "${_bzr_rev}"
-    msg "The local files are updated."
-  else
-    bzr branch "${_bzrtrunk}" "${pkgbase}" -q -r "${_bzr_rev}"
-  fi
-
-  msg "Bazaar checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rvf "${srcdir}/${pkgbase}-build"
-  cp -rv "${srcdir}/${pkgbase}" "${srcdir}/${pkgbase}-build"
-  cd "${srcdir}/${pkgbase}-build"
+  cd "${srcdir}/${pkgbase}"
 
   autoconf-2.13
   sed -i 's/^ \t/\t/g' config/rules.mk
   sed -i '/^XPIDL_COMPILE[[:space:]]*=/s@\$(LIBXUL_DIST)/@&sdk/@' config/config.mk
+
+  export CPPFLAGS="${CPPFLAGS} -O2"
 
   ./configure --with-libxul-sdk=`pkg-config --variable=sdkdir libxul` \
     --with-system-libxul \
@@ -57,7 +44,7 @@ build() {
 }
 
 package_firefox-globalmenu() {
-  cd "${srcdir}/${pkgbase}-build"
+  cd "${srcdir}/${pkgbase}"
   pkgdesc="Global Menu Extension for Firefox"
   depends=('firefox' 'libdbusmenu-gtk2' 'libnotify')
 
@@ -69,7 +56,7 @@ package_firefox-globalmenu() {
 }
 
 package_thunderbird-globalmenu() {
-  cd "${srcdir}/${pkgbase}-build"
+  cd "${srcdir}/${pkgbase}"
   pkgdesc="Global Menu Extension for Thunderbird"
   depends=('libdbusmenu-gtk2' 'thunderbird' 'libnotify')
 
