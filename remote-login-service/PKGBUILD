@@ -3,7 +3,7 @@
 pkgname=remote-login-service
 _ubuntu_rel=0ubuntu2
 pkgver=1.0.0.${_ubuntu_rel}
-pkgrel=101
+pkgrel=102
 pkgdesc="Service to track the remote servers to use"
 arch=('i686' 'x86_64')
 url="http://launchpad.net/remote-login-service/"
@@ -31,6 +31,8 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver%.*}"
+
+  export CFLAGS="${CFLAGS} -Wno-error"
 
   autoreconf -vfi
 
