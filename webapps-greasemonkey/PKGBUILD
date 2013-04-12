@@ -6,8 +6,8 @@ OLDDATE=$(date +%Y.%m.%d)
 # Ubuntu's package name is xul-ext-websites-integration
 
 pkgname=firefox-extension-websites-integration
-pkgver=2.3.5
-pkgrel=101
+pkgver=2.3.5.2
+pkgrel=100
 pkgdesc="Firefox extension to support user scripts"
 arch=('any')
 url="https://launchpad.net/webapps-greasemonkey"
@@ -15,14 +15,18 @@ license=('GPL')
 groups=('unity-extra')
 depends=('libunity-webapps')
 makedepends=('zip' 'unzip')
-source=("https://launchpad.net/webapps-greasemonkey/trunk/${pkgver}/+download/webapps-greasemonkey-${pkgver}.tar.gz"
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/webapps-greasemonkey_${pkgver}.orig.tar.gz"
         '0001_Fix_library_loading.patch')
-sha512sums=('7c14d95cfc5098b85622469c3b9df7351b0da1bc9dca606ce506d39ed7b28f6c5879c4ed85a6ffb55799480e2c840531a927618352c781f8cd22e907021ff027'
-            '382147a8ff67d3a54adce0bbe27032ea0caa9e13feefedeb13372b5d6a5b80df9b5dc17b5f662cd5bbaa522ec65d9fcea585c28bae7ed8445e971548acc2a08a')
+sha512sums=('4d1b3ef16649f11cd6ecb802234fdc5c1cbb1858dd25be225c6957aeb96d1a8bddf86a8d28f1f8303c6630e9cf4979821e7d30d3c9808a324f6384ff356207e8'
+            '531f36c051f2690bb40c68cc89d73213f3359b1e15f50b6e442888e6304d06867607d61e1dcccefc6d27428154f7aeb02fb586260d91e32bc3f8c093e88b7f3f')
+
+prepare() {
+  cd "${srcdir}/webapps-greasemonkey-${pkgver}"
+  patch -p1 -i "${srcdir}/0001_Fix_library_loading.patch"
+}
 
 build() {
   cd "${srcdir}/webapps-greasemonkey-${pkgver}"
-  patch -p1 -i "${srcdir}/0001_Fix_library_loading.patch"
   ./build.sh
 }
 
