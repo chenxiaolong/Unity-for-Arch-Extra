@@ -7,7 +7,7 @@
 
 pkgname=python3-pycurl
 pkgver=7.19.0
-pkgrel=101
+pkgrel=102
 pkgdesc="A Python interface to libcurl"
 arch=('i686' 'x86_64')
 url="http://pycurl.sourceforge.net"
@@ -19,7 +19,7 @@ source=("http://pycurl.sourceforge.net/download/pycurl-${pkgver}.tar.gz"
 sha512sums=('18db8d923d1193f72b964817ceef5acaf3b1acab36a7d14aed9301dcace301d72e19cda5c79c8cb7335f1327f5900d1c03b34311ba086dd2bf2fd3d5710336e0'
             'bbaaadec699474daa1a89ca4dae0105983724495f664a5b4593b4d017afb0b99d76247c7dc4a1d3266f99678b105bb04f0722f3510bd29c36c36ed00c2f3daa9')
 
-build() {
+prepare() {
   cd "${srcdir}/pycurl-${pkgver}"
 
   patch -Np1 -i "${srcdir}/python3.patch"
