@@ -6,7 +6,7 @@
 pkgname=pidgin-libnotify-ubuntu
 _ubuntu_rel=9ubuntu1
 pkgver=0.14.${_ubuntu_rel}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="pidgin plugin that enables popups when someone logs in or messages you."
 url="http://gaim-libnotify.sourceforge.net/"
@@ -29,7 +29,7 @@ sha512sums=('2ff6b2bad74cb2fd9a3de94c06a2261fa07938bc1971baa578b9a9ae12017594359
             '242fb898521466dd5455e3488487bcbbceac2e3fc53979b14857ca527fbd43d480209c45217ae513eae0d7327819c24b3a64a0fa03b52ce54c390277d8c28d76'
             '5e758f6ca82f177498ba5e1040a8fed19ca2cedfa44bd6a854b67a84a0703b106b7c2e966e817a10ff6a7b0c8f4fe7b7ea97f2a3468f42877fc651009f140f67')
 
-build() {
+prepare() {
   cd "$srcdir/${pkgname%-*}-${pkgver%.*}"
 
   msg "Applying language_fixes.patch..."
@@ -46,11 +46,15 @@ build() {
     msg "Applying ${i}..."
     patch -Np1 -i "${srcdir}/debian/patches/${i}"
   done
+}
+
+build() {
+  cd "$srcdir/${pkgname%-*}-${pkgver%.*}"
 
   autoreconf -vfi
 
   ./configure --prefix=/usr --disable-deprecated  --disable-static
-  make ${MAKEFLAGS}
+  make
 }
 
 package() {
