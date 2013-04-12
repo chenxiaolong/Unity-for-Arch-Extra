@@ -3,7 +3,7 @@
 pkgbase=python-pyside
 pkgname=('python-pyside' 'python2-pyside')
 pkgver=1.1.2
-pkgrel=103
+pkgrel=104
 pkgdesc="Python bindings for Qt"
 arch=('i686' 'x86_64')
 url="http://www.pyside.org/"
@@ -27,7 +27,7 @@ build() {
     -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
     -DQT_PHONON_INCLUDE_DIR=/usr/include/phonon
 
-  make ${MAKEFLAGS}
+  make
   popd
 
   pushd build-python3/
@@ -37,7 +37,7 @@ build() {
     -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
     -DQT_PHONON_INCLUDE_DIR=/usr/include/phonon
 
-  make ${MAKEFLAGS}
+  make
   popd
 }
 
