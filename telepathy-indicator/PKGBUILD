@@ -3,8 +3,8 @@
 pkgname=telepathy-indicator
 _actual_ver=0.3.1
 _extra_ver=daily13.03.01
-pkgver=${_actual_ver}
-pkgrel=100
+pkgver=${_actual_ver}.${_extra_ver}
+pkgrel=101
 pkgdesc="Telepathy integration with the messaging menu"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/telepathy-indicator"
@@ -17,14 +17,16 @@ source=("https://launchpad.net/ubuntu/+archive/primary/+files/telepathy-indicato
 sha512sums=('1eddd78d53071e263dd5a23ad88fd45ded06dc6e4430717fe230893b6a62eb2fc776abdec7ebee233dc45d672275535ad60280797b76ce32f0ea3d6b19912f6e'
             'fc3e1b6ae12e6978eae42459e92f40833f6e9a7aa841b7de2b41c8772283aa7cb7f3c2856b0501cd44a1b8cf6b0d4b5f11adfa679b088b70f4ad1cd2e7b4df6c')
 
+prepare() {
+  cd "${srcdir}/${pkgname}-${_actual_ver}${_extra_ver}"
+  patch -p1 -i "${srcdir}/0001_autoconf.patch"
+}
+
 build() {
   cd "${srcdir}/${pkgname}-${_actual_ver}${_extra_ver}"
-
-  patch -p1 -i "${srcdir}/0001_autoconf.patch"
   autoreconf -vfi
   intltoolize -f
   ./configure --prefix=/usr --sysconfdir=/etc
-
   make
 }
 
