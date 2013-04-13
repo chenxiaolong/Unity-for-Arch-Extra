@@ -2,7 +2,7 @@
 
 pkgname=unity-tweak-tool
 pkgver=0.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Configuration tool for the Unity desktop"
 arch=('any')
 url="https://github.com/freyja-dev/unity-tweak-tool"
