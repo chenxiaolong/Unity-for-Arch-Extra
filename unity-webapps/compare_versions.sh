@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source PKGBUILD
+source "$(dirname ${0})/PKGBUILD"
 
 echo "Downloading Ubuntu 13.04 Source Package Database..."
 [ -f Sources.bz2 ] && rm Sources.bz2
