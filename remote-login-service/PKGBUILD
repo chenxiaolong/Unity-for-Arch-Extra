@@ -1,9 +1,9 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=remote-login-service
-_ubuntu_rel=0ubuntu2
+_ubuntu_rel=0ubuntu3
 pkgver=1.0.0.${_ubuntu_rel}
-pkgrel=103
+pkgrel=100
 pkgdesc="Service to track the remote servers to use"
 arch=('i686' 'x86_64')
 url="http://launchpad.net/remote-login-service/"
@@ -15,7 +15,7 @@ source=("https://launchpad.net/remote-login-service/1.0/${pkgver%.*}/+download/r
         "https://launchpad.net/ubuntu/+archive/primary/+files/remote-login-service_${pkgver%.*}-${_ubuntu_rel}.debian.tar.gz"
         '0001_Disable_tests.patch')
 sha512sums=('a0e93d9c599c00abf382b63f282f59fb27f40ac6699035b07f87cd1bf81ffc51b3daced1dd32e506e4bcb1bf2d455a940ec1550ffb72e1c3fff1a494fbdec6af'
-            '4e35cf1d48d668035284c1b37dbc1c42e11effafe3f1d21d4664ee99d0300d9b9f4b8831c699cb7339a0c623f12f18508140bb9fcf10a10b7288149bba2bb558'
+            '351e1bf70e167d45d0aa2689d51cb082cacf27e5ee40af510fc956a759f9dd08426b847135a4dac3bed0ca8375e93f847f53f07d6c764fff8e737dbd52106137'
             '7a4ce2e734f96a0189bdb8068b5447cce87bf03a8edc2359d1ca25bcd3323e207d60212639c62eeb4aa8ca0259cfd4e88ba90c51fa13d75b42aba10e7dba3f03')
 
 prepare() {
