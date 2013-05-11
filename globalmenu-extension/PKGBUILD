@@ -2,12 +2,12 @@
 
 # Based on Tom Kuther's PKGBUILD
 
-_bzr_rev=523
+_bzr_rev=529
 
 pkgbase=globalmenu-extension
 pkgname=('firefox-globalmenu' 'thunderbird-globalmenu')
-pkgver=3.9
-pkgrel=2
+pkgver=4.1
+pkgrel=1
 pkgdesc="Global Menu Extensions for Firefox and Thunderbird"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/globalmenu-extension"
