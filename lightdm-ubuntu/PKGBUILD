@@ -5,9 +5,9 @@
 # optdepends.
 
 pkgname=lightdm-ubuntu
-_ubuntu_rel=0ubuntu1
+_ubuntu_rel=0ubuntu2
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight display manager"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/lightdm"
@@ -51,7 +51,7 @@ source=("https://launchpad.net/ubuntu/+archive/primary/+files/lightdm_${pkgver}.
         'lightdm-lock-screen-before-switch.patch')
 noextract=("lightdm_${pkgver}-${_ubuntu_rel}.debian.tar.gz")
 sha512sums=('9cc72110b3a45a5f15af10e438d5dd256f0aec8ba4ea60d94d86460c4f25df590ffc96d258c103177e32fe53e770c68334127f37cb878e09fedbe04691571a99'
-            '017f5e4b8d0af4e12f27f1a5a29c1b8dd0f13b956b24da9183a776434fb8799665c6584a733d56b388b7c5d5ee941b56dc06aa629933acd77ae73d3a6dc74b10'
+            'd2c9d8d145638962fd42404d1a90ff821209fc2422d6baf82f8c6e1c72aaada4f5ca5cd362102efc31fbfe71ea69faf5af2a9a05bab5642db6b8b231213634a6'
             '26bb333e58ee63a6a0d472bb0a7f9006b93c7de629780399b1dff4af3aaccea02aa74ed0410b8fa6ba55b285f7c7bb6180db059928feba56f779c5b8f3ba8b86'
             'a13e7df200a6aa7e8e62df9fc2382234258041b30654446e51c48ea9fac7d1128dbbb6ff17a5abca06fbeb1b09c2076f45620a8c58b435d56059abc674917fb3'
             'fa35ece114255abfc409f1c9da1eb7129055d8669aad11fe3d69084bf2216e93bf09864ac4e8874e88f166be9735fc55ed899056eb3bd94c5b33d3b2cbd55f4d'
