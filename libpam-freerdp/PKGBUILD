@@ -2,7 +2,7 @@
 
 pkgname=libpam-freerdp
 pkgver=1.0.1
-pkgrel=103
+pkgrel=104
 pkgdesc="A PAM module that uses FreeRDP to authenticate the account"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/libpam-freerdp"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('unity-extra')
 depends=('freerdp')
 #checkdepends=('gtest')
-options=('!libtool')
+options=('!libtool' '!emptydirs')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/libpam-freerdp_${pkgver}.orig.tar.gz"
         '0001_Disable_tests.patch')
 sha512sums=('d2ef03c852123b4154d0105ba38f5edc81efe57166776a6c315643fa4dfeec0203a0088feb12d02fe1102aa1566eb25e8a724f72c58bae0f038c4a2a3433961f'
