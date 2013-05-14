@@ -1,0 +1,74 @@
+--- a/ubuntu-settings.gsettings-override
++++ b/ubuntu-settings.gsettings-override
+@@ -1,6 +1,3 @@
+-[org.gnome.crypto.pgp]
+-keyservers=['hkp://keyserver.ubuntu.com:11371', 'hkp://pool.sks-keyservers.net', 'ldap://keyserver.pgp.com']
+-
+ [org.gnome.desktop.background]
+ show-desktop-icons=true
+ picture-uri='file:///usr/share/backgrounds/warty-final-ubuntu.png'
+@@ -40,64 +37,10 @@
+ theme="Ambiance"
+ titlebar-font='Ubuntu Bold 11'
+ 
+-[org.gnome.eog.ui]
+-external-editor="shotwell-viewer.desktop"
+-sidebar=false
+-
+-[org.gnome.Empathy.conversation]
+-theme="adium"
+-theme-variant="Normal"
+-adium-path="/usr/share/adium/message-styles/ubuntu.AdiumMessageStyle"
+-
+-[org.gnome.Empathy.notifications]
+-notifications-focus=true
+-
+-[org.gnome.Epiphany]
+-keyword-search-url='http://www.google.com/search?client=ubuntu&channel=es&q=%s&ie=UTF-8&oe=UTF-8'
+-
+ [org.gnome.mutter.keybindings]
+ toggle-tiled-left = ['<Primary><Super>Left','<Super>Left']
+ toggle-tiled-right = ['<Primary><Super>Right','<Super>Right']
+ 
+-[org.gnome.nautilus.desktop]
+-home-icon-visible=false
+-trash-icon-visible=false
+-volumes-visible=false
+-
+-[org.gnome.nautilus.preferences]
+-sort-directories-first=true
+-
+-[org.gnome.rhythmbox.rhythmdb]
+-monitor-library=true
+-
+-[org.gnome.rhythmbox.plugins]
+-active-plugins=['artsearch', 'audiocd','audioscrobbler','cd-recorder','daap','dbus-media-server','generic-player','ipod','iradio','mmkeys','mpris','mtpdevice','notification','power-manager']
+-
+-[org.gnome.settings-daemon.peripherals.touchpad]
+-disable-while-typing = true
+-tap-to-click = true
+-
+-[org.gnome.settings-daemon.plugins.power]
+-button-power = 'interactive'
+-button-sleep = 'suspend'
+-critical-battery-action = 'suspend'
+-idle-dim-time = 30
+-
+ [org.gnome.settings-daemon.plugins.xsettings]
+ antialiasing = 'rgba'
+ hinting = 'slight'
+-
+-[org.gnome.settings-daemon.plugins.print-notifications]
+-active = false
+-
+-[org.gnome.settings-daemon.plugins.updates]
+-active = false
+-
+-[org.gnome.settings-daemon.plugins.background]
+-active = false
+-
+-[org.gnome.sushi]
+-client-decoration = false
+-
+-[org.gnome.Totem]
+-active-plugins = ['skipto','chapters','screenshot','media_player_keys','screensaver','movie-properties','save-file','youtube','totem-zeitgeist-dp-plugin']
