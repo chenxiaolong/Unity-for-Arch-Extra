@@ -7,6 +7,15 @@
  [org.gnome.desktop.background]
  show-desktop-icons=true
  picture-uri='file:///usr/share/backgrounds/warty-final-ubuntu.png'
+@@ -8,7 +5,7 @@
+ [org.gnome.desktop.interface]
+ gtk-theme="Ambiance"
+ icon-theme="ubuntu-mono-dark"
+-cursor-theme="DMZ-White"
++cursor-theme="Vanilla-DMZ"
+ font-name="Ubuntu 11"
+ monospace-font-name="Ubuntu Mono 13"
+ 
 @@ -40,64 +37,10 @@
  theme="Ambiance"
  titlebar-font='Ubuntu Bold 11'

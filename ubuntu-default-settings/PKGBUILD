@@ -2,7 +2,7 @@
 
 pkgname=ubuntu-default-settings
 pkgver=12.10.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Ubuntu's default settings"
 arch=('any')
 url="https://launchpad.net/ubuntu/+source/ubuntu-settings"
@@ -13,7 +13,7 @@ install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-settings_${pkgver}.tar.gz"
         '0001_Simplified.patch')
 sha512sums=('99b93a5d94dc9f7cbf3fdcc263b94085fd7791517a68fc9ed10105d9a6512dc3bc026f8db7738f3019cef273223a3af8a285fe913f72e7c8b72724ff6eff127f'
-            'ca70ad48b9ec39efaf25d167380f5d744ea5660ccccc63c589a3a1fab7ae622b9a2effa169ee22537f3f070f0d2381c2c285071f0677b36c4a301654b580df29')
+            'd332250050618f583e4976d4c62ff5423ae00e33b9305abd2f466bdcca89d7f206846a5ac03e1d7b997fa87b1b53d06cda5b822a45c5d77658fc0de391ae75a0')
 
 prepare() {
   cd "${srcdir}/ubuntu-settings-${pkgver}/debian/"
