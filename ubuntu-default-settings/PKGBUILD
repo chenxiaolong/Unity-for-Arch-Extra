@@ -2,13 +2,14 @@
 
 pkgname=ubuntu-default-settings
 pkgver=12.10.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Ubuntu's default settings"
 arch=('any')
 url="https://launchpad.net/ubuntu/+source/ubuntu-settings"
 license=('GPL')
 groups=('unity-extra')
 depends=('ttf-ubuntu-font-family' 'ubuntu-sounds' 'ubuntu-themes' 'ubuntu-wallpapers' 'xcursor-vanilla-dmz')
+install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-settings_${pkgver}.tar.gz"
         '0001_Simplified.patch')
 sha512sums=('99b93a5d94dc9f7cbf3fdcc263b94085fd7791517a68fc9ed10105d9a6512dc3bc026f8db7738f3019cef273223a3af8a285fe913f72e7c8b72724ff6eff127f'
