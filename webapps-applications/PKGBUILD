@@ -2,7 +2,7 @@
 
 pkgname=webapps-applications
 pkgver=2.4.14
-pkgrel=101
+pkgrel=102
 pkgdesc="Unity WebApps integration scripts"
 arch=('any')
 url="https://launchpad.net/webapps-applications"
@@ -35,6 +35,8 @@ package() {
   # What is heck is zn_CN? zh stands for the first two letter of the pinyin of
   # 中文 (zhongwen)
   mv "${pkgdir}"/usr/share/locale/{zn,zh}_CN/
+
+  rm -rvf "${pkgdir}/usr/share/applications/"
 }
 
 # vim:set ts=2 sw=2 et:
