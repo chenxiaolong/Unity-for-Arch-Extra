@@ -7,7 +7,7 @@ _bzr_rev=529
 pkgbase=globalmenu-extension
 pkgname=('firefox-globalmenu' 'thunderbird-globalmenu')
 pkgver=4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Global Menu Extensions for Firefox and Thunderbird"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/globalmenu-extension"
@@ -50,8 +50,8 @@ package_firefox-globalmenu() {
 
   emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' \
          extensions/globalmenu/package/install.rdf)
-  install -dm755 "${pkgdir}/usr/lib/firefox/extensions/${emid}/"
-  unzip -d "${pkgdir}/usr/lib/firefox/extensions/${emid}/" \
+  install -dm755 "${pkgdir}/usr/lib/firefox/browser/extensions/${emid}/"
+  unzip -d "${pkgdir}/usr/lib/firefox/browser/extensions/${emid}/" \
            dist/xpi-stage/globalmenu.xpi
 }
 
