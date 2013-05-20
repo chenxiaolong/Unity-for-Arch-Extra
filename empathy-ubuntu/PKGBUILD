@@ -2,10 +2,9 @@
 # Original Maintainer: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=empathy-ubuntu
-_ppa_ver=3.7.92
-_ppa_rel=0ubuntu1~raring1
+_ppa_rel=0ubuntu1~raring3
 pkgver=3.8.1
-pkgrel=100
+pkgrel=101
 pkgdesc="A GNOME instant messaging client using the Telepathy framework."
 arch=('i686' 'x86_64')
 url="http://live.gnome.org/Empathy"
@@ -23,9 +22,9 @@ options=('!libtool' '!makeflags')
 groups=('gnome')
 install=empathy.install
 source=("http://ftp.gnome.org/pub/GNOME/sources/${pkgname%-*}/${pkgver:0:3}/${pkgname%-*}-${pkgver}.tar.xz"
-        "http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/pool/main/e/empathy/empathy_${_ppa_ver}-${_ppa_rel}.debian.tar.bz2")
+        "http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/pool/main/e/empathy/empathy_${pkgver}-${_ppa_rel}.debian.tar.bz2")
 sha512sums=('37a11796e1714bf969c562f03d5c3470bfef5d90e4f4be0d53457077a943042b4b1b7aaac8981695227ab5db374639acbe3ce37751e1ad96c3c7d6ea67f8fd4d'
-            '94254664ef8c74551db8e2daf6e99d980b6020053966aa2e39b47377082305157606c519f7306754697c35fff997fe4c46d1b0db0566a6ff580fe8b381d78947')
+            '291fbad2bde14539421127ac00a2d2c4e3f172675c24f82570694af5e9730b17818edd544119d69b52dcd5fc8bed90f50dc80774ec6ecec0acf245331f978a3d')
 
 prepare() {
   cd "${pkgname%-*}-${pkgver}"
