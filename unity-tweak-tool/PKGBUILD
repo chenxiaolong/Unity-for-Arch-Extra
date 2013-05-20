@@ -1,8 +1,10 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
+_ubuntu_ver=0.0.4ubuntu0.1
+
 pkgname=unity-tweak-tool
-pkgver=0.0.4
-pkgrel=3
+pkgver=0.0.4.ubuntu0.1
+pkgrel=1
 pkgdesc="Configuration tool for the Unity desktop"
 arch=('any')
 url="https://github.com/freyja-dev/unity-tweak-tool"
@@ -12,11 +14,11 @@ depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'notify-osd' 'python' 'python-xdg' 
 makedepends=('python-distutils-extra')
 options=('!emptydirs')
 install=${pkgname}.install
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/unity-tweak-tool_${pkgver}.tar.gz")
-sha512sums=('b3285377f363892889fcc760ace004931245561f63994af37cfcfc78a83947ca61567838c38061f95a854c3cb2a9787bd15634567e2403cd61585cd91d62df9a')
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/unity-tweak-tool_${_ubuntu_ver}.tar.gz")
+sha512sums=('a9ef2e86a4e9925546dc3639e68f497b0265dd93c47ea5de0a6faab01f03986b56b3358b9036ebcfba946b3089920f23afe932b1108e5b3a2c22331d35caa731')
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${_ubuntu_ver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
