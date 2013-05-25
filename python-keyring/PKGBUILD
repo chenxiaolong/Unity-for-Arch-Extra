@@ -2,8 +2,8 @@
 
 pkgbase=python-keyring
 pkgname=('python-keyring' 'python2-keyring')
-pkgver=1.2.2
-pkgrel=103
+pkgver=1.3
+pkgrel=100
 pkgdesc="Python library for accessing keyring services"
 arch=('any')
 url="http://pypi.python.org/pypi/keyring"
@@ -12,7 +12,7 @@ groups=('unity-extra')
 makedepends=('python' 'python2' 'python-distribute' 'python2-distribute' 'zip' 'unzip')
 source=("http://pypi.python.org/packages/source/k/keyring/keyring-${pkgver}.zip")
 noextract=("keyring-${pkgver}.zip")
-sha512sums=('2fcc0cf0b78cbea47464cfbf35ed0be8558399350e05f7db0ed68188d26752d56e86fa7c0912b4e711ed4159927c57e649cba8d508938f88e33b8bef786854bb')
+sha512sums=('fdf295136d80f3a762598877f1791c5ab436e3fb68e5f8fd53c8711b8d0e72cd950fd3335f34bab0f77c86f2f27803c07ee8e520c240bbc7843ca78f840326d7')
 
 package_python-keyring() {
   depends=('python-crypto')
