@@ -2,9 +2,9 @@
 
 pkgname=telepathy-indicator
 _actual_ver=0.3.1
-_extra_ver=daily13.03.01
+_extra_ver=daily13.05.02
 pkgver=${_actual_ver}.${_extra_ver}
-pkgrel=102
+pkgrel=100
 pkgdesc="Telepathy integration with the messaging menu"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/telepathy-indicator"
@@ -14,7 +14,7 @@ depends=('indicator-messages' 'libunity' 'telepathy-glib')
 makedepends=('intltool')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/telepathy-indicator_${_actual_ver}${_extra_ver}.orig.tar.gz"
         '0001_autoconf.patch')
-sha512sums=('1eddd78d53071e263dd5a23ad88fd45ded06dc6e4430717fe230893b6a62eb2fc776abdec7ebee233dc45d672275535ad60280797b76ce32f0ea3d6b19912f6e'
+sha512sums=('a2f57fe24baf0e3cba8be0c64cf616a5f3dcff19a396c1fe3d3733397b67bfeb9cb9ee1d47f5b35c554505fa326e11ed1daadd56528bb8150ed613727c5751ce'
             'fc3e1b6ae12e6978eae42459e92f40833f6e9a7aa841b7de2b41c8772283aa7cb7f3c2856b0501cd44a1b8cf6b0d4b5f11adfa679b088b70f4ad1cd2e7b4df6c')
 
 prepare() {
