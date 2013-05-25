@@ -1,42 +1,43 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=webapps-applications
-pkgver=2.4.14
-pkgrel=102
+_actual_ver=2.4.16
+_extra_ver=daily13.05.22
+pkgver=${_actual_ver}${_extra_ver}
+pkgrel=100
 pkgdesc="Unity WebApps integration scripts"
 arch=('any')
 url="https://launchpad.net/webapps-applications"
 license=('GPL')
 groups=('unity-extra')
-depends=('libunity-webapps' 'xdg-utils')
-makedepends=('python-polib' 'intltool')
+depends=('glib2' 'gtk3' 'libunity-webapps' 'unity-asset-pool' 'webkitgtk3' 'xdg-utils')
+makedepends=('intltool')
+optdepends=('gjs: Development (or something)'
+            'python-polib: I have no idea')
 install=webapps-applications.install
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/webapps-applications_${pkgver}.orig.tar.gz")
-sha512sums=('fc04d141477cc8f58dcd6e9e0c4265fce892fdfb8b03eaf9fc885651fb8c5c4540d761014f338e8175c432773d1c6623bd8b174f8c04ebab327af7426b014656')
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/webapps-applications_${_actual_ver}${_extra_ver}.orig.tar.gz")
+sha512sums=('29f970c89e1f9a19bdb5ea2c8548fe9ec1879f47608317606ba3288af0329f0e21a0251b5a701355125328f6229ec2eec1d25c43d41918e47b330a16fc3c9a33')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_actual_ver}${_extra_ver}"
 
   autoreconf -vfi
-  intltoolize -f
 
-  ./configure --prefix=/usr --enable-default-applications
+  ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_actual_ver}${_extra_ver}"
   make DESTDIR="${pkgdir}/" install
 
-  install -dm755 "${pkgdir}/usr/bin/"
-  install -m755 scripts/install-default-webapps-in-launcher.py \
-    "${pkgdir}/usr/bin/webapps-add-defaults-to-launcher"
-
-  # What is heck is zn_CN? zh stands for the first two letter of the pinyin of
-  # 中文 (zhongwen)
-  mv "${pkgdir}"/usr/share/locale/{zn,zh}_CN/
-
-  rm -rvf "${pkgdir}/usr/share/applications/"
+  install -dm755 "${pkgdir}/usr/share/unity-webapps/tools/"
+  install -m644 scripts/po2json.py \
+                scripts/applinter.sh \
+                scripts/style_checker.js \
+                scripts/third_party/jslint.js \
+                "${pkgdir}/usr/share/unity-webapps/tools/"
+  install -m644 common/rules.mk "${pkgdir}/usr/share/unity-webapps/"
 }
 
 # vim:set ts=2 sw=2 et:
