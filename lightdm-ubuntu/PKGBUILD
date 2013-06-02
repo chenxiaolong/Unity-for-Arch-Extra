@@ -147,9 +147,9 @@ package() {
   install -m644 "${srcdir}"/lightdm-gtk-greeter.conf "${pkgdir}"/etc/lightdm/
 
   # Install binaries and scripts
-  install -dm755 "${pkgdir}"/usr/sbin/
-  install -m755 debian/guest-account "${pkgdir}"/usr/sbin/
-  install -m755 debian/lightdm-session "${pkgdir}"/usr/sbin/
+  install -dm755 "${pkgdir}"/usr/bin/
+  install -m755 debian/guest-account "${pkgdir}"/usr/bin/
+  install -m755 debian/lightdm-session "${pkgdir}"/usr/bin/
   install -m755 debian/lightdm-greeter-session "${pkgdir}"/usr/lib/lightdm/
   chmod +x "${pkgdir}"/usr/lib/lightdm/lightdm-greeter-session
 
