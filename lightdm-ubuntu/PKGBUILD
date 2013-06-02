@@ -7,7 +7,7 @@
 pkgname=lightdm-ubuntu
 _ubuntu_rel=0ubuntu2
 pkgver=1.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A lightweight display manager"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/lightdm"
@@ -105,6 +105,7 @@ build() {
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
+    --sbindir=/usr/bin \
     --disable-static \
     --libexecdir=/usr/lib/lightdm \
     --localstatedir=/var \
