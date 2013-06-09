@@ -2,7 +2,7 @@
 
 pkgname=indicator-cpufreq
 pkgver=0.2.2
-pkgrel=103
+pkgrel=104
 pkgdesc="CPU frequency indicator"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/indicator-cpufreq"
@@ -27,7 +27,7 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
 
-  install -dm755 "${pkgdir}/usr/share/polkit-1/rules.d/"
+  install -dm700 "${pkgdir}/usr/share/polkit-1/rules.d/"
   install -m644 "${srcdir}/indicator-cpufreq.rules" \
     "${pkgdir}/usr/share/polkit-1/rules.d/"
 }
