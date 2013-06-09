@@ -2,7 +2,7 @@
 
 pkgname=indicator-cpufreq
 pkgver=0.2.2
-pkgrel=102
+pkgrel=103
 pkgdesc="CPU frequency indicator"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/indicator-cpufreq"
@@ -11,10 +11,10 @@ groups=('unity-extra')
 depends=('cpupower' 'libappindicator' 'python2' 'python2-dbus' 'python2-gobject' 'pygtk')
 makedepends=('python2-distutils-extra')
 source=("https://launchpad.net/indicator-cpufreq/trunk/${pkgver}/+download/indicator-cpufreq-${pkgver}.tar.gz"
-        'indicator-cpufreq.pkla'
+        'indicator-cpufreq.rules'
         '0001_Use_cpupower.patch')
 sha512sums=('210695489a717e71c01550c5a37625a1baf6f196e47a1d80bacd2723daf537dc7d4f4640604fe6bf5631807dd29ae68fca726a4638b7ea29317c60bb064ab9a1'
-            '5a140fbc43df04de4addb1fc1dee2ae3dc76463cf9bf428b90c9c669072142bd11adfba5113b8d9bd868fdccc0606a595d0025e1e1d64178fb9f75b395e79406'
+            '16997d88f7253fb1b7f0c4a7bd9e87597b6f2b859e531f038f1bde47fa531c683e44fd4b3aacdc58f75a086e9f7e5dba37b369007220b70b689d9ecad89ea391'
             '8aad00c00a95d71f221647263422eef89a0207bdb55d883520f3871f28551c316860560207c96144e22dda2ab5f5fc9b8c7bfa0fc642283de160bfd61458b8c0')
 
 prepare() {
@@ -27,9 +27,9 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
 
-  install -dm755 "${pkgdir}/var/lib/polkit-1/localauthority/10-vendor.d/"
-  install -m644 "${srcdir}/indicator-cpufreq.pkla" \
-    "${pkgdir}/var/lib/polkit-1/localauthority/10-vendor.d/"
+  install -dm755 "${pkgdir}/usr/share/polkit-1/rules.d/"
+  install -m644 "${srcdir}/indicator-cpufreq.rules" \
+    "${pkgdir}/usr/share/polkit-1/rules.d/"
 }
 
 # vim:set ts=2 sw=2 et:

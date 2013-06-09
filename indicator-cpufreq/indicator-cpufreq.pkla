@@ -1,4 +1,0 @@
-[Change CPU Frequency scaling]
-Identity=unix-group:wheel
-Action=com.ubuntu.indicatorcpufreqselector.setfrequencyscaling
-ResultActive=yes
