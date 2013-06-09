@@ -2,8 +2,8 @@
 
 pkgbase=python-regex
 pkgname=('python-regex' 'python2-regex')
-pkgver=0.1.20120904
-pkgrel=101
+pkgver=0.1.20130521
+pkgrel=100
 pkgdesc="Alternative regular expression module"
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/mrab-regex-hg/"
@@ -12,7 +12,7 @@ groups=('unity-extra')
 makedepends=('python' 'python2' 'python-distribute' 'python2-distribute' 'python2-docutils')
 options=('!emptydirs')
 source=("http://ftp.de.debian.org/debian/pool/main/p/python-regex/python-regex_${pkgver}.orig.tar.gz")
-sha512sums=('d56f21727a6e05606deb3cc7766ea59a41d4b06ce2d555b0808d31bfb99516c3ee6710391a2a5b23dbd6b62efb9b678edbad83c7ee23fc368e40e8ace89ec317')
+sha512sums=('9c7febfa60263fd098d154fb39eaf6fbb46fb5caf8a505f21abb8580a65e5f0a7d593df5819273d14d082d75aa802fafc47886db467fd28ea90b48885f871840')
 
 package_python-regex() {
   pkgdesc+=' (Python 3)'
