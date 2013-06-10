@@ -18,7 +18,7 @@ package_python-regex() {
   pkgdesc+=' (Python 3)'
   depends=('python')
 
-  cd "${srcdir}/regex-${pkgver}"
+  cd "${srcdir}/regex-2013-05-21"
   python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
@@ -26,7 +26,7 @@ package_python2-regex() {
   pkgdesc+=' (Python 2)'
   depends=('python2')
 
-  cd "${srcdir}/regex-${pkgver}"
+  cd "${srcdir}/regex-2013-05-21"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
 }
 
