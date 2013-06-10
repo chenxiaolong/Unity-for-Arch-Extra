@@ -3,29 +3,38 @@
 pkgbase=python-keyring
 pkgname=('python-keyring' 'python2-keyring')
 pkgver=1.4
-pkgrel=100
+pkgrel=101
 pkgdesc="Python library for accessing keyring services"
 arch=('any')
 url="http://pypi.python.org/pypi/keyring"
 license=('python')
 groups=('unity-extra')
 makedepends=('python' 'python2' 'python-distribute' 'python2-distribute' 'zip' 'unzip')
-source=("http://pypi.python.org/packages/source/k/keyring/keyring-${pkgver}.zip")
+source=("http://pypi.python.org/packages/source/k/keyring/keyring-${pkgver}.zip"
+        '0001_UTF-8.patch')
 noextract=("keyring-${pkgver}.zip")
-sha512sums=('4f35e328e2f6ae9953c2572fd2d69c32d42095af29058a65d3eaaf5bb487f313f1ebc741634201df1cb66dec1394105b1d5260a54183300e06c2716387234913')
+sha512sums=('4f35e328e2f6ae9953c2572fd2d69c32d42095af29058a65d3eaaf5bb487f313f1ebc741634201df1cb66dec1394105b1d5260a54183300e06c2716387234913'
+            '4f7cb1f6c34eeebc15b42192799624c6623f065be4a52e6973b74b2f6582a7997c13e48830d566e15b5f41cd45cf2d668aa671d77e02e2823599ef9ac02b9be9')
+
+prepare() {
+  unzip "${srcdir}/keyring-${pkgver}.zip" -d "${srcdir}/build-python3/"
+  unzip "${srcdir}/keyring-${pkgver}.zip" -d "${srcdir}/build-python2/"
+  cd "${srcdir}/build-python3/keyring-${pkgver}/"
+  patch -p1 -i "${srcdir}/0001_UTF-8.patch"
+  cd "${srcdir}/build-python2/keyring-${pkgver}/"
+  patch -p1 -i "${srcdir}/0001_UTF-8.patch"
+}
 
 package_python-keyring() {
   depends=('python-crypto')
 
-  unzip "${srcdir}/keyring-${pkgver}.zip" -d "${srcdir}/build-python3/"
   cd "${srcdir}/build-python3/keyring-${pkgver}/"
-  LANG="en_US.UTF-8" python setup.py install --root="${pkgdir}/" --optimize=1
+  python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
 package_python2-keyring() {
   depends=('python2-crypto')
 
-  unzip "${srcdir}/keyring-${pkgver}.zip" -d "${srcdir}/build-python2/"
   cd "${srcdir}/build-python2/keyring-${pkgver}/"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
   rm "${pkgdir}/usr/bin/keyring"
