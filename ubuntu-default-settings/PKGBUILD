@@ -1,8 +1,8 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=ubuntu-default-settings
-pkgver=12.10.8
-pkgrel=3
+pkgver=13.10.0
+pkgrel=1
 pkgdesc="Ubuntu's default settings"
 arch=('any')
 url="https://launchpad.net/ubuntu/+source/ubuntu-settings"
@@ -12,8 +12,8 @@ depends=('ttf-ubuntu-font-family' 'ubuntu-sounds' 'ubuntu-themes' 'ubuntu-wallpa
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-settings_${pkgver}.tar.gz"
         '0001_Simplified.patch')
-sha512sums=('99b93a5d94dc9f7cbf3fdcc263b94085fd7791517a68fc9ed10105d9a6512dc3bc026f8db7738f3019cef273223a3af8a285fe913f72e7c8b72724ff6eff127f'
-            'd332250050618f583e4976d4c62ff5423ae00e33b9305abd2f466bdcca89d7f206846a5ac03e1d7b997fa87b1b53d06cda5b822a45c5d77658fc0de391ae75a0')
+sha512sums=('b16818964cfef5017bfdffafd1a94b164d99468b1d817d857477a40a7d4f09e16d49a3a30908b7686ac5e2f99cb0ab5478e3f8c1816deb86a21df984483b04a0'
+            '996fdfdd169cb72c5ffd501e875cf2ccd63b72883cf5be05ff48967a9311adc10d81764f72731bd790a3adef6b4a1b9d11035e4f0c4f416a9220b0117c7acc3e')
 
 prepare() {
   cd "${srcdir}/ubuntu-settings-${pkgver}/debian/"

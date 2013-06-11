@@ -16,7 +16,7 @@
  font-name="Ubuntu 11"
  monospace-font-name="Ubuntu Mono 13"
  
-@@ -40,64 +37,10 @@
+@@ -40,24 +37,6 @@
  theme="Ambiance"
  titlebar-font='Ubuntu Bold 11'
  
@@ -35,18 +35,16 @@
 -[org.gnome.Epiphany]
 -keyword-search-url='http://www.google.com/search?client=ubuntu&channel=es&q=%s&ie=UTF-8&oe=UTF-8'
 -
+-[org.gnome.login-screen]
+-logo='/lib/plymouth/ubuntu_logo.png'
+-
  [org.gnome.mutter.keybindings]
  toggle-tiled-left = ['<Primary><Super>Left','<Super>Left']
  toggle-tiled-right = ['<Primary><Super>Right','<Super>Right']
+@@ -70,40 +49,9 @@
+ [org.gnome.nautilus.preferences]
+ sort-directories-first=true
  
--[org.gnome.nautilus.desktop]
--home-icon-visible=false
--trash-icon-visible=false
--volumes-visible=false
--
--[org.gnome.nautilus.preferences]
--sort-directories-first=true
--
 -[org.gnome.rhythmbox.rhythmdb]
 -monitor-library=true
 -
@@ -66,7 +64,7 @@
  [org.gnome.settings-daemon.plugins.xsettings]
  antialiasing = 'rgba'
  hinting = 'slight'
--
+ 
 -[org.gnome.settings-daemon.plugins.print-notifications]
 -active = false
 -
@@ -76,8 +74,11 @@
 -[org.gnome.settings-daemon.plugins.background]
 -active = false
 -
--[org.gnome.sushi]
--client-decoration = false
+-[org.gnome.shell]
+-favorite-apps=[ 'ubiquity-gtkui.desktop', 'firefox.desktop', 'evolution.desktop', 'empathy.desktop', 'rhythmbox.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'yelp.desktop' ]
+-
+ [org.gnome.sushi]
+ client-decoration = false
 -
 -[org.gnome.Totem]
 -active-plugins = ['skipto','chapters','screenshot','media_player_keys','screensaver','movie-properties','save-file','youtube','totem-zeitgeist-dp-plugin']
