@@ -24,7 +24,7 @@ LINE_THIN=$(printline '-')
 for i in ${PACKAGES[@]}; do
   UBUNTU_VER=$(grep -A2 "Package: unity-webapps-${i}$" Sources | sed -n 's/^Version: \(.*\)/\1/p')
 
-  PKGBUILD_VER=$(eval "echo \"\${_ver_${i/-/_}}\"")
+  PKGBUILD_VER=$(eval "echo \${_ver_${i/-/_}} \${_rel_${i/-/_}}")
 
   echo "${LINE_THICK}"
   echo "Package: unity-webapps-${i}"
