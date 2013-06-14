@@ -1,125 +1,102 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
-setver() { eval "${1}=${2}"; }
+packages=()
+setvar() { eval "_ver_${1/-/_}=${2}"; packages+=(${1}); }
 
-setver _ver_amazoncloudreader	2.2ubuntu1
-setver _ver_angrybirds		2.2
-setver _ver_bbcnews		2.3
-setver _ver_cuttherope		2.2
-setver _ver_facebookapps	2.2ubuntu1
-setver _ver_facebookmessenger	2.4.12
-setver _ver_gmail		2.4.7
-setver _ver_googlecalendar	2.2
-setver _ver_googledocs		2.2
-setver _ver_googleplus		2.4.12
-setver _ver_googleplusgames	2.3
-setver _ver_grooveshark		2.2
-setver _ver_hulu_player		2.4.12
-setver _ver_lastfm_radio	2.2
-setver _ver_launchpad		2.2
-setver _ver_librefm		2.4.12
-setver _ver_linkedin		2.4.8
-setver _ver_livemail		2.3
-setver _ver_mail_ru		2.2
-setver _ver_newsblur		2.2
-setver _ver_pandora_com		2.2ubuntu1
-setver _ver_qq_mail		2.2
-setver _ver_reddit		2.2
-setver _ver_tumblr		2.2
-setver _ver_twitter		2.4.11
-setver _ver_vkcom		2.2
-setver _ver_wordpress_com	2.2
-setver _ver_yahoomail		2.3
-setver _ver_yahoonews		2.3
-setver _ver_yandex_music	2.3
-setver _ver_yandexnews		2.2
-setver _ver_youtube		2.4.11
+setvar amazoncloudreader	2.2ubuntu1
+setvar angrybirds		2.2
+setvar bbcnews			2.3
+setvar cuttherope		2.2
+setvar facebookapps		2.2ubuntu1
+setvar facebookmessenger	2.4.12
+setvar gmail			2.4.7
+setvar googlecalendar		2.2
+setvar googledocs		2.2
+setvar googleplus		2.4.12
+setvar googleplusgames		2.3
+setvar grooveshark		2.2
+setvar hulu-player		2.4.12
+setvar lastfm-radio		2.2
+setvar launchpad		2.2
+setvar librefm			2.4.12
+setvar linkedin			2.4.8
+setvar livemail			2.3
+setvar mail-ru			2.2
+setvar newsblur			2.2
+setvar pandora-com		2.2ubuntu1
+setvar qq-mail			2.2
+setvar reddit			2.2
+setvar tumblr			2.2
+setvar twitter			2.4.11
+setvar vkcom			2.2
+setvar wordpress-com		2.2
+setvar yahoomail		2.3
+setvar yahoonews		2.3
+setvar yandex-music		2.3
+setvar yandexnews		2.2
+setvar youtube			2.4.11
 
-pkgname=(
-  unity-webapps
-  unity-webapps-amazoncloudreader
-  unity-webapps-angrybirds
-  unity-webapps-bbcnews
-  unity-webapps-cuttherope
-  unity-webapps-facebookapps
-  unity-webapps-facebookmessenger
-  unity-webapps-gmail
-  unity-webapps-googlecalendar
-  unity-webapps-googledocs
-  unity-webapps-googleplus
-  unity-webapps-googleplusgames
-  unity-webapps-grooveshark
-  unity-webapps-hulu-player
-  unity-webapps-lastfm-radio
-  unity-webapps-launchpad
-  unity-webapps-librefm
-  unity-webapps-linkedin
-  unity-webapps-livemail
-  unity-webapps-mail-ru
-  unity-webapps-newsblur
-  unity-webapps-pandora-com
-  unity-webapps-qq-mail
-  unity-webapps-reddit
-  unity-webapps-tumblr
-  unity-webapps-twitter
-  unity-webapps-vkcom
-  unity-webapps-wordpress-com
-  unity-webapps-yahoomail
-  unity-webapps-yahoonews
-  unity-webapps-yandex-music
-  unity-webapps-yandexnews
-  unity-webapps-youtube
-)
-
-pkgbase=unity-webapps
+pkgname=unity-webapps
+epoch=1
 pkgver=1.0
-pkgrel=103
-pkgdesc="Metapackage for all the Unity WebApps"
+pkgrel=1
+pkgdesc="Unity WebApps"
 arch=('any')
-url="http://packages.ubuntu.com/search?keywords=webapps&searchon=names&suite=raring&section=all"
-# Packaging is under the GPLv3+ license
-license=('GPL')
+url="http://packages.ubuntu.com/search?keywords=webapps&searchon=names&suite=saucy&section=all"
+license=('GPL' 'custom')
 groups=('unity-extra')
 
-extrafiles=('icon_cache.install')
+depends=('webapps-applications' 'xdg-utils')
+
+install=icon_cache.install
+
+provides=()
+conflicts=()
+replaces=()
 source=()
+for i in ${packages[@]}; do
+  eval "_name=${i}; _ver=\${_ver_${i/-/_}}"
 
-addurl() {
-  eval "source+=(https://launchpad.net/ubuntu/+archive/primary/+files/unity-webapps-${1}_\${_ver_${1/-/_}}.tar.gz)"
+  # Smooth upgrade from old packages
+  provides+=("unity-webapps-${_name}=${_ver}")
+  replaces+=("unity-webapps-${_name}")
+  conflicts+=("unity-webapps-${_name}")
+
+  source+=("https://launchpad.net/ubuntu/+archive/primary/+files/unity-webapps-${_name}_${_ver}.tar.gz")
+done
+
+package() {
+  install -dm755 "${pkgdir}/usr/share/doc/unity-webapps/"
+
+  for i in ${packages[@]}; do
+    eval "_name=${i}; _ver=\${_ver_${i/-/_}}"
+
+    cd "${srcdir}/unity-webapps-${_name}-${_ver}"
+
+    cat debian/install | while read SOURCE DEST; do
+      if [ -f "${SOURCE}" ]; then
+        install -dm755 "${pkgdir}/${DEST}/"
+        install -m644 "${SOURCE}" "${pkgdir}/${DEST}/"
+      elif [ -d "${SOURCE}" ]; then
+        pushd "${pkgdir}/${DEST}/"
+        find . -type d -exec install -dm755 "${pkgdir}/${DEST}/$(basename ${SOURCE})"/{} \;
+        find . -type f -exec install -m644 {} "${pkgdir}/${DEST}/$(basename ${SOURCE})"/{} \;
+        popd
+      else
+        echo "${SOURCE} does not exist!"
+        exit 1
+      fi
+    done
+
+    # License
+    install -dm755 "${pkgdir}/usr/share/licenses/unity-webapps/"
+    install -m644 debian/copyright \
+                  "${pkgdir}/usr/share/licenses/unity-webapps/${_name}"
+
+    echo "${_name} ${_ver}" >> \
+      "${pkgdir}/usr/share/doc/unity-webapps/VERSIONS"
+  done
 }
-
-addurl amazoncloudreader
-addurl angrybirds
-addurl bbcnews
-addurl cuttherope
-addurl facebookapps
-addurl facebookmessenger
-addurl gmail
-addurl googlecalendar
-addurl googledocs
-addurl googleplus
-addurl googleplusgames
-addurl grooveshark
-addurl hulu-player
-addurl lastfm-radio
-addurl launchpad
-addurl librefm
-addurl linkedin
-addurl livemail
-addurl mail-ru
-addurl newsblur
-addurl pandora-com
-addurl qq-mail
-addurl reddit
-addurl tumblr
-addurl twitter
-addurl vkcom
-addurl wordpress-com
-addurl yahoomail
-addurl yahoonews
-addurl yandex-music
-addurl yandexnews
-addurl youtube
 
 sha512sums=('25c6147c2b1aed0fe7750cea47ebc6657f0b1fc834bb1ae378c93147e66694002e0cfd65a2fb60c21dee2fbbbdebb04e8dc8a63a77e546554162e45b7d84c818'
             '1f0f805e152ff2855c16fa7596c3f05860d77b427ab3fed247ff0f1afd121adbb323d1982faa6eefb283f4be5edef5dd0ba344be3a39cd3cdcf6c16aa4ecd671'
@@ -153,212 +130,3 @@ sha512sums=('25c6147c2b1aed0fe7750cea47ebc6657f0b1fc834bb1ae378c93147e66694002e0
             '6760401a80d19400719530a8e113c850d4853d0e8a2ea7799fbb399830f9b5fbd2da8c56fd199c7fd5c07f75ecdf8b8a0bbb5b5a2fe00eb99b09628469b45861'
             '5833c151ee4c719595c96393154344a7cef692005cd376bb153459f958a5e5080f482278dfb852814f07a0de9fe9fd60b4636ba4560e68ff76ac78f556493648'
             'c2d47c7db4fd4ffd2bd36abab9de752637657c17ae1e4c4567ddd1f61933edc0209d91625092513040f3de734bb37dcb70c68631686d02e315c499146df1f614')
-
-package_unity-webapps() {
-  depends=(
-    unity-webapps-amazoncloudreader
-    unity-webapps-angrybirds
-    unity-webapps-bbcnews
-    unity-webapps-cuttherope
-    unity-webapps-facebookapps
-    unity-webapps-facebookmessenger
-    unity-webapps-gmail
-    unity-webapps-googlecalendar
-    unity-webapps-googledocs
-    unity-webapps-googleplus
-    unity-webapps-googleplusgames
-    unity-webapps-grooveshark
-    unity-webapps-hulu-player
-    unity-webapps-lastfm-radio
-    unity-webapps-launchpad
-    unity-webapps-librefm
-    unity-webapps-linkedin
-    unity-webapps-livemail
-    unity-webapps-mail-ru
-    unity-webapps-newsblur
-    unity-webapps-pandora-com
-    unity-webapps-qq-mail
-    unity-webapps-reddit
-    unity-webapps-tumblr
-    unity-webapps-twitter
-    unity-webapps-vkcom
-    unity-webapps-wordpress-com
-    unity-webapps-yahoomail
-    unity-webapps-yahoonews
-    unity-webapps-yandex-music
-    unity-webapps-yandexnews
-    unity-webapps-youtube
-  )
-}
-
-generate_package() {
-  unset name fullname version website gen_icon_cache
-
-  while [ ${#} -gt 0 ]; do
-    case ${1} in
-    -n)
-      shift;	name=${1};		shift;;
-    -N)
-      shift;	fullname=${1};		shift;;
-    -v)
-      shift;	version=${1};		shift;;
-    -u)
-      shift;	website=${1};		shift;;
-    --hasicons)
-      		gen_icon_cache=true;	shift;;
-    *)
-      echo "Huh?"
-      exit 1
-      ;;
-    esac
-  done
-
-  [ -z ${name} ] && echo "Name required" && exit 1
-  [ -z ${version} ] && echo "Version required" && exit 1
-  [ -z "${fullname}" ] && echo "Full name required" && exit 1
-  [ -z ${website} ] && echo "Website required" && exit 1
-
-  eval "
-package_unity-webapps-${name}() {
-  pkgdesc=\"Unity WebApp for ${fullname}\"
-  pkgver=${version}
-  arch=('any')
-  url=\"${website}\"
-  license=('GPLv3' 'custom')
-  groups=('unity-extra')
-  depends=('webapps-applications' 'xdg-utils')
-  if [ \"x${gen_icon_cache}\" == \"xtrue\" ]; then
-    install=icon_cache.install
-  fi
-
-  cd \"\${srcdir}/unity-webapps-${name}-${version}\"
-
-  cat debian/install | while read SOURCE DEST; do
-    if [ -f \${SOURCE} ]; then
-      install -dm755 \"\${pkgdir}/\${DEST}/\"
-      install -m644 \"\${SOURCE}\" \"\${pkgdir}/\${DEST}/\"
-    elif [ -d \${SOURCE} ]; then
-      pushd \"\${pkgdir}/\${DEST}/\"
-      find . -type d -exec install -dm755 \"\${pkgdir}/\${DEST}/\$(basename \${SOURCE})\"/{} \;
-      find . -type f -exec -install -m644 {} \"\${pkgdir}/\${DEST}/\$(basename \${SOURCE})\"/{} \;
-      popd
-    else
-      echo \"\${SOURCE} does not exist!\"
-      exit 1
-    fi
-  done
-
-  if [ \"x${gen_icon_cache}\" != \"xtrue\" ] &&
-     [ -d \"\${pkgdir}/usr/share/icons/\" ]; then
-    echo \"${name} has icons, but \\\"--hasicons\\\" was not passed\"
-    exit 1
-  fi
-  if [ \"x${gen_icon_cache}\" == \"xtrue\" ] &&
-     [ ! -d \"\${pkgdir}/usr/share/icons/\" ]; then
-    echo \"${name} has no icons, but \\\"--hasicons\\\" was passed!\"
-    exit 1
-  fi
-
-  install -dm755 \"\${pkgdir}/usr/share/licenses/unity-webapps/\"
-  install -m644 debian/copyright \
-    \"\${pkgdir}/usr/share/licenses/unity-webapps/${name}\"
-}
-"
-}
-
-generate_package -n amazoncloudreader	-N "Amazon Cloud Reader"	\
-                 -v ${_ver_amazoncloudreader}				\
-                 -u https://read.amazon.com/
-generate_package -n angrybirds		-N "Angry Birds"		\
-                 -v ${_ver_angrybirds}			--hasicons	\
-                 -u http://chrome.angrybirds.com/
-generate_package -n bbcnews		-N "BBC News"			\
-                 -v ${_ver_bbcnews}			--hasicons	\
-                 -u http://www.bbc.co.uk/news/
-generate_package -n cuttherope		-N "Cut the Rope"		\
-                 -v ${_ver_cuttherope}			--hasicons	\
-                 -u http://www.cuttherope.ie/
-generate_package -n facebookapps	-N "Facebook Apps"		\
-                 -v ${_ver_facebookapps}				\
-                 -u http://apps.facebook.com/
-generate_package -n facebookmessenger	-N "Facebook Messenger"		\
-                 -v ${_ver_facebookmessenger}		--hasicons	\
-                 -u https://www.facebook.com/
-generate_package -n gmail		-N "GMail"			\
-                 -v ${_ver_gmail}			--hasicons	\
-                 -u https://mail.google.com/
-generate_package -n googlecalendar	-N "Google Calendar"		\
-                 -v ${_ver_googlecalendar}		--hasicons	\
-                 -u https://www.google.com/calendar/render
-generate_package -n googledocs		-N "Google Docs"		\
-                 -v ${_ver_googledocs}					\
-                 -u https://docs.google.com/
-generate_package -n googleplus		-N "Google Plus"		\
-                 -v ${_ver_googleplus}			--hasicons	\
-                 -u https://plus.google.com/
-generate_package -n googleplusgames	-N "Google Plus Games"		\
-                 -v ${_ver_googleplusgames}				\
-                 -u https://plus.google.com/
-generate_package -n grooveshark		-N "Grooveshark"		\
-                 -v ${_ver_grooveshark}			--hasicons	\
-                 -u http://grooveshark.com/
-generate_package -n hulu-player		-N "Hulu Player"		\
-                 -v ${_ver_hulu_player}			--hasicons	\
-                 -u http://www.hulu.com/profile/queue
-generate_package -n lastfm-radio	-N "Last.fm Radio"		\
-                 -v ${_ver_lastfm_radio}		--hasicons	\
-                 -u http://www.last.fm/
-generate_package -n launchpad		-N "Launchpad"			\
-                 -v ${_ver_launchpad}			--hasicons	\
-                 -u https://launchpad.net/
-generate_package -n librefm		-N "Libre.fm"			\
-                 -v ${_ver_librefm}					\
-                 -u http://libre.fm/
-generate_package -n linkedin		-N "LinkedIn"			\
-                 -v ${_ver_linkedin}			--hasicons	\
-                 -u http://www.linkedin.com/
-generate_package -n livemail		-N "Windows Live Mail"		\
-                 -v ${_ver_livemail}			--hasicons	\
-                 -u http://mail.live.com/
-generate_package -n mail-ru		-N "Mail.Ru"			\
-                 -v ${_ver_mail_ru}			--hasicons	\
-                 -u http://mail.ru/
-generate_package -n newsblur		-N "NewsBlur"			\
-                 -v ${_ver_newsblur}			--hasicons	\
-                 -u http://newsblur.com/
-generate_package -n pandora-com		-N "Pandora"			\
-                 -v ${_ver_pandora_com}					\
-                 -u http://www.pandora.com/
-generate_package -n qq-mail		-N "QQ 邮箱"			\
-                 -v ${_ver_qq_mail}			--hasicons	\
-                 -u http://mail.qq.com/
-generate_package -n reddit		-N "reddit"			\
-                 -v ${_ver_reddit}			--hasicons	\
-                 -u http://www.reddit.com/
-generate_package -n tumblr		-N "Tumblr"			\
-                 -v ${_ver_tumblr}					\
-                 -u https://www.tumblr.com/
-generate_package -n twitter		-N "Twitter"			\
-                 -v ${_ver_twitter}			--hasicons	\
-                 -u https://twitter.com/
-generate_package -n vkcom		-N "VK"				\
-                 -v ${_ver_vkcom}			--hasicons	\
-                 -u http://vk.com/
-generate_package -n wordpress-com	-N "WordPress"			\
-                 -v ${_ver_wordpress_com}		--hasicons	\
-                 -u https://wordpress.com/wp-admin/
-generate_package -n yahoomail		-N "Yahoo! Mail"		\
-                 -v ${_ver_yahoomail}			--hasicons	\
-                 -u https://mail.yahoo.com/
-generate_package -n yahoonews		-N "Yahoo! News"		\
-                 -v ${_ver_yahoonews}			--hasicons	\
-                 -u http://news.yahoo.com/
-generate_package -n yandex-music	-N "Яндекс.Музыка"		\
-                 -v ${_ver_yandex_music}		--hasicons	\
-                 -u http://music.yandex.ru/
-generate_package -n yandexnews		-N "Яндекс.Новости"		\
-                 -v ${_ver_yandexnews}			--hasicons	\
-                 -u http://news.yandex.ru/
-generate_package -n youtube		-N "YouTube"			\
-                 -v ${_ver_youtube}			--hasicons	\
-                 -u http://www.youtube.com/

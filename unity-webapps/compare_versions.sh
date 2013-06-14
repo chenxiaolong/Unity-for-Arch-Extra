@@ -2,10 +2,10 @@
 
 source "$(dirname ${0})/PKGBUILD"
 
-echo "Downloading Ubuntu 13.04 Source Package Database..."
+echo "Downloading Ubuntu 13.10 Source Package Database..."
 [ -f Sources.bz2 ] && rm Sources.bz2
 [ -f Sources ] && rm Sources
-curl -O http://archive.ubuntu.com/ubuntu/dists/raring/universe/source/Sources.bz2
+curl -O http://archive.ubuntu.com/ubuntu/dists/saucy/universe/source/Sources.bz2
 bunzip2 Sources.bz2
 PACKAGES=($(grep "Package: unity-webapps" Sources | sed 's/Package: unity-webapps-//g'))
 
@@ -23,13 +23,14 @@ LINE_THIN=$(printline '-')
 
 for i in ${PACKAGES[@]}; do
   UBUNTU_VER=$(grep -A2 "Package: unity-webapps-${i}$" Sources | sed -n 's/^Version: \(.*\)/\1/p')
+
   PKGBUILD_VER=$(eval "echo \"\${_ver_${i/-/_}}\"")
 
   echo "${LINE_THICK}"
   echo "Package: unity-webapps-${i}"
   echo "${LINE_THIN}"
-  echo "spec file version: ${PKGBUILD_VER}"
-  echo "Ubuntu version:    ${UBUNTU_VER}"
+  echo "PKGBUILD version: ${PKGBUILD_VER}"
+  echo "Ubuntu version:   ${UBUNTU_VER}"
 done
 
 rm Sources
