@@ -1,29 +1,24 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=libpam-freerdp
-pkgver=1.0.1
-pkgrel=104
+_actual_ver=1.0.1
+_extra_ver=+13.10.20130724
+pkgver=${_actual_ver}${_extra_ver/+/.}
+pkgrel=100
 pkgdesc="A PAM module that uses FreeRDP to authenticate the account"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/libpam-freerdp"
 license=('GPL')
 groups=('unity-extra')
 depends=('freerdp')
-#checkdepends=('gtest')
+makedepends=('gnome-common')
+checkdepends=('gtest-ubuntu')
 options=('!libtool' '!emptydirs')
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/libpam-freerdp_${pkgver}.orig.tar.gz"
-        '0001_Disable_tests.patch')
-sha512sums=('d2ef03c852123b4154d0105ba38f5edc81efe57166776a6c315643fa4dfeec0203a0088feb12d02fe1102aa1566eb25e8a724f72c58bae0f038c4a2a3433961f'
-            '2b8a676354a7f7f7f7bac6eedf9d01bd03f56e32915d4198ab68d5e8cb99328246ff8cb4855be4fb4e76d4bf7c5487ec53ffc94dba6919c4a2ee8a19944f1e32')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-
-  patch -Np1 -i "${srcdir}/0001_Disable_tests.patch"
-}
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/libpam-freerdp_${_actual_ver}${_extra_ver}.orig.tar.gz")
+sha512sums=('de8291089dd0c00790e31e71d4e53761512a8f52e01528de3dea1f931426cc2f4e6e5da7930e8ce18b9726f8ee80f6e0dacaa4d8b6d47eae59cd640c89d6f364')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_actual_ver}${_extra_ver}"
 
   autoreconf -vfi
 
@@ -31,8 +26,14 @@ build() {
   make
 }
 
+check() {
+  cd "${srcdir}/${pkgname}-${_actual_ver}${_extra_ver}"
+
+  make check
+}
+
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${_actual_ver}${_extra_ver}"
   make DESTDIR="${pkgdir}/" install
 
   mv "${pkgdir}"{,/usr}/lib/security/
