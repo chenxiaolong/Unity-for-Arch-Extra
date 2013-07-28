@@ -3,9 +3,9 @@
 
 pkgname=indicator-sync
 _actual_ver=12.10.5
-_extra_ver=daily13.03.28.1
+_extra_ver=daily13.06.19
 pkgver=${_actual_ver}${_extra_ver}
-pkgrel=101
+pkgrel=100
 pkgdesc="Sync menu to aggregate services performing background synchronization"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/indicator-sync"
@@ -16,7 +16,7 @@ groups=('unity')
 options=('!libtool')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/indicator-sync_${_actual_ver}${_extra_ver}.orig.tar.gz"
         'revert_r30.patch')
-sha512sums=('e67f15f112001094838da6d067a02d8c2cf8312a57482f2a090c01d858bc26296b7063c6160a6db1601b0ffa4e294de718458afdec2a8e37c395217db76993a5'
+sha512sums=('744943932453fb9dedf85fefe5934440d5c5d43b0361a9d207ed12437daa2613ba51b63f124ce55c371ba66a38549d46d14e8f0eb3746935e9c9fb2626e86a32'
             'caa8751368f0d027c5326d89443d113538861ce41d4d5823bfc036ef2dcfaf9e705d13a18d46fec8b8f03e5f389ac6403ecb82005fb106c797ab426ccf79912c')
 
 prepare() {
