@@ -4,30 +4,30 @@
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=liferea-indicator
-_ubuntu_rel=0ubuntu2
-pkgver=1.8.10
-pkgrel=102
+_ubuntu_rel=1ubuntu1
+pkgver=1.8.15
+pkgrel=100
 pkgdesc="A desktop news aggregator for online news feeds and weblogs with Messages Indicator support"
 arch=('i686' 'x86_64')
 url="http://liferea.sourceforge.net/"
 license=('GPL')
-depends=('gconf' 'libwebkit' 'libnotify' 'libunique' 'json-glib' 'hicolor-icon-theme' 'indicator-messages')
+depends=('gconf' 'libwebkit' 'libnotify' 'libunique' 'json-glib' 'hicolor-icon-theme' 'indicator-messages' 'libunity')
 makedepends=('intltool')
 provides=("liferea=${pkgver}")
 conflicts=('liferea')
 options=('!libtool' '!emptydirs')
 install=liferea.install
 source=("http://downloads.sourceforge.net/sourceforge/liferea/liferea-${pkgver}.tar.bz2"
-        "https://launchpad.net/ubuntu/+archive/primary/+files/liferea_${pkgver}-${_ubuntu_rel}.debian.tar.gz")
-sha512sums=('6ef82f363463c058518f94cb7af293eb7f57d453bea0e99b3000c8bb0663d429ba0995f86eeb35c0ee480941267eb77463aa82ce5444fda8d5e711f9835ed027'
-            '1829bafc52625a5f86a1ceef7b56949c9c660c86614133e25d13abc84f68ce030a9bf412b75e2f017b0a002bdc2f0cbb0df0fa9cadedc147f3638cad4a3fc529')
+        "https://launchpad.net/ubuntu/+archive/primary/+files/liferea_${pkgver}-${_ubuntu_rel}.debian.tar.xz")
+sha512sums=('af318a2b468b6d7c29528c44ab8cf8f34f853daceb7a34ccf52722af67b6d84fd04f9fe3eedc1ba27b1bc5561ea11bc2520ff107ae45eee2e69a426d57bb212a'
+            '91df060445763eab7e48f54cfb0093814c1a384700fb77b4ec0428a41a33b6b482d7cddb3baaec20499a5734e61cd283e38f542b754548bf80c6160acc7032af')
 
 prepare() {
   cd "${srcdir}/liferea-${pkgver}"
 
   # Apply Ubuntu's patches
     # Disable patches
-      sed -i '/www-browser/d' "${srcdir}/debian/patches/series"
+      sed -i '/www-browser.patch/d' "${srcdir}/debian/patches/series"
   for i in $(grep -v '#' "${srcdir}/debian/patches/series"); do
     patch -p1 -i "${srcdir}/debian/patches/${i}"
   done
