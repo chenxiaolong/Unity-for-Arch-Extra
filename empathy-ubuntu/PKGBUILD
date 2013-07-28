@@ -2,9 +2,9 @@
 # Original Maintainer: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=empathy-ubuntu
-_ubuntu_rel=0ubuntu2
+_ubuntu_rel=0ubuntu5
 pkgver=3.8.3
-pkgrel=100
+pkgrel=101
 pkgdesc="A GNOME instant messaging client using the Telepathy framework."
 arch=('i686' 'x86_64')
 url="http://live.gnome.org/Empathy"
@@ -24,14 +24,14 @@ install=empathy.install
 source=("http://ftp.gnome.org/pub/GNOME/sources/${pkgname%-*}/${pkgver:0:3}/${pkgname%-*}-${pkgver}.tar.xz"
         "https://launchpad.net/ubuntu/+archive/primary/+files/empathy_${pkgver}-${_ubuntu_rel}.debian.tar.bz2")
 sha512sums=('3084c805b17a881cc8856fc91543e7454480e3a28d6b773e26549d7fbc920ae718939bf3a9d8f48718c779afa913cb7059f37c5175995635affb6183eed6091c'
-            'c85e184b2b10debd571235a803a84dda8ee83106be6af4c37ea9315399ccdc01e6d4d708a8eafd502a2aa585a2f66fdb55dd3a96beda8cb2c00ba5b5d4d79b6e')
+            '55e76916adc6916984067313308bdf8ae55f9f4de4d742b895f8f25c39979c7e7c08c12ea2477b369b6503f5dd195a51201cc2fbe3fd7297e20cc1effa5dbe7b')
 
 prepare() {
   cd "${pkgname%-*}-${pkgver}"
 
   # Apply Ubuntu's patches
   for i in $(grep -v '#' "${srcdir}/debian/patches/series"); do
-    patch -Np1 -i "${srcdir}/debian/patches/${i}"
+    patch -p1 -i "${srcdir}/debian/patches/${i}"
   done
 }
 
