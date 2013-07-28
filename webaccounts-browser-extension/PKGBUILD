@@ -2,31 +2,44 @@
 
 pkgbase=webaccounts-browser-extension
 pkgname=('webaccounts-browser-extension' 'chromium-extension-webaccounts' 'firefox-extension-webaccounts')
-_ubuntu_rel=0ubuntu4
-pkgver=0.4.5.${_ubuntu_rel}
-pkgrel=101
+_ubuntu_rel=0ubuntu1
+pkgver=0.5
+pkgrel=100
 pkgdesc="Ubuntu Online Accounts extensions for Firefox and Chromium"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/webaccounts-browser-extension"
-license=('GPL')
+license=('GPL' 'LGPL')
 groups=('unity-extra')
 depends=('json-glib' 'libaccounts-glib' 'openssl')
-makedepends=('intltool' 'unzip' 'vim' 'zip')
+makedepends=('gnome-common' 'intltool' 'unzip' 'vim' 'zip')
+checkdepends=('dbus-test-runner' 'gtest-ubuntu')
 extrafiles=('webaccounts-browser-extension.install')
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/webaccounts-browser-extension_${pkgver%.*}.orig.tar.gz"
-        "https://launchpad.net/ubuntu/+archive/primary/+files/webaccounts-browser-extension_${pkgver%.*}-${_ubuntu_rel}.debian.tar.gz")
-sha512sums=('45d9e933d5da0d7d077dbb5c3dea409ea289e51ef01f3143f5052be957ad36576c890b8aab8d4ff8221d4e2e4f973519fba24bc18f24c66ae016b7e4e2a30dfa'
-            'c6c351db4668c5eed11eca891356391261313c1b4e33819ce276b7b71be559db9812e34a2d0ed11f29d7fcc7d31e10a3f9952f0b70578176ab7caf75ca27b247')
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/webaccounts-browser-extension_${pkgver}.orig.tar.gz"
+        "https://launchpad.net/ubuntu/+archive/primary/+files/webaccounts-browser-extension_${pkgver}-${_ubuntu_rel}.diff.gz")
+sha512sums=('0f6fba58defa0f67faf504704f202f387066dde813e2446a2ee179a310801f236806b2398bf205cc17942375d98298a3d664ec50ff72b470954f5160f1ecb11e'
+            'fd4b02998fede99f2bedbf50f5c771c8545bef6f961b725b82a64e5a0332a07e0cb959863bf56164ca4164c518561126283603f8ee7ac4d2c168abffe929df5f')
+
+prepare() {
+  cd "${srcdir}/webaccounts-browser-extension-${pkgver}"
+
+  patch -p1 -i "${srcdir}/webaccounts-browser-extension_${pkgver}-${_ubuntu_rel}.diff"
+}
 
 build() {
-  cd "${srcdir}/webaccounts-browser-extension-${pkgver%.*}"
+  cd "${srcdir}/webaccounts-browser-extension-${pkgver}"
 
-  cp "${srcdir}/debian/webaccounts.pem" .
+  cp debian/webaccounts.pem .
 
-  autoreconf -vfi
+  NOCONFIGURE=1 ./autogen.sh
 
   ./configure --prefix=/usr
   make
+}
+
+check() {
+  cd "${srcdir}/webaccounts-browser-extension-${pkgver}"
+
+  dbus-test-runner -t make -p check -m 180
 }
 
 package_webaccounts-browser-extension() {
@@ -34,7 +47,7 @@ package_webaccounts-browser-extension() {
   options=('!libtool')
   install=webaccounts-browser-extension.install
 
-  cd "${srcdir}/webaccounts-browser-extension-${pkgver%.*}"
+  cd "${srcdir}/webaccounts-browser-extension-${pkgver}"
   make DESTDIR="${pkgdir}/" install
 
   rm -rv "${pkgdir}/usr/lib/webaccounts-chromium/"
@@ -46,7 +59,7 @@ package_chromium-extension-webaccounts() {
   pkgdesc="Ubuntu Online Accounts extension for Chromium"
   depends=("webaccounts-browser-extension=${pkgver}" 'chromium' 'credentials-preferences')
 
-  cd "${srcdir}/webaccounts-browser-extension-${pkgver%.*}"
+  cd "${srcdir}/webaccounts-browser-extension-${pkgver}"
 
   make -C chromium-extension DESTDIR="${pkgdir}/" install
 }
@@ -55,7 +68,7 @@ package_firefox-extension-webaccounts() {
   pkgdesc="Ubuntu Online Accounts extension for Firefox"
   depends=("webaccounts-browser-extension=${pkgver}" 'firefox' 'credentials-preferences')
 
-  cd "${srcdir}/webaccounts-browser-extension-${pkgver%.*}"
+  cd "${srcdir}/webaccounts-browser-extension-${pkgver}"
 
   local emid=$(sed -n 's/.*<em:id>\(.*\)<\/em:id>.*/\1/p' \
     firefox-extension/install.rdf | head -1)
