@@ -2,8 +2,8 @@
 
 pkgname=webapps-applications
 _actual_ver=2.4.16
-_extra_ver=daily13.06.07
-pkgver=${_actual_ver}${_extra_ver}
+_extra_ver=+13.10.20130719
+pkgver=${_actual_ver}daily13.07.19
 pkgrel=100
 pkgdesc="Unity WebApps integration scripts"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('gjs: Development (or something)'
             'python-polib: I have no idea')
 install=webapps-applications.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/webapps-applications_${_actual_ver}${_extra_ver}.orig.tar.gz")
-sha512sums=('12a91a664cd9a6a3068944e9764cc50627e8c931ab322e1f0f90ff7540969cfbd54588ebf1cbec86a8726f8d8953d7df76d45ee550a37c19241a5f399ed82778')
+sha512sums=('6f61fc9c20bdc859bbfaea8e33ccfeea65ec0a31452d6fa311dd6bdeab2d9893a5b07c48c6e8d8c697c02ced3f10568089a983b10a47946771e4218e9bd43d58')
 
 build() {
   cd "${srcdir}/${pkgname}-${_actual_ver}${_extra_ver}"
