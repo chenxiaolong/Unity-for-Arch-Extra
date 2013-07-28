@@ -2,8 +2,8 @@
 
 pkgbase=python-keyring
 pkgname=('python-keyring' 'python2-keyring')
-pkgver=1.4
-pkgrel=101
+pkgver=1.6
+pkgrel=100
 pkgdesc="Python library for accessing keyring services"
 arch=('any')
 url="http://pypi.python.org/pypi/keyring"
@@ -13,16 +13,16 @@ makedepends=('python' 'python2' 'python-distribute' 'python2-distribute' 'zip' '
 source=("http://pypi.python.org/packages/source/k/keyring/keyring-${pkgver}.zip"
         '0001_UTF-8.patch')
 noextract=("keyring-${pkgver}.zip")
-sha512sums=('4f35e328e2f6ae9953c2572fd2d69c32d42095af29058a65d3eaaf5bb487f313f1ebc741634201df1cb66dec1394105b1d5260a54183300e06c2716387234913'
+sha512sums=('df5fb3523a840ec7b18476e24f49532823338149fe67fd47b7d8b89120f4459f3183620a9aaf36ed1a394694668e5eac9b08c3eb337fd4b6fe1a8e440520a924'
             '4f7cb1f6c34eeebc15b42192799624c6623f065be4a52e6973b74b2f6582a7997c13e48830d566e15b5f41cd45cf2d668aa671d77e02e2823599ef9ac02b9be9')
 
 prepare() {
   unzip "${srcdir}/keyring-${pkgver}.zip" -d "${srcdir}/build-python3/"
   unzip "${srcdir}/keyring-${pkgver}.zip" -d "${srcdir}/build-python2/"
   cd "${srcdir}/build-python3/keyring-${pkgver}/"
-  patch -p1 -i "${srcdir}/0001_UTF-8.patch"
+#  patch -p1 -i "${srcdir}/0001_UTF-8.patch"
   cd "${srcdir}/build-python2/keyring-${pkgver}/"
-  patch -p1 -i "${srcdir}/0001_UTF-8.patch"
+#  patch -p1 -i "${srcdir}/0001_UTF-8.patch"
 }
 
 package_python-keyring() {
