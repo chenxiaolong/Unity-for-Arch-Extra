@@ -2,53 +2,54 @@ Unity-for-Arch-Extra: Themes, icons, and other additions that complete the Unity
 
 Themes, icons, etc.
 
-01: humanity-icon-theme          -> Icons used in Ubuntu < 10.04
-02: ubuntu-themes                -> Ubuntu icons and Ambiance and Radiance
-03: ubuntu-wallpapers            -> Wallpapers used in Ubuntu from 9.10 - 13.10
-04: ubuntu-sounds                -> The sound theme used in Ubuntu <= 12.04
-05: ubuntu-default-settings *    -> What the package name says
+01: humanity-icon-theme                  -> Icons used in Ubuntu < 10.04
+02: ubuntu-themes                        -> Ubuntu icons and Ambiance and Radiance
+03: ubuntu-wallpapers                    -> Wallpapers used in Ubuntu from 9.10 - 13.10
+04: ubuntu-sounds                        -> The sound theme used in Ubuntu <= 12.04
+05: ubuntu-default-settings *            -> What the package name says
 
 Applications
 
-06: lightdm-ubuntu               -> A cross-desktop lightweight display manager
-07: accountsservice-ubuntu       -> Daemon to query user account information
-08: lightdm-unity-greeter        -> The LightDM greeter for Unity
-09: messagingmenu-extension      -> Messaging indicator extension for TB
-10: liferea-indicator            -> Liferea with indicator support
-11: pidgin-libnotify-ubuntu      -> Pidgin notification plugin
-12: plasma-widget-menubar        -> KDE Plasma widget to display menubar
-13: xfce4-indicator-plugin       -> XFCE panel plugin to display indicators
-14: indicator-sync               -> Indicator for synchronization status
-15: indicator-cpufreq            -> CPU Frequency Indicator
-16: empathy-ubuntu               -> Empathy IM client with UOA support
-17: telepathy-indicator          -> Telepathy integration with the msg menu
-18: unity-tweak-tool             -> Tool to configure the Unity desktop
+06: lightdm-ubuntu                       -> A cross-desktop lightweight display manager
+07: accountsservice-ubuntu               -> Daemon to query user account information
+08: lightdm-unity-greeter                -> The LightDM greeter for Unity
+09: messagingmenu-extension              -> Messaging indicator extension for TB
+10: liferea-indicator                    -> Liferea with indicator support
+11: pidgin-libnotify-ubuntu              -> Pidgin notification plugin
+12: plasma-widget-menubar                -> KDE Plasma widget to display menubar
+13: xfce4-indicator-plugin               -> XFCE panel plugin to display indicators
+14: indicator-sync                       -> Indicator for synchronization status
+15: indicator-cpufreq                    -> CPU Frequency Indicator
+16: indicator-multiload                  -> System Load Indicator
+17: empathy-ubuntu                       -> Empathy IM client with UOA support
+18: telepathy-indicator                  -> Telepathy integration with the msg menu
+19: unity-tweak-tool                     -> Tool to configure the Unity desktop
 
 Unity Webapps
-19: python-polib                 -> Python library for messing with po files
-20: webapps-applications         -> Unity WebApps integration scripts
-21: webapps-greasemonkey         -> Firefox extension for user scripts
-22: unity-firefox-extension      -> Firefox extension for Unity integration
-23: webaccounts-browser-extension -> Web Accounts extension for FF and Chromium
-24: unity-webapps                -> See PKGBUILD for list of WebApps
+20: python-polib                         -> Python library for messing with po files
+21: webapps-applications                 -> Unity WebApps integration scripts
+22: webapps-greasemonkey                 -> Firefox extension for user scripts
+23: unity-firefox-extension              -> Firefox extension for Unity integration
+24: webaccounts-browser-extension        -> Web Accounts extension for FF and Chromium
+25: unity-webapps                        -> See PKGBUILD for list of WebApps
 
 LightDM remote session
-25: python3-pycurl               -> A Python 3 interface to libcurl
-26: thin-client-config-agent     -> Retrieve list of remote servers for a user
-27: remote-login-service         -> Service to track the remote servers to use
-28: lightdm-remote-session-uccsconfigure -> Session to configure UCCS
-29: libpam-freerdp               -> PAM module to auth. against an RDP server
-30: lightdm-remote-session-freerdp -> Session to login in with FreeRDP
+26: python3-pycurl                       -> A Python 3 interface to libcurl
+27: thin-client-config-agent             -> Retrieve list of remote servers for a user
+28: remote-login-service                 -> Service to track the remote servers to use
+29: lightdm-remote-session-uccsconfigure -> Session to configure UCCS
+30: libpam-freerdp                       -> PAM module to auth. against an RDP server
+31: lightdm-remote-session-freerdp       -> Session to login in with FreeRDP
 
 Everpad
-31: python-shiboken              -> CPython bindings generator for C++ libs
-32: python-pyside                -> Python bindings for Qt
-33: unity-singlet                -> Python library for building lenses & scopes
-34: python-keyring               -> Python library for accessing keyrings
-35: python2-oauth2               -> Python 2 library for OAuth 1.0
-36: python2-magic                -> Python 2 bindings for file
-37: python-regex                 -> Alternative Python regular expression module
-38: everpad                      -> Evernote client with Unity integration
+32: python-shiboken                      -> CPython bindings generator for C++ libs
+33: python-pyside                        -> Python bindings for Qt
+34: unity-singlet                        -> Python library for building lenses & scopes
+35: python-keyring                       -> Python library for accessing keyrings
+36: python2-oauth2                       -> Python 2 library for OAuth 1.0
+37: python2-magic                        -> Python 2 bindings for file
+38: python-regex                         -> Alternative Python regular expression module
+39: everpad                              -> Evernote client with Unity integration
 
 All of the PKGBUILD's have been checked with the namcap tool for consistency.
 
