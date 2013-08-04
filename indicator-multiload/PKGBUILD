@@ -1,0 +1,32 @@
+# Maintainer: Rafael Reggiani Manzo <rr.manzo@gmail.com>
+# Original PKGBUILD writen by Michael Egger <gcarq at yahoo dot com> can be found at: https://aur.archlinux.org/packages/indicator-multiload/
+
+pkgname=indicator-multiload
+pkgver=0.3
+pkgrel=100
+pkgdesc="System Load Indicator"
+arch=('i686' 'x86_64')
+url="https://launchpad.net/indicator-multiload"
+license=('GPLv3')
+groups=('unity-extra')
+depends=('unity' 'cairo' 'libappindicator' 'libgtop' 'glib2-ubuntu' 'gtk3-ubuntu')
+makedepends=('vala>=0.12' 'intltool' 'gcc')
+install=${pkgname}.install
+source=("https://launchpad.net/indicator-multiload/stable/${pkgver}/+download/indicator-multiload-${pkgver}.tar.gz"
+        "60x11-common_xdg_path")
+sha512sums=('812fafd5c2a3d080f04a1754ce083a6564f25a943f635d204e3e270dba2bf6a7e1858e7672680fbd344352831c283822046336f837c1cb6cb3375a38559e6c56'
+            '310da91b9082da6108a2e1c6a14268f9660f496b25d0a8166e3b23ab357fc22fc61a50f1e8aca1bbc5bbfcb2754af1d19e2db6169881f992d9881aa32e75df67')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  ./autogen.sh
+  ./configure --datarootdir=/usr/share
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
+  install -dm755 "$pkgdir/etc/X11/xinit/xinitrc.d/"
+  install -m755 "$srcdir/60x11-common_xdg_path" "$pkgdir/etc/X11/xinit/xinitrc.d/"
+}
