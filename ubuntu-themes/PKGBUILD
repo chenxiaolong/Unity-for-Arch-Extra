@@ -2,8 +2,8 @@
 
 pkgname=ubuntu-themes
 _actual_ver=13.04
-_extra_ver=+13.10.20130802
-pkgver=${_actual_ver}daily13.08.02
+_extra_ver=+13.10.20130812
+pkgver=${_actual_ver}daily13.08.12
 pkgrel=100
 pkgdesc="Ubuntu monochrome icon theme, Abmiance and Radiance themes, and Ubuntu artwork"
 arch=('any')
@@ -16,7 +16,7 @@ provides=('light-themes' 'ubuntu-mono')
 conflicts=('light-themes' 'ubuntu-mono')
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${_actual_ver}${_extra_ver}.orig.tar.gz")
-sha512sums=('841d9c1e3949ce81b88aa11d2d790dfa9ae1a814af8e639afe0b6acac51550056e135482d35f2437df405630e6e4b53119c45f7f9ccf46be06f0e3703c00a4a6')
+sha512sums=('82265a4f350dffd616d0bd67e30ce680c9e8ff845d980891e8ce6097a9c1420f9c6749644e0b367c6e512f2a923e29fd4444faccaa3251034a667f5772b37b84')
 
 build() {
   cd "${srcdir}/${pkgname}-${_actual_ver}${_extra_ver}"
