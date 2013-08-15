@@ -5,4 +5,4 @@ source "$(dirname ${0})/../version_checker.sh"
 
 echo -e "PKGBUILD version: ${pkgver}"
 echo -e "Upstream version: $(get_launchpad_version humanity '[Hh]umanity')"
-echo -e "Ubuntu version:   $(get_ubuntu_version humanity-icon-theme ${1:-raring} native)"
+echo -e "Ubuntu version:   $(get_ubuntu_version humanity-icon-theme ${1:-saucy} native)"
