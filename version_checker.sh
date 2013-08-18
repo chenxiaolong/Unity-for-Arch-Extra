@@ -95,10 +95,17 @@ get_ppa_version() {
     echo "No PPA was provided"
     exit 1
   fi
-  wget -q -O - \
-    "http://ppa.launchpad.net/${2/#ppa:/}/ubuntu/pool/main/${1:0:1}/${1}/" | \
-    sed -n "s/.*>${1}_\(.*\)-\(.*\)\.\(debian\|diff\)\.[a-z0-9\.]\+<.*/\1 \2/p" | \
-    tail -n 1
+  if [ "x${3}" == "xnative" ]; then
+    wget -q -O - \
+      "http://ppa.launchpad.net/${2/#ppa:/}/ubuntu/pool/main/${1:0:1}/${1}/" | \
+      sed -n "s/.*>${1}_\(.*\)-\(.*\)\.tar\.[a-z\.]\+<.*/\1 \2/p" | \
+      tail -n 1
+  else
+    wget -q -O - \
+      "http://ppa.launchpad.net/${2/#ppa:/}/ubuntu/pool/main/${1:0:1}/${1}/" | \
+      sed -n "s/.*>${1}_\(.*\)-\(.*\)\.\(debian\|diff\)\.[a-z\.]\+<.*/\1 \2/p" | \
+      tail -n 1
+  fi
 }
 
 get_qt4_version() {
@@ -114,4 +121,18 @@ get_freedesktop_version() {
   fi
   wget -q -O - "http://cgit.freedesktop.org/${1}/" | \
     sed -n "s/.*>${1}-\(.*\)\.tar\.gz<.*/\1/p" | head -n 1
+}
+
+get_googlecode_version() {
+  if [ -z "${1}" ]; then
+    echo "No package was provided"
+    exit 1
+  fi
+  local PACKAGE=${1}
+  local TARBALL=${1}
+  if [ ! -z "${2}" ]; then
+    TARBALL=${2}
+  fi
+  wget -q -O - "https://code.google.com/p/${PACKAGE}/downloads/list" | \
+    sed -n "s/.*${TARBALL}-\(.*\)\.\(tar\.\|zip\).*/\1/p" | head -n 1
 }
