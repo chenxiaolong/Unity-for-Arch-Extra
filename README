@@ -59,15 +59,3 @@ The LightDM Unity Greeter does not show the user's wallpaper.
   This is because the regular accountsservice package does not care about
   the wallpaper being changed. This action is only logged by accountsservice-
   ubuntu, so just change the wallpaper to something else and then back.
-
-Blah feature from Ubuntu Tweak is not working.
-
-  Please file a bug at either (not both):
-
-    github: https://github.com/chenxiaolong/Unity-for-Arch-Extra/issues
-    Launchpad: https://launchpad.net/unity-for-arch-extra
-
-  I've had to remove many features in Ubuntu Tweak due them being Ubuntu-
-  specific (apt, dpkg, PPAs, etc.). However, Ubuntu Tweak relies on the
-  PolicyKit API exposed by the aptdaemon library, rather than the regular
-  PolicyKit API. So, no features that require root permissions will work.
