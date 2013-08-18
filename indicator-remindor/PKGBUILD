@@ -1,0 +1,22 @@
+# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+
+pkgname=indicator-remindor
+pkgver=13.03.5
+_ppa_rel=0ubuntu1~raring
+pkgrel=1
+pkgdesc="Schedule reminders easily from an indicator"
+arch=('any')
+url="https://launchpad.net/indicator-remindor"
+license=('GPL')
+groups=('unity-extra')
+depends=('gstreamer0.10' 'gtk3' 'libappindicator3' 'libnotify' 'python2-dateutil' 'python2-dbus' 'python2-feedparser' 'python2-requests' 'remindor-common')
+makedepends=('python2-distutils-extra')
+optdepends=('yelp: Help stuff')
+install=indicator-remindor.install
+source=("http://ppa.launchpad.net/bhdouglass/indicator-remindor/ubuntu/pool/main/i/indicator-remindor/indicator-remindor_${pkgver}-${_ppa_rel}.tar.gz")
+sha512sums=('068886d849b526fd194775cd2259b9432bbb6f10ae75fcacd94c07867b4907c933bf9fe89e50704cece8df81a5056cc4135974937044a6e82ed33876337cd94f')
+
+package() {
+  cd "${srcdir}/${pkgname}"
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
+}
