@@ -52,6 +52,7 @@ Everpad
 
 Remindor
 39: remindor-common              -> Common files for indicator and Qt frontends
+40: remindor-qt                  -> Qt frontend for remindor
 
 All of the PKGBUILD's have been checked with the namcap tool for consistency.
 
