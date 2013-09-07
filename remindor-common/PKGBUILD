@@ -1,7 +1,7 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=remindor-common
-pkgver=13.03.4
+pkgver=13.08
 _ppa_rel=0ubuntu1~raring
 pkgrel=1
 pkgdesc="Common files for indicator-remindor and remindor-qt"
@@ -12,7 +12,7 @@ groups=('unity-extra')
 depends=('python2-dateutil' 'python2-dbus' 'python2-feedparser' 'python2-requests')
 makedepends=('python2-distutils-extra')
 source=("http://ppa.launchpad.net/bhdouglass/indicator-remindor/ubuntu/pool/main/r/remindor-common/remindor-common_${pkgver}-${_ppa_rel}.tar.gz")
-sha512sums=('eb315edf33235c7143854344e080c29776746b3f587039edabcda6ac3d757f97b65146c4fcba03a4f23c8018595aea5c7ccdac7a2a3a4460b06a443bacf1eb58')
+sha512sums=('489f8c01b156631e1692273a96719b0e3470d2deb79e003dfb3f2532bc0a8bb6d1f36c6b533759be10e2a3604d22c6b2386458e84f31a2a0cdef938ed3879a10')
 
 package() {
   cd "${srcdir}/${pkgname}"
