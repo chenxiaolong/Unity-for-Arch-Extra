@@ -7,7 +7,7 @@ setvar() { eval "_ver_${1/-/_}=${2}"; eval "_rel_${1/-/_}=${3}";
 setvar amazon			2.4.16daily13.06.20	0ubuntu1
 setvar amazoncloudreader	2.4.16daily13.06.20	0ubuntu1
 setvar angrybirds		2.2
-setvar bbcnews			2.4.16daily13.06.20	0ubuntu1
+setvar bbcnews			2.4.16+13.10.20130907	0ubuntu1
 setvar cnn-news			2.4.16daily13.06.20	0ubuntu1
 setvar cuttherope		2.2
 setvar deezer			2.4.16daily13.06.20	0ubuntu1
@@ -51,7 +51,7 @@ setvar youtube			2.4.16daily13.06.20	0ubuntu1
 pkgname=unity-webapps
 epoch=1
 pkgver=13.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Unity WebApps"
 arch=('any')
 url="http://packages.ubuntu.com/search?keywords=webapps&searchon=names&suite=saucy&section=all"
@@ -139,8 +139,8 @@ sha512sums=('9816c97a6ff1852002544b7d0e94c44d49a68308df0301534acf635415ca79a1221
             '356543cd4d40d3fa3a054ea3bbcc6614071ce3bad9e0d5da9c2ae25d0f4fdb303bcf18ec9675e4baf382638b2540a5bc70b76637a428c42469caa7e5e04eea28'
             '59e3bb6890a9f33aeafb32c5e629c1500edb1cb54ece91fd12c797bca84355d4ef654d3f3d2ecc0e22d73f539581bda3bfc90a6aca7e6c70a45f49b9ba1e49f8'
             '1f0f805e152ff2855c16fa7596c3f05860d77b427ab3fed247ff0f1afd121adbb323d1982faa6eefb283f4be5edef5dd0ba344be3a39cd3cdcf6c16aa4ecd671'
-            '761bcae1a02ee4b6fc73f46790858d7d68aca392d1e8a612efba8c8a6819ccf342670cf901760415bae6c9a983786028534432a1d303d5df7b2394f7bf7fe508'
-            '9822924c57cf457a21eda984c37e0db867d252faf5900b5c125de3bfb3b6bfcacb73f84863cfe2e7dbab8599bc220e742cb989a581cb8c76d853b7a16ffe648c'
+            'fe8babc315d7efba2bf0f951dcf4cd816d484ad0cf85277692c310c6706000ca93ad189b6c95c3f821b3183116c8a860e6702841c9537f341290d704fcab75c2'
+            '96017f30826114448d0e1de2ae9efb80facb27d3f64eaad34a0e443ae34fa0904c2b8a0eb8067b52bc73874b1c31750d205d9bef0a5751609603a0a96a169a70'
             'c5f70707747052e6201dbac9eae1c176afe0ee74a9f2f02d159b525686499f5e39434de242a5750debebb02e6873e42a062087affa72a5bc1d2d3e202ad8369e'
             '236524c835525e08af25095b2495fc05a1ec7e590fa6790340e3aa1510a9c3d8f46cbea7962fedc695d2b0c4689f69159080d4d5b86b05e65cf1f3abf7fd1402'
             'd2376168b36af06252456bfcfb7bd00cf21e05aed2476f0c52b4911f3baf6964a6c9077840cde8c90385f00c63befceeba7e822d4456ce8bb30b189f66c56f49'
