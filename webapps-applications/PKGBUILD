@@ -2,8 +2,8 @@
 
 pkgname=webapps-applications
 _actual_ver=2.4.16
-_extra_ver=+13.10.20130814
-pkgver=${_actual_ver}daily13.08.14
+_extra_ver=+13.10.20130907
+pkgver=${_actual_ver}daily13.09.07
 pkgrel=100
 pkgdesc="Unity WebApps integration scripts"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('gjs: Development (or something)'
             'python-polib: I have no idea')
 install=webapps-applications.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/webapps-applications_${_actual_ver}${_extra_ver}.orig.tar.gz")
-sha512sums=('c399ede6c1614581d913463531037ceaa443b8bca395c827c445572e2140814569eacb4cb4105286e034e6a93fc807de9f5b29ec9e351fa5f39d1b5d7070a2c0')
+sha512sums=('c201d4a3ea7ad1fea23618a2fbf2c3853287cb9fcd8b18ae6140133c17931f2e8bc2f9f29989d335f0f63343fd0d287f84c6364e49c765d796e57600050509d8')
 
 build() {
   cd "${srcdir}/${pkgname}-${_actual_ver}${_extra_ver}"
@@ -38,6 +38,9 @@ package() {
                 scripts/third_party/jslint.js \
                 "${pkgdir}/usr/share/unity-webapps/tools/"
   install -m644 common/rules.mk "${pkgdir}/usr/share/unity-webapps/"
+
+  rm "${pkgdir}/usr/share/unity-webapps/userscripts/unity-webapps-amazon/Amazon.user.js"
+  rm "${pkgdir}/usr/share/unity-webapps/userscripts/unity-webapps-amazon/manifest.json"
 }
 
 # vim:set ts=2 sw=2 et:
