@@ -1,7 +1,7 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=humanity-icon-theme
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=100
 pkgdesc="Humanity Icon Theme"
 arch=('any')
@@ -14,7 +14,7 @@ provides=("humanity-icons=${pkgver}")
 conflicts=('humanity-icons')
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.gz")
-sha512sums=('f9c04921355b186c4690a065cc701980836c3d0d6319fddaab4d4ec76bc7fb62de10148ae11b21e20de5ac47fbff0bf162a947170b64fa7f28a1f217a963155e')
+sha512sums=('7803d3e69af5b2e8ebb6cb57b1fbff30353b3178feefd8dbbda3ce3440d540ff842be04fa5fc9f5be6bab3f41b9138faf8fd88977ca5cb63461b2aff01b6d99a')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
