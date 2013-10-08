@@ -1,8 +1,8 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=python2-magic
-pkgver=5.11
-pkgrel=101
+pkgver=5.15
+pkgrel=100
 pkgdesc="Python 2 bindings for file"
 arch=('any')
 url="http://www.darwinsys.com/file/"
@@ -11,7 +11,7 @@ groups=('unity-extra')
 depends=('python2' 'file')
 options=(!emptydirs)
 source=("ftp://ftp.astron.com/pub/file/file-${pkgver}.tar.gz")
-sha512sums=('a3f740e1a950f84ae53ef477ff255370050b52dd39fa309c8b8c4b0dc061e96fce585eb4a587037003509c01cd067d49e5193f1d0905e5c28347223a15aa271b')
+sha512sums=('390530832953c23099422c21b7159903fc6850999c6561b9d641318212d4c8e2bc768932cf8af0f545fac861a49f7389ce763b6e3b7d3832beba5281f0290e2b')
 
 package() {
   cd "${srcdir}/file-${pkgver}/python/"
