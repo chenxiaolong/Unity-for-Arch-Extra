@@ -1,9 +1,9 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
-_ubuntu_ver=0.0.4ubuntu0.1
+_ubuntu_ver=0.0.6
 
 pkgname=unity-tweak-tool
-pkgver=0.0.4.ubuntu0.1
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Configuration tool for the Unity desktop"
 arch=('any')
@@ -15,10 +15,10 @@ makedepends=('python-distutils-extra')
 options=('!emptydirs')
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/unity-tweak-tool_${_ubuntu_ver}.tar.gz")
-sha512sums=('a9ef2e86a4e9925546dc3639e68f497b0265dd93c47ea5de0a6faab01f03986b56b3358b9036ebcfba946b3089920f23afe932b1108e5b3a2c22331d35caa731')
+sha512sums=('198e27c8bfc79a6e7423b33c4abccb916f09ff609603b4e4d41060b1a9c3562b7c326d58b02cbbac5cdaa54c66ca6a03560c86ee663a26035a99a83f0436035d')
 
 package() {
-  cd "${srcdir}/${pkgname}-${_ubuntu_ver}"
+  cd "${srcdir}/${pkgname}"
   python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
