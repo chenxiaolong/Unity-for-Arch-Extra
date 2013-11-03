@@ -2,34 +2,39 @@
 # Original Maintainer: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=empathy-ubuntu
-_ubuntu_rel=0ubuntu5
-pkgver=3.8.3
-pkgrel=101
+_ppa_rel=0ubuntu1~saucy3
+pkgver=3.10.1
+pkgrel=100
 pkgdesc="A GNOME instant messaging client using the Telepathy framework."
 arch=('i686' 'x86_64')
 url="http://live.gnome.org/Empathy"
 license=('GPL2')
 provides=("empathy=${pkgver}")
 conflicts=('empathy')
-depends=('clutter-gst' 'clutter-gtk' 'folks' 'gcr' 'iso-codes' 'libcanberra' 'libpulse' 'webkitgtk3' 'telepathy-farstream' 'telepathy-glib' 'telepathy-logger' 'telepathy-mission-control' 'signon' 'libsignon-glib' 'credentials-preferences' 'libunity' 'ido' 'unity-asset-pool')
+depends=('clutter-gst' 'clutter-gtk' 'folks' 'gcr' 'iso-codes' 'libcanberra' 'libpulse' 'webkitgtk3' 'telepathy-farstream' 'telepathy-glib' 'telepathy-logger' 'telepathy-mission-control' 'geoclue2' 'geocode-glib' 'cheese' 'libchamplain' 'libunity' 'ido' 'unity-asset-pool')
 makedepends=('intltool' 'itstool' 'docbook-xsl' 'yelp-tools' 'python2')
 optdepends=('telepathy-gabble: XMPP/Jabber support'
             'telepathy-idle: IRC support'
             'telepathy-salut: Link-local XMPP support'
             'telepathy-rakia: SIP support'
             'telepathy-haze: libpurple support')
-options=('!libtool' '!makeflags')
+options=('!makeflags')
 groups=('gnome')
 install=empathy.install
-source=("http://ftp.gnome.org/pub/GNOME/sources/${pkgname%-*}/${pkgver:0:3}/${pkgname%-*}-${pkgver}.tar.xz"
-        "https://launchpad.net/ubuntu/+archive/primary/+files/empathy_${pkgver}-${_ubuntu_rel}.debian.tar.bz2")
-sha512sums=('3084c805b17a881cc8856fc91543e7454480e3a28d6b773e26549d7fbc920ae718939bf3a9d8f48718c779afa913cb7059f37c5175995635affb6183eed6091c'
-            '55e76916adc6916984067313308bdf8ae55f9f4de4d742b895f8f25c39979c7e7c08c12ea2477b369b6503f5dd195a51201cc2fbe3fd7297e20cc1effa5dbe7b')
+source=("http://ftp.gnome.org/pub/GNOME/sources/${pkgname%-*}/${pkgver%.*}/${pkgname%-*}-${pkgver}.tar.xz"
+        "http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/pool/main/e/empathy/empathy_${pkgver}-${_ppa_rel}.debian.tar.gz")
+sha512sums=('34d2e9b13af26e86feedbdaf50e2b546e1d14d433043c7659a3a4b695d05c5650cc3834d926086db705ce1248965bafe166e7193de1518bb208d205e17e70abd'
+            '831c28e2ce9e8a2ff43f4f53ea32bb4d078632b06a6fb8bc838f307980336a88dd36b653754aa7769fb16adf0ddf6e340032c1f13e83b418da5012dcfdd882cb')
 
 prepare() {
   cd "${pkgname%-*}-${pkgver}"
 
   # Apply Ubuntu's patches
+    # Disable patches
+      # Do not use Ubuntu Online Accounts (broken with GNOME 3.10)
+        sed -i '/ubuntu_launch_uoa_panel.patch/d' "${srcdir}/debian/patches/series"
+        sed -i '/00_linker-fixes.patch/d' "${srcdir}/debian/patches/series"
+
   for i in $(grep -v '#' "${srcdir}/debian/patches/series"); do
     patch -p1 -i "${srcdir}/debian/patches/${i}"
   done
@@ -38,9 +43,9 @@ prepare() {
 build() {
   cd "${pkgname%-*}-${pkgver}"
 
-  autoreconf -vfi
+  #autoreconf -vfi
 
-  PYTHON=python2 ./configure \
+  PYTHON=python2 ./autogen.sh \
     --prefix=/usr \
     --sysconfdir=/etc  \
     --libexecdir=/usr/lib/empathy \
@@ -55,7 +60,7 @@ build() {
     --enable-gudev=yes \
     --enable-call-logs=yes \
     --enable-call=yes \
-    --enable-ubuntu-online-accounts=yes \
+    --enable-ubuntu-online-accounts=no \
     --enable-goa=yes \
     --enable-libunity=yes \
     --enable-control-center-embedding=yes \
@@ -73,5 +78,3 @@ package() {
   install -m644 "${srcdir}/debian/indicators/empathy" \
     "${pkgdir}/usr/share/indicators/messages/applications/"
 }
-
-# vim:set ts=2 sw=2 et:
