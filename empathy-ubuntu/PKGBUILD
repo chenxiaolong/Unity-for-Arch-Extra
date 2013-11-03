@@ -12,7 +12,7 @@ license=('GPL2')
 provides=("empathy=${pkgver}")
 conflicts=('empathy')
 depends=('clutter-gst' 'clutter-gtk' 'folks' 'gcr' 'iso-codes' 'libcanberra' 'libpulse' 'webkitgtk3' 'telepathy-farstream' 'telepathy-glib' 'telepathy-logger' 'telepathy-mission-control' 'geoclue2' 'geocode-glib' 'cheese' 'libchamplain' 'libunity' 'ido' 'unity-asset-pool')
-makedepends=('intltool' 'itstool' 'docbook-xsl' 'yelp-tools' 'python2')
+makedepends=('gnome-common' 'intltool' 'itstool' 'docbook-xsl' 'yelp-tools' 'python2')
 optdepends=('telepathy-gabble: XMPP/Jabber support'
             'telepathy-idle: IRC support'
             'telepathy-salut: Link-local XMPP support'
