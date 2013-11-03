@@ -4,16 +4,14 @@ _ubuntu_ver=0.0.6
 
 pkgname=unity-tweak-tool
 pkgver=0.0.6
-pkgrel=3
+pkgrel=2
 pkgdesc="Configuration tool for the Unity desktop"
 arch=('any')
 url="https://github.com/freyja-dev/unity-tweak-tool"
 license=('GPL')
 groups=('unity-extra')
 depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'notify-osd' 'python' 'python-xdg' 'python-dbus' 'unity')
-# If these deps are missing, it will try to show a GTK popup, which obviously
-# fails on a headless build server
-makedepends=('python-distutils-extra' 'compiz' 'gnome-settings-daemon-ubuntu' 'gsettings-desktop-schemas-ubuntu' 'hud' 'indicator-bluetooth' 'indicator-datetime' 'indicator-power' 'indicator-session' 'indicator-sound' 'libunity-webapps' 'notify-osd' 'overlay-scrollbar' 'unity' 'unity-lens-applications' 'unity-lens-files')
+makedepends=('python-distutils-extra')
 options=('!emptydirs')
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/unity-tweak-tool_${_ubuntu_ver}.tar.gz")
