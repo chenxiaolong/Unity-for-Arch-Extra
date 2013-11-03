@@ -4,7 +4,7 @@ _ubuntu_ver=0.0.6
 
 pkgname=unity-tweak-tool
 pkgver=0.0.6
-pkgrel=2
+pkgrel=1
 pkgdesc="Configuration tool for the Unity desktop"
 arch=('any')
 url="https://github.com/freyja-dev/unity-tweak-tool"
@@ -16,11 +16,6 @@ options=('!emptydirs')
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/unity-tweak-tool_${_ubuntu_ver}.tar.gz")
 sha512sums=('198e27c8bfc79a6e7423b33c4abccb916f09ff609603b4e4d41060b1a9c3562b7c326d58b02cbbac5cdaa54c66ca6a03560c86ee663a26035a99a83f0436035d')
-
-prepare() {
-  cd "${srcdir}/${pkgname}"
-  rm notes/wizardry.py
-}
 
 package() {
   cd "${srcdir}/${pkgname}"
