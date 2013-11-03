@@ -13,7 +13,7 @@ groups=('unity-extra')
 depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'notify-osd' 'python' 'python-xdg' 'python-dbus' 'unity')
 # If these deps are missing, it will try to show a GTK popup, which obviously
 # fails on a headless build server
-makedepends=('python-distutils-extra' 'compiz' 'gnome-settings-daemon' 'gsettings-desktop-schemas' 'hud' 'indicator-bluetooth' 'indicator-datetime' 'indicator-power' 'indicator-session' 'indicator-sound' 'libunity-webapps' 'notify-osd' 'overlay-scrollbar' 'unity' 'unity-lens-applications' 'unity-lens-files')
+makedepends=('python-distutils-extra' 'compiz' 'gnome-settings-daemon-ubuntu' 'gsettings-desktop-schemas-ubuntu' 'hud' 'indicator-bluetooth' 'indicator-datetime' 'indicator-power' 'indicator-session' 'indicator-sound' 'libunity-webapps' 'notify-osd' 'overlay-scrollbar' 'unity' 'unity-lens-applications' 'unity-lens-files')
 options=('!emptydirs')
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/unity-tweak-tool_${_ubuntu_ver}.tar.gz")
