@@ -1,0 +1,169 @@
+--- a/src/fixes.vapi
++++ b/src/fixes.vapi
+@@ -1,15 +1,3 @@
+-namespace Posix
+-{
+-    [CCode (cheader_filename = "sys/mman.h")]
+-    public const int MCL_CURRENT;
+-    [CCode (cheader_filename = "sys/mman.h")]
+-    public const int MCL_FUTURE;
+-    [CCode (cheader_filename = "sys/mman.h")]
+-    public int mlockall (int flags);
+-    [CCode (cheader_filename = "sys/mman.h")]
+-    public int munlockall ();
+-}
+-
+ [CCode (cprefix = "", lower_case_cprefix = "", cheader_filename = "X11/Xlib.h")]
+ namespace X
+ {
+@@ -21,37 +9,3 @@
+     public int ClearWindow (X.Display display, X.Window w);
+     public const int RetainPermanent;
+ }
+-
+-namespace Gdk
+-{
+-    public const int KEY_Escape;
+-    public const int KEY_Home;
+-    public const int KEY_End;
+-    public const int KEY_Page_Up;
+-    public const int KEY_Page_Down;
+-    public const int KEY_Up;
+-    public const int KEY_Down;
+-    public const int KEY_KP_Home;
+-    public const int KEY_KP_End;
+-    public const int KEY_KP_Page_Up;
+-    public const int KEY_KP_Page_Down;
+-    public const int KEY_KP_Up;
+-    public const int KEY_KP_Down;
+-    public const int KEY_F10;
+-    public const int KEY_0;
+-    public const int KEY_g;
+-    public const int KEY_G;
+-    public const int KEY_h;
+-    public const int KEY_m;
+-    public const int KEY_M;
+-    public const int KEY_s;
+-    public const int KEY_plus;
+-    public const int KEY_minus;
+-    public const int KEY_equal;
+-    public const int CONTROL_MASK;
+-}
+-
+-namespace Gtk
+-{
+-    public void socket_add_id (Gtk.Socket socket, int id);
+-}
+--- a/src/main-window.vala
++++ b/src/main-window.vala
+@@ -265,26 +265,26 @@
+ 
+         switch (event.keyval)
+         {
+-        case Gdk.KEY_Escape:
++        case Gdk.Key.Escape:
+             top.cancel_authentication ();
+             break;
+-        case Gdk.KEY_Page_Up:
+-        case Gdk.KEY_KP_Page_Up:
++        case Gdk.Key.Page_Up:
++        case Gdk.Key.KP_Page_Up:
+             top.scroll (GreeterList.ScrollTarget.START);
+             break;
+-        case Gdk.KEY_Page_Down:
+-        case Gdk.KEY_KP_Page_Down:
++        case Gdk.Key.Page_Down:
++        case Gdk.Key.KP_Page_Down:
+             top.scroll (GreeterList.ScrollTarget.END);
+             break;
+-        case Gdk.KEY_Up:
+-        case Gdk.KEY_KP_Up:
++        case Gdk.Key.Up:
++        case Gdk.Key.KP_Up:
+             top.scroll (GreeterList.ScrollTarget.UP);
+             break;
+-        case Gdk.KEY_Down:
+-        case Gdk.KEY_KP_Down:
++        case Gdk.Key.Down:
++        case Gdk.Key.KP_Down:
+             top.scroll (GreeterList.ScrollTarget.DOWN);
+             break;
+-        case Gdk.KEY_F10:
++        case Gdk.Key.F10:
+             menubar.select_first (false);
+             break;
+         default:
+--- a/src/menubar.vala
++++ b/src/menubar.vala
+@@ -221,13 +221,13 @@
+         submenu.append (onscreen_keyboard_item);
+         high_contrast_item = new Gtk.CheckMenuItem.with_label (_("High Contrast"));
+         high_contrast_item.toggled.connect (high_contrast_toggled_cb);
+-        high_contrast_item.add_accelerator ("activate", accel_group, Gdk.KEY_h, Gdk.ModifierType.CONTROL_MASK, Gtk.AccelFlags.VISIBLE);
++        high_contrast_item.add_accelerator ("activate", accel_group, Gdk.Key.h, Gdk.ModifierType.CONTROL_MASK, Gtk.AccelFlags.VISIBLE);
+         high_contrast_item.show ();
+         submenu.append (high_contrast_item);
+         high_contrast_item.set_active (UGSettings.get_boolean (UGSettings.KEY_HIGH_CONTRAST));
+         var item = new Gtk.CheckMenuItem.with_label (_("Screen Reader"));
+         item.toggled.connect (screen_reader_toggled_cb);
+-        item.add_accelerator ("activate", accel_group, Gdk.KEY_s, Gdk.ModifierType.CONTROL_MASK, Gtk.AccelFlags.VISIBLE);
++        item.add_accelerator ("activate", accel_group, Gdk.Key.s, Gdk.ModifierType.CONTROL_MASK, Gtk.AccelFlags.VISIBLE);
+         item.show ();
+         submenu.append (item);
+         item.set_active (UGSettings.get_boolean (UGSettings.KEY_SCREEN_READER));
+@@ -411,7 +411,7 @@
+             keyboard_window.accept_focus = false;
+             keyboard_window.focus_on_map = false;
+             keyboard_window.add (keyboard_socket);
+-            Gtk.socket_add_id (keyboard_socket, id);
++            keyboard_socket.add_id (id);
+ 
+             /* Put keyboard at the bottom of the screen */
+             var screen = get_screen ();
+--- a/src/user-list.vala
++++ b/src/user-list.vala
+@@ -1320,35 +1320,35 @@
+     
+     private bool test_key_press_cb (Gdk.EventKey event)
+     {
+-        if ((event.state & Gdk.CONTROL_MASK) == 0)
++        if ((event.state & Gdk.ModifierType.CONTROL_MASK) == 0)
+             return false;
+ 
+         switch (event.keyval)
+         {
+-        case Gdk.KEY_plus:
++        case Gdk.Key.plus:
+             add_test_entry ();
+             break;
+-        case Gdk.KEY_minus:
++        case Gdk.Key.minus:
+             remove_test_entry ();
+             break;
+-        case Gdk.KEY_0:
++        case Gdk.Key.@0:
+             while (remove_test_entry ());
+             offer_guest = false;
+             break;
+-        case Gdk.KEY_equal:
++        case Gdk.Key.equal:
+             while (add_test_entry ());
+             offer_guest = true;
+             break;
+-        case Gdk.KEY_g:
++        case Gdk.Key.g:
+             offer_guest = false;
+             break;
+-        case Gdk.KEY_G:
++        case Gdk.Key.G:
+             offer_guest = true;
+             break;
+-        case Gdk.KEY_m:
++        case Gdk.Key.m:
+             always_show_manual = false;
+             break;
+-        case Gdk.KEY_M:
++        case Gdk.Key.M:
+             always_show_manual = true;
+             break;
+         }
