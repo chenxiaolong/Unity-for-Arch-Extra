@@ -3,9 +3,9 @@
 
 pkgname=indicator-sync
 _actual_ver=12.10.5
-_extra_ver=+13.10.20131011
-pkgver=${_actual_ver}daily13.10.11
-pkgrel=100
+_extra_ver=+14.04.20131125
+pkgver=${_actual_ver}daily13.11.25
+pkgrel=1
 pkgdesc="Sync menu to aggregate services performing background synchronization"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/indicator-sync"
@@ -15,7 +15,7 @@ makedepends=('intltool' 'python2')
 groups=('unity')
 options=('!libtool')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/indicator-sync_${_actual_ver}${_extra_ver}.orig.tar.gz")
-sha512sums=('c1c1564bae7a2e8a7e2dc3f985f59ca63264c4b8542a1f4d4fc2596d74994bb4b2d91586f73bd573fef0a558d536e3a4e803d0881f8779b33824635b134c2d24')
+sha512sums=('9bcf24800019d4828628eb93aa6e790efb2cf2cc8f956fa9a931fd352f0e15a0c4dc7e266c87925c7083fceaf00cb9295fb787520c1aa640e48e07b5c90f6d35')
 
 build() {
   cd "${srcdir}/${pkgname}-${_actual_ver}${_extra_ver}"
