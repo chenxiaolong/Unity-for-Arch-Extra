@@ -2,9 +2,9 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=accountsservice-ubuntu
-_ubuntu_rel=0ubuntu3
-pkgver=0.6.34
-pkgrel=100
+_ubuntu_rel=0ubuntu6
+pkgver=0.6.35
+pkgrel=1
 pkgdesc="D-Bus interface for user account query and manipulation"
 arch=('i686' 'x86_64')
 url="http://cgit.freedesktop.org/accountsservice/"
@@ -13,19 +13,18 @@ depends=('glib2' 'polkit' 'systemd' 'lightdm-ubuntu')
 makedepends=('intltool' 'gobject-introspection' 'vala')
 provides=("accountsservice=${pkgver}")
 conflicts=('accountsservice')
-options=('!libtool')
 source=("http://cgit.freedesktop.org/accountsservice/snapshot/accountsservice-${pkgver}.tar.xz"
         "https://launchpad.net/ubuntu/+archive/primary/+files/accountsservice_${pkgver}-${_ubuntu_rel}.debian.tar.gz"
-        'more-exclusions.patch')
-sha512sums=('2941d6824a4ff2fb8b5ba0d2a4fae8e65d3d44aec2bf34ba63fdd62046bb91368ff0de0de6abee69dbd69b175ca8a58ec05b26dbd98f24aa5cc6a1fb99fc6e0e'
-            'afbabc5df0f11b22220e5ad2140bb89f1bc827e6e5054b0234cebed1590b496e92c45e8580162bdb598c214ef99e315eddcb7bf2b248f067d19ded2e8443a0eb'
-            'be763dd0fe7c8d1e1f252689477eb4c3f76ffe862146ac48439424ea5f133b39b9dad1509855385d8a866ece31f68ff7826fecfda05b327cb4eaec0d7e940f6c')
+        'avoid-deleting-the-root-user.patch')
+sha512sums=('abd8fef4bf8a4588c51209718854d9acf1dc786a04175134539be55d2d2f57b761773116dc382880aef5a60c3689d8d789757f0db03113af5448ab68ed49b03b'
+            '5c95b8a4e4b76cd65a5fb607b2dfdf7dde6b4a577c1b99315c6e2cac59158e0f9407dd729e85b0bdd747489f4f1b293167d81498bd7a8c140dfa544ea2d7d30a'
+            'c687e152089288690f3b1cbbc8ffd9c2e10071f5f9647e2905a65c4630f75eb679630407243636f00badc50299ae43f7b350be9636f0a9c59cd080f9e1f3e9b7')
 
 prepare() {
   cd "${srcdir}/accountsservice-${pkgver}"
 
   # Apply Arch Linux patches
-  patch -p1 -i "${srcdir}/more-exclusions.patch"
+  patch -p1 -i "${srcdir}/avoid-deleting-the-root-user.patch"
 
   # Apply Ubuntu patches
     # Disable patches
@@ -66,6 +65,8 @@ prepare() {
       # Causes build failure (and I'm not sure why anyone would use a less
       # secure pin authentication module on anything other than a phone)
         sed -i '/0014-pam-pin.patch/d' \
+          "${srcdir}"/debian/patches/{ubuntu.,}series
+        sed -i '/0016-add-input-sources-support.patch/d' \
           "${srcdir}"/debian/patches/{ubuntu.,}series
     # Fix patches
       #sed -i 's,/etc/gdm3/daemon\.conf,/etc/gdm/custom.conf,g' \
