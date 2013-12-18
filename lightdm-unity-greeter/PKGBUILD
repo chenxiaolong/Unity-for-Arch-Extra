@@ -2,10 +2,10 @@
 # Taken from M0Rf30 morf3089 at gmail dot com
 
 pkgname=lightdm-unity-greeter
-_ubuntu_rel=0ubuntu1
+_ubuntu_rel=0ubuntu2
 _translations=20130502
-pkgver=13.10.3
-pkgrel=100
+pkgver=14.04.1
+pkgrel=1
 pkgdesc="The greeter (login screen) application for Unity. It is implemented as a LightDM greeter."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/unity-greeter"
@@ -20,20 +20,16 @@ source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname#*-}_${pk
         "https://dl.dropboxusercontent.com/u/486665/Translations/translations-${_translations}-unity-greeter.tar.gz"
         '10-unity.defaults'
         '50-unity-greeter.rules'
-        'logo.png'
-        '0001_Build_Fix.patch')
-sha512sums=('7abf685ac25892382c385d90804ec3697e128f1b4caac67f98aadc36efc2b982f20674d683c9fd08e2dfc43e346a2e0a8b98500d3e5f64af11b92a67fcca23a7'
-            '0c920779fbe6b46725c5f87c0e1e2c3ee46b6844cde88442df9e917f277c53fdc5f76b1a0c5183da8b6074c4292f12d13f2ea0d26133fc719e80064608375469'
+        'logo.png')
+sha512sums=('b7de1ce7c0de9aa355f8521c004cb74b583c27929aa8fc3a7c7f129414015a35f783be5f428ebc9ec175fbd0315dd2526841e3db016a011c94c795ecbb1d07a9'
+            'cd21ab5a5029d2d57d8de34296130a5366daca30c06d565304111ce290a4afa9a3fb3052c7f6696a94e40f911f0ea42b1240179d7e8c7b4090f1ad9303dc99e2'
             '58b41942f06f13b90a356d493608df9723be9b8442af9a07a9fd56a3f1db8855d98c11a879887f18abe66de67b0b306f57102b6a6424b694bc90a9bc59640b8d'
             'ee5d1f17dddd99ba55bbaca8aff5e8487c9b9f7e1eef570d2adb3d2519e19ef437b160414468ef85a8c1b14af1eee23c714e2086291701edfbab2f43064e2cd7'
             '5d0f1b8221dfe02670df3ba88011dc0ce744bfd4205a9900dd8096de222358a740a384a47f13ed4e5b94e24d4a8ff5639117464c61a689dd7bd9025a0900f529'
-            '4cc7e3600a8f5afc7edf574ccdb21dbbff9c7492a46b50c696fb7b38446829f2cc99ae029688e289da2100a9cac6ae0471cc8bac03f8db3799f9929a1e2f2679'
-            '61bdc415568790f4cb148d20a8b5b7fdb7f3599200411ddbd71cce1fbd246bf4119571f08b88003468c4a0f3cf098ac37977979e079effb98c61d38c472d32f3')
+            '4cc7e3600a8f5afc7edf574ccdb21dbbff9c7492a46b50c696fb7b38446829f2cc99ae029688e289da2100a9cac6ae0471cc8bac03f8db3799f9929a1e2f2679')
 
 prepare() {
   cd "${srcdir}/${pkgname#*-}-${pkgver}"
-
-  patch -p1 -i "${srcdir}/0001_Build_Fix.patch"
 
   # Apply Ubuntu patches
   patch -p1 -i "${srcdir}"/${pkgname#*-}_${pkgver}-${_ubuntu_rel}.diff
@@ -100,9 +96,9 @@ package() {
     "${pkgdir}/etc/guest-session/gsettings/"
 
   # Install LightDM configuration file to set the Unity greeter as the default
-  install -dm755 "${pkgdir}/etc/lightdm/lightdm.conf.d/"
+  install -dm755 "${pkgdir}/usr/share/lightdm/lightdm.conf.d/"
   install -m644 debian/50-unity-greeter.conf \
-                "${pkgdir}/etc/lightdm/lightdm.conf.d/"
+                "${pkgdir}/usr/share/lightdm/lightdm.conf.d/"
 }
 
 # vim:set ts=2 sw=2 et:
