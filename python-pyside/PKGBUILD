@@ -2,8 +2,8 @@
 
 pkgbase=python-pyside
 pkgname=('python-pyside' 'python2-pyside')
-pkgver=1.1.2
-pkgrel=106
+pkgver=1.2.1
+pkgrel=100
 pkgdesc="Python bindings for Qt"
 arch=('i686' 'x86_64')
 url="http://www.pyside.org/"
@@ -11,7 +11,7 @@ license=('LGPL')
 groups=('unity-extra')
 makedepends=('automoc4' 'cmake' 'mesa' 'python' 'python2' 'python-shiboken' 'python2-shiboken' 'phonon' 'qt4' 'qtwebkit')
 source=("https://distfiles.macports.org/py-pyside/pyside-qt4.8+${pkgver}.tar.bz2")
-sha512sums=('16651b13f5ab096313fe4fc1ff9580f241c61ff98167018459720eca6faeed7af3dc6918c85913ee07c4cd27f0070c7c1c204d81a5538754ce7b9dc2b79c41b1')
+sha512sums=('674a0d86be311650b22a9915a91f25e70b0a739d9c2ad92688ec4c624182ecf5184cbc761ea014ca6955b4bc9338acda2371eeffa302afc3873b95b88dea4b2b')
 
 build() {
   cd "${srcdir}/pyside-qt4.8+${pkgver}"
@@ -53,8 +53,8 @@ package_python2-pyside() {
   make DESTDIR="${pkgdir}/" install
 
   mv "${pkgdir}"/usr/include/PySide{,-py2}
-  mv "${pkgdir}"/usr/lib/cmake/PySide-1.1.2/PySideConfig{,-py2}.cmake
-  mv "${pkgdir}"/usr/lib/cmake/PySide-1.1.2/PySideConfigVersion{,-py2}.cmake
+  mv "${pkgdir}"/usr/lib/cmake/PySide-${pkgver}/PySideConfig{,-py2}.cmake
+  mv "${pkgdir}"/usr/lib/cmake/PySide-${pkgver}/PySideConfigVersion{,-py2}.cmake
   mv "${pkgdir}"/usr/lib/pkgconfig/pyside{,-py2}.pc
   mv "${pkgdir}"/usr/share/PySide{,-py2}
 }
