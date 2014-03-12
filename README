@@ -11,40 +11,39 @@ Themes, icons, etc.
 Applications
 
 06: accountsservice-ubuntu       -> Daemon to query user account information
-07: lightdm-unity-greeter        -> The LightDM greeter for Unity
-08: messagingmenu-extension      -> Messaging indicator extension for TB
-09: liferea-indicator            -> Liferea with indicator support
-10: pidgin-libnotify-ubuntu      -> Pidgin notification plugin
-11: plasma-widget-menubar        -> KDE Plasma widget to display menubar
-12: xfce4-indicator-plugin       -> XFCE panel plugin to display indicators
-13: indicator-sync               -> Indicator for synchronization status
-14: indicator-cpufreq            -> CPU Frequency Indicator
-15: empathy-ubuntu               -> Empathy IM client with UOA support
-16: telepathy-indicator          -> Telepathy integration with the msg menu
-17: unity-tweak-tool             -> Tool to configure the Unity desktop
+07: messagingmenu-extension      -> Messaging indicator extension for TB
+08: liferea-indicator            -> Liferea with indicator support
+09: pidgin-libnotify-ubuntu      -> Pidgin notification plugin
+10: plasma-widget-menubar        -> KDE Plasma widget to display menubar
+11: xfce4-indicator-plugin       -> XFCE panel plugin to display indicators
+12: indicator-sync               -> Indicator for synchronization status
+13: indicator-cpufreq            -> CPU Frequency Indicator
+14: empathy-ubuntu               -> Empathy IM client with UOA support
+15: telepathy-indicator          -> Telepathy integration with the msg menu
+16: unity-tweak-tool             -> Tool to configure the Unity desktop
 
 LightDM remote session
-18: python3-pycurl               -> A Python 3 interface to libcurl
-19: thin-client-config-agent     -> Retrieve list of remote servers for a user
-20: remote-login-service         -> Service to track the remote servers to use
-21: lightdm-remote-session-uccsconfigure -> Session to configure UCCS
-22: libpam-freerdp               -> PAM module to auth. against an RDP server
-23: lightdm-remote-session-freerdp -> Session to login in with FreeRDP
+17: python3-pycurl               -> A Python 3 interface to libcurl
+18: thin-client-config-agent     -> Retrieve list of remote servers for a user
+19: remote-login-service         -> Service to track the remote servers to use
+20: lightdm-remote-session-uccsconfigure -> Session to configure UCCS
+21: libpam-freerdp               -> PAM module to auth. against an RDP server
+22: lightdm-remote-session-freerdp -> Session to login in with FreeRDP
 
 Everpad
-24: python-shiboken              -> CPython bindings generator for C++ libs
-25: python-pyside                -> Python bindings for Qt
-26: unity-singlet                -> Python library for building lenses & scopes
-27: python-keyring               -> Python library for accessing keyrings
-28: python2-oauth2               -> Python 2 library for OAuth 1.0
-29: python2-magic                -> Python 2 bindings for file
-30: python-regex                 -> Alternative Python regular expression module
-31: everpad                      -> Evernote client with Unity integration
+23: python-shiboken              -> CPython bindings generator for C++ libs
+24: python-pyside                -> Python bindings for Qt
+25: unity-singlet                -> Python library for building lenses & scopes
+26: python-keyring               -> Python library for accessing keyrings
+27: python2-oauth2               -> Python 2 library for OAuth 1.0
+28: python2-magic                -> Python 2 bindings for file
+29: python-regex                 -> Alternative Python regular expression module
+30: everpad                      -> Evernote client with Unity integration
 
 Remindor
-32: remindor-common              -> Common files for indicator and Qt frontends
-33: remindor-qt                  -> Qt frontend for remindor
-34: indicator-remindor           -> Indicator for remindor
+31: remindor-common              -> Common files for indicator and Qt frontends
+32: remindor-qt                  -> Qt frontend for remindor
+33: indicator-remindor           -> Indicator for remindor
 
 All of the PKGBUILD's have been checked with the namcap tool for consistency.
 
