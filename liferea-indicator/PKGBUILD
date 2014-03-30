@@ -5,13 +5,13 @@
 
 pkgname=liferea-indicator
 _ubuntu_rel=1ubuntu1
-pkgver=1.8.15
-pkgrel=100
+pkgver=1.10.3
+pkgrel=1
 pkgdesc="A desktop news aggregator for online news feeds and weblogs with Messages Indicator support"
 arch=('i686' 'x86_64')
 url="http://liferea.sourceforge.net/"
 license=('GPL')
-depends=('gconf' 'libwebkit' 'libnotify' 'libunique' 'json-glib' 'hicolor-icon-theme' 'indicator-messages' 'libunity')
+depends=('webkitgtk' 'libnotify' 'json-glib' 'libpeas' 'python2-gobject' 'gnome-icon-theme' 'desktop-file-utils' 'indicator-messages' 'libunity')
 makedepends=('intltool')
 provides=("liferea=${pkgver}")
 conflicts=('liferea')
@@ -19,8 +19,8 @@ options=('!libtool' '!emptydirs')
 install=liferea.install
 source=("http://downloads.sourceforge.net/sourceforge/liferea/liferea-${pkgver}.tar.bz2"
         "https://launchpad.net/ubuntu/+archive/primary/+files/liferea_${pkgver}-${_ubuntu_rel}.debian.tar.xz")
-sha512sums=('af318a2b468b6d7c29528c44ab8cf8f34f853daceb7a34ccf52722af67b6d84fd04f9fe3eedc1ba27b1bc5561ea11bc2520ff107ae45eee2e69a426d57bb212a'
-            '91df060445763eab7e48f54cfb0093814c1a384700fb77b4ec0428a41a33b6b482d7cddb3baaec20499a5734e61cd283e38f542b754548bf80c6160acc7032af')
+sha512sums=('4df1f8849ecc4bfc3e9de3afcaca65447f1ad7f19bd707790df5b8437e1f9c095ecba3f9251ea5f3bff880f6bb9f01822634f0c37688fddc32203f12cf5c53eb'
+            'd7bbc1c7075f416eb95097336e66d7f732c54caa221ea693d4c0d991e8d7d89e680e6580f79436a4f8b4efad1a75440f86ef6a4cf673223d938b417417e02a02')
 
 prepare() {
   cd "${srcdir}/liferea-${pkgver}"
@@ -42,7 +42,7 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --localstatedir=/var \
-    --disable-schemas-install \
+    --disable-schemas-compile \
     --enable-nm \
     --enable-gnutls \
     --enable-lua \
@@ -54,19 +54,7 @@ build() {
 
 package() {
   cd "${srcdir}/liferea-${pkgver}"
-  GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 make DESTDIR="${pkgdir}" install
-
-  install -dm755 "${pkgdir}/usr/share/gconf/schemas"
-  gconf-merge-schema "${pkgdir}/usr/share/gconf/schemas/${pkgname}.schemas" "${pkgdir}"/etc/gconf/schemas/*.schemas
-  rm -v "${pkgdir}"/etc/gconf/schemas/*.schemas
-
-  install -dm755 "${pkgdir}/usr/share/indicators/messages/applications/"
-  install -m644 "${srcdir}/debian/liferea.indicate" \
-    "${pkgdir}/usr/share/indicators/messages/applications/"
-
-  install -dm755 "${pkgdir}/usr/share/liferea/pixmaps/"
-  install -m644 "${srcdir}/debian/liferea.xpm" \
-    "${pkgdir}/usr/share/liferea/pixmaps/"
+  make DESTDIR="${pkgdir}" install
 }
 
 # vim:set ts=2 sw=2 et:
