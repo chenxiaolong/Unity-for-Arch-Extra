@@ -2,8 +2,8 @@
 
 pkgbase=python-regex
 pkgname=('python-regex' 'python2-regex')
-pkgver=0.1.20130605
-pkgrel=100
+pkgver=0.1.20140216
+pkgrel=1
 pkgdesc="Alternative regular expression module"
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/mrab-regex-hg/"
@@ -12,13 +12,13 @@ groups=('unity-extra')
 makedepends=('python' 'python2' 'python-distribute' 'python2-distribute' 'python2-docutils')
 options=('!emptydirs')
 source=("http://ftp.de.debian.org/debian/pool/main/p/python-regex/python-regex_${pkgver}.orig.tar.gz")
-sha512sums=('82cd5229901b34f91401f3779372a4396bedf812607d1498ecfc0c7ff7bddf7141272fe1818666162fe9b48bc6cf1cac7c76812701262de6b5156d269e026c40')
+sha512sums=('158ba3226621cddc1a1323a46b6ac6eaeb3cd203dd39c4c85162d2a1e4a63a655d06b9036d4b11744a749471cb6919191ad210d3126e91529acae568c250928e')
 
 package_python-regex() {
   pkgdesc+=' (Python 3)'
   depends=('python')
 
-  cd "${srcdir}/regex-2013-06-05"
+  cd "${srcdir}/regex-2014.02.16"
   LANG=en_US.UTF-8 python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
@@ -26,7 +26,7 @@ package_python2-regex() {
   pkgdesc+=' (Python 2)'
   depends=('python2')
 
-  cd "${srcdir}/regex-2013-06-05"
+  cd "${srcdir}/regex-2014.02.16"
   LANG=en_US.UTF-8 python2 setup.py install --root="${pkgdir}/" --optimize=1
 }
 
