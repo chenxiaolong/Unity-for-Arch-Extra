@@ -2,7 +2,7 @@
 
 pkgbase=python-keyring
 pkgname=('python-keyring' 'python2-keyring')
-pkgver=3.3
+pkgver=3.7
 pkgrel=100
 pkgdesc="Python library for accessing keyring services"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python' 'python2' 'python-distribute' 'python2-distribute' 'zip' '
 source=("http://pypi.python.org/packages/source/k/keyring/keyring-${pkgver}.zip"
         '0001_UTF-8.patch')
 noextract=("keyring-${pkgver}.zip")
-sha512sums=('32845546328969ddd2179e83bfeacccf5ef60e20919258f4bf6e938cffa6dbfa66b9b0cd64d26d8df636c41d387e6b87aaa1645fd6d86aecb3de937f3acccc8c'
+sha512sums=('7343d40566484b33e3f265d874d75fcf502dbc0abfd653db65536ca4d475fc5596ba23a6472467b88b589fca740f62860a39d18ad7a285696b4cc2c79abe2729'
             '4f7cb1f6c34eeebc15b42192799624c6623f065be4a52e6973b74b2f6582a7997c13e48830d566e15b5f41cd45cf2d668aa671d77e02e2823599ef9ac02b9be9')
 
 prepare() {
