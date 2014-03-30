@@ -1,7 +1,7 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=indicator-remindor
-pkgver=13.08.2
+pkgver=14.01
 _ppa_rel=0ubuntu1~saucy
 pkgrel=1
 pkgdesc="Schedule reminders easily from an indicator"
@@ -14,7 +14,7 @@ makedepends=('python2-distutils-extra')
 optdepends=('yelp: Help stuff')
 install=indicator-remindor.install
 source=("http://ppa.launchpad.net/bhdouglass/indicator-remindor/ubuntu/pool/main/i/indicator-remindor/indicator-remindor_${pkgver}-${_ppa_rel}.tar.gz")
-sha512sums=('07b59ee8839c61421b73bfcde94777fa21a247ac39bcf48c0765a0bd3d7dcfab4166504598f43ebe690500d9eb934b9d455ff43ae162ee5b9f7109e0dbaba1c0')
+sha512sums=('b724daba31a12480456fd3c89890b31458c771dcd836025d69a1751639258675183b5bcc8422a37900c17dc052777042f3ba815d44775b4be69c0309096f37cd')
 
 package() {
   cd "${srcdir}/${pkgname}"
