@@ -2,8 +2,9 @@
 # Original Maintainer: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=empathy-ubuntu
-_ppa_rel=0ubuntu1~saucy3
-pkgver=3.10.1
+_ppa_rel=0ubuntu1~trusty1
+_ppa_ver=3.11.91
+pkgver=3.12.0
 pkgrel=100
 pkgdesc="A GNOME instant messaging client using the Telepathy framework."
 arch=('i686' 'x86_64')
@@ -11,7 +12,7 @@ url="http://live.gnome.org/Empathy"
 license=('GPL2')
 provides=("empathy=${pkgver}")
 conflicts=('empathy')
-depends=('clutter-gst' 'clutter-gtk' 'folks' 'gcr' 'iso-codes' 'libcanberra' 'libpulse' 'webkitgtk3' 'telepathy-farstream' 'telepathy-glib' 'telepathy-logger' 'telepathy-mission-control' 'geoclue2' 'geocode-glib' 'cheese' 'libchamplain' 'libunity' 'ido' 'unity-asset-pool')
+depends=('clutter-gst' 'clutter-gtk' 'folks' 'gcr' 'iso-codes' 'libcanberra' 'libpulse' 'webkitgtk' 'telepathy-farstream' 'telepathy-glib' 'telepathy-logger' 'telepathy-mission-control' 'geoclue2' 'geocode-glib' 'cheese' 'libchamplain' 'libunity' 'ido' 'unity-asset-pool')
 makedepends=('gnome-common' 'intltool' 'itstool' 'docbook-xsl' 'yelp-tools' 'python2')
 optdepends=('telepathy-gabble: XMPP/Jabber support'
             'telepathy-idle: IRC support'
@@ -22,16 +23,16 @@ options=('!makeflags')
 groups=('gnome')
 install=empathy.install
 source=("http://ftp.gnome.org/pub/GNOME/sources/${pkgname%-*}/${pkgver%.*}/${pkgname%-*}-${pkgver}.tar.xz"
-        "http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/pool/main/e/empathy/empathy_${pkgver}-${_ppa_rel}.debian.tar.gz")
-sha512sums=('34d2e9b13af26e86feedbdaf50e2b546e1d14d433043c7659a3a4b695d05c5650cc3834d926086db705ce1248965bafe166e7193de1518bb208d205e17e70abd'
-            '831c28e2ce9e8a2ff43f4f53ea32bb4d078632b06a6fb8bc838f307980336a88dd36b653754aa7769fb16adf0ddf6e340032c1f13e83b418da5012dcfdd882cb')
+        "http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/pool/main/e/empathy/empathy_${_ppa_ver}-${_ppa_rel}.debian.tar.gz")
+sha512sums=('28260b33fb00aed777e7610182fd8c0781aa2175606b830053460a968ebd3e845ee00e0cb704338438028606bf0465a5925bced1a7bd61005ed0c266996e30b1'
+            '534aff866d5bf5fc9014ae9d73274aeef0150564aa4b5ca35891734d213437fec8ea7730857c9aa6450e3440dee9e6544ac7508c86acbd39c6d1f8002b24e25e')
 
 prepare() {
   cd "${pkgname%-*}-${pkgver}"
 
   # Apply Ubuntu's patches
     # Disable patches
-      # Do not use Ubuntu Online Accounts (broken with GNOME 3.10)
+      # Do not use Ubuntu Online Accounts
         sed -i '/ubuntu_launch_uoa_panel.patch/d' "${srcdir}/debian/patches/series"
         sed -i '/00_linker-fixes.patch/d' "${srcdir}/debian/patches/series"
 
@@ -54,9 +55,9 @@ build() {
     --enable-gst-1.0=yes \
     --enable-spell=yes \
     --enable-webkit=yes \
-    --enable-map=no \
-    --enable-location=no \
-    --enable-geocode=no \
+    --enable-map=yes \
+    --enable-location=yes \
+    --enable-geocode=yes \
     --enable-gudev=yes \
     --enable-call-logs=yes \
     --enable-call=yes \
