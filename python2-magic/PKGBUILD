@@ -2,7 +2,7 @@
 
 pkgname=python2-magic
 pkgver=5.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Python 2 bindings for file"
 arch=('any')
 url="http://www.darwinsys.com/file/"
@@ -10,6 +10,8 @@ license=('custom')
 groups=('unity-extra')
 depends=('python2' 'file')
 options=(!emptydirs)
+provides=("file-python2=${pkgver}")
+conflicts=('file-python2')
 source=("ftp://ftp.astron.com/pub/file/file-${pkgver}.tar.gz")
 sha512sums=('eba4dd91053a28494e8a4d436b338ccfa44494dcd6c9031f7bb9c8b372d8cfacf702e0325e34b8498454be21b28dad78f0f63af5ad50b181b1962e0ec779c7b5')
 
