@@ -2,13 +2,13 @@
 
 pkgname=thin-client-config-agent
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Retrieve the list of remote desktop servers for a user"
 arch=('any')
 url="https://launchpad.net/thin-client-config-agent"
 license=('GPL')
 groups=('unity-extra')
-depends=('python3-pycurl')
+depends=('python-pycurl')
 makedepends=('python-distribute')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/thin-client-config-agent_${pkgver}.tar.gz")
 sha512sums=('73becbf3070aac8d22f640a658b1a7f51bc66b8f99116220ffd26efa6c356ee7894b295859c2c1275c81202169d39fdfddeb87ad58d2a900cb660b987bdfc193')
