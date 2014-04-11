@@ -1,10 +1,9 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
-_bzr_rev=147
-
 pkgname=thunderbird-messagingmenu
-pkgver=1.0.1
-pkgrel=102
+pkgver=r157
+pkgrel=1
+epoch=1
 pkgdesc="Messaging Menu Thunderbird Extension"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/messagingmenu-extension"
@@ -14,8 +13,13 @@ depends=('thunderbird' 'indicator-messages')
 makedepends=('bzr' 'unzip' 'zip')
 provides=("messagingmenu-extension=${pkgver}")
 conflicts=('messagingmenu-extension')
-source=("messagingmenu-extension::bzr+http://bazaar.launchpad.net/~extension-hackers/messagingmenu-extension/1.0/#${_bzr_rev}")
+source=("messagingmenu-extension::bzr+http://bazaar.launchpad.net/~extension-hackers/messagingmenu-extension/trunk/")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/messagingmenu-extension"
+  printf "r%s" "$(bzr revno)"
+}
 
 build() {
   cd "${srcdir}/messagingmenu-extension"
