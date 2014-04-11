@@ -3,8 +3,9 @@
 
 pkgname=accountsservice-ubuntu
 _ubuntu_rel=0ubuntu7
-pkgver=0.6.35
-pkgrel=2
+_ubuntu_ver=0.6.35
+pkgver=0.6.37
+pkgrel=1
 pkgdesc="D-Bus interface for user account query and manipulation"
 arch=('i686' 'x86_64')
 url="http://cgit.freedesktop.org/accountsservice/"
@@ -14,20 +15,21 @@ makedepends=('intltool' 'gobject-introspection' 'vala')
 provides=("accountsservice=${pkgver}")
 conflicts=('accountsservice')
 source=("http://cgit.freedesktop.org/accountsservice/snapshot/accountsservice-${pkgver}.tar.xz"
-        "https://launchpad.net/ubuntu/+archive/primary/+files/accountsservice_${pkgver}-${_ubuntu_rel}.debian.tar.gz"
-        'avoid-deleting-the-root-user.patch')
-sha512sums=('abd8fef4bf8a4588c51209718854d9acf1dc786a04175134539be55d2d2f57b761773116dc382880aef5a60c3689d8d789757f0db03113af5448ab68ed49b03b'
-            '585f338260a0dd3410d16da452c76c2f1d0dec9cc1045f9b3e76246a643520b72f22677730dd4397098ce14782d649cd675836b8df89033def0ebfae26ca0c17'
-            'c687e152089288690f3b1cbbc8ffd9c2e10071f5f9647e2905a65c4630f75eb679630407243636f00badc50299ae43f7b350be9636f0a9c59cd080f9e1f3e9b7')
+        "https://launchpad.net/ubuntu/+archive/primary/+files/accountsservice_${_ubuntu_ver}-${_ubuntu_rel}.debian.tar.gz"
+        '0001-Support-setting-reading-LightDM-autologin-setings.patch')
+sha512sums=('15cb7f4f6c0046fc1f0975c3fac9111a3528a6ae99f430a3386184c89724cedb218faf03e2982609246ee17f9439063943d55879527cb0d069009e7f261e85f4'
+            '585f338260a0dd3410d16da452c76c2f1d0dec9cc1045f9b3e76246a643520b72f22677730dd4397098ce14782d649cd675836b8df89033def0ebfae26ca0c17')
 
 prepare() {
   cd "${srcdir}/accountsservice-${pkgver}"
 
-  # Apply Arch Linux patches
-  patch -p1 -i "${srcdir}/avoid-deleting-the-root-user.patch"
+  patch -p1 -i "${srcdir}/0001-Support-setting-reading-LightDM-autologin-setings.patch"
 
   # Apply Ubuntu patches
     # Disable patches
+      # We have refreshed versions
+        sed -i '/0007-add-lightdm-support.patch/d' \
+          "${srcdir}"/debian/patches/{ubuntu.,}series
       # Arch Linux uses wheel group for system administration
         sed -i '/0002-create-and-manage-groups-like-on-a-debian-system.patch/d' \
           "${srcdir}"/debian/patches/{ubuntu.,}series
