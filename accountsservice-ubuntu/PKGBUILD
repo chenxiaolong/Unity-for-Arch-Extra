@@ -18,7 +18,8 @@ source=("http://cgit.freedesktop.org/accountsservice/snapshot/accountsservice-${
         "https://launchpad.net/ubuntu/+archive/primary/+files/accountsservice_${_ubuntu_ver}-${_ubuntu_rel}.debian.tar.gz"
         '0001-Support-setting-reading-LightDM-autologin-setings.patch')
 sha512sums=('15cb7f4f6c0046fc1f0975c3fac9111a3528a6ae99f430a3386184c89724cedb218faf03e2982609246ee17f9439063943d55879527cb0d069009e7f261e85f4'
-            '585f338260a0dd3410d16da452c76c2f1d0dec9cc1045f9b3e76246a643520b72f22677730dd4397098ce14782d649cd675836b8df89033def0ebfae26ca0c17')
+            '585f338260a0dd3410d16da452c76c2f1d0dec9cc1045f9b3e76246a643520b72f22677730dd4397098ce14782d649cd675836b8df89033def0ebfae26ca0c17'
+            '0ba299e57a1629993f19bbc07178262bd07040f64e61df78c7b16596956be8037c6aff087505ece9d2f65c1bc66c8628ab09bcdb6ba9e2e4b2a6e937dd6cb2df')
 
 prepare() {
   cd "${srcdir}/accountsservice-${pkgver}"
