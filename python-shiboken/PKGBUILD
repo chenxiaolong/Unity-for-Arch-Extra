@@ -3,7 +3,7 @@
 pkgbase=python-shiboken
 pkgname=('python-shiboken' 'python2-shiboken')
 pkgver=1.2.1
-pkgrel=100
+pkgrel=101
 pkgdesc="CPython bindings generator for C++ libraries"
 arch=('i686' 'x86_64')
 url="http://www.pyside.org/"
@@ -13,14 +13,14 @@ makedepends=('cmake' 'openssl' 'python' 'python2' 'qt4' 'libxslt')
 # Official mirror temporarily broken
 #source=("http://www.pyside.org/files/shiboken-${pkgver}.tar.bz2")
 source=("https://distfiles.macports.org/py-shiboken/shiboken-${pkgver}.tar.bz2"
-        '0001_Python_3.3.patch')
+        '0001-Python-3.4-support.patch')
 sha512sums=('485431b3d768ded859909342598fc42cccf6fb2901a3adefb0b2de0f01713eb420e14169957389d9c1c0c6c686b334b97826d875f9d8a330d308c280bcd10f7b'
-            'ff42e293dec926fde7f3da4991345a00743090604395e517000d77d46d5c619f95a5f6d5d3a0cd878e2f68b725ffda9fa38d4aba1288324d3d3f16727a4153f6')
+            '3032aac7ec73953f4aa274b2f867a4a3b831844f62250b2afe51031e81bb793d1f39c52dae083949b34b9118f8026a6037b46b1651bfb5c76e166743c72dddcb')
 
 prepare() {
   cd "${srcdir}/shiboken-${pkgver}"
 
-  patch -p1 -i "${srcdir}/0001_Python_3.3.patch"
+  patch -p1 -i "${srcdir}/0001-Python-3.4-support.patch"
 }
 
 build() {
