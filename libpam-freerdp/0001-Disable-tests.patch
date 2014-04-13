@@ -1,0 +1,54 @@
+From daec330b7f20e36def39f5e8fd4243721ca7276b Mon Sep 17 00:00:00 2001
+From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date: Sun, 13 Apr 2014 18:50:08 -0400
+Subject: [PATCH] Disable tests
+
+---
+ Makefile.am  |  3 +--
+ configure.ac | 11 -----------
+ 2 files changed, 1 insertion(+), 13 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 9477c1c..82c35ff 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,7 +1,6 @@
+ 
+ SUBDIRS = \
+-	src \
+-	tests
++	src
+ 
+ DISTCHECK_CONFIGURE_FLAGS = --enable-localinstall
+ 
+diff --git a/configure.ac b/configure.ac
+index 424c5f9..fb57612 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -49,16 +49,6 @@ fi
+ AC_SUBST(PAMMODULEDIR)
+ 
+ ###########################
+-# Google Test Dependencies
+-###########################
+-
+-m4_include([m4/gtest.m4])
+-CHECK_GTEST
+-if test "x$have_gtest" != "xyes"; then
+-   AC_MSG_ERROR([tests were requested but gtest is not installed.])
+-fi
+-
+-###########################
+ # gcov coverage reporting
+ ###########################
+ 
+@@ -76,6 +66,5 @@ AC_SUBST(COVERAGE_LDFLAGS)
+ AC_CONFIG_FILES([
+   Makefile
+   src/Makefile
+-  tests/Makefile
+ ])
+ AC_OUTPUT
+-- 
+1.9.2
+
