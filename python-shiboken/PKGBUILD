@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.pyside.org/"
 license=('LGPL')
 groups=('unity-extra')
-makedepends=('cmake' 'openssl' 'python' 'python2' 'qt4')
+makedepends=('cmake' 'openssl' 'python' 'python2' 'qt4' 'libxslt')
 # Official mirror temporarily broken
 #source=("http://www.pyside.org/files/shiboken-${pkgver}.tar.bz2")
 source=("https://distfiles.macports.org/py-shiboken/shiboken-${pkgver}.tar.bz2"
