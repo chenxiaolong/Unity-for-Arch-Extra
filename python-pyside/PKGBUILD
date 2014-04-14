@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://www.pyside.org/"
 license=('LGPL')
 groups=('unity-extra')
-makedepends=('automoc4' 'cmake' 'mesa' 'python' 'python2' 'python-shiboken' 'python2-shiboken' 'phonon' 'qt4' 'qtwebkit')
+makedepends=('automoc4' 'cmake' 'libxslt' 'mesa' 'python' 'python2' 'python-shiboken' 'python2-shiboken' 'phonon' 'qt4' 'qtwebkit')
 source=("https://distfiles.macports.org/py-pyside/pyside-qt4.8+${pkgver}.tar.bz2")
 sha512sums=('674a0d86be311650b22a9915a91f25e70b0a739d9c2ad92688ec4c624182ecf5184cbc761ea014ca6955b4bc9338acda2371eeffa302afc3873b95b88dea4b2b')
 
