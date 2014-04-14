@@ -1,33 +1,120 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
-_ubuntu_ver=0.0.6
+_ubuntu_ver=0.0.6ubuntu1
 
 pkgname=unity-tweak-tool
 pkgver=0.0.6
-pkgrel=5
+pkgrel=6
 pkgdesc="Configuration tool for the Unity desktop"
 arch=('any')
 url="https://github.com/freyja-dev/unity-tweak-tool"
 license=('GPL')
 groups=('unity-extra')
 depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'notify-osd' 'python' 'python-xdg' 'python-dbus' 'unity')
-makedepends=('python-distutils-extra')
+makedepends=('intltool')
+#makedepends=('python-distutils-extra')
 options=('!emptydirs')
 install=${pkgname}.install
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/unity-tweak-tool_${_ubuntu_ver}.tar.gz"
-        '0001_Headless_build_fix.patch')
-sha512sums=('198e27c8bfc79a6e7423b33c4abccb916f09ff609603b4e4d41060b1a9c3562b7c326d58b02cbbac5cdaa54c66ca6a03560c86ee663a26035a99a83f0436035d'
-            '8e0106c865a4cf37944c561ea4be70f8f63872e5e70b00586cddbc4300e32b36779bfa3c90cfff52b6cce3b9eb4414793a2aaea55afc9a65cd36191f7eff4309')
-
-prepare() {
-  cd "${srcdir}/${pkgname}"
-  patch -p1 -i "${srcdir}/0001_Headless_build_fix.patch"
-}
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/unity-tweak-tool_${_ubuntu_ver}.tar.gz")
+sha512sums=('8852423a46ad22f8c0322459164b827210f71a14cd2b7d61f9233a482487250b09ae80037d0492f87dce29d713e05fa08cae539fc3fc03588f081982e83e6425')
 
 package() {
-  cd "${srcdir}/${pkgname}"
-  export MAKEPKG=true
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  cd "${srcdir}/${pkgname}-${_ubuntu_ver}"
+  # distutils is not behaving well
+  #python setup.py install --root="${pkgdir}/" --optimize=1
+
+  pyver=$(python -c 'import sys; print("%d.%d" % (sys.version_info[0], sys.version_info[1]))')
+
+  install -dm755 "${pkgdir}/usr/share/dbus-1/services/"
+  install -m644 unity-tweak-tool.service "${pkgdir}/usr/share/dbus-1/services/"
+
+  install -dm755 "${pkgdir}/usr/lib/python${pyver}/site-packages/"
+  cp -a UnityTweakTool "${pkgdir}/usr/lib/python${pyver}/site-packages/"
+
+  install -dm755 "${pkgdir}/usr/bin/"
+  install -m755 unity-tweak-tool "${pkgdir}/usr/bin/"
+
+  install -dm755 "${pkgdir}/usr/share/man/man1/"
+  install -m644 unity-tweak-tool.1 "${pkgdir}/usr/share/man/man1/"
+
+  install -dm755 "${pkgdir}/usr/share/unity-tweak-tool/"
+  install -m644 data/about.ui \
+                data/appearance.ui \
+                data/errordialog.ui \
+                data/filechooser-theme.ui \
+                data/overview.ui \
+                data/system.ui \
+                data/unity.ui \
+                data/unitytweak.ui \
+                data/windowmanager.ui \
+                data/monitor-hotcorners.png \
+                data/monitor-window-snapping.png \
+                "${pkgdir}/usr/share/unity-tweak-tool/"
+
+  install -dm755 "${pkgdir}/usr/share/unity-tweak-tool/media/hicolor/22x22/apps/"
+  install -m644 data/media/hicolor/22x22/apps/unity-tweak-tool.png \
+                "${pkgdir}/usr/share/unity-tweak-tool/media/hicolor/22x22/apps/"
+
+  install -dm755 "${pkgdir}/usr/share/unity-tweak-tool/media/48/"
+  install -m644 data/media/48/appearance-settings-cursors.svg \
+                data/media/48/appearance-settings-fonts.svg \
+                data/media/48/appearance-settings-icons.svg \
+                data/media/48/appearance-settings-theme.svg \
+                data/media/48/appearance-settings-window-controls.svg \
+                data/media/48/system-settings-desktop-icons.svg \
+                data/media/48/system-settings-scrolling.svg \
+                data/media/48/system-settings-security.svg \
+                data/media/48/unity-settings-additional.svg \
+                data/media/48/unity-settings-dash.svg \
+                data/media/48/unity-settings-launcher.svg \
+                data/media/48/unity-settings-panel.svg \
+                data/media/48/unity-settings-switcher.svg \
+                data/media/48/unity-settings-webapps.svg \
+                data/media/48/wm-settings-additional.svg \
+                data/media/48/wm-settings-general.svg \
+                data/media/48/wm-settings-hotcorners.svg \
+                data/media/48/wm-settings-window-snapping.svg \
+                data/media/48/wm-settings-window-spread.svg \
+                data/media/48/wm-settings-workspaces.svg \
+                "${pkgdir}/usr/share/unity-tweak-tool/media/48/"
+
+  for i in po/*.po; do
+    lang=$(basename ${i})
+    lang=${lang%.po}
+    dir="${pkgdir}/usr/share/locale/${lang}/LC_MESSAGES/"
+    install -dm755 "${dir}"
+    msgfmt -o "${dir}/unity-tweak-tool.mo" ${i}
+  done
+
+  for i in data/media/hicolor/*/apps/unity-tweak-tool.png; do
+    size=${i%/apps/unity-tweak-tool.png}
+    size=${size##*/}
+    dir="${pkgdir}/usr/share/icons/hicolor/${size}/apps/"
+    install -dm755 "${dir}"
+    install -m644 "${i}" "${dir}"
+  done
+
+  install -dm755 "${pkgdir}/usr/share/icons/gnome/scalable/apps/"
+  install -m644 data/media/scalable/unity-tweak-tool-appearance-symbolic.svg \
+                data/media/scalable/unity-tweak-tool-overview-symbolic.svg \
+                data/media/scalable/unity-tweak-tool-system-symbolic.svg \
+                data/media/scalable/unity-tweak-tool-unity-symbolic.svg \
+                data/media/scalable/unity-tweak-tool-wm-symbolic.svg \
+                "${pkgdir}/usr/share/icons/gnome/scalable/apps/"
+
+  install -dm755 "${pkgdir}/usr/share/glib-2.0/schemas/"
+  install -m644 data/glib-2.0/schemas/org.frejya.unity-tweak-tool.gschema.xml \
+                "${pkgdir}/usr/share/glib-2.0/schemas/"
+
+  install -dm755 "${pkgdir}/usr/share/applications/"
+  intltool-merge -d po unity-tweak-tool.desktop.in \
+                       "${pkgdir}/usr/share/applications/unity-tweak-tool.desktop"
+
+  pydir="${pkgdir}/usr/lib/python${pyver}/site-packages/UnityTweakTool/"
+
+  sed -i "/^__unity_tweak_tool_data_directory__/ s/'.*'/'\/usr\/share\/unity-tweak-tool\/'/g" \
+    "${pydir}/config/data.py" \
+    "${pydir}/section/spaghetti/unitytweakconfig.py"
 }
 
 # vim:set ts=2 sw=2 et:
