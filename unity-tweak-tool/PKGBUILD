@@ -4,7 +4,7 @@ _ubuntu_ver=0.0.6ubuntu1
 
 pkgname=unity-tweak-tool
 pkgver=0.0.6
-pkgrel=7
+pkgrel=8
 pkgdesc="Configuration tool for the Unity desktop"
 arch=('any')
 url="https://github.com/freyja-dev/unity-tweak-tool"
@@ -116,6 +116,9 @@ package() {
   install -dm755 "${pkgdir}/usr/share/applications/"
   intltool-merge -d po unity-tweak-tool.desktop.in \
                        "${pkgdir}/usr/share/applications/unity-tweak-tool.desktop"
+
+  sed -i 's/^Categories=.*/Categories=Settings;X-GNOME-Settings-Panel;X-GNOME-PersonalSettings;/' \
+    "${pkgdir}/usr/share/applications/unity-tweak-tool.desktop"
 
   pydir="${pkgdir}/usr/lib/python${pyver}/site-packages/UnityTweakTool/"
 
