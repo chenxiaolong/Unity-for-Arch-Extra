@@ -4,7 +4,7 @@ _ubuntu_ver=0.0.6ubuntu1
 
 pkgname=unity-tweak-tool
 pkgver=0.0.6
-pkgrel=6
+pkgrel=7
 pkgdesc="Configuration tool for the Unity desktop"
 arch=('any')
 url="https://github.com/freyja-dev/unity-tweak-tool"
@@ -15,8 +15,15 @@ makedepends=('intltool')
 #makedepends=('python-distutils-extra')
 options=('!emptydirs')
 install=${pkgname}.install
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/unity-tweak-tool_${_ubuntu_ver}.tar.gz")
-sha512sums=('8852423a46ad22f8c0322459164b827210f71a14cd2b7d61f9233a482487250b09ae80037d0492f87dce29d713e05fa08cae539fc3fc03588f081982e83e6425')
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/unity-tweak-tool_${_ubuntu_ver}.tar.gz"
+        '0001-Remove-Unity-WebApps-support.patch')
+sha512sums=('8852423a46ad22f8c0322459164b827210f71a14cd2b7d61f9233a482487250b09ae80037d0492f87dce29d713e05fa08cae539fc3fc03588f081982e83e6425'
+            'dc8dd4b1bf9e8328bb50beec8c5df9dea2d048c039ba23c58dcc8e1cbc29bf0606d3eff653d1627c7d362c1f1f7f98eefb42fc231a325606746a016a7b7007cd')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${_ubuntu_ver}"
+  patch -p1 -i "${srcdir}/0001-Remove-Unity-WebApps-support.patch"
+}
 
 package() {
   cd "${srcdir}/${pkgname}-${_ubuntu_ver}"
@@ -69,7 +76,7 @@ package() {
                 data/media/48/unity-settings-launcher.svg \
                 data/media/48/unity-settings-panel.svg \
                 data/media/48/unity-settings-switcher.svg \
-                data/media/48/unity-settings-webapps.svg \
+                `# data/media/48/unity-settings-webapps.svg` \
                 data/media/48/wm-settings-additional.svg \
                 data/media/48/wm-settings-general.svg \
                 data/media/48/wm-settings-hotcorners.svg \
