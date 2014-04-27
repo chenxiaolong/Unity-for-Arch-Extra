@@ -2,7 +2,7 @@
 
 pkgname=remindor-qt
 pkgver=14.01
-_ppa_rel=0ubuntu1~saucy
+_ppa_rel=0ubuntu1~trusty
 pkgrel=1
 pkgdesc="Schedule reminders easily from an indicator"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python2-notify' 'python2-pyside' 'python2-shiboken' 'remindor-common')
 makedepends=('python2-distutils-extra')
 install=remindor-qt.install
 source=("http://ppa.launchpad.net/bhdouglass/indicator-remindor/ubuntu/pool/main/r/remindor-qt/remindor-qt_${pkgver}-${_ppa_rel}.tar.gz")
-sha512sums=('d2c6527ad0b9398a422a28ab38cf1fe4f2a29dfb2b9dd9b1826b34854217ee0ac9287a9ec78d8a290467e3fbe54e70cdce1978323e049280f46b395ea1c57114')
+sha512sums=('ac9904c4dca37299deb490b295480cdce65d12d6719219c57b7a9ff4fc589cfe6094d9cbcd115714006da9709023d2b042717d4a8c5aa4d2dcc2cd41e0768bcc')
 
 package() {
   cd "${srcdir}/${pkgname}"
