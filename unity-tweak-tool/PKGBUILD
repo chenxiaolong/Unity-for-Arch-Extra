@@ -4,7 +4,7 @@ _ubuntu_ver=0.0.6ubuntu1
 
 pkgname=unity-tweak-tool
 pkgver=0.0.6
-pkgrel=8
+pkgrel=9
 pkgdesc="Configuration tool for the Unity desktop"
 arch=('any')
 url="https://github.com/freyja-dev/unity-tweak-tool"
@@ -16,13 +16,16 @@ makedepends=('intltool')
 options=('!emptydirs')
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/unity-tweak-tool_${_ubuntu_ver}.tar.gz"
-        '0001-Remove-Unity-WebApps-support.patch')
+        '0001-Remove-Unity-WebApps-support.patch'
+        '0002-Remove-indicator-bluetooth-support.patch')
 sha512sums=('8852423a46ad22f8c0322459164b827210f71a14cd2b7d61f9233a482487250b09ae80037d0492f87dce29d713e05fa08cae539fc3fc03588f081982e83e6425'
-            'dc8dd4b1bf9e8328bb50beec8c5df9dea2d048c039ba23c58dcc8e1cbc29bf0606d3eff653d1627c7d362c1f1f7f98eefb42fc231a325606746a016a7b7007cd')
+            'f595d5482f656b7e568428c09495b8a639ecca7ab6ad8f1ec76842ef685e63ff9799bcc5c851f313650254b008d84d73e3756f9c642ecb8305d0362a5935a247'
+            '8fbc3deba9992c18d319d319fe5a1d38be93df219055201d645455520afa154df0f556b615dc21a21b3e0df653c70ece24fe47ef9bfca7ba1d35ad046270634f')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${_ubuntu_ver}"
   patch -p1 -i "${srcdir}/0001-Remove-Unity-WebApps-support.patch"
+  patch -p1 -i "${srcdir}/0002-Remove-indicator-bluetooth-support.patch"
 }
 
 package() {

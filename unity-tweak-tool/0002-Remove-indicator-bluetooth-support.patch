@@ -1,0 +1,89 @@
+From abbe8c99dbf07b1e6e7aa7eb0d24e16cf65d0419 Mon Sep 17 00:00:00 2001
+From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+Date: Wed, 20 Aug 2014 23:24:40 -0400
+Subject: [PATCH 2/2] Remove indicator-bluetooth support
+
+---
+ UnityTweakTool/section/spaghetti/gsettings.py |  1 -
+ UnityTweakTool/section/unity.py               | 12 ------------
+ data/unity.ui                                 | 22 ----------------------
+ 3 files changed, 35 deletions(-)
+
+diff --git a/UnityTweakTool/section/spaghetti/gsettings.py b/UnityTweakTool/section/spaghetti/gsettings.py
+index f1c5276..961bb41 100644
+--- a/UnityTweakTool/section/spaghetti/gsettings.py
++++ b/UnityTweakTool/section/spaghetti/gsettings.py
+@@ -96,7 +96,6 @@ def color_to_hash(c,alpha=1):
+ 
+ # Sorted by function type and alphabetical order
+ 
+-bluetooth = canonical('indicator.bluetooth')
+ datetime = canonical('indicator.datetime')
+ hud = canonical('indicator.appmenu.hud')
+ power = canonical('indicator.power')
+diff --git a/UnityTweakTool/section/unity.py b/UnityTweakTool/section/unity.py
+index 23f4091..4fc1d74 100644
+--- a/UnityTweakTool/section/unity.py
++++ b/UnityTweakTool/section/unity.py
+@@ -448,17 +448,6 @@ check_calendar= CheckBox({
+     'dependants': []
+ })
+ 
+-check_indicator_bluetooth= CheckBox({
+-    'id'        : 'check_indicator_bluetooth',
+-    'builder'   : Unity.builder,
+-    'schema'    : 'com.canonical.indicator.bluetooth',
+-    'path'      : None,
+-    'key'       : 'visible',
+-    'type'      : 'boolean',
+-    'map'       : {True:True,False:False},
+-    'dependants': []
+-})
+-
+ check_indicator_battery= CheckBox({
+     'id'        : 'check_indicator_battery',
+     'builder'   : Unity.builder,
+@@ -562,7 +551,6 @@ PanelIcons=Tab([spin_menu_visible,
+                  radio_power_charging,
+                  radio_power_always,
+                  check_indicator_battery_life,
+-                 check_indicator_bluetooth,
+                  check_indicator_sound,
+                  check_scroll_notifyosd,
+                  check_indicator_username])
+diff --git a/data/unity.ui b/data/unity.ui
+index 67b87b7..9aa8b6b 100644
+--- a/data/unity.ui
++++ b/data/unity.ui
+@@ -1588,28 +1588,6 @@
+                         <property name="position">0</property>
+                       </packing>
+                     </child>
+-                    <child>
+-                      <object class="GtkCheckButton" id="check_indicator_bluetooth">
+-                        <property name="label" translatable="yes">Bluetooth</property>
+-                        <property name="visible">True</property>
+-                        <property name="can_focus">False</property>
+-                        <property name="receives_default">False</property>
+-                        <property name="has_tooltip">True</property>
+-                        <property name="tooltip_markup" translatable="yes">If enabled, the bluetooth indicator is visible in the panel.</property>
+-                        <property name="tooltip_text" translatable="yes">If enabled, the bluetooth indicator is visible in the panel.</property>
+-                        <property name="halign">start</property>
+-                        <property name="valign">start</property>
+-                        <property name="margin_left">12</property>
+-                        <property name="xalign">0</property>
+-                        <property name="draw_indicator">True</property>
+-                        <signal name="toggled" handler="on_check_indicator_bluetooth_toggled" swapped="no"/>
+-                      </object>
+-                      <packing>
+-                        <property name="expand">False</property>
+-                        <property name="fill">True</property>
+-                        <property name="position">1</property>
+-                      </packing>
+-                    </child>
+                   </object>
+                   <packing>
+                     <property name="left_attach">0</property>
+-- 
+2.1.0
+

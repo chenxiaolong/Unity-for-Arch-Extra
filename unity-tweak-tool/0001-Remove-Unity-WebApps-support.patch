@@ -1,7 +1,7 @@
-From 9808c9ddbe8848b7f188c1b82fcdf752af7442bb Mon Sep 17 00:00:00 2001
+From a8e0d15429f1f8bf8c18df1bd74a71f91b1b23a2 Mon Sep 17 00:00:00 2001
 From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 Date: Mon, 14 Apr 2014 16:13:38 -0400
-Subject: [PATCH] Remove Unity WebApps support
+Subject: [PATCH 1/2] Remove Unity WebApps support
 
 ---
  UnityTweakTool/__init__.py                    |   1 -
@@ -503,5 +503,5 @@ index 2a3e955..3c9569c 100644
                                  <property name="visible">True</property>
                                  <property name="can_focus">False</property>
 -- 
-1.9.2
+2.1.0
 
