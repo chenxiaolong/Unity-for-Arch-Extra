@@ -58,8 +58,6 @@ Compiling from source
 
 | Package                          | Description                                |
 | -------------------------------- | ------------------------------------------ |
-| python-shiboken                  | CPython bindings generator for C++ libs    |
-| python-pyside                    | Python 2 bindings for Qt 4                 |
 | unity-singlet                    | Python 2 lib for building lenses & scopes  |
 | python-keyring                   | Python library for accessing keyrings      |
 | python2-oauth2                   | Python 2 library for OAuth 1.0             |
