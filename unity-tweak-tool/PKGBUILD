@@ -1,35 +1,39 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
-_ubuntu_ver=0.0.6ubuntu1
+# vercheck-pkgbuild: auto
+# vercheck-ubuntu: name=${pkgname}, repo=utopic, native
+
+_ubuntu_ver=0.0.6ubuntu2
 
 pkgname=unity-tweak-tool
 pkgver=0.0.6
-pkgrel=9
+pkgrel=10
 pkgdesc="Configuration tool for the Unity desktop"
-arch=('any')
+arch=(any)
 url="https://github.com/freyja-dev/unity-tweak-tool"
-license=('GPL')
-groups=('unity-extra')
-depends=('glib2' 'gtk3' 'hicolor-icon-theme' 'notify-osd' 'python' 'python-xdg' 'python-dbus' 'unity')
-makedepends=('intltool')
-#makedepends=('python-distutils-extra')
-options=('!emptydirs')
+license=(GPL)
+groups=(unity-extra)
+depends=(gtk3 hicolor-icon-theme notify-osd python python-xdg python-dbus
+         unity)
+makedepends=(intltool)
+#makedepends=(python-distutils-extra)
+options=(!emptydirs)
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/unity-tweak-tool_${_ubuntu_ver}.tar.gz"
-        '0001-Remove-Unity-WebApps-support.patch'
-        '0002-Remove-indicator-bluetooth-support.patch')
-sha512sums=('8852423a46ad22f8c0322459164b827210f71a14cd2b7d61f9233a482487250b09ae80037d0492f87dce29d713e05fa08cae539fc3fc03588f081982e83e6425'
+        0001-Remove-Unity-WebApps-support.patch
+        0002-Remove-indicator-bluetooth-support.patch)
+sha512sums=('2c3501440b35630912a8893c26886d79062cb56659a4b5ccc34cfb7049e0e169a1c9de48dbb5bc4e6a2ee8c7b0dec4c1a96ea9cf3a02f606c8b942904fcadf55'
             'f595d5482f656b7e568428c09495b8a639ecca7ab6ad8f1ec76842ef685e63ff9799bcc5c851f313650254b008d84d73e3756f9c642ecb8305d0362a5935a247'
             '8fbc3deba9992c18d319d319fe5a1d38be93df219055201d645455520afa154df0f556b615dc21a21b3e0df653c70ece24fe47ef9bfca7ba1d35ad046270634f')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${_ubuntu_ver}"
-  patch -p1 -i "${srcdir}/0001-Remove-Unity-WebApps-support.patch"
-  patch -p1 -i "${srcdir}/0002-Remove-indicator-bluetooth-support.patch"
+  cd utt
+  patch -p1 -i ../0001-Remove-Unity-WebApps-support.patch
+  patch -p1 -i ../0002-Remove-indicator-bluetooth-support.patch
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${_ubuntu_ver}"
+  cd utt
   # distutils is not behaving well
   #python setup.py install --root="${pkgdir}/" --optimize=1
 
@@ -129,5 +133,3 @@ package() {
     "${pydir}/config/data.py" \
     "${pydir}/section/spaghetti/unitytweakconfig.py"
 }
-
-# vim:set ts=2 sw=2 et:
