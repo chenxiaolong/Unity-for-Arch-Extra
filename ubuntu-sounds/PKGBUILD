@@ -1,35 +1,36 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
+# vercheck-pkgbuild: auto
+# vercheck-ubuntu: name=${pkgname}, repo=utopic, native
+
 pkgname=ubuntu-sounds
 pkgver=0.13
 pkgrel=101
 pkgdesc="Ubuntu's GNOME audio theme"
-arch=('any')
+arch=(any)
 url="https://launchpad.net/ubuntu-sounds"
-license=('CCPL:cc-by-sa')
-groups=('unity-extra')
+license=(CCPL:cc-by-sa)
+groups=(unity-extra)
 # To recreate the ogg audio files from wav audio files, run:
 #   RECREATE=true makepkg
 if [ "x${RECREATE}" == "xtrue" ]; then
-  makedepends=('vorbis-tools')
+  makedepends=(vorbis-tools)
 fi
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.gz")
 sha512sums=('8506876e01b98d5841c1a27493efbf958dbb91cfbcc7e46c416006045b521aa8f66c696ac88cfa5fa8e40396c0e02ab596b85499ea3561483f61133905eb26bc')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  if [ "x${RECREATE}" == "xtrue" ]; then
+  cd "${pkgname}-${pkgver}"
+  if [[ "x${RECREATE}" == "xtrue" ]]; then
     ./convert.sh
   fi
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   find ubuntu/ -type f -exec install -Dm644 {} "${pkgdir}"/usr/share/sounds/{} \;
 
   # From debian/links
   ln -s dialog-question.ogg "${pkgdir}/usr/share/sounds/ubuntu/stereo/system-ready.ogg"
 }
-
-# vim:set ts=2 sw=2 et:
