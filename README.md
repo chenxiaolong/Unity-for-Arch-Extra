@@ -58,7 +58,6 @@ Compiling from source
 
 | Package                          | Description                                |
 | -------------------------------- | ------------------------------------------ |
-| remindor-qt                      | Qt 4 frontend for remindor                 |
 | indicator-remindor               | Indicator for remindor                     |
 
 Troubleshooting
