@@ -1,35 +1,37 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
+# vercheck-pkgbuild: auto
+# vercheck-ubuntu: name=${pkgname}, repo=utopic
+# vercheck-launchpad: name=${pkgname}
+
 pkgname=lightdm-remote-session-freerdp
 pkgver=1.0
 pkgrel=102
 pkgdesc="Session and configuration to login with FreeRDP"
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="https://launchpad.net/lightdm-remote-session-freerdp/1.0"
-license=('GPL')
-groups=('unity-extra')
-depends=('freerdp' 'libpam-freerdp' 'lightdm-ubuntu' 'zenity')
+license=(GPL)
+groups=(unity-extra)
+depends=(freerdp libpam-freerdp lightdm-ubuntu zenity)
 source=("https://launchpad.net/lightdm-remote-session-freerdp/1.0/${pkgver}/+download/lightdm-remote-session-freerdp-${pkgver}.tar.gz"
-        '0001_Fix_locale_file.patch')
+        0001_Fix_locale_file.patch)
 sha512sums=('4104d8e8043b8539740e279efe769698fbf6bd56dcbd4a8d2bd60bf57ecc8d31a6f91992f18051b4c17f0f10fd694c2b49c424bb0ff12d2c096f38176e6b1a32'
             'fdab3db432e207e3fdb394b5c3d1e8c2474b29b923f9180d6f30664137f1080434915684ceb8b33dcf135078b9161ba4c6172e75f6d917ea8c16a1b5f1420adb')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
-  patch -Np1 -i "${srcdir}/0001_Fix_locale_file.patch"
+  patch -p1 -i ../0001_Fix_locale_file.patch
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
 
   ./configure --prefix=/usr --libexecdir=/usr/lib --sysconfdir=/etc
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}/" install
 }
-
-# vim:set ts=2 sw=2 et:
