@@ -1,27 +1,31 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
+# vercheck-pkgbuild: auto
+# vercheck-ubuntu: name=ubuntu-settings, repo=utopic, native
+
 pkgname=ubuntu-default-settings
 pkgver=14.04.5
 pkgrel=1
 pkgdesc="Ubuntu's default settings"
-arch=('any')
+arch=(any)
 url="https://launchpad.net/ubuntu/+source/ubuntu-settings"
-license=('GPL')
-groups=('unity-extra')
-depends=('ttf-ubuntu-font-family' 'ubuntu-sounds' 'ubuntu-themes' 'ubuntu-wallpapers' 'xcursor-vanilla-dmz')
+license=(GPL)
+groups=(unity-extra)
+depends=(ttf-ubuntu-font-family ubuntu-sounds ubuntu-themes ubuntu-wallpapers
+         xcursor-vanilla-dmz)
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-settings_${pkgver}.tar.gz"
-        '0001-Simplified-defaults-for-Arch-Linux.patch')
+        0001-Simplified-defaults-for-Arch-Linux.patch)
 sha512sums=('a5f1352d98405ae5e96631dbe564c81a4c6a945bebc0ce2a8a545ed3d0c4fd59739441fe9612921a19ba2cb0c698fdca681d1906835aa65e90e5f24d88289e05'
             'd959fed31092c133f06109c144ce3c66d6466139e07e49cda01c458cf6ba0c4ce987bdcb0dd5ec4bfcf0cc07db1101643fc0f0019cb9cf3b203ddbcf77e57745')
 
 prepare() {
-  cd "${srcdir}/ubuntu-settings-${pkgver}/"
-  patch -p1 -i "${srcdir}/0001-Simplified-defaults-for-Arch-Linux.patch"
+  cd "ubuntu-settings-${pkgver}/"
+  patch -p1 -i ../0001-Simplified-defaults-for-Arch-Linux.patch
 }
 
 package() {
-  cd "${srcdir}/ubuntu-settings-${pkgver}/debian/"
+  cd "ubuntu-settings-${pkgver}/debian/"
   install -dm755 "${pkgdir}/usr/share/glib-2.0/schemas/"
   install -m644 ubuntu-settings.gsettings-override \
     "${pkgdir}/usr/share/glib-2.0/schemas/10_${pkgname}.gschema.override"
