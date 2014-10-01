@@ -58,7 +58,6 @@ Compiling from source
 
 | Package                          | Description                                |
 | -------------------------------- | ------------------------------------------ |
-| python-keyring                   | Python library for accessing keyrings      |
 | python2-oauth2                   | Python 2 library for OAuth 1.0             |
 | python2-magic                    | Python 2 bindings for file                 |
 | python-regex                     | Alternative Python regex module            |
