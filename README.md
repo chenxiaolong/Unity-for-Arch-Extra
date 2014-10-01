@@ -54,12 +54,6 @@ Compiling from source
 | libpam-freerdp                   | PAM module to auth. against an RDP server  |
 | lightdm-remote-session-freerdp   | Session to login with FreeRDP              |
 
-### Remindor
-
-| Package                          | Description                                |
-| -------------------------------- | ------------------------------------------ |
-| indicator-remindor               | Indicator for remindor                     |
-
 Troubleshooting
 ---------------
 
