@@ -1,88 +1,72 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
+# vercheck-pkgbuild: auto
+# vercheck-ubuntu: name=${pkgname%-*}, repo=utopic
+# vercheck-archlinux: name=${pkgname%-*}, repo=extra, arch=x86_64
+# vercheck#freedesktop: name=${pkgname%-*}, majorver=3.14
+# vercheck#ppa: name=${pkgname%-*}, url=ppa:gnome3-team/gnome3-staging
+
 pkgname=accountsservice-ubuntu
-_ubuntu_rel=0ubuntu7
-_ubuntu_ver=0.6.35
-pkgver=0.6.37
+_ubuntu_rel=1ubuntu9
+_ubuntu_ver=0.6.37
+pkgver=0.6.38
 pkgrel=1
 pkgdesc="D-Bus interface for user account query and manipulation"
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="http://cgit.freedesktop.org/accountsservice/"
-license=('GPL3')
-depends=('glib2' 'polkit' 'systemd' 'lightdm-ubuntu')
-makedepends=('intltool' 'gobject-introspection' 'vala')
+license=(GPL3)
+depends=(glib2 polkit systemd lightdm-ubuntu)
+makedepends=(intltool gobject-introspection vala)
 provides=("accountsservice=${pkgver}")
-conflicts=('accountsservice')
+conflicts=(accountsservice)
 source=("http://cgit.freedesktop.org/accountsservice/snapshot/accountsservice-${pkgver}.tar.xz"
-        "https://launchpad.net/ubuntu/+archive/primary/+files/accountsservice_${_ubuntu_ver}-${_ubuntu_rel}.debian.tar.gz"
-        '0001-Support-setting-reading-LightDM-autologin-setings.patch')
-sha512sums=('15cb7f4f6c0046fc1f0975c3fac9111a3528a6ae99f430a3386184c89724cedb218faf03e2982609246ee17f9439063943d55879527cb0d069009e7f261e85f4'
-            '585f338260a0dd3410d16da452c76c2f1d0dec9cc1045f9b3e76246a643520b72f22677730dd4397098ce14782d649cd675836b8df89033def0ebfae26ca0c17'
+        "https://launchpad.net/ubuntu/+archive/primary/+files/accountsservice_${_ubuntu_ver:-${pkgver}}-${_ubuntu_rel}.debian.tar.xz"
+        0001-Support-setting-reading-LightDM-autologin-setings.patch)
+sha512sums=('5c4c4a6815cf594334e2b1185087ee414f177a305a8ff008b51ed800c9402144db184ca9f6bdbdc7affd4c57cff893558dd5be63bbd9bf006a31a1f1a040f68f'
+            'b6c51ec1ca513100f109629ddd0c2b6575e5cba8f5ef5c39399ae8bc8a53078a22b522747cd659ed96de217555fbda5238de06f698c6d94a530eacd2b807a615'
             '0ba299e57a1629993f19bbc07178262bd07040f64e61df78c7b16596956be8037c6aff087505ece9d2f65c1bc66c8628ab09bcdb6ba9e2e4b2a6e937dd6cb2df')
 
 prepare() {
-  cd "${srcdir}/accountsservice-${pkgver}"
+  cd "accountsservice-${pkgver}"
 
-  patch -p1 -i "${srcdir}/0001-Support-setting-reading-LightDM-autologin-setings.patch"
+  #patch -p1 -i ../0001-Support-setting-reading-LightDM-autologin-setings.patch
 
   # Apply Ubuntu patches
     # Disable patches
-      # We have refreshed versions
-        sed -i '/0007-add-lightdm-support.patch/d' \
-          "${srcdir}"/debian/patches/{ubuntu.,}series
-      # Arch Linux uses wheel group for system administration
-        sed -i '/0002-create-and-manage-groups-like-on-a-debian-system.patch/d' \
-          "${srcdir}"/debian/patches/{ubuntu.,}series
-        sed -i '/0002-create-and-manage-groups-like-on-a-ubuntu-system.patch/d' \
-          "${srcdir}"/debian/patches/{ubuntu.,}series
-      # Arch Linux uses /etc/gdm as the GDM configuration directory
-        sed -i '/0005-gdm_config_file_path.patch/d' \
-          "${srcdir}"/debian/patches/{ubuntu.,}series
-        sed -i '/0005-gdm_config_file_path_ubuntu.patch/d' \
-          "${srcdir}"/debian/patches/{ubuntu.,}series
-      # adduser is Debian-specific
-        sed -i '/0006-adduser_instead_of_useradd.patch/d' \
-          "${srcdir}"/debian/patches/{ubuntu.,}series
-      # Language patches are still pretty specific to Ubuntu (Ubuntu is trying
-      # to get them merged upstream)
-        sed -i '/0001-formats-locale-property.patch/d' \
-          "${srcdir}"/debian/patches/{ubuntu.,}series
-        sed -i '/0009-language-tools.patch/d' \
-          "${srcdir}"/debian/patches/{ubuntu.,}series
-        sed -i '/0010-set-language.patch/d' \
-          "${srcdir}"/debian/patches/{ubuntu.,}series
-        sed -i '/0012-add-keyboard-layout-support.patch/d' \
-          "${srcdir}"/debian/patches/{ubuntu.,}series
-      # systemd can be used in Arch Linux
-        sed -i '/2002-disable_systemd.patch/d' \
-          "${srcdir}"/debian/patches/{ubuntu.,}series
-      # Does not apply cleanly
-        sed -i '/0013-add-has-message-support.patch/d' \
-          "${srcdir}"/debian/patches/{ubuntu.,}series
-        sed -i '/2001-filtering_out_users.patch/d' \
-          "${srcdir}"/debian/patches/{ubuntu.,}series
-      # We do not use Debian/Ubuntu paths
-        sed -i '/0015-pam-pin-ubuntu.patch/d' \
-          "${srcdir}"/debian/patches/{ubuntu.,}series
-      # Causes build failure (and I'm not sure why anyone would use a less
-      # secure pin authentication module on anything other than a phone)
-        sed -i '/0014-pam-pin.patch/d' \
-          "${srcdir}"/debian/patches/{ubuntu.,}series
-        sed -i '/0016-add-input-sources-support.patch/d' \
-          "${srcdir}"/debian/patches/{ubuntu.,}series
-    # Fix patches
-      #sed -i 's,/etc/gdm3/daemon\.conf,/etc/gdm/custom.conf,g' \
-      #  "${srcdir}"/debian/patches/2001-filtering_out_users.patch
+    sed -i \
+      `# We have refreshed versions` \
+        -e '/0007-add-lightdm-support.patch/d' \
+      `# Arch Linux uses wheel group for system administration` \
+        -e '/0002-create-and-manage-groups-like-on-a-ubuntu-system.patch/d' \
+      `# adduser is Debian-specific` \
+        -e '/0006-adduser_instead_of_useradd.patch/d' \
+      `# Language patches are still pretty specific to Ubuntu, though` \
+      `# Ubuntu is trying to get them merged upstream` \
+        -e '/0001-formats-locale-property.patch/d' \
+        -e '/0009-language-tools.patch/d' \
+        -e '/0010-set-language.patch/d' \
+        -e '/0012-add-keyboard-layout-support.patch/d' \
+      `# Ubuntu-specific` \
+        -e '/0021-support-extrausers.patch/d' \
+        -e '/0016-add-input-sources-support.patch/d' \
+      `# We do not need a pin-based authentication method` \
+        -e '/0014-pam-pin.patch/d' \
+        -e '/0015-pam-pin-ubuntu.patch/d' \
+      `# Applied upstream` \
+        -e '/0022-fix-desktop-centric-polkit-policy.patch/d' \
+      `# Does not apply cleanly` \
+        -e '/0013-add-has-message-support.patch/d' \
+        ../debian/patches/series
 
-  for i in $(grep -v '#' "${srcdir}/debian/patches/ubuntu.series"); do
+  for i in $(grep -v '#' ../debian/patches/series); do
     msg "Applying ${i} ..."
-    patch -p1 -i "${srcdir}/debian/patches/${i}"
+    patch -p1 -i "../debian/patches/${i}"
   done
 }
 
 build() {
-  cd "${srcdir}/accountsservice-${pkgver}"
+  cd "accountsservice-${pkgver}"
 
   ./autogen.sh \
     --prefix=/usr \
@@ -97,9 +81,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/accountsservice-${pkgver}"
+  cd "accountsservice-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
 }
-
-# vim:set ts=2 sw=2 et:
