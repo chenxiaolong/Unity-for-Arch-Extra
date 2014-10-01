@@ -1,31 +1,39 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 # Original Maintainer: Ionut Biru <ibiru@archlinux.org>
 
+# vercheck-pkgbuild: auto
+# vercheck-ubuntu: name=${pkgname%-*}, repo=utopic
+# vercheck-archlinux: name=${pkgname%-*}, repo=extra, arch=x86_64
+# vercheck-gnome: name=${pkgname%-*}, majorver=3.12
+# vercheck-ppa: name=${pkgname%-*}, url=ppa:gnome3-team/gnome3-staging
+
 pkgname=empathy-ubuntu
-_ppa_rel=0ubuntu1~trusty1
-_ppa_ver=3.11.91
-pkgver=3.12.0
-pkgrel=100
+_ppa_rel=0ubuntu1~utopic2
+pkgver=3.12.6
+pkgrel=1
 pkgdesc="A GNOME instant messaging client using the Telepathy framework."
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="http://live.gnome.org/Empathy"
-license=('GPL2')
+license=(GPL2)
 provides=("empathy=${pkgver}")
-conflicts=('empathy')
-depends=('clutter-gst' 'clutter-gtk' 'folks' 'gcr' 'iso-codes' 'libcanberra' 'libpulse' 'webkitgtk' 'telepathy-farstream' 'telepathy-glib' 'telepathy-logger' 'telepathy-mission-control' 'geoclue2' 'geocode-glib' 'cheese' 'libchamplain' 'libunity' 'ido' 'unity-asset-pool')
-makedepends=('gnome-common' 'intltool' 'itstool' 'docbook-xsl' 'yelp-tools' 'python2')
+conflicts=(empathy)
+depends=(clutter-gst clutter-gtk folks gcr iso-codes libcanberra libpulse
+         webkitgtk telepathy-farstream telepathy-glib telepathy-logger
+         telepathy-mission-control geoclue2 geocode-glib cheese libchamplain
+         libunity ido unity-asset-pool)
+makedepends=(gnome-common intltool itstool docbook-xsl yelp-tools python2)
 optdepends=('telepathy-gabble: XMPP/Jabber support'
             'telepathy-idle: IRC support'
             'telepathy-salut: Link-local XMPP support'
             'telepathy-rakia: SIP support'
             'telepathy-haze: libpurple support')
-options=('!makeflags')
-groups=('gnome')
+options=(!makeflags)
+groups=(gnome unity-extra)
 install=empathy.install
 source=("http://ftp.gnome.org/pub/GNOME/sources/${pkgname%-*}/${pkgver%.*}/${pkgname%-*}-${pkgver}.tar.xz"
-        "http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/pool/main/e/empathy/empathy_${_ppa_ver}-${_ppa_rel}.debian.tar.gz")
-sha512sums=('28260b33fb00aed777e7610182fd8c0781aa2175606b830053460a968ebd3e845ee00e0cb704338438028606bf0465a5925bced1a7bd61005ed0c266996e30b1'
-            '534aff866d5bf5fc9014ae9d73274aeef0150564aa4b5ca35891734d213437fec8ea7730857c9aa6450e3440dee9e6544ac7508c86acbd39c6d1f8002b24e25e')
+        "http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/pool/main/e/empathy/empathy_${_ppa_ver:-${pkgver}}-${_ppa_rel}.debian.tar.xz")
+sha512sums=('9f72d2c77aa0127fbad86dca33c2bc7ea54c1bb41c00a10abc93a31a970335b4d16c1533cf31ad2c98b872852c85d1a2ec6bbb0503a0bdceafbc935cdd901668'
+            '6dad6af349ecdeb642908f8311b16bfefe89d44f3a6c12a674e5b21e0861aa6810dadce827cc898fbe0acc30f005987123eb53ca3afc6e28081dcbcf3360e036')
 
 prepare() {
   cd "${pkgname%-*}-${pkgver}"
@@ -33,11 +41,11 @@ prepare() {
   # Apply Ubuntu's patches
     # Disable patches
       # Do not use Ubuntu Online Accounts
-        sed -i '/ubuntu_launch_uoa_panel.patch/d' "${srcdir}/debian/patches/series"
-        sed -i '/00_linker-fixes.patch/d' "${srcdir}/debian/patches/series"
+        sed -i '/ubuntu_launch_uoa_panel.patch/d' ../debian/patches/series
+        sed -i '/00_linker-fixes.patch/d' ../debian/patches/series
 
-  for i in $(grep -v '#' "${srcdir}/debian/patches/series"); do
-    patch -p1 -i "${srcdir}/debian/patches/${i}"
+  for i in $(grep -v '#' ../debian/patches/series); do
+    patch -p1 -i "../debian/patches/${i}"
   done
 }
 
