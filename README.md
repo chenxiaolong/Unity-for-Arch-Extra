@@ -58,7 +58,6 @@ Compiling from source
 
 | Package                          | Description                                |
 | -------------------------------- | ------------------------------------------ |
-| unity-singlet                    | Python 2 lib for building lenses & scopes  |
 | python-keyring                   | Python library for accessing keyrings      |
 | python2-oauth2                   | Python 2 library for OAuth 1.0             |
 | python2-magic                    | Python 2 bindings for file                 |
