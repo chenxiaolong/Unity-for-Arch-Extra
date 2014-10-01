@@ -54,12 +54,6 @@ Compiling from source
 | libpam-freerdp                   | PAM module to auth. against an RDP server  |
 | lightdm-remote-session-freerdp   | Session to login with FreeRDP              |
 
-### Everpad
-
-| Package                          | Description                                |
-| -------------------------------- | ------------------------------------------ |
-| everpad                          | Evernote client with Unity integration     |
-
 ### Remindor
 
 | Package                          | Description                                |
