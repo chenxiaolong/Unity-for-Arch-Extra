@@ -58,7 +58,6 @@ Compiling from source
 
 | Package                          | Description                                |
 | -------------------------------- | ------------------------------------------ |
-| python-regex                     | Alternative Python regex module            |
 | everpad                          | Evernote client with Unity integration     |
 
 ### Remindor
