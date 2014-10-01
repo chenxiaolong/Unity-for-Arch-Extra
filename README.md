@@ -58,7 +58,6 @@ Compiling from source
 
 | Package                          | Description                                |
 | -------------------------------- | ------------------------------------------ |
-| remindor-common                  | Common files for UI frontends              |
 | remindor-qt                      | Qt 4 frontend for remindor                 |
 | indicator-remindor               | Indicator for remindor                     |
 
