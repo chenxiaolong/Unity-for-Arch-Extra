@@ -1,11 +1,11 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 # vercheck-pkgbuild: auto
-# vercheck-ubuntu: name=${pkgname}, repo=utopic, native
+# vercheck-ubuntu: name=${pkgname}, repo=vivid, native
 # vercheck-launchpad: name=humanity, tarname=Humanity
 
 pkgname=humanity-icon-theme
-pkgver=0.6.5
+pkgver=0.6.6
 pkgrel=1
 pkgdesc="Humanity Icon Theme"
 arch=(any)
@@ -18,7 +18,7 @@ provides=("humanity-icons=${pkgver}")
 conflicts=(humanity-icons)
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.gz")
-sha512sums=('d5c20abef577ee09639f371a235d2213a3c17fdf97348d0d42ecdb8d690fc8fc80725e9499b96ae4fa59c44cc5622cec2c24e4becf8b85fafbf6cf64c786695c')
+sha512sums=('f96195332e5ef5e0ec51b17cb69b87c8cf7fb6fbe851e32c0bad900b09a6602517904d09fbadeae62bb15972c5b1e49d5f1d132c637780cdf7fa15dd40717d12')
 
 package() {
   cd "${pkgname}-${pkgver}"
