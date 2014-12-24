@@ -8,8 +8,8 @@
 # vercheck-ppa: name=${pkgname%-*}, url=ppa:gnome3-team/gnome3-staging
 
 pkgname=empathy-ubuntu
-_ppa_rel=0ubuntu1~utopic2
-pkgver=3.12.6
+_ppa_rel=0ubuntu1+utopic1
+pkgver=3.12.7
 pkgrel=1
 pkgdesc="A GNOME instant messaging client using the Telepathy framework."
 arch=(i686 x86_64)
@@ -32,8 +32,8 @@ groups=(gnome unity-extra)
 install=empathy.install
 source=("http://ftp.gnome.org/pub/GNOME/sources/${pkgname%-*}/${pkgver%.*}/${pkgname%-*}-${pkgver}.tar.xz"
         "http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/pool/main/e/empathy/empathy_${_ppa_ver:-${pkgver}}-${_ppa_rel}.debian.tar.xz")
-sha512sums=('9f72d2c77aa0127fbad86dca33c2bc7ea54c1bb41c00a10abc93a31a970335b4d16c1533cf31ad2c98b872852c85d1a2ec6bbb0503a0bdceafbc935cdd901668'
-            '6dad6af349ecdeb642908f8311b16bfefe89d44f3a6c12a674e5b21e0861aa6810dadce827cc898fbe0acc30f005987123eb53ca3afc6e28081dcbcf3360e036')
+sha512sums=('4c0c6ba19fbf200c6171ccf1935ffb862d1a22ccfd705dff7bac7230ff22330d5244e8330e9a84f8aadaae726384f37b8ebc594d015cab07fdb3bc6386acbc47'
+            '601c2d4c71185f8661f6181a0eafa5b002817d316f43b595565f83a60bea9c7ba4723e58802c3fb4b6e067e0a813a155bebeef0e42bdc5ef52c104981dd5b5b6')
 
 prepare() {
   cd "${pkgname%-*}-${pkgver}"
