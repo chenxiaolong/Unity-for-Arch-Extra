@@ -17,7 +17,7 @@ arch=(i686 x86_64)
 url="http://cgit.freedesktop.org/accountsservice/"
 license=(GPL3)
 depends=(glib2 polkit systemd lightdm-ubuntu)
-makedepends=(intltool gobject-introspection vala)
+makedepends=(intltool gobject-introspection python2 vala)
 provides=("accountsservice=${pkgver}")
 conflicts=(accountsservice)
 source=("http://cgit.freedesktop.org/accountsservice/snapshot/accountsservice-${pkgver}.tar.xz"
