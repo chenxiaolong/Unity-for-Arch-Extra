@@ -5,20 +5,20 @@
 # vercheck-launchpad: name=humanity, tarname=Humanity
 
 pkgname=humanity-icon-theme
-pkgver=0.6.6
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="Humanity Icon Theme"
 arch=(any)
 url="https://launchpad.net/humanity"
 license=(GPL)
 groups=(unity-extra)
-depends=(gnome-icon-theme hicolor-icon-theme)
+depends=(adwaita-icon-theme hicolor-icon-theme)
 makedepends=(icon-naming-utils)
 provides=("humanity-icons=${pkgver}")
 conflicts=(humanity-icons)
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.gz")
-sha512sums=('f96195332e5ef5e0ec51b17cb69b87c8cf7fb6fbe851e32c0bad900b09a6602517904d09fbadeae62bb15972c5b1e49d5f1d132c637780cdf7fa15dd40717d12')
+sha512sums=('a9d2b563fd2bf13ae70b019951c3bb571672edc8438e7e64845288b4d1702b86d7cd31a7e6d955e65a37d57e4603932add18acecfd6db300181ccc3e7a12c01b')
 
 package() {
   cd "${pkgname}-${pkgver}"
