@@ -5,7 +5,7 @@
 
 pkgname=ubuntu-default-settings
 pkgver=14.04.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Ubuntu's default settings"
 arch=(any)
 url="https://launchpad.net/ubuntu/+source/ubuntu-settings"
@@ -17,7 +17,7 @@ install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-settings_${pkgver}.tar.gz"
         0001-Simplified-defaults-for-Arch-Linux.patch)
 sha512sums=('a5f1352d98405ae5e96631dbe564c81a4c6a945bebc0ce2a8a545ed3d0c4fd59739441fe9612921a19ba2cb0c698fdca681d1906835aa65e90e5f24d88289e05'
-            'd959fed31092c133f06109c144ce3c66d6466139e07e49cda01c458cf6ba0c4ce987bdcb0dd5ec4bfcf0cc07db1101643fc0f0019cb9cf3b203ddbcf77e57745')
+            '8586732191d80941d4609f3bcc43f0ee7add46f80aca220884fd2ee99d7fb206cbb105dcd0c3640b89dbf87d302ea26261c57b3355c2fdd9ae29c354b97b9e25')
 
 prepare() {
   cd "ubuntu-settings-${pkgver}/"
