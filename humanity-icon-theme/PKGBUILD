@@ -1,12 +1,12 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 # vercheck-pkgbuild: auto
-# vercheck-ubuntu: name=${pkgname}, repo=vivid, native
+# vercheck-ubuntu: name=${pkgname}, repo=xenial, native
 # vercheck-launchpad: name=humanity, tarname=Humanity
 
 pkgname=humanity-icon-theme
-pkgver=0.6.8
-pkgrel=1
+pkgver=0.6.10
+pkgrel=2
 pkgdesc="Humanity Icon Theme"
 arch=(any)
 url="https://launchpad.net/humanity"
@@ -16,28 +16,27 @@ depends=(adwaita-icon-theme hicolor-icon-theme)
 makedepends=(icon-naming-utils)
 provides=("humanity-icons=${pkgver}")
 conflicts=(humanity-icons)
-install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.gz")
-sha512sums=('23d0f3c1d57fcac56e343f209ee3965bb3ee9c39c1e2c73d80b906380afb2878562c82b6d6fc5ccf40324403572a97505841b03934f45a56c53ea59c5b48dec0')
+sha512sums=('4b224871e7423c47a614f9e340c00b48a03553da36707fc38b9a03c01bf29df67793c9f6cb3dcdfda68e8de396c8e71d8824f1c1476c7be5bd870b64a26fb51d')
 
 package() {
-  cd "${pkgname}-${pkgver}"
+    cd "${pkgname}-${pkgver}"
 
-  install -dm755 "${pkgdir}"/usr/share/icons/
+    install -dm755 "${pkgdir}"/usr/share/icons/
 
-  # Install Humanity icon theme
-  cp -a Humanity/ "${pkgdir}"/usr/share/icons/
+    # Install Humanity icon theme
+    cp -a Humanity/ "${pkgdir}"/usr/share/icons/
 
-  # Install Humanity-Dark icon theme
-  cp -a Humanity-Dark/ "${pkgdir}"/usr/share/icons/
+    # Install Humanity-Dark icon theme
+    cp -a Humanity-Dark/ "${pkgdir}"/usr/share/icons/
 
-  # From debian/rules
-  for i in $(find "${pkgdir}/usr/share/icons/" -mindepth 2 -maxdepth 2 -type d); do
-    (
-    cd "${i}"
-    for j in *; do
-      /usr/lib/icon-naming-utils/icon-name-mapping -c "${j}"
+    # From debian/rules
+    for i in $(find "${pkgdir}/usr/share/icons/" -mindepth 2 -maxdepth 2 -type d); do
+        (
+        cd "${i}"
+        for j in *; do
+            /usr/lib/icon-naming-utils/icon-name-mapping -c "${j}"
+        done
+        )
     done
-    )
-  done
 }
