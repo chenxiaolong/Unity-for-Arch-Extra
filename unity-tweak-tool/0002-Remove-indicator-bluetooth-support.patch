@@ -1,4 +1,4 @@
-From abbe8c99dbf07b1e6e7aa7eb0d24e16cf65d0419 Mon Sep 17 00:00:00 2001
+From 32e5b6e3278687c5dbbc2c61551a2c90cdda3224 Mon Sep 17 00:00:00 2001
 From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 Date: Wed, 20 Aug 2014 23:24:40 -0400
 Subject: [PATCH 2/2] Remove indicator-bluetooth support
@@ -10,10 +10,10 @@ Subject: [PATCH 2/2] Remove indicator-bluetooth support
  3 files changed, 35 deletions(-)
 
 diff --git a/UnityTweakTool/section/spaghetti/gsettings.py b/UnityTweakTool/section/spaghetti/gsettings.py
-index f1c5276..961bb41 100644
+index 305dd07..e811967 100644
 --- a/UnityTweakTool/section/spaghetti/gsettings.py
 +++ b/UnityTweakTool/section/spaghetti/gsettings.py
-@@ -96,7 +96,6 @@ def color_to_hash(c,alpha=1):
+@@ -98,7 +98,6 @@ def color_to_hash(c,alpha=1):
  
  # Sorted by function type and alphabetical order
  
@@ -22,10 +22,10 @@ index f1c5276..961bb41 100644
  hud = canonical('indicator.appmenu.hud')
  power = canonical('indicator.power')
 diff --git a/UnityTweakTool/section/unity.py b/UnityTweakTool/section/unity.py
-index 23f4091..4fc1d74 100644
+index ced1240..43a6801 100644
 --- a/UnityTweakTool/section/unity.py
 +++ b/UnityTweakTool/section/unity.py
-@@ -448,17 +448,6 @@ check_calendar= CheckBox({
+@@ -486,17 +486,6 @@ check_calendar= CheckBox({
      'dependants': []
  })
  
@@ -43,7 +43,7 @@ index 23f4091..4fc1d74 100644
  check_indicator_battery= CheckBox({
      'id'        : 'check_indicator_battery',
      'builder'   : Unity.builder,
-@@ -562,7 +551,6 @@ PanelIcons=Tab([spin_menu_visible,
+@@ -600,7 +589,6 @@ PanelIcons=Tab([spin_menu_visible,
                   radio_power_charging,
                   radio_power_always,
                   check_indicator_battery_life,
@@ -52,10 +52,10 @@ index 23f4091..4fc1d74 100644
                   check_scroll_notifyosd,
                   check_indicator_username])
 diff --git a/data/unity.ui b/data/unity.ui
-index 67b87b7..9aa8b6b 100644
+index e99c2d2..6a455cb 100644
 --- a/data/unity.ui
 +++ b/data/unity.ui
-@@ -1588,28 +1588,6 @@
+@@ -1546,28 +1546,6 @@
                          <property name="position">0</property>
                        </packing>
                      </child>
@@ -85,5 +85,5 @@ index 67b87b7..9aa8b6b 100644
                    <packing>
                      <property name="left_attach">0</property>
 -- 
-2.1.0
+2.8.2
 

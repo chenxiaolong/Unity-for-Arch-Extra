@@ -1,13 +1,13 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 # vercheck-pkgbuild: auto
-# vercheck-ubuntu: name=${pkgname}, repo=utopic, native
+# vercheck-ubuntu: name=${pkgname}, repo=yakkety, native
 
-_ubuntu_ver=0.0.6ubuntu2
+_ubuntu_ver=0.0.7ubuntu2
 
 pkgname=unity-tweak-tool
-pkgver=0.0.6
-pkgrel=10
+pkgver=0.0.7
+pkgrel=1
 pkgdesc="Configuration tool for the Unity desktop"
 arch=(any)
 url="https://github.com/freyja-dev/unity-tweak-tool"
@@ -15,121 +15,24 @@ license=(GPL)
 groups=(unity-extra)
 depends=(gtk3 hicolor-icon-theme notify-osd python python-xdg python-dbus
          unity)
-makedepends=(intltool)
-#makedepends=(python-distutils-extra)
+makedepends=(intltool python-distutils-extra)
 options=(!emptydirs)
-install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/unity-tweak-tool_${_ubuntu_ver}.tar.gz"
         0001-Remove-Unity-WebApps-support.patch
         0002-Remove-indicator-bluetooth-support.patch)
-sha512sums=('2c3501440b35630912a8893c26886d79062cb56659a4b5ccc34cfb7049e0e169a1c9de48dbb5bc4e6a2ee8c7b0dec4c1a96ea9cf3a02f606c8b942904fcadf55'
-            'f595d5482f656b7e568428c09495b8a639ecca7ab6ad8f1ec76842ef685e63ff9799bcc5c851f313650254b008d84d73e3756f9c642ecb8305d0362a5935a247'
-            '8fbc3deba9992c18d319d319fe5a1d38be93df219055201d645455520afa154df0f556b615dc21a21b3e0df653c70ece24fe47ef9bfca7ba1d35ad046270634f')
+sha512sums=('6d5f682e9c8c9f8f172c2a102adffccc04fa944c0fe7acc382fc14dceafe74f498e63c935e273c92bf553100f8096f2f89ee84cb939fbfa0dc548ba1f8ef7509'
+            '32b00babc7f899f280728160a55e633c85fb3199b7b988352c4f79ed0788e90c9cda9034f8238f372cb4e4cbe7076974149f56f835cb30d8da9a7505d899f179'
+            'a4efc29bd3621c8f70bcdfaba486ccbbcd3fabd72d93a9f71023f2586eedfa2a29e3ab41e96b7c0ad705974f6911d4a0e25c78d068b1622f151c5e4f58ea3c20')
 
 prepare() {
-  cd utt
-  patch -p1 -i ../0001-Remove-Unity-WebApps-support.patch
-  patch -p1 -i ../0002-Remove-indicator-bluetooth-support.patch
+    cd "${pkgname}-${_ubuntu_ver}"
+    patch -p1 -i ../0001-Remove-Unity-WebApps-support.patch
+    patch -p1 -i ../0002-Remove-indicator-bluetooth-support.patch
 }
 
 package() {
-  cd utt
-  # distutils is not behaving well
-  #python setup.py install --root="${pkgdir}/" --optimize=1
+    cd "${pkgname}-${_ubuntu_ver}"
+    python setup.py install --root="${pkgdir}/" --optimize=1
 
-  pyver=$(python -c 'import sys; print("%d.%d" % (sys.version_info[0], sys.version_info[1]))')
-
-  install -dm755 "${pkgdir}/usr/share/dbus-1/services/"
-  install -m644 unity-tweak-tool.service "${pkgdir}/usr/share/dbus-1/services/"
-
-  install -dm755 "${pkgdir}/usr/lib/python${pyver}/site-packages/"
-  cp -a UnityTweakTool "${pkgdir}/usr/lib/python${pyver}/site-packages/"
-
-  install -dm755 "${pkgdir}/usr/bin/"
-  install -m755 unity-tweak-tool "${pkgdir}/usr/bin/"
-
-  install -dm755 "${pkgdir}/usr/share/man/man1/"
-  install -m644 unity-tweak-tool.1 "${pkgdir}/usr/share/man/man1/"
-
-  install -dm755 "${pkgdir}/usr/share/unity-tweak-tool/"
-  install -m644 data/about.ui \
-                data/appearance.ui \
-                data/errordialog.ui \
-                data/filechooser-theme.ui \
-                data/overview.ui \
-                data/system.ui \
-                data/unity.ui \
-                data/unitytweak.ui \
-                data/windowmanager.ui \
-                data/monitor-hotcorners.png \
-                data/monitor-window-snapping.png \
-                "${pkgdir}/usr/share/unity-tweak-tool/"
-
-  install -dm755 "${pkgdir}/usr/share/unity-tweak-tool/media/hicolor/22x22/apps/"
-  install -m644 data/media/hicolor/22x22/apps/unity-tweak-tool.png \
-                "${pkgdir}/usr/share/unity-tweak-tool/media/hicolor/22x22/apps/"
-
-  install -dm755 "${pkgdir}/usr/share/unity-tweak-tool/media/48/"
-  install -m644 data/media/48/appearance-settings-cursors.svg \
-                data/media/48/appearance-settings-fonts.svg \
-                data/media/48/appearance-settings-icons.svg \
-                data/media/48/appearance-settings-theme.svg \
-                data/media/48/appearance-settings-window-controls.svg \
-                data/media/48/system-settings-desktop-icons.svg \
-                data/media/48/system-settings-scrolling.svg \
-                data/media/48/system-settings-security.svg \
-                data/media/48/unity-settings-additional.svg \
-                data/media/48/unity-settings-dash.svg \
-                data/media/48/unity-settings-launcher.svg \
-                data/media/48/unity-settings-panel.svg \
-                data/media/48/unity-settings-switcher.svg \
-                `# data/media/48/unity-settings-webapps.svg` \
-                data/media/48/wm-settings-additional.svg \
-                data/media/48/wm-settings-general.svg \
-                data/media/48/wm-settings-hotcorners.svg \
-                data/media/48/wm-settings-window-snapping.svg \
-                data/media/48/wm-settings-window-spread.svg \
-                data/media/48/wm-settings-workspaces.svg \
-                "${pkgdir}/usr/share/unity-tweak-tool/media/48/"
-
-  for i in po/*.po; do
-    lang=$(basename ${i})
-    lang=${lang%.po}
-    dir="${pkgdir}/usr/share/locale/${lang}/LC_MESSAGES/"
-    install -dm755 "${dir}"
-    msgfmt -o "${dir}/unity-tweak-tool.mo" ${i}
-  done
-
-  for i in data/media/hicolor/*/apps/unity-tweak-tool.png; do
-    size=${i%/apps/unity-tweak-tool.png}
-    size=${size##*/}
-    dir="${pkgdir}/usr/share/icons/hicolor/${size}/apps/"
-    install -dm755 "${dir}"
-    install -m644 "${i}" "${dir}"
-  done
-
-  install -dm755 "${pkgdir}/usr/share/icons/gnome/scalable/apps/"
-  install -m644 data/media/scalable/unity-tweak-tool-appearance-symbolic.svg \
-                data/media/scalable/unity-tweak-tool-overview-symbolic.svg \
-                data/media/scalable/unity-tweak-tool-system-symbolic.svg \
-                data/media/scalable/unity-tweak-tool-unity-symbolic.svg \
-                data/media/scalable/unity-tweak-tool-wm-symbolic.svg \
-                "${pkgdir}/usr/share/icons/gnome/scalable/apps/"
-
-  install -dm755 "${pkgdir}/usr/share/glib-2.0/schemas/"
-  install -m644 data/glib-2.0/schemas/org.frejya.unity-tweak-tool.gschema.xml \
-                "${pkgdir}/usr/share/glib-2.0/schemas/"
-
-  install -dm755 "${pkgdir}/usr/share/applications/"
-  intltool-merge -d po unity-tweak-tool.desktop.in \
-                       "${pkgdir}/usr/share/applications/unity-tweak-tool.desktop"
-
-  sed -i 's/^Categories=.*/Categories=Settings;X-GNOME-Settings-Panel;X-GNOME-PersonalSettings;/' \
-    "${pkgdir}/usr/share/applications/unity-tweak-tool.desktop"
-
-  pydir="${pkgdir}/usr/lib/python${pyver}/site-packages/UnityTweakTool/"
-
-  sed -i "/^__unity_tweak_tool_data_directory__/ s/'.*'/'\/usr\/share\/unity-tweak-tool\/'/g" \
-    "${pydir}/config/data.py" \
-    "${pydir}/section/spaghetti/unitytweakconfig.py"
+    rm -v "${pkgdir}"/usr/share/unity-tweak-tool/media/48/unity-settings-webapps.svg
 }
