@@ -1,11 +1,11 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 # vercheck-pkgbuild: auto
-# vercheck-ubuntu: name=${pkgname}, repo=xenial
+# vercheck-ubuntu: name=${pkgname}, repo=yakkety
 
 pkgname=ubuntu-themes
 _actual_ver=14.04
-_extra_ver=+16.04.20160415
+_extra_ver=+16.10.20160706
 pkgver=${_actual_ver}${_extra_ver/\+/.}
 pkgrel=1
 pkgdesc="Ubuntu monochrome icon theme, Ambiance and Radiance themes, and Ubuntu artwork"
@@ -19,7 +19,7 @@ makedepends=(python2 imagemagick icon-naming-utils)
 provides=(light-themes ubuntu-mono)
 conflicts=(light-themes ubuntu-mono)
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${_actual_ver}${_extra_ver}.orig.tar.gz")
-sha512sums=('05801c6b38db0a0f2587014949be4fb55e6925bf1099c76f506f3b8560b39bfa2758f9d65068500b2b4b58c20946a1b032215176646c888154c2a35c973efe65')
+sha512sums=('68c1461f3e803479e07ae21b3e472e4d5cc3b871c30e6efc7493155c6cabce5cf2bbafe4693bc18bb17943c6e7937b49b4da27a159267238003315042ae8a6ea')
 
 build() {
     #cd "${pkgname}-${_actual_ver}${_extra_ver}"
