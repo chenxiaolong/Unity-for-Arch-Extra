@@ -13,7 +13,6 @@ license=(GPL)
 groups=(unity-extra)
 depends=(ttf-ubuntu-font-family ubuntu-sounds ubuntu-themes ubuntu-wallpapers
          xcursor-vanilla-dmz)
-install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-settings_${pkgver}.tar.xz"
         0001-Simplified-defaults-for-Arch-Linux.patch)
 sha512sums=('f4f598dd34ae186c82d3614ec285607e3d6ab4556f7af3f33efecfa9c8266ff26a2c79344455976e0b8c75cac32a61199ea87adef25c4dfa6033267287ed4e7c'
