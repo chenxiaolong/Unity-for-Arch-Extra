@@ -1,12 +1,12 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 # vercheck-pkgbuild: auto
-# vercheck-ubuntu: name=${pkgname}, repo=xenial, native
+# vercheck-ubuntu: name=${pkgname}, repo=zesty, native
 # vercheck-launchpad: name=humanity, tarname=Humanity
 
 pkgname=humanity-icon-theme
-pkgver=0.6.10
-pkgrel=2
+pkgver=0.6.11
+pkgrel=1
 pkgdesc="Humanity Icon Theme"
 arch=(any)
 url="https://launchpad.net/humanity"
@@ -16,8 +16,8 @@ depends=(adwaita-icon-theme hicolor-icon-theme)
 makedepends=(icon-naming-utils)
 provides=("humanity-icons=${pkgver}")
 conflicts=(humanity-icons)
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.gz")
-sha512sums=('4b224871e7423c47a614f9e340c00b48a03553da36707fc38b9a03c01bf29df67793c9f6cb3dcdfda68e8de396c8e71d8824f1c1476c7be5bd870b64a26fb51d')
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.xz")
+sha512sums=('28b018f972e02167a2da8859b0c7fb41d1f4abaa18e6d56fb4ed4f21db8b12c4ec32190e74b14343bcd3f6ffae6facc06abe3ce4f1effd805d65d0debabfcab5')
 
 package() {
     cd "${pkgname}-${pkgver}"
