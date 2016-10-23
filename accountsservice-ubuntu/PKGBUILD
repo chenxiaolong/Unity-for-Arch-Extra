@@ -20,11 +20,9 @@ provides=("accountsservice=${pkgver}")
 conflicts=(accountsservice)
 _commit=dac425433270c6dc38feba4d2513e4da7bd265fd  # tags/0.6.43^0
 source=("git://anongit.freedesktop.org/accountsservice#commit=${_commit}"
-        "https://launchpad.net/ubuntu/+archive/primary/+files/accountsservice_${_ubuntu_ver:-${pkgver}}-${_ubuntu_rel}.debian.tar.xz"
-        0001-Support-setting-reading-LightDM-autologin-setings.patch)
+        "https://launchpad.net/ubuntu/+archive/primary/+files/accountsservice_${_ubuntu_ver:-${pkgver}}-${_ubuntu_rel}.debian.tar.xz")
 sha512sums=('SKIP'
-            '7637354d6785e0fcf1286c4186c508075a54e724f11b3e778dc0a31b8c457777de300b16c300d71ef1886bc0c290c76255ed14ed49398a17b9c075531af1c538'
-            '0ba299e57a1629993f19bbc07178262bd07040f64e61df78c7b16596956be8037c6aff087505ece9d2f65c1bc66c8628ab09bcdb6ba9e2e4b2a6e937dd6cb2df')
+            '7637354d6785e0fcf1286c4186c508075a54e724f11b3e778dc0a31b8c457777de300b16c300d71ef1886bc0c290c76255ed14ed49398a17b9c075531af1c538')
 
 pkgver() {
     cd "${pkgname%-*}"
