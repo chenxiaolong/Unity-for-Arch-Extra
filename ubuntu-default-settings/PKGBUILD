@@ -1,11 +1,11 @@
 # Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 # vercheck-pkgbuild: auto
-# vercheck-ubuntu: name=ubuntu-settings, repo=utopic, native
+# vercheck-ubuntu: name=ubuntu-settings, repo=zesty, native
 
 pkgname=ubuntu-default-settings
-pkgver=14.04.5
-pkgrel=2
+pkgver=16.10.3
+pkgrel=1
 pkgdesc="Ubuntu's default settings"
 arch=(any)
 url="https://launchpad.net/ubuntu/+source/ubuntu-settings"
@@ -14,10 +14,10 @@ groups=(unity-extra)
 depends=(ttf-ubuntu-font-family ubuntu-sounds ubuntu-themes ubuntu-wallpapers
          xcursor-vanilla-dmz)
 install=${pkgname}.install
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-settings_${pkgver}.tar.gz"
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-settings_${pkgver}.tar.xz"
         0001-Simplified-defaults-for-Arch-Linux.patch)
-sha512sums=('a5f1352d98405ae5e96631dbe564c81a4c6a945bebc0ce2a8a545ed3d0c4fd59739441fe9612921a19ba2cb0c698fdca681d1906835aa65e90e5f24d88289e05'
-            '8586732191d80941d4609f3bcc43f0ee7add46f80aca220884fd2ee99d7fb206cbb105dcd0c3640b89dbf87d302ea26261c57b3355c2fdd9ae29c354b97b9e25')
+sha512sums=('f4f598dd34ae186c82d3614ec285607e3d6ab4556f7af3f33efecfa9c8266ff26a2c79344455976e0b8c75cac32a61199ea87adef25c4dfa6033267287ed4e7c'
+            '89727f1179067ff0f8f7650251d9deba73d366194573f394001bd224eeb1986e85ff1e15ef24f8570d7a663b9a4736b657fc16c37e6512a690b201064729665d')
 
 prepare() {
   cd "ubuntu-settings-${pkgver}/"

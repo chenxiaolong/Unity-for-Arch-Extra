@@ -1,14 +1,14 @@
-From 181ae057e99692f9ba46cf77ea3aea49020e0782 Mon Sep 17 00:00:00 2001
+From fbe13de974247b823b4b27f07ffe1976cd4fa79c Mon Sep 17 00:00:00 2001
 From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 Date: Thu, 10 Apr 2014 14:16:48 -0400
 Subject: [PATCH] Simplified defaults for Arch Linux
 
 ---
- debian/ubuntu-settings.gsettings-override | 60 +------------------------------
- 1 file changed, 1 insertion(+), 59 deletions(-)
+ debian/ubuntu-settings.gsettings-override | 38 +------------------------------
+ 1 file changed, 1 insertion(+), 37 deletions(-)
 
 diff --git a/debian/ubuntu-settings.gsettings-override b/debian/ubuntu-settings.gsettings-override
-index b9300ce..0204aa5 100644
+index e56d316..7e07340 100644
 --- a/debian/ubuntu-settings.gsettings-override
 +++ b/debian/ubuntu-settings.gsettings-override
 @@ -1,6 +1,3 @@
@@ -27,12 +27,11 @@ index b9300ce..0204aa5 100644
  font-name="Ubuntu 11"
  monospace-font-name="Ubuntu Mono 13"
  
-@@ -44,27 +41,6 @@ mouse-button-modifier='<Alt>'
- theme="Ambiance"
- titlebar-font='Ubuntu Bold 11'
+@@ -49,23 +46,6 @@ titlebar-font='Ubuntu Bold 11'
+ action-middle-click-titlebar='lower'
+ titlebar-uses-system-font=false
  
 -[org.gnome.eog.ui]
--external-editor="shotwell-viewer.desktop"
 -sidebar=false
 -
 -[org.gnome.Empathy.conversation]
@@ -44,10 +43,7 @@ index b9300ce..0204aa5 100644
 -notifications-focus=true
 -
 -[org.gnome.Epiphany]
--keyword-search-url='http://www.google.com/search?client=ubuntu&channel=es&q=%s&ie=UTF-8&oe=UTF-8'
--
--[org.gnome.gedit.plugins]
--active-plugins = ['docinfo', 'modelines', 'filebrowser', 'spell', 'time', 'zeitgeistplugin']
+-keyword-search-url='https://www.google.com/search?client=ubuntu&channel=es&q=%s'
 -
 -[org.gnome.login-screen]
 -logo='/lib/plymouth/ubuntu_logo.png'
@@ -55,12 +51,10 @@ index b9300ce..0204aa5 100644
  [org.gnome.mutter.keybindings]
  toggle-tiled-left = ['<Primary><Super>Left','<Super>Left']
  toggle-tiled-right = ['<Primary><Super>Right','<Super>Right']
-@@ -76,44 +52,10 @@ volumes-visible=false
+@@ -83,15 +63,6 @@ sort-directories-first=true
+ enable-interactive-search=true
+ open-folder-on-dnd-hover=false
  
- [org.gnome.nautilus.preferences]
- sort-directories-first=true
--enable-interactive-search=true
--
 -[org.gnome.rhythmbox.encoding-settings]
 -media-type-presets={'audio/x-vorbis':'Ubuntu', 'audio/mpeg':'Ubuntu'}
 -
@@ -70,36 +64,26 @@ index b9300ce..0204aa5 100644
 -[org.gnome.rhythmbox.plugins]
 -active-plugins=['artsearch', 'audiocd','audioscrobbler','cd-recorder','daap','dbus-media-server','generic-player','ipod','iradio','mmkeys','mpris','mtpdevice','notification','power-manager']
 -
--[org.gnome.settings-daemon.peripherals.touchpad]
--disable-while-typing = true
--tap-to-click = true
--
--[org.gnome.settings-daemon.plugins.power]
--button-power = 'interactive'
--button-sleep = 'suspend'
--critical-battery-action = 'suspend'
+ [org.gnome.settings-daemon.plugins.power]
+ button-power = 'interactive'
+ button-sleep = 'suspend'
+@@ -112,16 +83,9 @@ active = false
+ [org.gnome.settings-daemon.plugins.background]
+ active = false
  
- [org.gnome.settings-daemon.plugins.xsettings]
- antialiasing = 'rgba'
- hinting = 'slight'
- 
--[org.gnome.settings-daemon.plugins.print-notifications]
--active = false
--
--[org.gnome.settings-daemon.plugins.updates]
--active = false
--
--[org.gnome.settings-daemon.plugins.background]
--active = false
--
 -[org.gnome.shell]
--favorite-apps=[ 'ubiquity-gtkui.desktop', 'firefox.desktop', 'evolution.desktop', 'empathy.desktop', 'rhythmbox.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'nautilus.desktop', 'yelp.desktop' ]
+-favorite-apps=[ 'ubiquity.desktop', 'firefox.desktop', 'evolution.desktop', 'rhythmbox.desktop', 'org.gnome.Photos.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'yelp.desktop' ]
 -
  [org.gnome.sushi]
  client-decoration = false
+ 
+-[org.gnome.software]
+-first-run=false
+-official-sources=['ubuntu-*']
 -
--[org.gnome.Totem]
--active-plugins = ['skipto','chapters','screenshot','media_player_keys','screensaver','movie-properties','save-file','youtube','totem-zeitgeist-dp-plugin']
+ [org.gtk.Settings.FileChooser]
+ sort-directories-first = true
+ 
 -- 
-2.3.7
+2.10.1
 
