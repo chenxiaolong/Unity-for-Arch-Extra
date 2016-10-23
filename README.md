@@ -34,7 +34,6 @@ Compiling from source
 | Package                          | Description                                |
 | -------------------------------- | ------------------------------------------ |
 | accountsservice-ubuntu           | Daemon to query user account information   |
-| messagingmenu-extension          | Messaging indicator extension for Moz. TB  |
 | liferea-indicator                | Liferea with indicator support             |
 | pidgin-libnotify-ubuntu          | Pidgin notification plugin                 |
 | plasma-widget-menubar            | KDE Plasma widget to display menu bar      |
