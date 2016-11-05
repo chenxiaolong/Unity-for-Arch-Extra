@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 pkgdesc="pidgin plugin that enables popups when someone logs in or messages you."
 url="http://gaim-libnotify.sourceforge.net/"
 license=('GPL')
-depends=('pidgin' 'libnotify' 'perlxml' 'gettext' 'notification-daemon' 'libindicate-gtk2' 'indicator-messages')
+depends=('pidgin' 'libnotify' 'perl-xml-parser' 'gettext' 'notification-daemon' 'libindicate-gtk2' 'indicator-messages')
 makedepends=('libtool' 'intltool')
 replaces=('gaim-libnotify' 'pidgin-libnotify')
 provides=("pidgin-libnotify=${pkgver%.*}")
